@@ -5,10 +5,186 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-04-18T00:00:00Z</updated>
+  <updated>2013-04-23T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>Ember.js 1.0.0-rc3发布</title>
+    <link rel="alternate" href="/blog/2013/04/23/ember-js-1-0-0-rc3.html"/>
+    <id>/blog/2013/04/23/ember-js-1-0-0-rc3.html</id>
+    <published>2013-04-23T00:00:00Z</published>
+    <updated>2013-04-23T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc3发布了。正如在发布rc1时曾经提到过的那样，在1.0版本结束之前的所有版本都只会做bug修复和代码完善，不会有其他重大变化。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;性能&lt;/h3&gt;
+&lt;p&gt;自RC2以来，Embe.js改善了一系列性能问题。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当相关联的多个子视图准备做插入时，不再像以前那样一个一个添加，而是批量插入。&lt;/li&gt;
+&lt;li&gt;删除对象改成异步操作，这样做可以保证在删除一个对象的时候，与其相关联的对象不会出现不必要的扰动。&lt;/li&gt;
+&lt;li&gt;减少了在视图渲染时分配的对象的数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;测试&lt;/h3&gt;
+&lt;p&gt;为&lt;code&gt;App#reset&lt;/code&gt;做了大量的修复以及改善工作，现在，当它被调用的时候，应该会正确的清理应用程序状态。通常情况下，这只用于集成测试。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;&lt;code&gt;Ember.js&lt;/code&gt;
+1.0.0-rc3发布了。正如在发布rc1时曾经提到过的那样，在1.0版本结束之前的所有版本都只会做bug修复和代码完善，不会有其他重大变化。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;性能&lt;/h3&gt;
+&lt;p&gt;自RC2以来，Embe.js改善了一系列性能问题。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当相关联的多个子视图准备做插入时，不再像以前那样一个一个添加，而是批量插入。&lt;/li&gt;
+&lt;li&gt;删除对象改成异步操作，这样做可以保证在删除一个对象的时候，与其相关联的对象不会出现不必要的扰动。&lt;/li&gt;
+&lt;li&gt;减少了在视图渲染时分配的对象的数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;测试&lt;/h3&gt;
+&lt;p&gt;为&lt;code&gt;App#reset&lt;/code&gt;做了大量的修复以及改善工作，现在，当它被调用的时候，应该会正确的清理应用程序状态。通常情况下，这只用于集成测试。&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="comment"&gt;//before each integration test&lt;/span&gt;
+App.reset();
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;请注意：现在
+&lt;code&gt;App.reset()&lt;/code&gt;本身包含了一个&lt;code&gt;run&lt;/code&gt;循环，不需要在再外部套一个&lt;code&gt;run&lt;/code&gt;循环了。&lt;/p&gt;
+
+&lt;p&gt;创建了&lt;a href="https://github.com/emberjs/ember.js/tree/master/packages/ember-testing"&gt;ember-testing&lt;/a&gt;。这个项目的目的是使测试&lt;code&gt;Ember&lt;/code&gt;应用程序更简单，尤其是在需要测试异步性的情况下。随着工作日渐成熟，会给出完整的文档，例子以及指南。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_code-ember-code'&gt;&lt;code&gt;Ember&lt;/code&gt;构建&lt;/h3&gt;
+&lt;p&gt;每一个成功的&lt;a href="https://travis-ci.org/emberjs/ember.js"&gt;CI&lt;/a&gt;都会把结果发布到&lt;a href="http://builds.emberjs.com/"&gt;http://builds.emberjs.com/&lt;/a&gt;。这会使引用及使用&lt;a href="http://builds.emberjs.com/ember-latest.js"&gt;最新的&lt;code&gt;Ember&lt;/code&gt;构建&lt;/a&gt;更简单。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_code-input-code-code-textarea-code'&gt;新的&lt;code&gt;{{input}}&lt;/code&gt;和&lt;code&gt;{{textarea}}&lt;/code&gt;助手&lt;/h3&gt;
+&lt;p&gt;现在，&lt;code&gt;TextField&lt;/code&gt;,&lt;code&gt;TextArea&lt;/code&gt;和&lt;code&gt;Checkbox&lt;/code&gt;也有相应的&lt;code&gt;Ember&lt;/code&gt;助手了。&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;view&lt;/span&gt; &lt;span class="attribute-name"&gt;Ember.TextField&lt;/span&gt; &lt;span class="attribute-name"&gt;valueBinding&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;name&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;view&lt;/span&gt; &lt;span class="attribute-name"&gt;Ember.Checkbox&lt;/span&gt;  &lt;span class="attribute-name"&gt;checkedBinding&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;isActive&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;view&lt;/span&gt; &lt;span class="attribute-name"&gt;Ember.TextArea&lt;/span&gt;  &lt;span class="attribute-name"&gt;valueBinding&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;name&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;可以像下面这样写了&lt;/p&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;input&lt;/span&gt; &lt;span class="attribute-name"&gt;value&lt;/span&gt;=&lt;span class="attribute-value"&gt;name&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;input&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="attribute-value"&gt;checkbox&lt;/span&gt; &lt;span class="attribute-name"&gt;checked&lt;/span&gt;=&lt;span class="attribute-value"&gt;isActive&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;textarea&lt;/span&gt; &lt;span class="attribute-name"&gt;value&lt;/span&gt;=&lt;span class="attribute-value"&gt;name&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;推荐使用&lt;code&gt;动态标签&lt;/code&gt;而不是&lt;code&gt;{{view}}&lt;/code&gt;助手，因为他们等价于静态标签，而静态标签被大家熟知和喜爱。&lt;/p&gt;
+
+&lt;p&gt;要注意的是使用动态标签时，不需要使用&lt;code&gt;Binding&lt;/code&gt;后缀，也不需要为值添加引号。在这里，&lt;code&gt;Ember&lt;/code&gt;将把常量字符串视为静态字符串。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;文档&lt;/h3&gt;
+&lt;p&gt;对API文档进行了精炼和补充，在这期间，很多社区成员提供了帮助。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;变更记录：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;如果不需要&lt;code&gt;thisArg&lt;/code&gt;的话，那么也不需要执行&lt;code&gt;fn.call&lt;/code&gt;了。&lt;/li&gt;
+&lt;li&gt;不再需要交叉构建&lt;code&gt;insertViewCollection&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;LinkView&lt;/code&gt;中没有使用&lt;code&gt;a&lt;/code&gt;标签，那么将不能使用&lt;code&gt;href&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;修改了{{linkTo}}文档。&lt;/li&gt;
+&lt;li&gt;在完整的构建代码中增添了&lt;code&gt;ember-testing&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;针对Opera，将&lt;code&gt;jQuery.js(&amp;#39;:disabled&amp;#39;)&lt;/code&gt;修改为&lt;code&gt;jQuery.js(&amp;#39;:disabled&amp;#39;).length&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;移除声明却未使用的变量。&lt;/li&gt;
+&lt;li&gt;增添&lt;code&gt;run.scheduleOnce&lt;/code&gt;文档，删除&lt;code&gt;run.once&lt;/code&gt;文档。Fixes #2132。&lt;/li&gt;
+&lt;li&gt;修复&lt;code&gt;outerHTML&lt;/code&gt;回退的测试。&lt;/li&gt;
+&lt;li&gt;不再依赖&lt;code&gt;EXTEND_PROTOTYPES == true&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;修复&lt;code&gt;Ember.EnumerableUtils&lt;/code&gt;没有继承&lt;code&gt;prototypes&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;不对文档标记&lt;code&gt;.generateController&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;不为&lt;code&gt;.cachable&lt;/code&gt;构建文档。Fixes #2329。&lt;/li&gt;
+&lt;li&gt;清理&lt;code&gt;MutableEnumerable&lt;/code&gt;文档。&lt;/li&gt;
+&lt;li&gt;新增&lt;code&gt;Ember.Application#removeTestHelpers&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;修复几个有争议的问题。&lt;/li&gt;
+&lt;li&gt;首次通过了&lt;code&gt;ember-testing&lt;/code&gt;包的工作。&lt;/li&gt;
+&lt;li&gt;修复&amp;#39;自定义绑定&amp;#39;部分的文档错误。&lt;/li&gt;
+&lt;li&gt;修复方法注释bug。&lt;/li&gt;
+&lt;li&gt;修复重定向到子路由bug。&lt;/li&gt;
+&lt;li&gt;修复&lt;code&gt;MetamorphView&lt;/code&gt;的&lt;code&gt;DOMManager&lt;/code&gt; replace。&lt;/li&gt;
+&lt;li&gt;修复#870延迟析构以及&lt;code&gt;App#reset&lt;/code&gt;问题。&lt;/li&gt;
+&lt;li&gt;清除无用变量。&lt;/li&gt;
+&lt;li&gt;使用最新的&lt;code&gt;Ember&lt;/code&gt;构建更新&lt;code&gt;JSFiddle/JSBin&lt;/code&gt;的入口点配置。最新的构建已经自动上传到&lt;code&gt;builds.emberjs.com&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;修复#22388: 为&lt;code&gt;_resetSubControllers&lt;/code&gt;添加&lt;code&gt;if&lt;/code&gt;语句。&lt;/li&gt;
+&lt;li&gt;将缓存的状态转换哈希值作用域限定到状态管理器类，因此状态管理器的继承和混合行为与预期的保持一致了。&lt;/li&gt;
+&lt;li&gt;修复发行版本构建的上载。&lt;/li&gt;
+&lt;li&gt;更新到最新的&lt;code&gt;ember-dev&lt;/code&gt;以便发行任务可以正常工作。&lt;/li&gt;
+&lt;li&gt;配置&lt;code&gt;Travis&lt;/code&gt;以便能自动部署到&lt;code&gt;AWS&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;新增漏掉的条目类型。&lt;/li&gt;
+&lt;li&gt;在测试时不产生&lt;code&gt;Ember.alias&lt;/code&gt;废除警告。&lt;/li&gt;
+&lt;li&gt;对&lt;code&gt;ViewCollection&lt;/code&gt;新增&lt;code&gt;invokeRecursively&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;失败的测试显示使用&lt;code&gt;mixins&lt;/code&gt;获取状态的&lt;code&gt;StateManager&lt;/code&gt;有未知行为。&lt;/li&gt;
+&lt;li&gt;修复&lt;code&gt;HistoryLocation&lt;/code&gt;的&lt;code&gt;rootURL&lt;/code&gt;处理器及webkit方案。&lt;/li&gt;
+&lt;li&gt;清除助手函数中的无用参数。&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;toArray&lt;/code&gt;移除副本。&lt;/li&gt;
+&lt;li&gt;允许了&lt;code&gt;option&lt;/code&gt;视图以便可以重写&lt;code&gt;Ember.Select&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;真正的使&lt;code&gt;Ember.alias()&lt;/code&gt;输出弃用警告。&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;Ember.String.fmt&lt;/code&gt;代替&lt;code&gt;String&lt;/code&gt;扩展。&lt;/li&gt;
+&lt;li&gt;自动上载所有通过的构建到s3。&lt;/li&gt;
+&lt;li&gt;修复#2424 App#reset。&lt;/li&gt;
+&lt;li&gt;s/nexts/these（nexts不是单词)。&lt;/li&gt;
+&lt;li&gt;针对&lt;code&gt;linkTo&lt;/code&gt;路由提供更多更详细的错误信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;viewName&lt;/code&gt;成为属性。&lt;/li&gt;
+&lt;li&gt;清除不需要的闭包。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;JSDoc&lt;/code&gt;应该对混合类型使用{*}而不是{anything}或者{any}。&lt;/li&gt;
+&lt;li&gt;给&lt;code&gt;invokeRecursively&lt;/code&gt;增加一个&lt;code&gt;includeSelf&lt;/code&gt;参数。&lt;/li&gt;
+&lt;li&gt;修复ArrayController#length在其content没有显示设置的问题。&lt;/li&gt;
+&lt;li&gt;关闭#2043 - 修复在集合中删除最后元素的问题。&lt;/li&gt;
+&lt;li&gt;阻止应用程序模板复制时被二次渲染。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;mixins&lt;/code&gt;被传递给&lt;code&gt;Object.create&lt;/code&gt;时提供断言。&lt;/li&gt;
+&lt;li&gt;增强&lt;code&gt;Ember.TargetActionSupport&lt;/code&gt;并引入&lt;code&gt;Ember.ViewTargetActionSupport&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;修复{{textarea}}断言信息。&lt;/li&gt;
+&lt;li&gt;测试unwatch方法的&lt;code&gt;length&lt;/code&gt;属性。&lt;/li&gt;
+&lt;li&gt;测试watch方法的&lt;code&gt;length&lt;/code&gt;属性。&lt;/li&gt;
+&lt;li&gt;测试iswatching方法的&lt;code&gt;length&lt;/code&gt;属性。&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;Ember.typeof&lt;/code&gt;移动到metal。&lt;/li&gt;
+&lt;li&gt;修复数组watching问题。由于&lt;code&gt;typeof&lt;/code&gt;和&lt;code&gt;isArray&lt;/code&gt;的差异，曾经不止影响普通数组。&lt;/li&gt;
+&lt;li&gt;移除提到的将&lt;code&gt;mixins&lt;/code&gt;传递给create。&lt;/li&gt;
+&lt;li&gt;还原&lt;code&gt;Fix Application#reset destroy&lt;/code&gt;问题。&lt;/li&gt;
+&lt;li&gt;修复视图助手文档和例子以便反映上下文。&lt;/li&gt;
+&lt;li&gt;在命名空间查找阶段忽略&lt;code&gt;webkitStorageInfo&lt;/code&gt;以消除警告。&lt;/li&gt;
+&lt;li&gt;修复&lt;code&gt;Fix Application#reset destroy&lt;/code&gt;问题。&lt;/li&gt;
+&lt;li&gt;使Chrome的初始栈状态环境指导&lt;code&gt;rootURL&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;RenderBuffer&lt;/code&gt;中，使用字符串代替数组。&lt;/li&gt;
+&lt;li&gt;将循环中的for语句转化为一个简单的for循环。&lt;/li&gt;
+&lt;li&gt;改善视图容器的查找性能。&lt;/li&gt;
+&lt;li&gt;清除&lt;code&gt;Ember.Deferred&lt;/code&gt;测试中的无用的异步性代码。&lt;/li&gt;
+&lt;li&gt;清除路由测试中的无用的异步性代码。&lt;/li&gt;
+&lt;li&gt;增加{{text area}}。&lt;/li&gt;
+&lt;li&gt;为&lt;code&gt;enter&lt;/code&gt;提供默认的&lt;code&gt;text&lt;/code&gt; &lt;code&gt;input&lt;/code&gt; &lt;code&gt;action&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;增加{{input action=&amp;quot;foo&amp;quot; on=&amp;quot;keyPress&amp;quot;}}。&lt;/li&gt;
+&lt;li&gt;清除更多metal。&lt;/li&gt;
+&lt;li&gt;更好的组织&lt;code&gt;ember-metal&lt;/code&gt;和缓存函数查找表。&lt;/li&gt;
+&lt;li&gt;移除从渲染到缓存的同步性。&lt;/li&gt;
+&lt;li&gt;使测试不依赖于同步改变的事件。&lt;/li&gt;
+&lt;li&gt;修复测试以便不期待同步的观察者。&lt;/li&gt;
+&lt;li&gt;在原型中定义&lt;code&gt;Minix&lt;/code&gt;属性。&lt;/li&gt;
+&lt;li&gt;更新&lt;code&gt;ember-dev&lt;/code&gt;gem到最新版本。&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;Ember.View&lt;/code&gt;原型中共享空数组。根据操作来区分。&lt;/li&gt;
+&lt;li&gt;根据DOM中的insertion来添加views到&lt;code&gt;Ember.View.views&lt;/code&gt;,而不依赖初始化。Fixs #1553。&lt;/li&gt;
+&lt;li&gt;使对象的异步析构以便在处理相互联系的对象时减少扰动。&lt;/li&gt;
+&lt;li&gt;定义Ember.CoreObject#willDestroy. Fixes #1438。&lt;/li&gt;
+&lt;li&gt;清除不需要的volatile()。&lt;/li&gt;
+&lt;li&gt;匹配transitionTo APIs。&lt;/li&gt;
+&lt;li&gt;避免递归调用transitionTo。&lt;/li&gt;
+&lt;li&gt;改善视图通知及转换性能。&lt;/li&gt;
+&lt;li&gt;提取一个私有的&lt;code&gt;ViewCollection&lt;/code&gt;辅助类来使同时处理多个视图成为可能。&lt;/li&gt;
+&lt;li&gt;为{{input type=&amp;quot;checkbox&amp;quot;}}增加支持。&lt;/li&gt;
+&lt;li&gt;增加&lt;code&gt;Ember.Handlebars.helper&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;增加{{input type=&amp;quot;text&amp;quot;}}。&lt;/li&gt;
+&lt;li&gt;批量插入相关联的子视图而不是一个一个的添加。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry>
     <title>如何获取应用当前登录的用户信息</title>
     <link rel="alternate" href="/blog/2013/04/18/how-to-load-the-current-user.html"/>
@@ -631,28 +807,6 @@ HelloEmber.IndexRoute = Ember.Route.extend({
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;这使得使用&lt;code&gt;itemController&lt;/code&gt;减少了问题的出现。&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Emberjs.cn域名正式启用</title>
-    <link rel="alternate" href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html"/>
-    <id>/blog/2013/03/06/domain-name-emberjs-cn-enabled.html</id>
-    <published>2013-03-06T00:00:00Z</published>
-    <updated>2013-03-06T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
-
-&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
-
-&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;经过20天的等待，今天终于收到工信部告知域名备案通过的信息，从现在开始&lt;a href="http://emberjs.cn"&gt;http://emberjs.cn&lt;/a&gt;域名正式启用。特在此处Mark一下，以纪念这一神圣的时刻。&lt;/p&gt;
-
-&lt;p&gt;另外，最近翻译团队加入了一位给力的成员&lt;a href="https://github.com/TiffanyZhou"&gt;TiffanyZhou&lt;/a&gt;，提供了很多高质量的翻译作品。随着队伍的不断壮大，我们一定能打造出一个高质量、精品的&lt;code&gt;Ember.js&lt;/code&gt;中文社区。&lt;/p&gt;
-
-&lt;p&gt;BTW，我们已经开始在实际的项目全面采用&lt;code&gt;Ember.js&lt;/code&gt;进行前端开发，在后续的日子里面，我们将会将我们在开发过程中遇到的问题，总结出来的经验拿出来，与大家一起分享。&lt;/p&gt;
 </content>
   </entry>
 </feed>
