@@ -105,6 +105,10 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
+        
           <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
@@ -145,6 +149,52 @@
         
 <h1>Recent Posts</h1>
 
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
+    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
+
+<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+
+<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
+<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
+<p>首先是相同的创建应用：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create();
+</pre></td>
+</tr></table>
+</div></div>
+    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">Read more...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
+    <p>本文共两篇文章，通过两种常见的方式实现了一个简单的用户管理。</p>
+
+<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+<h3 class='anchorable-toc' id='toc_'>第一篇讲述使用第一种方案实现的过程。</h3>
+<p>首先是创建应用：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create();
+
+
+App.Store = DS.Store.extend({
+    <span class="key">revision</span>: <span class="integer">12</span>,
+    <span class="key">adapter</span>: <span class="string"><span class="delimiter">'</span><span class="content">DS.FixtureAdapter</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+    <a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">Read more...</a>
+  </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a> &ndash; <time>Apr 23, 2013</time></span></h2>
     <p><code>Ember.js</code>
