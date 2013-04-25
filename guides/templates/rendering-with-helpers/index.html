@@ -164,11 +164,11 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -252,7 +252,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+              <a href="/guides/models/model-lifecycle">模型生命周期</a>
             </li>
           
             <li class="level-3">
@@ -340,7 +340,7 @@
             <ol>
         
             <li class="level-3">
-              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -368,12 +368,13 @@
 
   <div class="chapter">
     <h1>模板</h1>
-    <h2 class='anchorable-toc' id='toc_rendering-with-helpers'>Rendering with Helpers</h2>
-<p>Ember provides several helpers that allow you to render other views and templates in different ways.</p>
-<h3 class='anchorable-toc' id='toc_the-code-partial-code-helper'>The <code>{{partial}}</code> Helper</h3>
-<p><code>{{partial}}</code> takes the template to be rendered as an argument, and renders that template in place.</p>
+    <p>英文原文： <a href="http://emberjs.com/guides/templates/rendering-with-helpers/">http://emberjs.com/guides/templates/rendering-with-helpers/</a></p>
+<h2 class='anchorable-toc' id='toc_'>用助手来渲染</h2>
+<p>Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
+<h3 class='anchorable-toc' id='toc_code-partial-code'><code>{{partial}}</code> 助手</h3>
+<p><code>{{partial}}</code>接收一个模板作为其参数，然后恰当地渲染这个模板</p>
 
-<p><code>{{partial}}</code> does not change context or scope.  It simply drops the given template into place with the current scope.  </p>
+<p><code>{{partial}}</code>不改变上下文或作用域。它只是简单地在当前作用域下将指定的模板渲染出来。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -411,9 +412,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>Note: in cases where you may have used <code>{{template}}</code> in the past, you should likely use <code>{{partial}}</code> instead.</p>
-<h3 class='anchorable-toc' id='toc_the-code-view-code-helper'>The <code>{{view}}</code> Helper</h3>
-<p>This helper works like the partial helper, except instead of providing a template to be rendered within the current template, you provide a view class.  The view controls what template is rendered.</p>
+<p>注意：如果你之前用过 {{template}} 助手，那么，现在你应该使用 {{partial}}助手来代替它了。</p>
+<h3 class='anchorable-toc' id='toc_code-view-code'><code>{{view}}</code> 助手</h3>
+<p>此助手和 partial 类似，不同的是你需要提供一个视图类，而不是在当前模板内提供一个待渲染的模板。这个视图类控制哪个模板将被渲染，如下所示：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -475,38 +476,32 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>When using <code>{{partial &quot;author&quot;}}</code>:</p>
+<p>当使用 <code>{{partial &quot;author&quot;}}</code> 时：
+* 不会创建 App.AuthorView 的实例
+* 会渲染指定模板</p>
+
+<p>当使用 <code>{{view App.AuthorView}}</code> 时：
+* 会创建 App.AuthorView 的实例
+* 会渲染与指定视图相关联的模板(默认的模板是 &quot;author&quot;)</p>
+
+<p>更多信息，请见<a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a></p>
+<h3 class='anchorable-toc' id='toc_code-render-code'><code>{{render}}</code> 助手</h3>
+<p><code>{{render}}</code> 需要两个参数：</p>
 
 <ul>
-<li>No instance of App.AuthorView will be created</li>
-<li>The given template will be rendered</li>
+<li>第一个参数描述需要建立的上下文</li>
+<li>第二个参数是可选参数，它接收一个模型，如果提供了这个参数，就会被传递给控制器。</li>
 </ul>
 
-<p>When using <code>{{view App.AuthorView}}</code>:</p>
+<p><code>{{render}}</code> 可以完成以下几个功能：</p>
 
 <ul>
-<li>An instance of App.AuthorView will be created</li>
-<li>It will be rendered here, using the template associated with that view (the default template being &quot;author&quot;)</li>
+<li>获取相应控制器的单体实例</li>
+<li>用此控制器渲染命名模板</li>
+<li>设置相应控制器的模型</li>
 </ul>
 
-<p>For more information, see <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a></p>
-<h3 class='anchorable-toc' id='toc_the-code-render-code-helper'>The <code>{{render}}</code> Helper</h3>
-<p><code>{{render}}</code> takes two parameters:</p>
-
-<ul>
-<li>The first parameter describes the context to be setup</li>
-<li>The optional second parameter is a model, which will be passed to the controller if provided</li>
-</ul>
-
-<p><code>{{render}}</code> does several things:</p>
-
-<ul>
-<li>Gets the singleton instance of the corresponding controller</li>
-<li>Renders the named template using this controller</li>
-<li>Sets the model of the corresponding controller </li>
-</ul>
-
-<p>Modifying the post / author example slightly:</p>
+<p>稍微修改一下 post / author 的例子：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -546,72 +541,72 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>In this example, render will:</p>
+<p>在此例中，render 助手会：</p>
 
 <ul>
-<li>Gets an instance of App.AuthorView if that class exists, otherwise uses a default generated view</li>
-<li>Use the corresponding template (in this case the default of &quot;author&quot;)</li>
-<li>Get (or generate) the singleton instance of AuthorController</li>
-<li>Set the AuthorController&#39;s model to the 2nd argument passed to render, here the author field on the post</li>
-<li>Render the template in place, with the context created in the previous steps.</li>
+<li>如果 App.AuthorView 存在，获取它的一个实例，否则就使用默认生成的视图</li>
+<li>使用相应的模板（此处为默认的 &quot;author&quot;）</li>
+<li>获取（或生成）AuthorController 的单体实例</li>
+<li>设置 AuthorController的模型为{{render}}助手的第二个参数，此处为 post 里的 author 字段</li>
+<li>根据前几步创建的上下文，恰当地渲染模板</li>
 </ul>
 
-<p><code>{{render}}</code> does not require the presence of a matching route.  </p>
+<p><code>{{render}}</code> 不需要匹配路由。</p>
 
-<p><code>{{render}}</code> is similar to <code>{{outlet}}</code>. Both tell Ember to devote this portion of the page to something.</p>
+<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember</code>将这一部分页面用来渲染其他模板。</p>
 
-<p><code>{{outlet}}</code>: The router determines the route and sets up the appropriate controllers/views/models.
-<code>{{render}}</code>: You specify (directly and indirectly) the appropriate controllers/views/models.</p>
+<p><code>{{outlet}}</code>: 路由器决定路由，并且创建合适的控制器/视图/模型
+<code>{{render}}</code>: 你（直接或间接地）指定合适的控制器/视图/模型</p>
 
-<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route.  For that you&#39;ll need <code>{{control}}</code>.</p>
-<h3 class='anchorable-toc' id='toc_the-code-control-code-helper'>The <code>{{control}}</code> Helper</h3>
-<p><code>{{control}}</code> works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.</p>
+<p>注意： 如果需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
+<h3 class='anchorable-toc' id='toc_code-control-code'><code>{{control}}</code> 助手</h3>
+<p><code>{{control}}</code> 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。</p>
 
-<p>This helper is currently under heavy development, and will likely change soon.</p>
-<h3 class='anchorable-toc' id='toc_comparison-table'>Comparison Table</h3><h4 class='anchorable-toc' id='toc_general'>General</h4>
+<p>此助手目前仍在开发中，以后极有可能变化很大。</p>
+<h3 class='anchorable-toc' id='toc_'>比较表</h3><h4 class='anchorable-toc' id='toc_'>整体概念性比较</h4>
 <table>
   <thead>
   <tr>
-    <th>Helper</th>
-    <th>Template</th>
-    <th>Model</th>
-    <th>View</th>
-    <th>Controller</th>
+    <th>助手</th>
+    <th>模板</th>
+    <th>模型</th>
+    <th>视图</th>
+    <th>控制器</th>
   </tr>
   </thead>
   <tbody>
   <tr>
     <td><code>{{partial}}</code></td>
-    <td>Specified Template</td>
-    <td>Current Model</td>
-    <td>Current View</td>
-    <td>Current Controller</td>
+    <td>指定模板</td>
+    <td>当前模型</td>
+    <td>当前视图</td>
+    <td>当前控制器</td>
   </tr>
   <tr>
     <td><code>{{view}}</code></td>
-    <td>View's Template</td>
-    <td>Current Model</td>
-    <td>Specified View</td>
-    <td>Current Controller</td>
+    <td>视图的模板</td>
+    <td>当前模型</td>
+    <td>指定视图</td>
+    <td>当前控制器</td>
   </tr>
   <tr>
     <td><code>{{render}}</code></td>
-    <td>View's Template</td>
-    <td>Specified Model</td>
-    <td>Specified View</td>
-    <td>Specified Controller</td>
+    <td>视图的模板</td>
+    <td>指定模型</td>
+    <td>指定视图</td>
+    <td>指定控制器</td>
   </tr>
   </tbody>
 </table>
-<h4 class='anchorable-toc' id='toc_specific'>Specific</h4>
+<h4 class='anchorable-toc' id='toc_specific'>Specific</h4><h4 class='anchorable-toc' id='toc_'>基于特定实例的比较</h4>
 <table>
   <thead>
   <tr>
-    <th>Helper</th>
-    <th>Template</th>
-    <th>Model</th>
-    <th>View</th>
-    <th>Controller</th>
+    <th>助手</th>
+    <th>模板</th>
+    <th>模型</th>
+    <th>视图</th>
+    <th>控制器</th>
   </tr>
   </thead>
   <tbody>
@@ -647,7 +642,7 @@
           </a>
          
         <a class="next-guide" href="/guides/templates/writing-helpers">
-          Writing Helpers →
+          编写助手方法 →
         </a>
       
       </footer>

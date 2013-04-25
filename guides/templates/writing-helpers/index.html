@@ -164,11 +164,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/templates/rendering-with-helpers">Rendering with Helpers</a>
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/writing-helpers">Writing Helpers</a>
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -252,7 +252,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/model-lifecycle">Model Lifecycle</a>
+              <a href="/guides/models/model-lifecycle">模型生命周期</a>
             </li>
           
             <li class="level-3">
@@ -340,7 +340,7 @@
             <ol>
         
             <li class="level-3">
-              <a href="/guides/configuring-ember/disabling-prototype-extensions">Disabling Prototype Extensions</a>
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -368,10 +368,11 @@
 
   <div class="chapter">
     <h1>模板</h1>
-    <h2 class='anchorable-toc' id='toc_writing-custom-helpers'>Writing Custom Helpers</h2>
-<p>Sometimes, you may use the same HTML in your application multiple times. In those case, you can register a custom helper that can be invoked from any Handlebars template.</p>
+    <p>英文原文： <a href="http://emberjs.com/guides/templates/writing-helpers/">http://emberjs.com/guides/templates/writing-helpers/</a></p>
+<h2 class='anchorable-toc' id='toc_'>编写助手方法</h2>
+<p>有时，你想在程序里多次使用同一段 HTML 代码。这种情况下，你就可以自定义一个任何 Handlebars 模板都能调用的助手方法。</p>
 
-<p>For example, imagine you are frequently wrapping certain values in a <code>&lt;span&gt;</code> tag with a custom class. You can register a helper from your JavaScript like this:</p>
+<p>比如，你频繁地用一个拥有 class（译注：这个class为css中的class，非JavaScript中的类） 的 <code>&lt;span&gt;</code>来包裹特定的值。你可以这样注册一个助手方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -385,11 +386,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>If you return HTML from a helper, and you don&#39;t want it to be escaped,
-make sure to return a new <code>SafeString</code>. Make sure you first escape any
-user data!</p>
+<p>如果你想从助手方法返回 HTML，并且你不想转义，那你就要保证返回的结果是新的 <code>SafeString</code>。首先要确保已经转义了用户数据。</p>
 
-<p>Anywhere in your Handlebars templates, you can now invoke this helper:</p>
+<p>你可以从Handlebars模板的任何地方调用此助手方法：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -397,7 +396,7 @@ user data!</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>and it will output the following:</p>
+<p>输出如下：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -405,13 +404,9 @@ user data!</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>If the <code>name</code> property on the current context changes, Ember.js will
-automatically execute the helper again and update the DOM with the new
-value.</p>
-<h3 class='anchorable-toc' id='toc_dependencies'>Dependencies</h3>
-<p>Imagine you want to render the full name of an <code>App.Person</code>. In this
-case, you will want to update the output if the person itself changes,
-or if the <code>firstName</code> or <code>lastName</code> properties change.</p>
+<p>如果当前上下文中的 <code>name</code> 属性发生变化， Ember.js会自动重新执行此助手方法，并用新的值去更新 DOM。</p>
+<h3 class='anchorable-toc' id='toc_'>依赖</h3>
+<p>想象另一种情况，如果要渲染<code>App.Person</code>的全名，而希望在person本身变化或者其<code>firstName</code>和<code>lastName</code>属性值发生变化时，都能自动更新输出，那么，我们可以像下面这样做：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -423,7 +418,7 @@ or if the <code>firstName</code> or <code>lastName</code> properties change.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>You would use the helper like this:</p>
+<p>你可以这样用助手方法：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -431,17 +426,15 @@ or if the <code>firstName</code> or <code>lastName</code> properties change.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Now, whenever the context&#39;s person changes, or when any of the
-<em>dependent keys</em> change, the output will automatically update.</p>
+<p>现在，一旦上下文中的 person 变化了，或任何 <em>依赖的键值</em> 发生变化，输出都会自动更新。</p>
 
-<p>Both the path passed to the <code>fullName</code> helper and its dependent keys may
-be full <em>property paths</em> (e.g. <code>person.address.country</code>).</p>
+<p>传递给 <code>fullName</code> 助手方法的路径以及它的依赖键值都可以是完整的 <em>属性路径</em> （如<code>person.address.country</code>）</p>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/templates/rendering-with-helpers">
-            ← Rendering with Helpers
+            ← 用助手来渲染
           </a>
          
           <a class="next-guide" href="/guides/routing">
