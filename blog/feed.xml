@@ -499,11 +499,11 @@ App.IndexRoute = Ember.Route.extend({
     <author>
       <name>EmberJS.CN</name>
     </author>
-    <summary type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢，也欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
+    <summary type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢。另外，欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
 
 &lt;p&gt;本周Ember.js热点：&lt;/p&gt;
 &lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-mcdowall-info-posts-ember-application-initializers-ember-application-initializers-a'&gt;&lt;a href="http://mcdowall.info/posts/ember-application-initializers/"&gt;EMBER APPLICATION INITIALIZERS&lt;/a&gt;&lt;/h4&gt;</summary>
-    <content type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢，也欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
+    <content type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢。另外，欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
 
 &lt;p&gt;本周Ember.js热点：&lt;/p&gt;
 &lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-mcdowall-info-posts-ember-application-initializers-ember-application-initializers-a'&gt;&lt;a href="http://mcdowall.info/posts/ember-application-initializers/"&gt;EMBER APPLICATION INITIALIZERS&lt;/a&gt;&lt;/h4&gt;
