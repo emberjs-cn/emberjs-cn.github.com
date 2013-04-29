@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Enumerables</title>
+    <title>Ember.js - 枚举</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -328,11 +328,11 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/enumerables">Enumerables</a>
+            <a href="/bilingual_guides/enumerables">枚举</a>
             <ol class='selected'>
         
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/enumerables">Introduction</a>
+              <a href="/bilingual_guides/enumerables">介绍</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -367,30 +367,40 @@
           
 
   <div class="chapter">
-    <h1>Enumerables</h1>
-    <h2 class='anchorable-toc' id='toc_enumerables'>Enumerables</h2>
+    <h1>枚举</h1>
+    <h2 class='anchorable-toc' id='toc_enumerables'>Enumerables</h2><h2 class='anchorable-toc' id='toc_'>枚举</h2>
 <p>In Ember.js, an Enumerable is any object that contains a number of child
 objects, and which allows you to work with those children using the
 <code>Ember.Enumerable</code> API. The most common Enumerable in the majority of
 apps is the native JavaScript array, which Ember.js extends to conform
 to the Enumerable interface.</p>
 
+<p>在Ember.js中，任何包含子对象集合的，并允许使用<code>Ember.Enumerable</code>接口来访问这些子对象的对象称为枚举。在大部分应用中最为常见的枚举是Ember.js为了确保枚举接口的一致性，而进行过扩展的Javascript的原生数组。</p>
+
 <p>By providing a standardized interface for dealing with enumerables,
 Ember.js allows you to completely change the way your underlying data is
 stored without having to modify the other parts of your application that
 access it.</p>
+
+<p>通过提供一个标准接口来处理枚举，Ember.js允许在不改变应用程序其他使用到枚举的部分的情况下，完全的改变数据的存储方式。</p>
 
 <p>For example, you might display a list of items from fixture data during
 development. If you switch the underlying data from synchronous fixtures
 to an array that fetches data from the server lazily, your view,
 template and controller code do not change at all.</p>
 
+<p>例如，在开发过程中，显示的列表条目是通过固定的测试数据来加载。当将该列表条目数据从同步的测试数据切换为从服务器延迟加载的模式来获取的时候，试图、模板和控制器代码不需要进行任何修改。</p>
+
 <p>The Enumerable API follows ECMAScript specifications as much as
 possible. This minimizes incompatibility with other libraries, and
 allows Ember.js to use the native browser implementations in arrays
 where available.</p>
 
+<p>枚举API尽可能的遵从ECMAScript规范，这将与其他库的不兼容情况降至最低，并且允许Ember.js使用浏览器自身实现的数组。</p>
+
 <p>For instance, all Enumerables support the standard <code>forEach</code> method:</p>
+
+<p>例如，所有的枚举都支持标准的<code>forEach</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -413,6 +423,8 @@ where available.</p>
 <p>In general, Enumerable methods, like <code>forEach</code>, take an optional second
 parameter, which will become the value of <code>this</code> in the callback
 function:</p>
+
+<p>通常情况下，类似<code>forEach</code>这样的枚举方法都支持一个可选第二参数，该参数值将用作回调函数里的<code>this</code>：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -435,24 +447,34 @@ array.forEach(<span class="keyword">function</span>(item) {
 <span class="comment">//=&gt; 3 2</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3>
+</div></div><h3 class='anchorable-toc' id='toc_enumerables-in-ember-js'>Enumerables in Ember.js</h3><h3 class='anchorable-toc' id='toc_ember-js'>Ember.js中的枚举</h3>
 <p>Usually, objects that represent lists implement the Enumerable interface. Some examples:</p>
+
+<p>通常，代表一个列表的对象实现枚举接口。例如：</p>
 
 <ul>
 <li><strong>Array</strong> - Ember extends the native JavaScript <code>Array</code> with the
 Enumerable interface (unless you <a href="/guides/configuring-ember/disabling-prototype-extensions/">disable prototype
 extensions.</a>)</li>
+<li><strong>Array</strong> -
+Ember采用枚举接口扩展Javascript原生<code>Array</code>（除非<a href="/guides/configuring-ember/disabling-prototype-extensions/">显示关闭prototype扩展</a>)</li>
 <li><strong>Ember.ArrayController</strong> - A controller that wraps an underlying array and
 adds additional functionality for the view layer.</li>
+<li><strong>Ember.ArrayController</strong> - 一种控制器其包裹了一个数组和其他一些视图层的辅助功能。</li>
 <li><strong>Ember.Set</strong> - A data structure that can efficiently answer whether it
 includes an object.</li>
+<li><strong>Ember.Set</strong> - 一种数据结构其可以高效的回答是否包含某一个对象。</li>
 </ul>
-<h3 class='anchorable-toc' id='toc_api-overview'>API Overview</h3>
+<h3 class='anchorable-toc' id='toc_api-overview'>API Overview</h3><h3 class='anchorable-toc' id='toc_api'>API概要</h3>
 <p>In this guide, we&#39;ll explore some of the most common Enumerable
 conveniences. For the full list, please see the <a href="/api/classes/Ember.Enumerable.html">Ember.Enumerable API
 reference documentation.</a></p>
-<h4 class='anchorable-toc' id='toc_iterating-over-an-enumerable'>Iterating Over an Enumerable</h4>
+
+<p>在本指南中，将讲述一些最为常用的枚举惯例。完整的内容请查看<a href="http://emberjs.com/api/classes/Ember.Enumerable.html">Ember.Enumerable API参考文档</a></p>
+<h4 class='anchorable-toc' id='toc_iterating-over-an-enumerable'>Iterating Over an Enumerable</h4><h4 class='anchorable-toc' id='toc_'>遍历枚举</h4>
 <p>To enumerate all the values of an enumerable object, use the <code>forEach</code> method:</p>
+
+<p>为了遍历枚举对象的所有值，可以使用<code>forEach</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -475,9 +497,11 @@ food.forEach(<span class="keyword">function</span>(item, index) {
 <span class="comment">// Menu Item 3: Adobo Chicken</span>
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4>
+</div></div><h4 class='anchorable-toc' id='toc_making-an-array-copy'>Making an Array Copy</h4><h4 class='anchorable-toc' id='toc_'>拷贝数组</h4>
 <p>You can make a native array copy of any object that implements
 <code>Ember.Enumerable</code> by calling the <code>toArray()</code> method:</p>
+
+<p>可以通过调用实现了<code>Ember.Enumerable</code>接口的任意对象的<code>toArray()</code>方法来将其创建一个原生的数组。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -499,9 +523,13 @@ states.toArray()
 </div></div>
 <p>Note that in many enumerables, such as the <code>Ember.Set</code> used in this
 example, the order of the resulting array is not guaranteed.</p>
-<h4 class='anchorable-toc' id='toc_first-and-last-objects'>First and Last Objects</h4>
+
+<p>注意在很多枚举中，例如在本例中使用的<code>Ember.Set</code>，生成的数组元素的顺序无法得到保证。</p>
+<h4 class='anchorable-toc' id='toc_first-and-last-objects'>First and Last Objects</h4><h4 class='anchorable-toc' id='toc_'>首尾对象</h4>
 <p>All Enumerables expose <code>firstObject</code> and <code>lastObject</code> properties
 that you can bind to.</p>
+
+<p>所有枚举提供<code>firstObject</code>和<code>lastObject</code>属性来获取首尾对象。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -524,10 +552,12 @@ animals.get(<span class="string"><span class="delimiter">'</span><span class="co
 <span class="comment">//=&gt; &quot;peacock&quot;</span>
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_map'>Map</h4>
+</div></div><h4 class='anchorable-toc' id='toc_map'>Map</h4><h4 class='anchorable-toc' id='toc_'>映射</h4>
 <p>You can easily transform each item in an enumerable using the
 <code>map()</code> method, which creates a new array with results of calling a
 function on each item in the enumerable.</p>
+
+<p>通过使用<code>map()</code>方法，可以方便的转换枚举中的每个元素。该方法使用对每个元素进行处理后的结果创建一个新的数组。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -548,6 +578,8 @@ function on each item in the enumerable.</p>
 <p>If your enumerable is composed of objects, there is a <code>mapProperty()</code>
 method that will extract the named property from each of those objects
 in turn and return a new array:</p>
+
+<p>如果枚举由对象构成，那么通过<code>mapProperty()</code>方法可以抽取对象指定的属性，来形成一个新的数组：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -576,14 +608,18 @@ states.mapProperty(<span class="string"><span class="delimiter">'</span><span cl
 <span class="comment">//=&gt; [&quot;Honolulu&quot;, &quot;Sacramento&quot;]</span>
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4>
+</div></div><h4 class='anchorable-toc' id='toc_filtering'>Filtering</h4><h4 class='anchorable-toc' id='toc_'>过滤</h4>
 <p>Another common task to perform on an Enumerable is to take the
 Enumerable as input, and return an Array after filtering it based on
 some criteria.</p>
 
+<p>另外一个常规任务是将一个枚举作为输入，为其设定一些过滤条件来返回一个新的数组。</p>
+
 <p>For arbitrary filtering, use the <code>filter</code> method.  The filter method
 expects the callback to return <code>true</code> if Ember should include it in the
 final Array, and <code>false</code> or <code>undefined</code> if Ember should not.</p>
+
+<p>对于采用<code>filter</code>方法的任意过滤。如果回调方法返回<code>true</code>，那么Ember将在返回结果中包含该元素，如果返回<code>false</code>或者<code>undefined</code>则不包含。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -604,6 +640,8 @@ arr.filter(<span class="keyword">function</span>(item, index, self) {
 </tr></table>
 </div></div>
 <p>When working with a collection of Ember objects, you will often want to filter a set of objects based upon the value of some property. The <code>filterProperty</code> method provides a shortcut.</p>
+
+<p>当处理一个Ember对象的集合时，经常需要基于对象的某些属性值来过滤。<code>filterProperty</code>方法可以快速的实现此过滤。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -636,8 +674,12 @@ todos.filterProperty(<span class="string"><span class="delimiter">'</span><span 
 </tr></table>
 </div></div>
 <p>If you want to return just the first matched value, rather than an Array containing all of the matched values, you can use <code>find</code> and <code>findProperty</code>, which work just like <code>filter</code> and <code>filterProperty</code>, but return only one item.</p>
-<h4 class='anchorable-toc' id='toc_aggregate-information-all-or-any'>Aggregate Information (All or Any)</h4>
+
+<p>如果只想返回第一个匹配的值，而不是一个包含所有匹配值的数组，可以使用<code>find</code>和<code>findProperty</code>方法，其工作原理与<code>filter</code>和<code>filterProperty</code>一样，不同的是只返回一个元素。</p>
+<h4 class='anchorable-toc' id='toc_aggregate-information-all-or-any'>Aggregate Information (All or Any)</h4><h4 class='anchorable-toc' id='toc_'>聚合信息（全部或者部分）</h4>
 <p>If you want to find out whether every item in an Enumerable matches some condition, you can use the <code>every</code> method:</p>
+
+<p>如果希望检查是否所有的枚举的元素都符合某些条件，可以使用<code>every</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -674,6 +716,8 @@ people.every(<span class="keyword">function</span>(person, index, self) {
 </tr></table>
 </div></div>
 <p>If you want to find out whether at least one item in an Enumerable matches some conditions, you can use the <code>some</code> method:</p>
+
+<p>如果希望检查是否枚举的元素至少有一个符合某些条件，那么可以使用<code>some</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -690,6 +734,8 @@ people.every(<span class="keyword">function</span>(person, index, self) {
 </tr></table>
 </div></div>
 <p>Just like the filtering methods, the <code>every</code> and <code>some</code> methods have analogous <code>everyProperty</code> and <code>someProperty</code> methods.</p>
+
+<p>如同过滤方法一样，<code>every</code>和<code>some</code>也有<code>everyProperty</code>和<code>someProperty</code>方法。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
