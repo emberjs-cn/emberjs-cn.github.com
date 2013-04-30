@@ -256,7 +256,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/models/the-rest-adapter">The REST Adapter</a>
+              <a href="/bilingual_guides/models/the-rest-adapter">REST适配器</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -368,16 +368,20 @@
 
   <div class="chapter">
     <h1>模型</h1>
-    <h2 class='anchorable-toc' id='toc_the-rest-adapter'>The REST Adapter</h2>
+    <h2 class='anchorable-toc' id='toc_the-rest-adapter'>The REST Adapter</h2><h2 class='anchorable-toc' id='toc_rest'>REST适配器</h2>
 <p>By default, your store will use <code>DS.RESTAdapter</code> to load and save
 records. The REST adapter assumes that the URLs and JSON associated with
 each model are conventional; this means that, if you follow the rules,
 you will not need to configure the adapter or write any code in order to
 get started.</p>
-<h3 class='anchorable-toc' id='toc_url-conventions'>URL Conventions</h3>
+
+<p>默认情况下，<code>store</code>使用<code>DS.RESTAdapter</code>来加载和保存记录。REST适配器假定URLs和每个对象对应的JSON都符合惯例。也就是说，只要遵从规则，就可以在不对适配器进行任何配置和编写任何代码的情况下使用适配器。</p>
+<h3 class='anchorable-toc' id='toc_url-conventions'>URL Conventions</h3><h3 class='anchorable-toc' id='toc_url'>URL惯例</h3>
 <p>The REST adapter is smart enough to determine the URLs it communicates
 with based on the name of the model. For example, if you ask for a
 <code>Post</code> by ID:</p>
+
+<p>REST适配器通过模型的名称来生成需要进行通信的URLs。例如，如下代码展示了如何通过ID来获取对应的<code>Post</code>：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -387,8 +391,12 @@ with based on the name of the model. For example, if you ask for a
 </div></div>
 <p>The REST adapter will automatically send a <code>GET</code> request to <code>/posts/1</code>.</p>
 
+<p>REST适配器会自动发送一个<code>GET</code>请求到<code>/posts/1</code>。</p>
+
 <p>The actions you can take on a record map onto the following URLs in the
 REST adapter:</p>
+
+<p>针对记录的操作在REST适配器里被映射为如下的URLs：</p>
 
 <table>
   <thead>
@@ -402,9 +410,11 @@ REST adapter:</p>
     <tr><th>Delete</th><td>DELETE</td><td>/people/123</td></tr>
   </tbody>
 </table>
-<h4 class='anchorable-toc' id='toc_pluralization-customization'>Pluralization Customization</h4>
+<h4 class='anchorable-toc' id='toc_pluralization-customization'>Pluralization Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义复数形态</h4>
 <p>Irregular pluralizations can be specified via the adapter&#39;s <code>configure</code>
 API:</p>
+
+<p>不规则复数形态可以通过适配器的<code>configure</code>API来进行制定：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -418,9 +428,13 @@ API:</p>
 </div></div>
 <p>This will tell the REST adapter that requests for <code>App.Person</code> requests
 should go to <code>/people/1</code> instead of <code>/persons/1</code>.</p>
-<h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4>
+
+<p>如上的配置下，REST适配器会采用<code>/people/1</code>来获取<code>App.Person</code>，而不是使用<code>/persons/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义端点路径</h4>
 <p>Endpoint paths can be prefixed with a namespace by setting the <code>namespace</code>
 property on the adapter:</p>
+
+<p>端点路径可以有一个命名空间前缀，该前缀通过适配器的<code>namespace</code>属性来进行配置：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -433,8 +447,12 @@ property on the adapter:</p>
 </tr></table>
 </div></div>
 <p>Requests for <code>App.Person</code> would now target <code>/api/1/people/1</code>.</p>
-<h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4>
+
+<p>现在<code>App.Person</code>的请求就会变为<code>/api/1/people/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义宿主</h4>
 <p>An adapter can target other hosts by setting the <code>url</code> property.</p>
+
+<p>适配器可以通过设置<code>url</code>属性来指向其他的宿主。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -447,14 +465,20 @@ property on the adapter:</p>
 </tr></table>
 </div></div>
 <p>Requests for <code>App.Person</code> would now target <code>https://api.example.com/people/1</code>.</p>
-<h3 class='anchorable-toc' id='toc_json-conventions'>JSON Conventions</h3>
+
+<p>现在<code>App.Person</code>的请求就会变为<code>https://api.example.com/people/1</code>。</p>
+<h3 class='anchorable-toc' id='toc_json-conventions'>JSON Conventions</h3><h3 class='anchorable-toc' id='toc_json'>JSON惯例</h3>
 <p>When requesting a record, the REST adapter expects your server to return
 a JSON representation of the record that conforms to the following
 conventions.</p>
-<h4 class='anchorable-toc' id='toc_json-root'>JSON Root</h4>
+
+<p>当请求一个记录时，REST适配器期望服务器返回的记录的JSON表示遵从如下惯例。</p>
+<h4 class='anchorable-toc' id='toc_json-root'>JSON Root</h4><h4 class='anchorable-toc' id='toc_json'>JSON根</h4>
 <p>The primary record being returned should be in a named root. For
 example, if you request a record from <code>/people/123</code>, the response should
 be nested inside a property called <code>person</code>:</p>
+
+<p>返回的主记录必须拥有一个命名的根。例如，如果从<code>/people/123</code>请求一个记录，那么响应就应该被嵌套在<code>person</code>属性下。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -471,9 +495,11 @@ be nested inside a property called <code>person</code>:</p>
 }
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_underscored-attribute-names'>Underscored Attribute Names</h4>
+</div></div><h4 class='anchorable-toc' id='toc_underscored-attribute-names'>Underscored Attribute Names</h4><h4 class='anchorable-toc' id='toc_'>以下划线分割额属性名称</h4>
 <p>Attribute names should be the underscored version of the attribute name
 in your Ember Data models. For example, if you have a model like this:</p>
+
+<p>属性名称在<code>Ember Data</code>模型中应该是以下划线分割的形式。例如，有一个如下的模型：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -492,6 +518,8 @@ in your Ember Data models. For example, if you have a model like this:</p>
 </tr></table>
 </div></div>
 <p>The JSON returned from your server should look like this:</p>
+
+<p>那么从服务器返回的JSON格式应该为：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -514,6 +542,8 @@ in your Ember Data models. For example, if you have a model like this:</p>
 <p>Irregular keys can be mapped on the adapter. If the JSON
 has a key of <code>lastNameOfPerson</code>, and the desired attribute
 name is simply <code>lastName</code>, inform the adapter:</p>
+
+<p>不规则的<code>keys</code>可以在适配器中进行映射。如果返回的JSON包含一个名为<code>lastNameOfPerson</code>的<code>key</code>，而期望的属性名称为<code>lastName</code>，在适配器里配置即可：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -530,9 +560,11 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4>
+</div></div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4><h4 class='anchorable-toc' id='toc_'>关联</h4>
 <p>References to other records should be done by ID. For example, if you
 have a model with a <code>hasMany</code> relationship:</p>
+
+<p>对其他对象的引用应该通过ID来进行关联。例如，如果有一个模型拥有一个<code>hasMany</code>的关联：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -545,6 +577,8 @@ have a model with a <code>hasMany</code> relationship:</p>
 </tr></table>
 </div></div>
 <p>The JSON should encode the relationship as an array of IDs:</p>
+
+<p>JSON应该将该关联编码成一个ID的数组：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -563,9 +597,14 @@ have a model with a <code>hasMany</code> relationship:</p>
 <p><code>Comments</code> for a <code>post</code> can be loaded by <code>post.get(&#39;comments&#39;)</code>. The REST adapter
 will send a <code>GET</code> request to <code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code></p>
 
+<p>一篇文章的评论可以通过<code>post.get(&#39;comments&#39;)</code>来进行获取。REST适配器将发送一个<code>GET</code>请求至<code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code>。</p>
+
 <p>Any <code>belongsTo</code> relationships in the JSON representation should be the
 underscored version of the Ember Data model&#39;s name, with the string
 <code>_id</code> appended. For example, if you have a model:</p>
+
+<p>而JSON表示中的任何<code>belongsTo</code>关联，应该为以下划线分割的<code>Ember
+Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -578,6 +617,8 @@ underscored version of the Ember Data model&#39;s name, with the string
 </tr></table>
 </div></div>
 <p>The JSON should encode the relationship as an ID to another record:</p>
+
+<p>JSON应该将关联编码为另外一个记录的ID：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -592,10 +633,12 @@ underscored version of the Ember Data model&#39;s name, with the string
 }
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_sideloaded-relationships'>Sideloaded Relationships</h4>
+</div></div><h4 class='anchorable-toc' id='toc_sideloaded-relationships'>Sideloaded Relationships</h4><h4 class='anchorable-toc' id='toc_'>旁路加载关联</h4>
 <p>To reduce the number of HTTP requests necessary, you can sideload
 additional records in your JSON response. Sideloaded records live
 outside the JSON root, and are represented as an array of hashes:</p>
+
+<p>为了减少HTTP请求的次数，可以从把JSON响应中的附加对象进行旁路加载。旁路加载的记录在JSON根之外，并作为一个哈希数组存在：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -640,13 +683,17 @@ outside the JSON root, and are represented as an array of hashes:</p>
 }
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3>
+</div></div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3><h3 class='anchorable-toc' id='toc_'>创建自定义变换</h3>
 <p>In some circumstances, the built in attribute types of <code>string</code>,
 <code>number</code>, <code>boolean</code>, and <code>date</code> may be inadequate. For example, a
 server may return a non-standard date format.</p>
 
+<p>在一些环境中，内建的属性类型<code>string</code>、<code>number</code>、<code>boolean</code>和<code>date</code>可能不够准确。例如，服务可能返回一个非标准的日期格式。</p>
+
 <p>The <code>RESTAdapter</code>, like any Ember adapter, can have new transforms
 registered for use as attributes:</p>
+
+<p><code>RESTAdapter</code>可以注册像属性一样使用的新的转换，就如同其他Ember适配器。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -676,6 +723,8 @@ App.Cursor = DS.Model.extend({
 </div></div>
 <p>When <code>coordinatePoint</code> is recieved from the API, it is
 expected to be an array:</p>
+
+<p>当从API接收到<code>coordinatePoint</code>时，<code>coordinatePoint</code>应该是一个数组：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -692,6 +741,8 @@ expected to be an array:</p>
 </tr></table>
 </div></div>
 <p>But once loaded on a model instance, it will behave as an object:</p>
+
+<p>但是当一个对象实例一旦被加载，<code>coordinatePoint</code>则变成了一个对象：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -706,6 +757,8 @@ cursor.get(<span class="string"><span class="delimiter">'</span><span class="con
 <p>If <code>position</code> is modified and saved, it will pass through the
 <code>serialize</code> function in the transform and again be presented as
 an array in JSON.</p>
+
+<p>如果<code>position</code>被修改和保存，那么它会被传递给<code>serialize</code>，将其转换为JSON中的数组。</p>
 
     
       <footer>
