@@ -280,19 +280,19 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/built-in-views">Built-in Views</a>
+              <a href="/guides/views/built-in-views">内置视图</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -368,16 +368,11 @@
 
   <div class="chapter">
     <h1>视图</h1>
-    <h2 class='anchorable-toc' id='toc_manually-managed-views-with-ember-containerview'>Manually Managed Views with Ember.ContainerView</h2>
-<p>As you probably know by now, views usually create their child views
-by using the <code>{{view}}</code> helper. However, it is sometimes useful to
-<em>manually</em> manage a view&#39;s child views.
-<a href="/api/classes/Ember.MutableArray.html"><code>Ember.ContainerView</code></a>
-is the way to do just that.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/views/manually-managing-view-hierarchy/">http://emberjs.com/guides/views/manually-managing-view-hierarchy/</a></p>
+<h2 class='anchorable-toc' id='toc_ember-containerview'>采用Ember.ContainerView手动管理视图</h2>
+<p>视图通常采用<code>{{view}}</code>助手来创建其子视图。然而有时手动管理视图的子视图非常有用。<a href="http://emberjs.com/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a> 便是用来完成该功能的。</p>
 
-<p>As you programmatically add or remove views to a <code>ContainerView</code>,
-those views&#39; rendered HTML are added or removed from the DOM to
-match.</p>
+<p>当在代码中添加和删除一个<code>ContainerView</code>的视图时，这些渲染的视图的HTML将被添加，或从匹配的DOM中删除。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -408,10 +403,8 @@ container.pushObject(secondView);
 <span class="comment">// firstView and secondView.</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_defining-the-initial-views-of-a-container-view'>Defining the Initial Views of a Container View</h3>
-<p>There are a few ways to specify what initial child views that a
-<code>ContainerView</code> should render. The most straight-forward way is to
-add them in <code>init</code>:</p>
+</div></div><h3 class='anchorable-toc' id='toc_'>定义容器视图的初始视图</h3>
+<p>有几种不同的方法可以用来指定<code>ContainerView</code>需要渲染的初始子视图。最直接的方法是在<code>init</code>方法中指定：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -437,9 +430,7 @@ container.objectAt(<span class="integer">1</span>).toString(); <span class="comm
 </pre></td>
 </tr></table>
 </div></div>
-<p>As a shorthand, you can specify a <code>childViews</code> property that will be
-consulted on instantiation of the <code>ContainerView</code> also. This example is
-equivalent to the one above:</p>
+<p>作为一种便捷的方式，也可以指定在初始化时会被使用的<code>childViews</code>属性。下面的例子与上面的完成相同的功能：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -457,11 +448,7 @@ container.objectAt(<span class="integer">1</span>).toString(); <span class="comm
 </pre></td>
 </tr></table>
 </div></div>
-<p>Another bit of syntactic sugar is available as an option as well:
-specifying string names in the childViews property that correspond
-to properties on the <code>ContainerView</code>. This style is less intuitive
-at first but has the added bonus that each named property will
-be updated to reference its instantiated child view:</p>
+<p>另外一种可选的方法是：在<code>childViews</code>属性中指定与<code>ContainerView</code>属性一致的字符串。这种方式开始显得并不那么直观，但是其有一个好处，就是可以将命名的属性更新为被初始化后的子视图的引用：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -488,21 +475,15 @@ container.get(<span class="string"><span class="delimiter">'</span><span class="
 container.get(<span class="string"><span class="delimiter">'</span><span class="content">secondView</span><span class="delimiter">'</span></span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_it-feels-like-an-array-because-it-em-is-em-an-array'>It Feels Like an Array Because it <em>is</em> an Array</h3>
-<p>You may have noticed that some of these examples use <code>pushObject</code> to add
-a child view, just like you would interact with an Ember array.
-<a href="/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a>
-gains its collection-like behavior by mixing in
-<a href="/api/classes/Ember.MutableArray.html"><code>Ember.MutableArray</code></a>. That means
-that you can manipulate the collection of views very expressively, using
-methods like <code>pushObject</code>, <code>popObject</code>, <code>shiftObject</code>, <code>unshiftObject</code>, <code>insertAt</code>,
-<code>removeAt</code>, or any other method you would use to interact with an Ember array.</p>
+</div></div><h3 class='anchorable-toc' id='toc_code-containerview-code'><code>ContainerView</code>是一个数组</h3>
+<p>上面的例子中采用了<code>pushObject</code>来添加子视图，如同使用Ember的数组一样。<a href="http://emberjs.com/api/classes/Ember.ContainerView.html"><code>Ember.ContainerView</code></a>
+通过织入<a href="http://emberjs.com/api/classes/Ember.MutableArray.html"><code>Ember.MutableArray</code></a> 来获取类似集合的行为。这也表示可以采用<code>pushObject</code>、<code>popObject</code>、<code>shiftObject</code>、<code>unshiftObject</code>、<code>insertAt</code>、<code>removeAt</code>这类方法，或其他可以应用在Ember数组上的方法来操作视图集合。</p>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/views/built-in-views">
-            ← Built-in Views
+            ← 内置视图
           </a>
          
           <a class="next-guide" href="/guides/object-model/classes-and-instances">

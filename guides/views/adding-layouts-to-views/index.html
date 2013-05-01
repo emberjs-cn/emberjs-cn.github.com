@@ -280,19 +280,19 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/views/adding-layouts-to-views">Adding Layouts to Views</a>
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/customizing-a-views-element">Customizing a View's Element</a>
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/built-in-views">Built-in Views</a>
+              <a href="/guides/views/built-in-views">内置视图</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/views/manually-managing-view-hierarchy">Manually Managing View Hierarchy</a>
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -368,17 +368,15 @@
 
   <div class="chapter">
     <h1>视图</h1>
-    <h2 class='anchorable-toc' id='toc_adding-layouts-to-views'>Adding Layouts to Views</h2>
-<p>Views can have a secondary template that wraps their main template. Like templates,
-layouts are Handlebars templates that will be inserted inside the
-view&#39;s tag.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/views/adding-layouts-to-views/">http://emberjs.com/guides/views/adding-layouts-to-views/</a></p>
+<h2 class='anchorable-toc' id='toc_'>为视图添加布局</h2>
+<p>视图可以拥有一个次模板来包裹其主模板。如同模板一样，布局是可以插入到视图标签下的Handlebars模板。</p>
 
-<p>To tell a view which layout template to use, set its <code>layoutName</code> property.</p>
+<p>通过设置<code>layoutName</code>属性来配置视图的布局模板。</p>
 
-<p>To tell the layout template where to insert the main template, use the Handlebars <code>{{yield}}</code> helper.
-The HTML contents of a view&#39;s rendered <code>template</code> will be inserted where the <code>{{yield}}</code> helper is.</p>
+<p>而布局模板通过<code>Handlebars</code>的<code>{{yield}}</code>助手来指定在哪里插入主模板。视图渲染后的<code>template</code>的HTML内容将被插入到<code>{{yield}}</code>助手所在的位置。</p>
 
-<p>First, you define the following layout template:</p>
+<p>首先，定义如下的布局：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -394,7 +392,7 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 </pre></td>
 </tr></table>
 </div></div>
-<p>And then the following main template:</p>
+<p>接着定义如下的主模板：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -406,7 +404,7 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 </pre></td>
 </tr></table>
 </div></div>
-<p>Finally, you define a view, and instruct it to wrap the template with the defined layout:</p>
+<p>最后定义视图，并指定其使用定义的布局来包裹模板：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -422,7 +420,7 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 </pre></td>
 </tr></table>
 </div></div>
-<p>This will result in view instances containing the following HTML</p>
+<p>上面的例子中定义的视图将生成如下的HTML：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -433,11 +431,10 @@ The HTML contents of a view&#39;s rendered <code>template</code> will be inserte
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_applying-layouts-in-practice'>Applying Layouts in Practice</h4>
-<p>Layouts are extremely useful when you have a view with a common wrapper and behavior, but its main template might change.
-One possible scenario is a Popup View.</p>
+</div></div><h4 class='anchorable-toc' id='toc_'>在实际中应用布局</h4>
+<p>布局在一个视图具有通用的结构和行为，而其主模板会发生变化时非常有用。一个非常典型应用场景就是弹出视图。</p>
 
-<p>You can define your popup layout template:</p>
+<p>可以预先定义弹出布局的模板：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -459,7 +456,7 @@ One possible scenario is a Popup View.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Then define your popup view:</p>
+<p>接着定义弹出视图：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -471,7 +468,7 @@ One possible scenario is a Popup View.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Now you can re-use your popup with different templates:</p>
+<p>现在可以使用不同的模板来复用弹出视图：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -505,7 +502,7 @@ One possible scenario is a Popup View.</p>
           </a>
          
         <a class="next-guide" href="/guides/views/customizing-a-views-element">
-          Customizing a View's Element →
+          自定义视图元素 →
         </a>
       
       </footer>
