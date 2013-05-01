@@ -427,64 +427,6 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h2 class='anchorable-toc' id='toc_built-in-views'>Built-in Views</h2>
-<p>Ember comes pre-packaged with a set of views for building a few basic controls like text inputs, check boxes, and select lists.</p>
-
-<p>They are:</p>
-<h4 class='anchorable-toc' id='toc_ember-checkbox'>Ember.Checkbox</h4><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;label&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Checkbox</span> <span class="attribute-name">checkedBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.isDone</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">content.title</span><span class="inline-delimiter">}}</span></span>
-<span class="tag">&lt;/label&gt;</span>
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_ember-textfield'>Ember.TextField</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre>App.MyText = Ember.TextField.extend({
-  <span class="key">formBlurredBinding</span>: <span class="string"><span class="delimiter">'</span><span class="content">App.adminController.formBlurred</span><span class="delimiter">'</span></span>,
-  <span class="function">change</span>: <span class="keyword">function</span>(evt) {
-    <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">formBlurred</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
-  }
-});
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_ember-select'>Ember.Select</h4><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Select</span> <span class="attribute-name">viewName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">select</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">contentBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">App.peopleController</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">optionLabelPath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.fullName</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">optionValuePath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.id</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">prompt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Pick a person:</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">selectionBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">App.selectedPersonController.person</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_ember-textarea'>Ember.TextArea</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> textArea = Ember.TextArea.create({
-  <span class="key">valueBinding</span>: <span class="string"><span class="delimiter">'</span><span class="content">TestObject.value</span><span class="delimiter">'</span></span>
-});
-</pre></td>
-</tr></table>
 </div></div>
     
       <footer>
