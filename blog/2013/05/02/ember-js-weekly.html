@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - </title>
+    <title>Ember.js - 第二期周报</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -77,7 +78,7 @@
     
   </head>
 
-  <body class="blog blog_tags blog_tags_weekly">
+  <body class="blog blog_2013 blog_2013_05 blog_2013_05_02 blog_2013_05_02_ember-js-weekly">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -148,26 +149,45 @@
         </div>
       
       <div id="content" class="has-sidebar">
-        
-<h1>Weekly</h1>
+          <article class="blog-post">
+    <h1>第二期周报</h1>
+    
+      <h3 class="blog-post-author">作者：Tower He</h3>
+    
 
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a> &ndash; <time>May 02, 2013</time></span></h2>
     <p><em>本期对周报的内容进行了一点小的调整，就是主要内容的标题如果是英文的对被翻译为中文。</em></p>
 
 <p>本周Ember.js热点：</p>
 <h3 class='anchorable-toc' id='toc_'>读物</h3><h4 class='anchorable-toc' id='toc_a-href-http-tech-pro-tutorial-1249-modern-emberjs-application-workflow-with-yeoman-and-mocha-yeoman-mocha-ember-js-a'><a href="http://tech.pro/tutorial/1249/modern-emberjs-application-workflow-with-yeoman-and-mocha">运用Yeoman和Mocha的Ember.js应用开发工作流</a></h4>
 <p>文章介绍了如何使用<code>Yeoman</code>来构建一个Ember.js应用。其中包括如何使用<code>Yeoman</code>来创建一个应用结构，如何编译，如何运行和如何测试等。</p>
+<h3 class='anchorable-toc' id='toc_'>视频</h3><h4 class='anchorable-toc' id='toc_a-href-http-www-youtube-com-watch-v-obawh8xl2c0-ember-js-rss-a'><a href="http://www.youtube.com/watch?v=obaWh8xL2C0">从零开始使用Ember.js构建RSS阅读器</a></h4>
+<p>Gordon通过一个40分钟的视频，讲述了如何使用Ember.js从零开始来构建一个RSS阅读器。该阅读器实现的模型部分采用<a href="https://github.com/emberjs/data">ember-data</a>来实现。本视频可以帮助我们更深入的理解如何使用Ember.js去构建优秀的应用。<a href="https://github.com/emberjs-seattle/ember-reader">示例代码下载</a></p>
+<h4 class='anchorable-toc' id='toc_a-href-http-www-youtube-com-watch-v-no1hxt9gbts-ember-js-a'><a href="http://www.youtube.com/watch?v=nO1hxT9GBTs">简单且快速的测试Ember.js应用</a></h4>
+<p>Erik在视频中为我们介绍了如何使用<a href="https://github.com/emberjs/ember.js/tree/master/packages/ember-testing">ember-testing</a>对Ember.js应用进行验收测试。<a href="https://github.com/emberjs/ember.js/tree/master/packages/ember-testing">ember-testing</a>是Ember.js大家庭中新近加入的成员，旨在为我们提供一些列辅助测试的基础方法，方便我们为Ember.js应用编写测试。<a href="https://github.com/ebryn/bloggr-client-rails/blob/master/test/javascripts/integration/bloggr_test.js">查看演示代码</a></p>
+<h3 class='anchorable-toc' id='toc_'>库、代码和工具</h3><h4 class='anchorable-toc' id='toc_a-href-https-github-com-stefanpenner-ember-inflector-ember-inflector-a'><a href="https://github.com/stefanpenner/ember-inflector">ember-inflector</a></h4>
+<p>提供一个与rails兼容的inflector，参见<a href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html">ActiveSupport::Inflector</a>。</p>
+<h4 class='anchorable-toc' id='toc_a-href-https-github-com-addepar-ember-table-ember-table-a'><a href="https://github.com/Addepar/ember-table">ember-table</a></h4>
+<p>表格是每个应用的核心控件之一，ember-table是一个非常优秀的采用Ember.js实现的表格控件。它几乎涵盖了大部分的应用场景，包括按列排序、树状表、Ajax加载、可编辑的单元格等等。<a href="http://addepar.github.io/ember-table/">在线演示</a></p>
+<h4 class='anchorable-toc' id='toc_a-href-https-github-com-heartsentwined-ember-auth-ember-auth-a'><a href="https://github.com/heartsentwined/ember-auth">ember-auth</a></h4>
+<p><a href="https://github.com/heartsentwined/ember-auth">ember-auth</a>是一个基于token进行身份验证的库，它假定服务器端实现了基于token的身份验证。它将在登录成功后从服务器获取token，并在之后所有的针对模型的查询和持久化的操作上附加该token。在用户注销时销毁该token。</p>
 
-    <a href="/blog/2013/05/02/ember-js-weekly.html">Read more...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a> &ndash; <time>Apr 25, 2013</time></span></h2>
-    <p>各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢。另外，欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：<a href="http://discuss.emberjs.cn/category/4-category">http://discuss.emberjs.cn/category/4-category</a>。谢谢！</p>
 
-<p>本周Ember.js热点：</p>
-<h3 class='anchorable-toc' id='toc_'>读物</h3><h4 class='anchorable-toc' id='toc_a-href-http-mcdowall-info-posts-ember-application-initializers-ember-application-initializers-a'><a href="http://mcdowall.info/posts/ember-application-initializers/">EMBER APPLICATION INITIALIZERS</a></h4>
-    <a href="/blog/2013/04/25/ember-js-weekly.html">Read more...</a>
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberjs-cn'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript><a href="http://disqus.com/?ref_noscript">基于Disqus的评论需要启用Javascript</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">博客评论基于<span class="logo-disqus">Disqus</span></a>
   </article>
 
       </div>
