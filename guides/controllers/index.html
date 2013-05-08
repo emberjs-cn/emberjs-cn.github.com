@@ -384,7 +384,7 @@
 </ul>
 
 <p><code>blog_post</code>模板可能会绑定这些属性到模板中去。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -396,15 +396,15 @@
 9
 <strong>10</strong>
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
-<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
 
 <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-  {{intro}}
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">intro</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/div&gt;</span>
-&lt;hr&gt;
+<span class="tag">&lt;hr&gt;</span>
 <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-  {{body}}
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
@@ -412,7 +412,7 @@
 <p>在这个简单的例子中，没有涉及任何显示相关的属性或操作。目前控制器只是作为模型的一个透明代理。（控制器其路由处理器获取到其表示的模型）。</p>
 
 <p>假设现在要添加一个允许用户打开或关闭<code>body</code>部分的新功能。为了实现这个功能，首先需要编辑模板使其在<code>isExpanded</code>属性为<code>true</code>的时候才显示<code>body</code>。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -430,23 +430,23 @@
 15
 16
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>{{title}}<span class="tag">&lt;/h1&gt;</span>
-<span class="tag">&lt;h2&gt;</span>by {{author}}<span class="tag">&lt;/h2&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>by <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
 
 <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">intro</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-  {{intro}}
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">intro</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/div&gt;</span>
-&lt;hr&gt;
+<span class="tag">&lt;hr&gt;</span>
 
-{{<span class="error">#</span><span class="keyword">if</span> isExpanded}}
-  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Hide Body<span class="tag">&lt;/button&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isExpanded</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Hide Body<span class="tag">&lt;/button&gt;</span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-    {{body}}
+    <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
   <span class="tag">&lt;/div&gt;</span>
-{{<span class="keyword">else</span>}}
-  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>Show Body<span class="tag">&lt;/button&gt;</span>
-{{<span class="regexp"><span class="delimiter">/</span><span class="content">if}}
-</span></span></pre></td>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">toggleProperty</span> <span class="error">'</span><span class="attribute-name">isExpanded</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show Body<span class="tag">&lt;/button&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
 </tr></table>
 </div></div>
 <p><code>body</code>是否展开是一个明显的显示相关的逻辑，因此将其放入到模型中并不合适。</p>

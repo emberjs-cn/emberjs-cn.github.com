@@ -442,15 +442,15 @@
 </div></div><h3 class='anchorable-toc' id='toc_'>指定事件的类型</h3>
 <p>默认情况下，<code>{{action}}</code>助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。
 你还可以通过<code>on</code>选项指定一个替代事件来侦听。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 4
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;p&gt;</span>
-  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span> <span class="attribute-name">on</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mouseUp</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span>
-  {{post.title}}
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span> <span class="attribute-name">on</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mouseUp</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
@@ -478,17 +478,17 @@
 <h3 class='anchorable-toc' id='toc_'>阻止事件传递（译注：即不让冒泡）</h3>
 <p>{{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
 比如，你有一个链接包含一个<strong>✗</strong>按钮，你想保证这个按钮点击时，链接却不会被点击。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 4
 </pre></td>
-  <td class="code"><pre>{{<span class="error">#</span>linkTo <span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>}}
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">post</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>
   Post
-  <span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="attribute-name">close</span> <span class="attribute-name">bubbles</span>=<span class="attribute-value">false</span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>✗<span class="tag">&lt;/button&gt;</span>
-{{<span class="regexp"><span class="delimiter">/</span><span class="content">linkTo}}
-</span></span></pre></td>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">close</span> <span class="attribute-name">bubbles</span>=<span class="attribute-value">false</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✗<span class="tag">&lt;/button&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
 </tr></table>
 </div></div>
 <p>没指定<code>bubbles=false</code>时，用户点击了按钮，Ember.js 就会触发操作，同时浏览器会将此点击事件传递到父级元素。</p>
