@@ -135,6 +135,8 @@
       <a href="/blog/tags/weekly.html">Ember.js周报</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2013/05/09/ember-js-weekly.html">第三期周报</a></li>
+        
           <li class='level-3'><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a></li>
@@ -150,6 +152,22 @@
       <div id="content" class="has-sidebar">
         
   <article class="blog-post-summary">
+    <h2><a href="/blog/2013/05/09/ember-js-weekly.html">第三期周报</a> &ndash; <time>May 09, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+          作者： Tower He
+      </h5>
+    
+    <p>本周Ember.js热点：</p>
+<h3 class='anchorable-toc' id='toc_'>读物</h3><h4 class='anchorable-toc' id='toc_a-href-http-www-thesoftwaresimpleton-com-blog-2013-04-27-macro-ember-js-a'><a href="http://www.thesoftwaresimpleton.com/blog/2013/04/27/macro/">在Ember.js中创建计算宏</a></h4>
+<p>在定义计算属性的时候，经常会碰到多个属性需要编写大致相同的逻辑代码。通过计算宏，可以将这种重复降低到最低。</p>
+<h4 class='anchorable-toc' id='toc_a-href-http-jsonapi-org-ember-js-json-apis-a'><a href="http://jsonapi.org">Ember.js JSON APIs</a></h4>
+<p>详细介绍了JSON
+APIs的两种不同风格（ID风格和URL风格）。ID风格简单易用，也是我们通常采用的风格，其问题在于需要客户端能够根据ID来猜测API的地址，这样会将服务端API的结构禁锢，当API变得庞大时，可能会导致问题。@wycats建议我们先从ID风格的入手，如果可能的话，再换成URL风格的。</p>
+
+    <a href="/blog/2013/05/09/ember-js-weekly.html">阅读全文</a>
+  </article>
+  <article class="blog-post-summary">
     <h2><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a> &ndash; <time>May 02, 2013</time></span></h2>
     
       <h5 class="blog-post-summary-author">
@@ -163,6 +181,29 @@
 <p>文章介绍了如何使用<code>Yeoman</code>来构建一个Ember.js应用。其中包括如何使用<code>Yeoman</code>来创建一个应用结构，如何编译，如何运行和如何测试等。</p>
 
     <a href="/blog/2013/05/02/ember-js-weekly.html">阅读全文</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+          作者： pudgecon
+      </h5>
+    
+    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
+
+<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+
+<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
+<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
+<p>首先是相同的创建应用：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create();
+</pre></td>
+</tr></table>
+</div></div>
+    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">阅读全文</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
@@ -196,29 +237,6 @@ App.Store = DS.Store.extend({
 </tr></table>
 </div></div>
     <a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">阅读全文</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
-    
-      <h5 class="blog-post-summary-author">
-          作者： pudgecon
-      </h5>
-    
-    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
-
-<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
-
-<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
-<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
-<p>首先是相同的创建应用：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre>App = Ember.Application.create();
-</pre></td>
-</tr></table>
-</div></div>
-    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">阅读全文</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a> &ndash; <time>Apr 25, 2013</time></span></h2>
