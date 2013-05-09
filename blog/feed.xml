@@ -38,7 +38,7 @@ APIs的两种不同风格（ID风格和URL风格）。ID风格简单易用，也
 &lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-jamesarosen-ember-i18n-ember-i18n-a'&gt;&lt;a href="https://github.com/jamesarosen/ember-i18n"&gt;ember-i18n&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;一个简单使用的国际化工具，可以让我们的Ember.js很容易的支持国际化。&lt;/p&gt;
 &lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-emberjs-ember-dev-ember-dev-a'&gt;&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;ember-dev是一个用于开发Ember.js扩展的一个辅助工具，&lt;a href="https://github.com/emberjs/data"&gt;ember-data&lt;/a&gt;便是基于ember-dev来构建的](https://github.com/emberjs/data)便是基于ember-dev来构建的。如果准备开发一个Ember.js的扩展，这将是你的不二之选。&lt;/p&gt;
+&lt;p&gt;ember-dev是一个用于开发Ember.js扩展的一个辅助工具，&lt;a href="https://github.com/emberjs/data"&gt;ember-data&lt;/a&gt;便是基于ember-dev来构建的。如果准备开发一个Ember.js的扩展，这将是你的不二之选。&lt;/p&gt;
 </content>
   </entry>
   <entry>
