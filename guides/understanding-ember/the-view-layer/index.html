@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
+              <a href="/guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -369,7 +369,12 @@
   
 
   <div class="chapter">
-    <h1>Understanding Ember.js</h1>
+    
+        <h1>Understanding Ember.js 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/understanding-ember/the-view-layer.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <h2 class='anchorable-toc' id='toc_the-ember-js-view-layer'>The Ember.js View Layer</h2>
 <p>This guide goes into extreme detail about the Ember.js view layer. It is
 intended for an experienced Ember developer, and includes details that
@@ -667,7 +672,7 @@ implements that event as a method:</p>
 </pre></td>
   <td class="code"><pre>App.DeleteButton = Ember.View.create({
   <span class="function">click</span>: <span class="keyword">function</span>(event) {
-    <span class="keyword">var</span> item = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+    <span class="keyword">var</span> item = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
     <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>).send(<span class="string"><span class="delimiter">'</span><span class="content">deleteItem</span><span class="delimiter">'</span></span>, item);
   }
 });

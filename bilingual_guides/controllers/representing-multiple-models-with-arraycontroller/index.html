@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -367,14 +367,19 @@
           
 
   <div class="chapter">
-    <h1>控制器</h1>
+    
+        <h1>控制器 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/controllers/representing-multiple-models-with-arraycontroller.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/">http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/</a></p>
 <h2 class='anchorable-toc' id='toc_representing-multiple-models'>代表多模型（Representing Multiple Models）</h2>
 <p>You can use <code>Ember.ArrayController</code> to represent an array of models. To tell an
-<code>ArrayController</code> which model to represent, set its <code>content</code> property
+<code>ArrayController</code> which model to represent, set its <code>model</code> property
 in your route&#39;s <code>setupController</code> method.</p>
 
-<p><code>Ember.ArrayController</code>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>content</code>属性，来指定其代表的模型。</p>
+<p><code>Ember.ArrayController</code>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>model</code>属性，来指定其代表的模型。</p>
 
 <p>You can treat an <code>ArrayController</code> just like its underlying array. For
 example, imagine we want to display the current playlist. In our router,
@@ -390,7 +395,7 @@ we setup our <code>SongsController</code> to represent the songs in the playlist
 </pre></td>
   <td class="code"><pre>App.SongsRoute = Ember.Route.extend({
   <span class="function">setupController</span>: <span class="keyword">function</span>(controller, playlist) {
-    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, playlist.get(<span class="string"><span class="delimiter">'</span><span class="content">songs</span><span class="delimiter">'</span></span>));
+    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, playlist.get(<span class="string"><span class="delimiter">'</span><span class="content">songs</span><span class="delimiter">'</span></span>));
   }
 });
 </pre></td>

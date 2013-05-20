@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -367,7 +367,12 @@
           
 
   <div class="chapter">
-    <h1>视图</h1>
+    
+        <h1>视图 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/views/built-in-views.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <h2 class='anchorable-toc' id='toc_built-in-views'>Built-in Views</h2><h2 class='anchorable-toc' id='toc_'>内置视图</h2>
 <p>Ember comes pre-packaged with a set of views for building a few basic controls like text inputs, check boxes, and select lists.</p>
 
@@ -383,8 +388,8 @@
 4
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;label&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Checkbox</span> <span class="attribute-name">checkedBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.isDone</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">content.title</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Checkbox</span> <span class="attribute-name">checkedBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">model.isDone</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">model.title</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/label&gt;</span>
 </pre></td>
 </tr></table>
@@ -414,8 +419,8 @@
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Select</span> <span class="attribute-name">viewName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">select</span><span class="delimiter">&quot;</span></span>
                     <span class="attribute-name">contentBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">App.peopleController</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">optionLabelPath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.fullName</span><span class="delimiter">&quot;</span></span>
-                    <span class="attribute-name">optionValuePath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content.id</span><span class="delimiter">&quot;</span></span>
+                    <span class="attribute-name">optionLabelPath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">model.fullName</span><span class="delimiter">&quot;</span></span>
+                    <span class="attribute-name">optionValuePath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">model.id</span><span class="delimiter">&quot;</span></span>
                     <span class="attribute-name">prompt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Pick a person:</span><span class="delimiter">&quot;</span></span>
                     <span class="attribute-name">selectionBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">App.selectedPersonController.person</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 </pre></td>

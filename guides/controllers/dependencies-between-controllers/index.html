@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/observers">Observers</a>
+              <a href="/guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -369,7 +369,12 @@
   
 
   <div class="chapter">
-    <h1>控制器</h1>
+    
+        <h1>控制器 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/controllers/dependencies-between-controllers.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/dependencies-between-controllers/">http://emberjs.com/guides/controllers/dependencies-between-controllers/</a></p>
 <h2 class='anchorable-toc' id='toc_'>管理控制器间的依赖</h2>
 <p>有时候，特别是在嵌套资源时，可能需要为两个控制器建立某种联系。以下面的路由为例：</p>
@@ -388,7 +393,7 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的<code>content</code>属性，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
+<p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的模型，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
 
 <p>为了实现这个功能，可以在<code>CommentsController</code>中声明其需要一个代表<code>Post</code>模型的<code>PostController</code>。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>

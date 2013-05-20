@@ -1373,21 +1373,35 @@ body.community #content {
   .small-button.black {
     background-image: url("/images/small-black-button.png"); }
 
+/* line 1466, site.css.scss */
+a.edit-page {
+  background: no-repeat url("/images/pencil-icon.png");
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  text-indent: 9999px;
+  float: right;
+  overflow: hidden;
+  opacity: 0.4; }
+  /* line 1475, site.css.scss */
+  a.edit-page:hover {
+    opacity: 1; }
+
 /**
   API
 **/
-/* line 1472, site.css.scss */
+/* line 1486, site.css.scss */
 .api h3.name {
   text-transform: none;
   float: left;
   margin-right: 5px; }
-/* line 1477, site.css.scss */
+/* line 1491, site.css.scss */
 .api h3.anchorable-toc {
   position: relative; }
-  /* line 1480, site.css.scss */
+  /* line 1494, site.css.scss */
   .api h3.anchorable-toc:hover a.toc-anchor {
     display: block; }
-  /* line 1484, site.css.scss */
+  /* line 1498, site.css.scss */
   .api h3.anchorable-toc .toc-anchor {
     display: none;
     position: absolute;
@@ -1402,57 +1416,57 @@ body.community #content {
     opacity: 0.5;
     top: 50%;
     margin-top: -5px; }
-/* line 1502, site.css.scss */
+/* line 1516, site.css.scss */
 .api .meta {
   line-height: 16px;
   font-size: 11px;
   clear: left; }
-/* line 1508, site.css.scss */
+/* line 1522, site.css.scss */
 .api .args {
   font-style: italic;
   color: #444444; }
-/* line 1513, site.css.scss */
+/* line 1527, site.css.scss */
 .api .method h3 {
   text-transform: none; }
-/* line 1516, site.css.scss */
+/* line 1530, site.css.scss */
 .api dl {
   margin: 1em 0 1em 1em; }
-  /* line 1521, site.css.scss */
+  /* line 1535, site.css.scss */
   .api dl dd {
     margin: 0em 0 0.5em 0; }
-/* line 1526, site.css.scss */
+/* line 1540, site.css.scss */
 .api .type {
   border-bottom: 1px dotted #afafaf;
   font-size: 13px;
   color: gray; }
-/* line 1532, site.css.scss */
+/* line 1546, site.css.scss */
 .api #api-options {
   padding-bottom: 1em;
   border-bottom: solid 1px #e0e0e0;
   margin-bottom: 1.5em; }
-/* line 1538, site.css.scss */
+/* line 1552, site.css.scss */
 .api .class-info {
   margin-bottom: 2em; }
-  /* line 1540, site.css.scss */
+  /* line 1554, site.css.scss */
   .api .class-info p {
     color: #443331;
     font-weight: bold;
     margin: 0;
     text-transform: uppercase; }
-    /* line 1545, site.css.scss */
+    /* line 1559, site.css.scss */
     .api .class-info p a {
       text-transform: none;
       font-weight: normal; }
-/* line 1553, site.css.scss */
+/* line 1567, site.css.scss */
 .api .description p {
   font-family: 'Helvetica Neue';
   font-weight: 200; }
-/* line 1559, site.css.scss */
+/* line 1573, site.css.scss */
 .api ul.index-list {
   margin-left: 1.5em;
   overflow: hidden;
   /* Clearfix */ }
-  /* line 1563, site.css.scss */
+  /* line 1577, site.css.scss */
   .api ul.index-list li {
     float: left;
     width: 300px;
@@ -1464,38 +1478,38 @@ body.community #content {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis; }
-/* line 1573, site.css.scss */
+/* line 1587, site.css.scss */
 .api div.method, .api div.property, .api div.event {
   padding-bottom: 1em;
   border-bottom: solid 1px #e0e0e0;
   margin-bottom: 2em; }
-  /* line 1577, site.css.scss */
+  /* line 1591, site.css.scss */
   .api div.method:last-child, .api div.property:last-child, .api div.event:last-child {
     border-bottom: none; }
-/* line 1582, site.css.scss */
+/* line 1596, site.css.scss */
 .api h3.name code {
   background-color: transparent;
   color: black;
   padding: 0;
   font-weight: bold; }
-/* line 1589, site.css.scss */
+/* line 1603, site.css.scss */
 .api span.flag {
   background-color: gray;
   color: white;
   border-radius: 3px; }
-/* line 1595, site.css.scss */
+/* line 1609, site.css.scss */
 .api #sidebar ol#toc-list li > ol {
   display: block; }
 
 /**
   404 Page
 **/
-/* line 1604, site.css.scss */
+/* line 1618, site.css.scss */
 body.not-found #content {
   margin: 3em auto 0 auto;
   width: 54em; }
 
-/* line 1609, site.css.scss */
+/* line 1623, site.css.scss */
 .under_construction_warning {
   background-color: #FFFFCC;
   width: 100%;
@@ -1503,7 +1517,7 @@ body.not-found #content {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px; }
 
-/* line 1617, site.css.scss */
+/* line 1631, site.css.scss */
 .under_construction_warning h1 {
   height: 64px;
   font-size: 14px;
@@ -1516,11 +1530,11 @@ body.not-found #content {
   margin-bottom: 1.5em;
   background: no-repeat url("/images/ember-construction-57.png") top left; }
 
-/* line 1630, site.css.scss */
+/* line 1644, site.css.scss */
 .under_construction_warning h1 .msg {
   margin-top: 12px;
   margin-left: 40px; }
 
-/* line 1635, site.css.scss */
+/* line 1649, site.css.scss */
 .more_caution {
   color: black; }

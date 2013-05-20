@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -607,14 +607,14 @@ callback.</p>
 <ul>
 <li>It creates a new instance of <code>App.PostsView</code>, using the
 <code>posts.handlebars</code> template.</li>
-<li>It sets the <code>content</code> property of <code>postsController</code> to a list of all
+<li>It sets the <code>model</code> property of <code>postsController</code> to a list of all
 of the available posts (<code>App.Post.find()</code>) and makes <code>postsController</code>
 the controller for the new <code>App.PostsView</code>.</li>
 <li>It connects the new view to the outlet in <code>application.handlebars</code>.</li>
 </ul>
 
 <p>In general, you should just think of these objects as operating in
-tandem. You will always provide the content for a view&#39;s controller when
+tandem. You will always provide the model for a view&#39;s controller when
 you create a view.</p>
 <h2 class='anchorable-toc' id='toc_transitions-and-urls'>Transitions and URLs</h2>
 <p>Next, we will want to provide a way for an application in the <code>posts</code>
@@ -689,7 +689,7 @@ specified as the context to the <code>{{action}}</code> helper.</p>
 <ul>
 <li>It creates a new instance of <code>App.PostView</code>, using the
 <code>post.handlebars</code> template.</li>
-<li>It sets the <code>content</code> property of <code>postController</code> to the post that
+<li>It sets the <code>model</code> property of <code>postController</code> to the post that
 the user clicked on.</li>
 <li>It connects the new view to the outlet in <code>application.handlebars</code>.</li>
 </ul>
@@ -841,7 +841,7 @@ they move through the application. As before, the router will call the
 <code>connectOutlet</code> method on the post with <code>App.Post.find(1)</code>.</li>
 <li>When the router gets to the trackbacks state, it will invoke
 <code>connectOutlets</code>. Because the <code>connectOutlets</code> method for <code>post</code> has
-set the <code>content</code> of the <code>postController</code>, the trackbacks state will
+set the <code>model</code> of the <code>postController</code>, the trackbacks state will
 retrieve the association.</li>
 </ul>
 

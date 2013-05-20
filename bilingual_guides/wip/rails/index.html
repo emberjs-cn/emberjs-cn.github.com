@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -612,7 +612,7 @@ rm -rf app/views/comments
         manager.set(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>, store);
 
         <span class="keyword">var</span> photos = store.find(Photoblog.Photo);
-        manager.photosController.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, photos);
+        manager.photosController.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, photos);
 
         store.adapter.mappings = {
           <span class="key">comments</span>: Photoblog.Comment
@@ -721,7 +721,7 @@ rm -rf app/views/comments
 </pre></td>
 </tr></table>
 </div></div>
-<p>Our view has a controller, the Photoblog.photosController, which will create in the next step. This is an Ember.ArrayController, so it implements the Ember.Enumerable interface. This means that we can loop over it&#39;s contents (each element of the array) using the <code>#each</code> Handlerbars experssion.</p>
+<p>Our view has a controller, the Photoblog.photosController, which will create in the next step. This is an Ember.ArrayController, so it implements the Ember.Enumerable interface. This means that we can loop over it&#39;s contents (each element of the array) using the <code>#each</code> Handlebars experssion.</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -765,7 +765,7 @@ rm -rf app/views/comments
 </pre></td>
 </tr></table>
 </div></div>
-<p>Next, we see if there are any comments on the photo. If there are, we create a section and list for comments, and iterate through them. Note that in this <code>{{#each}}</code> expression, we aren&#39;t binding the comment object to the content property, so the context is automatically set to it. We create a new <code>&lt;li&gt;</code> for each comment with the comments text, and close out our <code>{{#each}}</code> iteration, list, and {{#if}}.</p>
+<p>Next, we see if there are any comments on the photo. If there are, we create a section and list for comments, and iterate through them. Note that in this <code>{{#each}}</code> expression, we aren&#39;t binding the comment object to the model property, so the context is automatically set to it. We create a new <code>&lt;li&gt;</code> for each comment with the comments text, and close out our <code>{{#each}}</code> iteration, list, and {{#if}}.</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -807,7 +807,7 @@ rm -rf app/views/comments
 </pre></td>
 </tr></table>
 </div></div>
-<p>We&#39;re doing a few things here. First, we&#39;re getting all the photos in our data store, and setting the content of our <code>photosController</code> to the results array. Next, we set the data store&#39;s adapter mappings so that it knows comments are <code>Photoblog.Comments</code>. We then move to our initial state, and create an <code>Ember.ContainerView</code> with a <code>currentView</code> property that is bound to our current state&#39;s <code>view</code> property. Finally, add the <code>photosView</code> to the page.</p>
+<p>We&#39;re doing a few things here. First, we&#39;re getting all the photos in our data store, and setting the model of our <code>photosController</code> to the results array. Next, we set the data store&#39;s adapter mappings so that it knows comments are <code>Photoblog.Comments</code>. We then move to our initial state, and create an <code>Ember.ContainerView</code> with a <code>currentView</code> property that is bound to our current state&#39;s <code>view</code> property. Finally, add the <code>photosView</code> to the page.</p>
 
 <p>You can now view the app in your browser by running <code>rails server</code> going to <code>http://localhost:3000</code>. You should see something like this:</p>
 
@@ -865,15 +865,15 @@ rm -rf app/views/comments
 4
 5
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-field</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Title:<span class="tag">&lt;/label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-field</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.content.title</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-<span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url-field</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>URL:<span class="tag">&lt;/label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url-field</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.content.url</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <td class="code"><pre><span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-field</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Title:<span class="tag">&lt;/label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-field</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.model.title</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url-field</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>URL:<span class="tag">&lt;/label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url-field</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.model.url</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 
 <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">save</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Photoblog.stateManager</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Save<span class="tag">&lt;/button&gt;</span>
 <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">cancel</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Photoblog.stateManager</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Cancel<span class="tag">&lt;/button&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>We create two Ember.TextField views, and we bind the value property (which will be the text in the text field) to that of our controllers&#39; contents&#39; title and url objects, repesctively. The controller is is the PhotoController, which we created above. Its content will be a photo object.</p>
+<p>We create two Ember.TextField views, and we bind the value property (which will be the text in the text field) to that of our controllers&#39; models&#39; title and url objects, repesctively. The controller is is the PhotoController, which we created above. Its model will be a photo object.</p>
 
 <p>We then have a save button and cancel button, both of which target our state manager.</p>
 
@@ -942,7 +942,7 @@ rm -rf app/views/comments
   <span class="keyword">var</span> transaction = Photoblog.store.transaction();
   <span class="keyword">var</span> photo = transaction.createRecord(Photoblog.Photo);
 
-  manager.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, photo);
+  manager.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, photo);
   manager.set(<span class="string"><span class="delimiter">'</span><span class="content">transaction</span><span class="delimiter">'</span></span>, transaction);
 },
 
@@ -989,13 +989,13 @@ rm -rf app/views/comments
   <span class="keyword">var</span> transaction = store.transaction();
   <span class="keyword">var</span> photo = transaction.createRecord(Photoblog.Photo);
 
-  manager.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, photo);
+  manager.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, photo);
   manager.set(<span class="string"><span class="delimiter">'</span><span class="content">transaction</span><span class="delimiter">'</span></span>, transaction);
 },
 </pre></td>
 </tr></table>
 </div></div>
-<p>Here, we define the <code>enter</code> action of this state. <code>enter</code> and <code>exit</code> are special actions that are automatically called whenever the state manager enters or exits that particular state. Here, we set up a new transaction with our store, and create a new <code>photo</code> object from that transaction. We set it to be the content of our <code>photoController</code>, and save off the <code>transaction</code> for later use.</p>
+<p>Here, we define the <code>enter</code> action of this state. <code>enter</code> and <code>exit</code> are special actions that are automatically called whenever the state manager enters or exits that particular state. Here, we set up a new transaction with our store, and create a new <code>photo</code> object from that transaction. We set it to be the model of our <code>photoController</code>, and save off the <code>transaction</code> for later use.</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -1100,7 +1100,7 @@ rm -rf app/views/comments
 
     <span class="function">enter</span>: <span class="keyword">function</span>(manager) {
       <span class="keyword">var</span> transaction = Photoblog.store.transaction();
-      <span class="keyword">var</span> photo = Photoblog.photoController.get(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>);
+      <span class="keyword">var</span> photo = Photoblog.photoController.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
       transaction.add(photo);
 
       manager.set(<span class="string"><span class="delimiter">'</span><span class="content">transaction</span><span class="delimiter">'</span></span>, transaction);
@@ -1135,13 +1135,13 @@ rm -rf app/views/comments
 </pre></td>
   <td class="code"><pre><span class="function">showEdit</span>: <span class="keyword">function</span>(manager, evt) {
   <span class="keyword">var</span> photo = evt.context;
-  Photoblog.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, photo);
+  Photoblog.photoController.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, photo);
   manager.goToState(<span class="string"><span class="delimiter">'</span><span class="content">edit</span><span class="delimiter">'</span></span>);
 }
 </pre></td>
 </tr></table>
 </div></div>
-<p>Ensure that you add a comma to the previous <code>showCreate</code>. In this action, we&#39;re grabbing the photo from the event context and setting it to the content of our <code>photoController</code>.</p>
+<p>Ensure that you add a comma to the previous <code>showCreate</code>. In this action, we&#39;re grabbing the photo from the event context and setting it to the model of our <code>photoController</code>.</p>
 
 <p>Lastly, lets add an edit button to each photo on the page. Below the <code>&lt;img&gt;</code> tag, add the following button, which targets our state manager&#39;s new <code>showEdit</code> action.</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>

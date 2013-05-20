@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -367,14 +367,19 @@
           
 
   <div class="chapter">
-    <h1>控制器</h1>
+    
+        <h1>控制器 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/controllers/representing-a-single-model-with-objectcontroller.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/representing-a-single-model-with-objectcontroller/">http://emberjs.com/guides/controllers/representing-a-single-model-with-objectcontroller/</a></p>
 <h2 class='anchorable-toc' id='toc_representing-a-single-model'>代表单一模型（Representing a Single Model）</h2>
 <p>Use <code>Ember.ObjectController</code> to represent a single model. To tell an
-<code>ObjectController</code> which model to represent, set its <code>content</code>
+<code>ObjectController</code> which model to represent, set its <code>model</code>
 property in your route&#39;s <code>setupController</code> method.</p>
 
-<p><code>Ember.ObjectController</code>用于代表单一模型。通过在路由的<code>setupController</code>方法中设置<code>ObjectController</code>的<code>content</code>属性，来指定其代表的模型。</p>
+<p><code>Ember.ObjectController</code>用于代表单一模型。通过在路由的<code>setupController</code>方法中设置<code>ObjectController</code>的<code>model</code>属性，来指定其代表的模型。</p>
 
 <p>When a template asks an <code>ObjectController</code> for a property, it will first
 check to see if it has its own property with that name defined. If so, it will
@@ -402,10 +407,10 @@ your <code>SongController</code> to represent the currently playing song.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>In your router, you set the <code>content</code> of the controller to the
+<p>In your router, you set the <code>model</code> of the controller to the
 currently playing song:</p>
 
-<p>在路由中，设置控制器的<code>content</code>属性为当前播放的歌曲。</p>
+<p>在路由中，设置控制器的<code>model</code>属性为当前播放的歌曲。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -415,7 +420,7 @@ currently playing song:</p>
 </pre></td>
   <td class="code"><pre>App.SongRoute = Ember.Route.extend({
   <span class="function">setupController</span>: <span class="keyword">function</span>(controller, song) {
-    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>, song);
+    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>, song);
   }
 });
 </pre></td>
@@ -526,12 +531,12 @@ format for the template:</p>
 </pre></td>
   <td class="code"><pre>App.SongController = Ember.ObjectController.extend({
   <span class="function">duration</span>: <span class="keyword">function</span>() {
-    <span class="keyword">var</span> duration = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">content.duration</span><span class="delimiter">'</span></span>),
+    <span class="keyword">var</span> duration = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model.duration</span><span class="delimiter">'</span></span>),
          minutes = Math.floor(duration / <span class="integer">60</span>),
          seconds = duration % <span class="integer">60</span>;
 
     <span class="keyword">return</span> [minutes, seconds].join(<span class="string"><span class="delimiter">'</span><span class="content">:</span><span class="delimiter">'</span></span>);
-  }.property(<span class="string"><span class="delimiter">'</span><span class="content">content.duration</span><span class="delimiter">'</span></span>)
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">model.duration</span><span class="delimiter">'</span></span>)
 });
 </pre></td>
 </tr></table>

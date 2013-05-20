@@ -304,7 +304,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">Computed Properties</a>
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
             </li>
           
             <li class="level-3">
@@ -312,7 +312,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">Observers</a>
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
             </li>
           
             <li class="level-3">
@@ -367,7 +367,12 @@
           
 
   <div class="chapter">
-    <h1>控制器</h1>
+    
+        <h1>控制器 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/controllers/dependencies-between-controllers.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/dependencies-between-controllers/">http://emberjs.com/guides/controllers/dependencies-between-controllers/</a></p>
 <h2 class='anchorable-toc' id='toc_managing-dependencies-between-controllers'>管理控制器间的依赖（Managing Dependencies Between Controllers）</h2>
 <p>Sometimes, especially when nesting resources, we find ourselves needing
@@ -391,11 +396,11 @@ router as an example:</p>
 </tr></table>
 </div></div>
 <p>If we visit a <code>/posts/1/comments</code> URL, our <code>Post</code> model will get
-loaded into a <code>PostController</code>&#39;s content, which means it is not directly
+loaded into a <code>PostController</code>&#39;s model, which means it is not directly
 accessible in the <code>CommentsController</code>. We might however want to display
 some information about it in the <code>comments</code> template.</p>
 
-<p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的<code>content</code>属性，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
+<p>如果访问<code>/posts/1/comments</code>这个URL，<code>Post</code>模型会被设置为<code>PostController</code>的模型，其不可以在<code>CommentsController</code>中直接引用。然而又需要在<code>comments</code>模板中显示一些与其相关的信息。</p>
 
 <p>To be able to do this we define our <code>CommentsController</code> to <code>need</code> the
 <code>PostController</code>
