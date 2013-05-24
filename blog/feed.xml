@@ -5,10 +5,42 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-05-17T00:00:00Z</updated>
+  <updated>2013-05-24T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>第五期周报</title>
+    <link rel="alternate" href="/blog/2013/05/24/ember-js-weekly.html"/>
+    <id>/blog/2013/05/24/ember-js-weekly.html</id>
+    <published>2013-05-24T00:00:00Z</published>
+    <updated>2013-05-24T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;视频&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-getting-started-with-ember-model-ember-model-a'&gt;&lt;a href="http://www.embercasts.com/episodes/getting-started-with-ember-model"&gt;Ember Model入门&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;本视频介绍了如何使用&lt;a href="https://github.com/ebryn/ember-model"&gt;Ember Model&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-getting-started-with-emblem-js-emblem-js-a'&gt;&lt;a href="http://www.embercasts.com/episodes/getting-started-with-emblem-js"&gt;Emblem.js入门&lt;/a&gt;&lt;/h4&gt;</summary>
+    <content type="html">&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;视频&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-getting-started-with-ember-model-ember-model-a'&gt;&lt;a href="http://www.embercasts.com/episodes/getting-started-with-ember-model"&gt;Ember Model入门&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;本视频介绍了如何使用&lt;a href="https://github.com/ebryn/ember-model"&gt;Ember Model&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-getting-started-with-emblem-js-emblem-js-a'&gt;&lt;a href="http://www.embercasts.com/episodes/getting-started-with-emblem-js"&gt;Emblem.js入门&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Emblem.js是一个基于缩进的模板语言，它编译的结果与Handlebars模板一样，因此完全兼容Ember.js。本视频主要介绍了Emblem的语法和如何使用Emblem.js来写模板。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-youtube-com-watch-v-bs6xz-pxbvu-ember-js-phonegap-a'&gt;&lt;a href="http://www.youtube.com/watch?v=Bs6xz-pxBVU"&gt;采用Ember.js和PhoneGap构建移动应用&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;视频中介绍了如何采用Ember.js和PhoneGap来构建一个移动应用，通过观看该视频，你会发现原来一切来的如此简单。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-building-an-autocomplete-widget-part-1-a'&gt;&lt;a href="http://www.embercasts.com/episodes/building-an-autocomplete-widget-part-1"&gt;构建一个自动补全控件（一）&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;本视频是关于如何构建一个自动补全控件的视频的第一部分，主要介绍了如何构建一个自动补全控件的基础。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-embercasts-com-episodes-client-side-authentication-part-1-a'&gt;&lt;a href="http://www.embercasts.com/episodes/client-side-authentication-part-1"&gt;客户端身份验证（一）&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;客户端身份验证系列视频总共分为两部分，第一部分主要介绍了客户端如何实现基于令牌的身份验证来从服务器端获取数据。视频重点介绍了如何构建一个登录表单来获取令牌。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-flamejs-flame-js-flame-js-a'&gt;&lt;a href="https://github.com/flamejs/flame.js"&gt;flame.js&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Flame.js是一个Ember.js的控件库。目标是提供一个类似桌面应用风格的控件库。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;特别感谢@ZOwl提供该库的信息。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-ebryn-ember-model-ember-model-a'&gt;&lt;a href="https://github.com/ebryn/ember-model"&gt;ember-model&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Ember Model(EM)是一个简单的、轻量级的Ember模型库，ember-model主要提供了一个构建在$.ajax之上的一些操作，通过这些操作可以方便的实现与服务器的交互。&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>第四期周报</title>
     <link rel="alternate" href="/blog/2013/05/17/ember-js-weekly.html"/>
@@ -580,41 +612,6 @@ App.IndexRoute = Ember.Route.extend({
 &lt;p&gt;这样，我们就实现了在新页面打开具体user的方案。具体代码参见&lt;a href="http://jsfiddle.net/pudgecon/gbZBQ/3/"&gt;http://jsfiddle.net/pudgecon/gbZBQ/3/&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-2.html"&gt;方案二&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>第一期周报</title>
-    <link rel="alternate" href="/blog/2013/04/25/ember-js-weekly.html"/>
-    <id>/blog/2013/04/25/ember-js-weekly.html</id>
-    <published>2013-04-25T00:00:00Z</published>
-    <updated>2013-04-25T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢。另外，欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
-
-&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-mcdowall-info-posts-ember-application-initializers-ember-application-initializers-a'&gt;&lt;a href="http://mcdowall.info/posts/ember-application-initializers/"&gt;EMBER APPLICATION INITIALIZERS&lt;/a&gt;&lt;/h4&gt;</summary>
-    <content type="html">&lt;p&gt;各位朋友大家好，本站计划从本周开始，对Ember.js社区里面每周发生的大事、小事、琐事进行收集与报道，希望大家喜欢。另外，欢迎大家给我们提出宝贵的意见，并踊跃参与投稿。投稿地址为论坛的分享版块：&lt;a href="http://discuss.emberjs.cn/category/4-category"&gt;http://discuss.emberjs.cn/category/4-category&lt;/a&gt;。谢谢！&lt;/p&gt;
-
-&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-mcdowall-info-posts-ember-application-initializers-ember-application-initializers-a'&gt;&lt;a href="http://mcdowall.info/posts/ember-application-initializers/"&gt;EMBER APPLICATION INITIALIZERS&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Ember应用初始化程序提供了一个入口，帮助我们在Ember应用初始化的时候执行一些特定的代码，完成一些特定的初始化工作。&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_a-href-http-sporto-github-io-blog-2013-04-12-comparison-angular-backbone-can-ember-a-comparison-of-angular-backbone-canjs-and-ember-a'&gt;&lt;a href="http://sporto.github.io/blog/2013/04/12/comparison-angular-backbone-can-ember/"&gt;A Comparison of Angular, Backbone, CanJS and Ember&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;在开发一个Web应用的时候选择什么框架来构建你的Web应用通常是一件非常让人头疼的事情，这不仅仅是因为需要考虑太多方面的因素，另外一个重要的原因是社区提供了太多太多的选择。本文的作者从自己的切身体会，从功能、灵活性、学习曲线、开发效率、社区、生态系统、库大小、性能、成熟度、内存泄露安全性和可测试性方面对Angular、Backbone、CanJS和Ember.js进行了比较。&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_a-href-http-net-tutsplus-com-tutorials-javascript-ajax-getting-into-ember-js-part-3-getting-into-ember-js-part-3-a'&gt;&lt;a href="http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-js-part-3/"&gt;Getting Into Ember.js: Part 3&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;本文作为Ember.js入门文章的第三部分，重点介绍了如何实现Model层，为Ember.js应用提供数据。&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_a-href-http-emberjs-cn-blog-2013-04-23-ember-js-1-0-0-rc3-html-ember-js-1-0-0-rc-3-released-a'&gt;&lt;a href="http://emberjs.cn/blog/2013/04/23/ember-js-1-0-0-rc3.html"&gt;Ember.js 1.0.0-RC.3 Released&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Ember.js 1.0.0-RC.3发布，本次发布大大改进了Ember.js的性能，另外也修复了一些Bugs和文档，变得更加稳定。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;视频&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-tudou-com-programs-view-hvte3-neypg-building-ambitious-web-applications-with-ember-js-a'&gt;&lt;a href="http://www.tudou.com/programs/view/HvtE3-nEyPg/"&gt;Building Ambitious Web Applications with Ember.js&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;一个由Ember.js核心团队成员Yehuda
-Katz主讲的全面介绍如何用Ember.js来开发优秀的Web应用的视频。视频中介绍了什么是Ember.js，并且提供了给出了一个示例，还介绍了Web应用的未来发展趋势。&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_a-href-http-toranbillups-com-blog-archive-2013-03-02-emberjs-rc1-introduction-screencast-ember-js-rc1-introduction-screencast-a'&gt;&lt;a href="http://toranbillups.com/blog/archive/2013/03/02/emberjs-rc1-introduction-screencast/"&gt;Ember.js RC1 introduction screencast&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Ember.js应用开发的一个入门级视频指南，视频中详细的介绍了如果构建一个简单的Web应用，并且详细的阐述了Ember.js默认情况下为我自动化处理了哪些逻辑。另外，还介绍了如何使用&lt;a href="https://github.com/emberjs/data"&gt;Ember Data&lt;/a&gt;来与服务器端进行交互。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-rpflorence-ember-tools-ember-tools-a'&gt;&lt;a href="https://github.com/rpflorence/ember-tools"&gt;ember-tools&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Ember应用的构建辅助工具，可以用来自动化为你创建Ember应用的目录接口，并且提供代码生成器来为你生成应用代码。&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-myslik-ember-grid-ember-grid-a'&gt;&lt;a href="https://github.com/Myslik/ember-grid"&gt;ember-grid&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://github.com/Myslik/ember-grid"&gt;ember-grid&lt;/a&gt;一个基于jQuery、Twitter Bootstrap、Handlebars和Ember.js的优秀的Grid库，ember-grid支持分页、按列排序、过滤、指定显示的列和格式化特性。&lt;/p&gt;
 </content>
   </entry>
 </feed>

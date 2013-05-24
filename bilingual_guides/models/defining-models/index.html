@@ -496,7 +496,65 @@ App.Tag = DS.Model.extend({
 });
 </pre></td>
 </tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_explicit-inverses'>Explicit Inverses</h4><h4 class='anchorable-toc' id='toc_'>显式反转</h4>
+<p>From <a href="http://emberjs.com/blog/2012/11/02/this-week-in-ember-js.html">This Week in Ember.JS, posted November 2, 2012</a></p>
+
+<p>自<a href="http://emberjs.com/blog/2012/11/02/this-week-in-ember-js.html">本周Ember.js，2012-11-2</a>起，</p>
+
+<p>Ember Data has always been smart enough to know that when you set a
+<code>belongsTo</code> relationship, the child record should be added to the
+parent&#39;s corresponding <code>hasMany</code> relationship.</p>
+
+<p>Ember Data知道当设定一个<code>belongsTo</code>的关联关系时，子记录应该要被添加到对应的父的<code>hasMany</code>关联关系中去。</p>
+
+<p>Unfortunately, it was pretty braindead about <em>which</em> <code>hasMany</code>
+relationship it would update. Before, it would just pick the first
+relationship it found with the same type as the child.</p>
+
+<p>但是不幸的是，它并不知道哪一个<code>hasMany</code>关联关系应该得到更新。因此，Ember
+Data选择其找到的第一个拥有相同类型的子关联来进行更新。</p>
+
+<p>Because it&#39;s reasonable for people to have multiple
+<code>belongsTo</code>/<code>hasMany</code>s for the same type, we added support for
+specifying an inverse:</p>
+
+<p>因为可能存在许多具有相同类型的<code>belongsTo</code>/<code>hasMany</code>，这是可以显式的指定对应的反转对象：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.Comment = DS.Model.extend({
+  <span class="key">onePost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">twoPost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">redPost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">bluePost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>)
+});
+
+
+App.Post = DS.Model.extend({
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>, {
+    <span class="key">inverse</span>: <span class="string"><span class="delimiter">'</span><span class="content">redPost</span><span class="delimiter">'</span></span>
+  })
+});
+</pre></td>
+</tr></table>
 </div></div>
+<p>You can also specify an inverse on a <code>belongsTo</code>, which works how you&#39;d
+expect.</p>
+
+<p>当然也可以在<code>belongsTo</code>一侧指定，它将按照预期那样工作。</p>
+
     
       <footer>
         

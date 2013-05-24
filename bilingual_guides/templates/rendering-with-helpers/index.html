@@ -396,7 +396,7 @@
 8
 9
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">_author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
 <span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.lastName</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/script&gt;</span>
 
@@ -422,6 +422,11 @@
 </pre></td>
 </tr></table>
 </div></div>
+<p>The partial&#39;s <code>data-template-name</code> must start with an underscore (e.g.
+<code>data-template-name=&#39;_author&#39;</code> or <code>data-template-name=&#39;foo/_bar&#39;</code>)</p>
+
+<p>Partial的<code>data-template-name</code>必须以下划线开头（例如：<code>data-template-name=&#39;_author&#39;</code>或者<code>data-template-name=&#39;foo/_bar&#39;</code>）</p>
+
 <p>Note: in cases where you may have used <code>{{template}}</code> in the past, you should likely use <code>{{partial}}</code> instead.</p>
 
 <p>注意：如果你之前用过 <code>{{template}}</code> 助手，那么，现在你应该使用 {{partial}}助手来代替它了。</p>

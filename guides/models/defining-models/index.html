@@ -486,7 +486,48 @@ App.Tag = DS.Model.extend({
 });
 </pre></td>
 </tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>显式反转</h4>
+<p>自<a href="http://emberjs.com/blog/2012/11/02/this-week-in-ember-js.html">本周Ember.js，2012-11-2</a>起，</p>
+
+<p>Ember Data知道当设定一个<code>belongsTo</code>的关联关系时，子应该要被添加到对应的父的<code>hasMany</code>关联关系中去。</p>
+
+<p>但是不幸的是，它并不知道哪一个<code>hasMany</code>关联关系应该得到更新。因此，Ember
+Data选择其找到的第一个拥有相同类型的子关联来进行更新。</p>
+
+<p>因为可能存在许多具有相同类型的<code>belongsTo</code>/<code>hasMany</code>，这是可以显式的指定对应的反转对象：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.Comment = DS.Model.extend({
+  <span class="key">onePost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">twoPost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">redPost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>),
+  <span class="key">bluePost</span>: DS.belongsTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post</span><span class="delimiter">&quot;</span></span>)
+});
+
+
+App.Post = DS.Model.extend({
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>, {
+    <span class="key">inverse</span>: <span class="string"><span class="delimiter">'</span><span class="content">redPost</span><span class="delimiter">'</span></span>
+  })
+});
+</pre></td>
+</tr></table>
 </div></div>
+<p>当然也可以在<code>belongsTo</code>一侧指定，它将按照预期那样工作。</p>
+
     
       <footer>
         
