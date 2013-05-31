@@ -5,10 +5,56 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-05-24T00:00:00Z</updated>
+  <updated>2013-05-30T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>第六期周报</title>
+    <link rel="alternate" href="/blog/2013/05/30/ember-js-weekly.html"/>
+    <id>/blog/2013/05/30/ember-js-weekly.html</id>
+    <published>2013-05-30T00:00:00Z</published>
+    <updated>2013-05-30T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;本期周报主要介绍如何搭建Ember.js应用的开发环境。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-thomasboyt-com-2013-05-02-announcing-charcoal-html-charcoal-ember-a'&gt;&lt;a href="http://www.thomasboyt.com/2013/05/02/announcing-charcoal.html"&gt;使用Charcoal创建Ember项目&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Charcoal是一个Yeoman的生成器，用于创建Ember项目的基本目录结构和文件。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-blog-embed-ly-post-46586649344-introduction-to-ember-development-ember-a'&gt;&lt;a href="http://blog.embed.ly/post/46586649344/introduction-to-ember-development"&gt;如何进行Ember开发&lt;/a&gt;&lt;/h4&gt;</summary>
+    <content type="html">&lt;p&gt;本期周报主要介绍如何搭建Ember.js应用的开发环境。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-thomasboyt-com-2013-05-02-announcing-charcoal-html-charcoal-ember-a'&gt;&lt;a href="http://www.thomasboyt.com/2013/05/02/announcing-charcoal.html"&gt;使用Charcoal创建Ember项目&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Charcoal是一个Yeoman的生成器，用于创建Ember项目的基本目录结构和文件。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-blog-embed-ly-post-46586649344-introduction-to-ember-development-ember-a'&gt;&lt;a href="http://blog.embed.ly/post/46586649344/introduction-to-ember-development"&gt;如何进行Ember开发&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Embedly在其产品中使用了Ember进行开发，在开发过程终于到了许多问题。本文主要介绍了如何构建一个开发Ember应用基础环境。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-yeoman-generator-ember-generator-ember-a'&gt;&lt;a href="https://github.com/yeoman/generator-ember"&gt;generator-ember&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Yeoman的Ember生成器，用来构建一个Ember的“Hello World”应用。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-zigomir-ember-skeleton-ember-skeleton-a'&gt;&lt;a href="https://github.com/zigomir/ember-skeleton"&gt;ember-skeleton&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;ember-skeleton主要关注在开发的过程中实现在线重新载入，支持CoffeeScript，以及支持模板的预编译等。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-lsdafjklsd-grunt-ember-boilerplate-grunt-ember-boilerplate-a'&gt;&lt;a href="https://github.com/lsdafjklsd/grunt-ember-boilerplate"&gt;grunt-ember-boilerplate&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;grunt-ember-boilerplate中几乎涵盖了在开发Ember应用过程中会遇到和用到的所有相关技术。包括：Handlebars预编译、基于QUnit的集成测试、生成基础目录结构、commonjs模块、CoffeeScript、Stylus for CSS、Normalize.css、生成部署的预编译指令和本地开发的动态重载。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-thomasboyt-charcoal-charcoal-a'&gt;&lt;a href="https://github.com/thomasboyt/charcoal"&gt;charcoal&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;一个Fork自&lt;a href="https://github.com/yeoman/generator-ember"&gt;generator-ember&lt;/a&gt;的Yeoman的Ember生成器。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-emberjs-ember-rails-ember-rails-a'&gt;&lt;a href="https://github.com/emberjs/ember-rails"&gt;ember-rails&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;ember-rails使得Ember在Rails 3.1+应用中得以使用。其可以将Handlebars模板在编译assets的时候进行预编译。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>使用ember-dev开发Ember.js库</title>
+    <link rel="alternate" href="/blog/2013/05/28/using-ember-dev-to-develop-ember-js-packages.html"/>
+    <id>/blog/2013/05/28/using-ember-dev-to-develop-ember-js-packages.html</id>
+    <published>2013-05-28T00:00:00Z</published>
+    <updated>2013-05-28T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;在第三期周报中，我们曾经推荐了&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;。目前作者还不建议我们在生产环境中使用ember-dev来开发Ember.js包，主要原因是ember-dev目前还不够成熟，接口不稳定，另外也缺失了一些重要特性，比如项目目录结构生成器。尽管如此，也无法遮住ember-dev的光芒，通过其目前提供的功能，已经可以很好的帮助我们进行Ember.js扩展功能的开发。下面将一步步介绍如何使用ember-dev来开发一个扩展包。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;在第三期周报中，我们曾经推荐了&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;。目前作者还不建议我们在生产环境中使用ember-dev来开发Ember.js包，主要原因是ember-dev目前还不够成熟，接口不稳定，另外也缺失了一些重要特性，比如项目目录结构生成器。尽管如此，也无法遮住ember-dev的光芒，通过其目前提供的功能，已经可以很好的帮助我们进行Ember.js扩展功能的开发。下面将一步步介绍如何使用ember-dev来开发一个扩展包。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;注意：&lt;/em&gt; ember-dev是用来开发Ember.js扩展包的，而不是用来开发Ember.js应用的。请注意区分！&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>第五期周报</title>
     <link rel="alternate" href="/blog/2013/05/24/ember-js-weekly.html"/>
@@ -131,487 +177,6 @@ APIs的两种不同风格（ID风格和URL风格）。ID风格简单易用，也
 &lt;p&gt;表格是每个应用的核心控件之一，ember-table是一个非常优秀的采用Ember.js实现的表格控件。它几乎涵盖了大部分的应用场景，包括按列排序、树状表、Ajax加载、可编辑的单元格等等。&lt;a href="http://addepar.github.io/ember-table/"&gt;在线演示&lt;/a&gt;&lt;/p&gt;
 &lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-heartsentwined-ember-auth-ember-auth-a'&gt;&lt;a href="https://github.com/heartsentwined/ember-auth"&gt;ember-auth&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://github.com/heartsentwined/ember-auth"&gt;ember-auth&lt;/a&gt;是一个基于token进行身份验证的库，它假定服务器端实现了基于token的身份验证。它将在登录成功后从服务器获取token，并在之后所有的针对模型的查询和持久化的操作上附加该token。在用户注销时销毁该token。&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>两种方式实现用户管理(二)</title>
-    <link rel="alternate" href="/blog/2013/04/25/two-different-ways-for-users-management-2.html"/>
-    <id>/blog/2013/04/25/two-different-ways-for-users-management-2.html</id>
-    <published>2013-04-25T00:00:00Z</published>
-    <updated>2013-04-25T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;本文通过两种常见的方式实现了一个简单的用户管理。&lt;/p&gt;
-
-&lt;p&gt;一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html"&gt;上一篇&lt;/a&gt;讲述使用第一种方案实现的过程。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;这一篇讲述使用第二种方案实现的过程。&lt;/h3&gt;
-&lt;p&gt;首先是相同的创建应用：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App = Ember.Application.create();
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;</summary>
-    <content type="html">&lt;p&gt;本文通过两种常见的方式实现了一个简单的用户管理。&lt;/p&gt;
-
-&lt;p&gt;一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html"&gt;上一篇&lt;/a&gt;讲述使用第一种方案实现的过程。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;这一篇讲述使用第二种方案实现的过程。&lt;/h3&gt;
-&lt;p&gt;首先是相同的创建应用：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-13
-14
-15
-16
-17
-18
-19
-&lt;strong&gt;20&lt;/strong&gt;
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App = Ember.Application.create();
-
-
-App.Store = DS.Store.extend({
-    &lt;span class="key"&gt;revision&lt;/span&gt;: &lt;span class="integer"&gt;12&lt;/span&gt;,
-    &lt;span class="key"&gt;adapter&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;DS.FixtureAdapter&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
-});
-
-App.User = DS.Model.extend({
-    &lt;span class="key"&gt;name&lt;/span&gt;: DS.attr(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;),
-    &lt;span class="key"&gt;email&lt;/span&gt;: DS.attr(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;)
-});
-
-App.User.FIXTURES = [
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;1&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user1&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user1@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;2&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user2&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user2@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;3&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user3&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user3@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;4&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user4&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user4@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;5&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user5&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user5@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; }
-];
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;定义App的&lt;code&gt;template&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;    
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Users' example&lt;span class="tag"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-    {{outlet}}&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;定义&lt;code&gt;Router&lt;/code&gt;，这里与方案一中稍有不同：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;() {
-    &lt;span class="local-variable"&gt;this&lt;/span&gt;.resource(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="local-variable"&gt;this&lt;/span&gt;.resource(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, { &lt;span class="key"&gt;path&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;:user_id&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; });
-    });
-});
-
-App.IndexRoute = Ember.Route.extend({
-    &lt;span class="function"&gt;redirect&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="local-variable"&gt;this&lt;/span&gt;.transitionTo(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-    }
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;定义&lt;code&gt;UsersRoute&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App.UsersRoute = Ember.Route.extend({
-    &lt;span class="function"&gt;model&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="keyword"&gt;return&lt;/span&gt; App.User.find();
-    }
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;users&lt;/code&gt;模板：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="attribute-name"&gt;class&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;list&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="tag"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-            {{#each controller}}
-            &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{#linkTo 'user' this}}{{name}}{{/linkTo}}&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            {{else}}
-            &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;no users yet...&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            {{/each}}
-        &lt;span class="tag"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样，就可以顺利地列出我们所有的&lt;code&gt;users&lt;/code&gt;了，上面的&lt;code&gt;linkTo&lt;/code&gt; helper就会为我们构造类似&lt;code&gt;#/users/2&lt;/code&gt;这样的url。&lt;/p&gt;
-
-&lt;p&gt;开始&lt;code&gt;User&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;同样的，&lt;a href="http://www.emberjs.com"&gt;Ember&lt;/a&gt;自动为我们构造了&lt;code&gt;UserRoute&lt;/code&gt;，并使用了默认的&lt;code&gt;model&lt;/code&gt;方法，因此，这里并不需要显示地定义&lt;code&gt;UserRoute&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;定义&lt;code&gt;user&lt;/code&gt;的&lt;code&gt;template&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;user&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;name: {{name}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;email: {{email}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;但是此时，若我们点击user的链接，会发现页面并没有出现我们想要的user信息，这是因为Ember虽然render了我们user的模板，但是并不知道需要将它显示在页面的什么地方，因此，我们需要在我们的&lt;code&gt;users&lt;/code&gt;模板添加一个&lt;code&gt;outlet&lt;/code&gt;，Ember会自动将&lt;code&gt;user&lt;/code&gt; &lt;code&gt;render&lt;/code&gt;到此处。&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="attribute-name"&gt;class&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;list&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="tag"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-            {{#each controller}}
-            &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{#linkTo 'user' this}}{{name}}{{/linkTo}}&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            {{else}}
-            &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;no users yet...&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            {{/each}}
-        &lt;span class="tag"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="attribute-name"&gt;class&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;detail&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;{{outlet}}&lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这段代码的第11行，就是我们新添加的一个outlet。&lt;/p&gt;
-
-&lt;p&gt;这样，其实我们就已经完成了在页面的另一区域显示我们点击的user的信息，后面我们可以给它添加一些常用的操作，比如说，修改操作。&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;user&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    {{&lt;span class="error"&gt;#&lt;/span&gt;&lt;span class="keyword"&gt;if&lt;/span&gt; view.isEditing}}
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;name: {{view Ember.TextField valueBinding=&amp;quot;name&amp;quot; target=&amp;quot;view&amp;quot;}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;email: {{view Ember.TextField valueBinding=&amp;quot;email&amp;quot; target=&amp;quot;view&amp;quot;}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;button&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="error"&gt;{&lt;/span&gt;&lt;span class="error"&gt;{&lt;/span&gt;&lt;span class="attribute-name"&gt;action&lt;/span&gt; &lt;span class="attribute-name"&gt;finishEdit&lt;/span&gt;&lt;span class="error"&gt;}&lt;/span&gt;&lt;span class="error"&gt;}&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;Save&lt;span class="tag"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-    {{&lt;span class="keyword"&gt;else&lt;/span&gt;}}
-    &lt;span class="tag"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;button&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="error"&gt;{&lt;/span&gt;&lt;span class="error"&gt;{&lt;/span&gt;&lt;span class="attribute-name"&gt;action&lt;/span&gt; &lt;span class="attribute-name"&gt;edit&lt;/span&gt;&lt;span class="error"&gt;}&lt;/span&gt;&lt;span class="error"&gt;}&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;Edit&lt;span class="tag"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-    {{&lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;if}}
-    &amp;lt;p&amp;gt;name: {{name}}&amp;lt;&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;p&amp;gt;
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;email: {{email}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这段是修改过的&lt;code&gt;template&lt;/code&gt;，默认情况下，我们显示一个&lt;code&gt;Edit&lt;/code&gt;按钮，当我们点击它时，切换到编辑模式，同时显示一个保存按钮。&lt;/p&gt;
-
-&lt;p&gt;同时，细心的你可以会发现，Ember自动为我们对应的user的链接添加了一个&lt;code&gt;.active&lt;/code&gt;的样式。因此我们只需要额外提供一个&lt;code&gt;.active&lt;/code&gt;样式就可以实现选中效果了。&lt;/p&gt;
-
-&lt;p&gt;这里我们通过&lt;code&gt;{{#if
-isEditing}}&lt;/code&gt;这个helper来判断当前是否处在编辑模式，并使用Ember提供的TextField，将它与对应的&lt;code&gt;attribute&lt;/code&gt;绑定（&lt;code&gt;valueBinding&lt;/code&gt;）。&lt;/p&gt;
-
-&lt;p&gt;我们将这个方法放在&lt;code&gt;UserView&lt;/code&gt;内&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App.UserView = Ember.View.extend({
-    &lt;span class="key"&gt;isEditing&lt;/span&gt;: &lt;span class="predefined-constant"&gt;false&lt;/span&gt;,
-
-    &lt;span class="function"&gt;edit&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="local-variable"&gt;this&lt;/span&gt;.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;isEditing&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="predefined-constant"&gt;true&lt;/span&gt;);
-    },
-    &lt;span class="function"&gt;finishEdit&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="local-variable"&gt;this&lt;/span&gt;.set(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;isEditing&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="predefined-constant"&gt;false&lt;/span&gt;);
-        &lt;span class="comment"&gt;//this.get('controller.model.transaction').commit();&lt;/span&gt;
-    }
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样，当&lt;code&gt;UserView&lt;/code&gt;的&lt;code&gt;isEditing&lt;/code&gt;变化时，Ember会自动为我们重新render页面。&lt;/p&gt;
-
-&lt;p&gt;这里将这个变量放在&lt;code&gt;UserView&lt;/code&gt;而不是放在&lt;code&gt;UserController&lt;/code&gt;内的原因主要是，放在&lt;code&gt;UserController&lt;/code&gt;内，当我们在一个user下处于编辑状态时，当我们点击到另外一个user，需要手动地将controller的&lt;code&gt;isEditing&lt;/code&gt;置为&lt;code&gt;false&lt;/code&gt;，否则将会出现点击直接出现编辑界面的情况。而在&lt;code&gt;方案一&lt;/code&gt;中，这种情况就不一样了，就可以放在&lt;code&gt;UserController&lt;/code&gt;内了。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;总结&lt;/h3&gt;
-&lt;p&gt;方案一与方案二的区别在于方案二采用的是嵌套的路由与嵌套的视图，因此大家会发现方案一中的&lt;code&gt;App.Router&lt;/code&gt;与方案二是不一样的。&lt;/p&gt;
-
-&lt;p&gt;自己来尝试一下吧！！！&lt;/p&gt;
-
-&lt;p&gt;方案二示例：&lt;a href="http://jsfiddle.net/pudgecon/gZeN2/5/"&gt;http://jsfiddle.net/pudgecon/gZeN2/5/&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>两种方式实现用户管理(一)</title>
-    <link rel="alternate" href="/blog/2013/04/25/two-different-ways-for-users-management-1.html"/>
-    <id>/blog/2013/04/25/two-different-ways-for-users-management-1.html</id>
-    <published>2013-04-25T00:00:00Z</published>
-    <updated>2013-04-25T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;本文共两篇文章，通过两种常见的方式实现了一个简单的用户管理。&lt;/p&gt;
-
-&lt;p&gt;一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;第一篇讲述使用第一种方案实现的过程。&lt;/h3&gt;
-&lt;p&gt;首先是创建应用：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App = Ember.Application.create();
-
-
-App.Store = DS.Store.extend({
-    &lt;span class="key"&gt;revision&lt;/span&gt;: &lt;span class="integer"&gt;12&lt;/span&gt;,
-    &lt;span class="key"&gt;adapter&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;DS.FixtureAdapter&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;</summary>
-    <content type="html">&lt;p&gt;本文共两篇文章，通过两种常见的方式实现了一个简单的用户管理。&lt;/p&gt;
-
-&lt;p&gt;一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;第一篇讲述使用第一种方案实现的过程。&lt;/h3&gt;
-&lt;p&gt;首先是创建应用：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-13
-14
-15
-16
-17
-18
-19
-&lt;strong&gt;20&lt;/strong&gt;
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App = Ember.Application.create();
-
-
-App.Store = DS.Store.extend({
-    &lt;span class="key"&gt;revision&lt;/span&gt;: &lt;span class="integer"&gt;12&lt;/span&gt;,
-    &lt;span class="key"&gt;adapter&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;DS.FixtureAdapter&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;
-});
-
-App.User = DS.Model.extend({
-    &lt;span class="key"&gt;name&lt;/span&gt;: DS.attr(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;),
-    &lt;span class="key"&gt;email&lt;/span&gt;: DS.attr(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;)
-});
-
-App.User.FIXTURES = [
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;1&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user1&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user1@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;2&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user2&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user2@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;3&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user3&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user3@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;4&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user4&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user4@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; },
-    { &lt;span class="key"&gt;id&lt;/span&gt;: &lt;span class="integer"&gt;5&lt;/span&gt;, &lt;span class="key"&gt;name&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user5&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="key"&gt;email&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user5@example.com&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; }
-];
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;定义App的&lt;code&gt;template&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;    
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Users' example&lt;span class="tag"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-    {{outlet}}&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;定义&lt;code&gt;Router&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;() {
-    &lt;span class="local-variable"&gt;this&lt;/span&gt;.resource(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-    &lt;span class="local-variable"&gt;this&lt;/span&gt;.resource(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;user&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, { &lt;span class="key"&gt;path&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users/:user_id&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;});
-});
-
-&lt;span class="comment"&gt;//默认跳转至`users`&lt;/span&gt;
-App.IndexRoute = Ember.Route.extend({
-    &lt;span class="function"&gt;redirect&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="local-variable"&gt;this&lt;/span&gt;.transitionTo(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-    }
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样，我们内容将会render到上面的&lt;code&gt;outlet&lt;/code&gt;内。&lt;/p&gt;
-
-&lt;p&gt;之后，定义我们的&lt;code&gt;UsersRoute&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App.UsersRoute = Ember.Route.extend({
-    &lt;span class="function"&gt;model&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;() {
-        &lt;span class="keyword"&gt;return&lt;/span&gt; App.User.find();
-    }
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;users&lt;/code&gt;模板：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Users&lt;span class="tag"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-        {{#each controller}}
-        &lt;span class="tag"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{#linkTo 'user' this}}{{name}}{{/linkTo}}&lt;span class="tag"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        {{/each}}
-    &lt;span class="tag"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样，就可以顺利地列出我们所有的&lt;code&gt;users&lt;/code&gt;了，上面的&lt;code&gt;linkTo&lt;/code&gt; helper就会为我们构造类似&lt;code&gt;#/users/2&lt;/code&gt;这样的url。&lt;/p&gt;
-
-&lt;p&gt;开始&lt;code&gt;User&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;因为&lt;a href="http://www.emberjs.com"&gt;Ember&lt;/a&gt;自动为我们构造了&lt;code&gt;UserRoute&lt;/code&gt;，并使用了默认的&lt;code&gt;model&lt;/code&gt;方法，因此，这里并不需要显示地定义&lt;code&gt;UserRoute&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;我们直接写我们的&lt;code&gt;template&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;type&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;text/x-handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;data-template-name&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;user&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="inline"&gt;    &lt;span class="tag"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;User&lt;span class="tag"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;name: {{name}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class="tag"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;email: {{email}}&lt;span class="tag"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    {{&lt;span class="error"&gt;#&lt;/span&gt;linkTo &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;users&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;}}back{{&lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;linkTo}}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样，我们就实现了在新页面打开具体user的方案。具体代码参见&lt;a href="http://jsfiddle.net/pudgecon/gbZBQ/3/"&gt;http://jsfiddle.net/pudgecon/gbZBQ/3/&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-2.html"&gt;方案二&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

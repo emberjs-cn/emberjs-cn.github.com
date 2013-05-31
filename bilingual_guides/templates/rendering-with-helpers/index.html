@@ -104,6 +104,102 @@
           
     <ol id="toc-list">
           <li class="level-1">
+            <a href="/bilingual_guides/getting-started">Getting Started</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">Getting Started</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">Planning The Application</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">Creating a Static Mockup</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">Obtaining Ember.js and Dependencies</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">Adding the First Route and Template</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">Modeling Data</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixutres">Using Fixtures</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">Displaying Model Data</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">Displaying a Models's Complete State</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">Creating a New Model Instance</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">Marking a Model as Complete or Incomplete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">Displaying the Number of Incomplete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">Toggling between Showing and Editing States</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">Accepting Edits</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">Deleting a Model</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">Adding Child Routes</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/concepts/core-concepts">概念</a>
             <ol>
         
@@ -538,7 +634,8 @@
 <p><code>{{render}}</code> does several things:</p>
 
 <ul>
-<li>Gets the singleton instance of the corresponding controller</li>
+<li>When no model is provided it gets the singleton instance of the corresponding controller</li>
+<li>When a model is provided it gets a unique instance of the corresponding controller</li>
 <li>Renders the named template using this controller</li>
 <li>Sets the model of the corresponding controller </li>
 </ul>
@@ -546,7 +643,8 @@
 <p><code>{{render}}</code> 可以完成以下几个功能：</p>
 
 <ul>
-<li>获取相应控制器的单体实例</li>
+<li>如果没有提供model，那么将使用对应controller的单例实例</li>
+<li>如果提供了model，那么将使用对应controller的一个独立实例</li>
 <li>用此控制器渲染命名模板</li>
 <li>设置相应控制器的模型</li>
 </ul>
@@ -627,9 +725,9 @@
 <p><code>{{outlet}}</code>: 路由器决定路由，并且创建合适的控制器/视图/模型
 <code>{{render}}</code>: 你（直接或间接地）指定合适的控制器/视图/模型</p>
 
-<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route.  For that you&#39;ll need <code>{{control}}</code>.</p>
+<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route when not specifying a model.  For that you&#39;ll need <code>{{control}}</code>.</p>
 
-<p>注意： 如果需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
+<p>注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
 <h3 class='anchorable-toc' id='toc_the-code-control-code-helper'>The <code>{{control}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-control-code'><code>{{control}}</code> 助手</h3>
 <p><code>{{control}}</code> works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.</p>
 
@@ -638,6 +736,10 @@
 <p><code>{{control}}</code> 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。</p>
 
 <p>此助手目前仍在开发中，以后极有可能变化很大。</p>
+
+<p>Note: The <code>{{control}}</code> helper is currently disabled by default. To enable it set <code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code> before requiring Ember.</p>
+
+<p>注意：<code>{{control}}</code>助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：<code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code>。</p>
 <h3 class='anchorable-toc' id='toc_comparison-table'>Comparison Table</h3><h3 class='anchorable-toc' id='toc_'>比较表</h3><h4 class='anchorable-toc' id='toc_general'>General</h4><h4 class='anchorable-toc' id='toc_'>整体概念性比较</h4>
 <table>
   <thead>
@@ -790,6 +892,10 @@
       <div id="footer-wrapper">
         <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
         <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
       </div>
     </div>
   </body>

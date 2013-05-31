@@ -964,22 +964,21 @@ ol {
 /* line 964, site.css.scss */
 .guides .chapter ul, .guides .chapter ol {
   margin-left: 32px;
-  list-style-type: disc;
   margin-bottom: 28px; }
-  /* line 969, site.css.scss */
+  /* line 968, site.css.scss */
   .guides .chapter ul li, .guides .chapter ol li {
     font-size: 15px;
     margin: 10px 0 10px 0; }
-    /* line 973, site.css.scss */
+    /* line 972, site.css.scss */
     .guides .chapter ul li p, .guides .chapter ol li p {
       padding-left: 7px; }
-/* line 980, site.css.scss */
+/* line 979, site.css.scss */
 .guides .anchorable-toc {
   position: relative; }
-  /* line 983, site.css.scss */
+  /* line 982, site.css.scss */
   .guides .anchorable-toc:hover a.toc-anchor {
     display: block; }
-/* line 988, site.css.scss */
+/* line 987, site.css.scss */
 .guides a.toc-anchor {
   display: none;
   position: absolute;
@@ -994,246 +993,258 @@ ol {
   opacity: 0.5;
   top: 50%;
   margin-top: -5px; }
-/* line 1004, site.css.scss */
+/* line 1003, site.css.scss */
 .guides table {
   width: 100%;
   margin: 1em 0; }
-  /* line 1008, site.css.scss */
+  /* line 1007, site.css.scss */
   .guides table tbody tr {
     background: rgba(255, 249, 249, 0.56);
     border-bottom: 1px solid rgba(223, 215, 212, 0.28); }
-  /* line 1013, site.css.scss */
+  /* line 1012, site.css.scss */
   .guides table thead {
     background-color: #f9e7e4; }
-  /* line 1017, site.css.scss */
+  /* line 1016, site.css.scss */
   .guides table th {
     font-weight: bold; }
-  /* line 1021, site.css.scss */
+  /* line 1020, site.css.scss */
   .guides table th, .guides table td {
     padding: 5px 10px; }
 
-/* line 1028, site.css.scss */
+/* line 1027, site.css.scss */
 .previous-guide {
   float: left; }
 
-/* line 1032, site.css.scss */
+/* line 1031, site.css.scss */
 .next-guide {
   float: right; }
+
+/* line 1036, site.css.scss */
+.guides_getting-started .jsbin-embed {
+    /**
+      height of TodoMVC with three sample todos
+      after rendering. JSBin calculates height
+      before ember has a chance to render.
+
+      This style is !important to get around
+      the inline style on .jsbin-embed
+    **/
+  min-height: 519px !important; }
 
 /**
   Blog
 **/
-/* line 1042, site.css.scss */
+/* line 1055, site.css.scss */
 .blog h5.blog-post-summary-author {
   font-size: 10px;
   color: gray; }
-/* line 1047, site.css.scss */
+/* line 1060, site.css.scss */
 .blog article {
   margin: 0 0 3em 0;
   padding: 0 0 3em 0;
   border-bottom: solid 1px #e0e0e0; }
-  /* line 1055, site.css.scss */
+  /* line 1068, site.css.scss */
   .blog article:last-child {
     border-bottom: none; }
-  /* line 1059, site.css.scss */
+  /* line 1072, site.css.scss */
   .blog article .blog-post-author {
     font-size: 10px;
     color: gray;
     position: absolute;
     top: 59px;
     margin-left: 45px; }
-  /* line 1067, site.css.scss */
+  /* line 1080, site.css.scss */
   .blog article figure {
     width: 100%;
     background-color: white;
     padding: 10px;
     border: 1px solid #cccccc; }
-  /* line 1074, site.css.scss */
+  /* line 1087, site.css.scss */
   .blog article blockquote {
     background-color: rgba(100, 100, 100, 0.1);
     font-style: italic;
     padding: 8px; }
-    /* line 1079, site.css.scss */
+    /* line 1092, site.css.scss */
     .blog article blockquote > p {
       padding: 0;
       margin: 0; }
-  /* line 1085, site.css.scss */
+  /* line 1098, site.css.scss */
   .blog article img {
     display: block;
     margin: 0 auto;
     background-color: white;
     max-width: 100%; }
-  /* line 1092, site.css.scss */
+  /* line 1105, site.css.scss */
   .blog article ul, .blog article ol {
     margin-left: 1.5em; }
-  /* line 1096, site.css.scss */
+  /* line 1109, site.css.scss */
   .blog article ul {
     list-style: disc; }
-  /* line 1100, site.css.scss */
+  /* line 1113, site.css.scss */
   .blog article ol {
     list-style: decimal; }
-  /* line 1104, site.css.scss */
+  /* line 1117, site.css.scss */
   .blog article table.figure {
     float: left;
     margin-bottom: 20px; }
-    /* line 1108, site.css.scss */
+    /* line 1121, site.css.scss */
     .blog article table.figure + table.figure {
       margin-left: 20px; }
-    /* line 1112, site.css.scss */
+    /* line 1125, site.css.scss */
     .blog article table.figure + table.figure + * {
       clear: left; }
-    /* line 1116, site.css.scss */
+    /* line 1129, site.css.scss */
     .blog article table.figure th, .blog article table.figure td {
       padding: 5px 10px; }
-    /* line 1120, site.css.scss */
+    /* line 1133, site.css.scss */
     .blog article table.figure thead th {
       font-weight: bold;
       border-bottom: 2px solid #e1563f; }
-    /* line 1125, site.css.scss */
+    /* line 1138, site.css.scss */
     .blog article table.figure tbody td {
       border-bottom: 1px solid #efa497; }
 
 /**
   Community Page
 **/
-/* line 1137, site.css.scss */
+/* line 1150, site.css.scss */
 body.community #content {
   margin: 3em auto 0 auto;
   width: 54em; }
-  /* line 1141, site.css.scss */
+  /* line 1154, site.css.scss */
   body.community #content h1, body.community #content h1:first-child {
     margin-top: 0;
     color: #e1563f;
     border-bottom: solid 1px #d0d0d0;
     padding-bottom: 20px; }
-  /* line 1148, site.css.scss */
+  /* line 1161, site.css.scss */
   body.community #content .section {
     width: auto; }
-    /* line 1150, site.css.scss */
+    /* line 1163, site.css.scss */
     body.community #content .section img {
       float: left;
       margin: 0 20px 15px 0; }
-    /* line 1155, site.css.scss */
+    /* line 1168, site.css.scss */
     body.community #content .section.bugs img {
       float: right;
       margin: 0 0 15px 20px; }
-    /* line 1159, site.css.scss */
+    /* line 1172, site.css.scss */
     body.community #content .section table {
       margin: 2em auto; }
 
 /**
   Ember Users Page
 **/
-/* line 1171, site.css.scss */
+/* line 1184, site.css.scss */
 .ember-users .section {
   width: 100%; }
-/* line 1175, site.css.scss */
+/* line 1188, site.css.scss */
 .ember-users h1 {
   margin-bottom: 10px; }
-/* line 1179, site.css.scss */
+/* line 1192, site.css.scss */
 .ember-users #content {
   margin: 3em auto 0 auto;
   width: 54em; }
-/* line 1184, site.css.scss */
+/* line 1197, site.css.scss */
 .ember-users .button {
   display: block;
   text-align: center;
   margin: 0 auto; }
 
-/* line 1192, site.css.scss */
+/* line 1205, site.css.scss */
 .ember-users_index .users.section {
   margin-top: 0px; }
 
-/* line 1196, site.css.scss */
+/* line 1209, site.css.scss */
 #showcase {
   margin: 0 auto;
   width: 100%; }
 
-/* line 1201, site.css.scss */
+/* line 1214, site.css.scss */
 #content #showcase tr {
   background: transparent;
   border-bottom: none; }
 
-/* line 1206, site.css.scss */
+/* line 1219, site.css.scss */
 #showcase td {
   padding: 10px; }
-  /* line 1208, site.css.scss */
+  /* line 1221, site.css.scss */
   #showcase td:nth-child(2) a {
     margin: 0 auto; }
-  /* line 1212, site.css.scss */
+  /* line 1225, site.css.scss */
   #showcase td:nth-child(3) a {
     margin-left: auto; }
-  /* line 1217, site.css.scss */
+  /* line 1230, site.css.scss */
   #showcase td a {
     background-image: url("/images/about/user_bg.png");
     display: block;
     height: 103px;
     width: 210px; }
 
-/* line 1225, site.css.scss */
+/* line 1238, site.css.scss */
 #showcase a:hover {
   border-bottom: none; }
 
 /**
   Sponsors Page
 **/
-/* line 1235, site.css.scss */
+/* line 1248, site.css.scss */
 .sponsors .section {
   width: 100%;
   margin-top: 0px;
   padding: 2em; }
-/* line 1241, site.css.scss */
+/* line 1254, site.css.scss */
 .sponsors h1 {
   margin-bottom: 10px; }
-/* line 1245, site.css.scss */
+/* line 1258, site.css.scss */
 .sponsors p {
   margin-bottom: 0px; }
-/* line 1249, site.css.scss */
+/* line 1262, site.css.scss */
 .sponsors #content {
   margin: 3em auto 0 auto;
   width: 54em; }
-/* line 1254, site.css.scss */
+/* line 1267, site.css.scss */
 .sponsors .button {
   display: block;
   text-align: center;
   margin: 0 auto; }
-/* line 1260, site.css.scss */
+/* line 1273, site.css.scss */
 .sponsors ul, .sponsors ol {
   margin-bottom: 28px;
   list-style-type: disc; }
-  /* line 1264, site.css.scss */
+  /* line 1277, site.css.scss */
   .sponsors ul li, .sponsors ol li {
     font-size: 15px;
     margin: 10px 0 10px 0; }
-    /* line 1268, site.css.scss */
+    /* line 1281, site.css.scss */
     .sponsors ul li p, .sponsors ol li p {
       padding-left: 7px; }
 
 /**
   Core Team Page
 **/
-/* line 1281, site.css.scss */
+/* line 1294, site.css.scss */
 .team .section, .meetup-assets .section {
   width: 100%;
   margin-top: 0px; }
-  /* line 1285, site.css.scss */
+  /* line 1298, site.css.scss */
   .team .section .headshots, .meetup-assets .section .headshots {
     width: 756px; }
-    /* line 1288, site.css.scss */
+    /* line 1301, site.css.scss */
     .team .section .headshots a:hover, .meetup-assets .section .headshots a:hover {
       border-bottom: none; }
-    /* line 1292, site.css.scss */
+    /* line 1305, site.css.scss */
     .team .section .headshots td, .meetup-assets .section .headshots td {
       text-align: center; }
-      /* line 1295, site.css.scss */
+      /* line 1308, site.css.scss */
       .team .section .headshots td p, .meetup-assets .section .headshots td p {
         margin: 0px 0px 10px 0px;
         font-weight: bold; }
-      /* line 1300, site.css.scss */
+      /* line 1313, site.css.scss */
       .team .section .headshots td img, .meetup-assets .section .headshots td img {
         border: 1px solid #888888;
         margin-bottom: 10px; }
-/* line 1308, site.css.scss */
+/* line 1321, site.css.scss */
 .team #content, .meetup-assets #content {
   margin: 3em auto 0 auto;
   width: 54em; }
@@ -1241,7 +1252,7 @@ body.community #content {
 /**
   Footer
 **/
-/* line 1318, site.css.scss */
+/* line 1331, site.css.scss */
 #footer {
   margin-top: 60px;
   padding: 25px 0;
@@ -1250,25 +1261,25 @@ body.community #content {
   overflow: hidden;
   font-family: 'Maven Pro';
   font-weight: bold; }
-  /* line 1327, site.css.scss */
+  /* line 1340, site.css.scss */
   #footer #footer-wrapper {
     width: 940px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
     *zoom: 1; }
-  /* line 1334, site.css.scss */
+  /* line 1347, site.css.scss */
   #footer .info {
     width: 200px;
     color: #717171;
     text-transform: uppercase;
     font-size: 10px;
     float: left; }
-    /* line 1341, site.css.scss */
+    /* line 1354, site.css.scss */
     #footer .info a {
       color: #e1563f;
       text-decoration: none; }
-  /* line 1347, site.css.scss */
+  /* line 1360, site.css.scss */
   #footer .statement {
     font-size: 14px;
     color: #bbbbbb;
@@ -1278,20 +1289,20 @@ body.community #content {
     left: 200px;
     right: 200px;
     top: 10px; }
-  /* line 1358, site.css.scss */
+  /* line 1371, site.css.scss */
   #footer .links {
     width: 200px;
     text-align: right;
     float: right; }
-    /* line 1363, site.css.scss */
+    /* line 1376, site.css.scss */
     #footer .links a {
       margin: 0 10px;
       border-bottom: none;
       opacity: 0.7; }
-      /* line 1367, site.css.scss */
+      /* line 1380, site.css.scss */
       #footer .links a:hover {
         opacity: 1; }
-  /* line 1373, site.css.scss */
+  /* line 1386, site.css.scss */
   #footer .twitter, #footer .github, #footer .googleplus {
     background: no-repeat url("/images/footer-links.png");
     height: 35px;
@@ -1299,24 +1310,24 @@ body.community #content {
     display: inline-block;
     text-indent: 9999px;
     overflow: hidden; }
-  /* line 1382, site.css.scss */
+  /* line 1395, site.css.scss */
   #footer .twitter {
     background-position: 0 2px; }
-  /* line 1383, site.css.scss */
+  /* line 1396, site.css.scss */
   #footer .github {
     background-position: -59px 2px; }
-  /* line 1384, site.css.scss */
+  /* line 1397, site.css.scss */
   #footer .googleplus {
     background-position: -119px 2px; }
 
-/* line 1388, site.css.scss */
+/* line 1401, site.css.scss */
 .screenshot {
   margin-left: -60px; }
 
 /**
   Buttons
 */
-/* line 1396, site.css.scss */
+/* line 1409, site.css.scss */
 .button {
   display: block;
   width: 226px;
@@ -1330,33 +1341,33 @@ body.community #content {
   color: #f6ece8;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.3) 0 1px 0; }
-  /* line 1410, site.css.scss */
+  /* line 1423, site.css.scss */
   .button.orange {
     background-image: url("/images/orange_buttons.png"); }
-    /* line 1413, site.css.scss */
+    /* line 1426, site.css.scss */
     .button.orange:hover {
       background-position: 0 -46px;
       border-bottom: none; }
-    /* line 1418, site.css.scss */
+    /* line 1431, site.css.scss */
     .button.orange:active {
       background-position: 0 -92px;
       text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0; }
-  /* line 1424, site.css.scss */
+  /* line 1437, site.css.scss */
   .button.black {
     background-image: url("/images/black_buttons.png"); }
-    /* line 1427, site.css.scss */
+    /* line 1440, site.css.scss */
     .button.black:hover {
       background-position: 0 -46px;
       border-bottom: none; }
-    /* line 1432, site.css.scss */
+    /* line 1445, site.css.scss */
     .button.black:active {
       background-position: 0 -92px;
       text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0; }
-  /* line 1438, site.css.scss */
+  /* line 1451, site.css.scss */
   .button:hover {
     background-position: 0 -46px; }
 
-/* line 1446, site.css.scss */
+/* line 1459, site.css.scss */
 .small-button {
   width: 74px;
   height: 22px;
@@ -1366,14 +1377,14 @@ body.community #content {
   line-height: 24px;
   text-transform: uppercase;
   text-shadow: rgba(0, 0, 0, 0.3) 0 1px 0; }
-  /* line 1457, site.css.scss */
+  /* line 1470, site.css.scss */
   .small-button.orange {
     background-image: url("/images/small-orange-button.png"); }
-  /* line 1461, site.css.scss */
+  /* line 1474, site.css.scss */
   .small-button.black {
     background-image: url("/images/small-black-button.png"); }
 
-/* line 1466, site.css.scss */
+/* line 1479, site.css.scss */
 a.edit-page {
   background: no-repeat url("/images/pencil-icon.png");
   width: 16px;
@@ -1383,25 +1394,25 @@ a.edit-page {
   float: right;
   overflow: hidden;
   opacity: 0.4; }
-  /* line 1475, site.css.scss */
+  /* line 1488, site.css.scss */
   a.edit-page:hover {
     opacity: 1; }
 
 /**
   API
 **/
-/* line 1486, site.css.scss */
+/* line 1499, site.css.scss */
 .api h3.name {
   text-transform: none;
   float: left;
   margin-right: 5px; }
-/* line 1491, site.css.scss */
+/* line 1504, site.css.scss */
 .api h3.anchorable-toc {
   position: relative; }
-  /* line 1494, site.css.scss */
+  /* line 1507, site.css.scss */
   .api h3.anchorable-toc:hover a.toc-anchor {
     display: block; }
-  /* line 1498, site.css.scss */
+  /* line 1511, site.css.scss */
   .api h3.anchorable-toc .toc-anchor {
     display: none;
     position: absolute;
@@ -1416,57 +1427,57 @@ a.edit-page {
     opacity: 0.5;
     top: 50%;
     margin-top: -5px; }
-/* line 1516, site.css.scss */
+/* line 1529, site.css.scss */
 .api .meta {
   line-height: 16px;
   font-size: 11px;
   clear: left; }
-/* line 1522, site.css.scss */
+/* line 1535, site.css.scss */
 .api .args {
   font-style: italic;
   color: #444444; }
-/* line 1527, site.css.scss */
+/* line 1540, site.css.scss */
 .api .method h3 {
   text-transform: none; }
-/* line 1530, site.css.scss */
+/* line 1543, site.css.scss */
 .api dl {
   margin: 1em 0 1em 1em; }
-  /* line 1535, site.css.scss */
+  /* line 1548, site.css.scss */
   .api dl dd {
     margin: 0em 0 0.5em 0; }
-/* line 1540, site.css.scss */
+/* line 1553, site.css.scss */
 .api .type {
   border-bottom: 1px dotted #afafaf;
   font-size: 13px;
   color: gray; }
-/* line 1546, site.css.scss */
+/* line 1559, site.css.scss */
 .api #api-options {
   padding-bottom: 1em;
   border-bottom: solid 1px #e0e0e0;
   margin-bottom: 1.5em; }
-/* line 1552, site.css.scss */
+/* line 1565, site.css.scss */
 .api .class-info {
   margin-bottom: 2em; }
-  /* line 1554, site.css.scss */
+  /* line 1567, site.css.scss */
   .api .class-info p {
     color: #443331;
     font-weight: bold;
     margin: 0;
     text-transform: uppercase; }
-    /* line 1559, site.css.scss */
+    /* line 1572, site.css.scss */
     .api .class-info p a {
       text-transform: none;
       font-weight: normal; }
-/* line 1567, site.css.scss */
+/* line 1580, site.css.scss */
 .api .description p {
   font-family: 'Helvetica Neue';
   font-weight: 200; }
-/* line 1573, site.css.scss */
+/* line 1586, site.css.scss */
 .api ul.index-list {
   margin-left: 1.5em;
   overflow: hidden;
   /* Clearfix */ }
-  /* line 1577, site.css.scss */
+  /* line 1590, site.css.scss */
   .api ul.index-list li {
     float: left;
     width: 300px;
@@ -1478,38 +1489,38 @@ a.edit-page {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis; }
-/* line 1587, site.css.scss */
+/* line 1600, site.css.scss */
 .api div.method, .api div.property, .api div.event {
   padding-bottom: 1em;
   border-bottom: solid 1px #e0e0e0;
   margin-bottom: 2em; }
-  /* line 1591, site.css.scss */
+  /* line 1604, site.css.scss */
   .api div.method:last-child, .api div.property:last-child, .api div.event:last-child {
     border-bottom: none; }
-/* line 1596, site.css.scss */
+/* line 1609, site.css.scss */
 .api h3.name code {
   background-color: transparent;
   color: black;
   padding: 0;
   font-weight: bold; }
-/* line 1603, site.css.scss */
+/* line 1616, site.css.scss */
 .api span.flag {
   background-color: gray;
   color: white;
   border-radius: 3px; }
-/* line 1609, site.css.scss */
+/* line 1622, site.css.scss */
 .api #sidebar ol#toc-list li > ol {
   display: block; }
 
 /**
   404 Page
 **/
-/* line 1618, site.css.scss */
+/* line 1631, site.css.scss */
 body.not-found #content {
   margin: 3em auto 0 auto;
   width: 54em; }
 
-/* line 1623, site.css.scss */
+/* line 1636, site.css.scss */
 .under_construction_warning {
   background-color: #FFFFCC;
   width: 100%;
@@ -1517,7 +1528,7 @@ body.not-found #content {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px; }
 
-/* line 1631, site.css.scss */
+/* line 1644, site.css.scss */
 .under_construction_warning h1 {
   height: 64px;
   font-size: 14px;
@@ -1530,11 +1541,11 @@ body.not-found #content {
   margin-bottom: 1.5em;
   background: no-repeat url("/images/ember-construction-57.png") top left; }
 
-/* line 1644, site.css.scss */
+/* line 1657, site.css.scss */
 .under_construction_warning h1 .msg {
   margin-top: 12px;
   margin-left: 40px; }
 
-/* line 1649, site.css.scss */
+/* line 1662, site.css.scss */
 .more_caution {
   color: black; }
