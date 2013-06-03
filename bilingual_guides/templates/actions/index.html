@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 模板</title>
+    <title>Ember.js - 操作</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -104,11 +104,11 @@
           
     <ol id="toc-list">
           <li class="level-1">
-            <a href="/bilingual_guides/getting-started">Getting Started</a>
+            <a href="/bilingual_guides/getting-started">入门指南</a>
             <ol>
         
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started">Getting Started</a>
+              <a href="/bilingual_guides/getting-started">介绍</a>
             </li>
           
             <li class="level-3">
@@ -464,7 +464,7 @@
 
   <div class="chapter">
     
-        <h1>模板 
+        <h1>操作 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/templates/actions.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
@@ -680,6 +680,22 @@ the <code>/posts</code> route, and another thing if you are inside of the <code>
 route.</p>
 
 <p>上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 <code>/posts</code>路由中，你想在侧边栏创建一个按钮来完成某种操作，而在<code>/about</code>路由中时，此按钮却是做另外一件不同的事。</p>
+<h3 class='anchorable-toc' id='toc_view-action-handling-target'>View Action Handling (Target)</h3><h3 class='anchorable-toc' id='toc_'>视图操作处理（目标）</h3>
+<p>In some cases (when creating custom components) it may be necessary to
+handle actions in your view class. This can be done by specifying the
+target of your action.</p>
+
+<p>视图类有时候需要处理一些操作（比如当创建新的自定义组件时），那么可以通过指定操作的目标来实现。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">expand</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">view</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Now the view will be checked to see if it can handle this action.</p>
+
+<p>如上，视图将被检测看是否能处理该操作。</p>
 
     
       <footer>
