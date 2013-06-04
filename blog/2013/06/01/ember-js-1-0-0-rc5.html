@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Ember.js 1.0.0-rc2发布</title>
+    <title>Ember.js - Ember.js 1.0.0-rc5发布</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -78,7 +78,7 @@
     
   </head>
 
-  <body class="blog blog_2013 blog_2013_03 blog_2013_03_29 blog_2013_03_29_ember-js-1-0-rc2-released">
+  <body class="blog blog_2013 blog_2013_06 blog_2013_06_01 blog_2013_06_01_ember-js-1-0-0-rc5">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -160,53 +160,35 @@
       
       <div id="content" class="has-sidebar">
           <article class="blog-post">
-    <h1>Ember.js 1.0.0-rc2发布</h1>
+    <h1>Ember.js 1.0.0-rc5发布</h1>
     
-      <h3 class="blog-post-author">作者： Tower He &ndash; <time>Mar 29, 2013</time></h3>
+      <h3 class="blog-post-author">作者： Tower He &ndash; <time>Jun 01, 2013</time></h3>
     
 
-    <p>今天<code>Ember.js</code>
-1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使<code>Ember.js</code>更加趋于稳定。</p>
+    <p>今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。</p>
 
-<p>变更记录：</p>
+<p>RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：</p>
 
 <ul>
-<li>改进了应用初始化过程，废弃了<code>Ember.Application#initialize</code>，使用<code>deferReadiness</code>和<code>advanceReadiness</code>取代。</li>
-<li>添加<code>Ember.Application#then</code>，其如同<code>isReady</code>钩子一样触发。</li>
-<li>添加更多<code>Ember.computed</code>宏。</li>
-<li>为计算属性添加<code>readOnly</code>标记。</li>
-<li><code>Enumerable#compact</code>将删除<code>undefined</code>值。</li>
-<li>修正在虚拟视图上注销操作的问题。</li>
-<li>公开<code>Ember.LinkView</code>。</li>
-<li>支持jQuery 2.0。</li>
-<li>支持火狐10或更低版本不支持<code>domElement.outerHTML</code>的浏览器。</li>
-<li>更容易增大应用容器的解析器。</li>
-<li>在<code>{{view}}</code>助手中添加<code>tagName</code>的别名<code>tag</code>。</li>
-<li>将<code>name</code>加入<code>Ember.TextField</code>和<code>Ember.Select</code>的<code>attributeBinding</code>。</li>
-<li><code>Ember.merge</code>返回被合并的对象。</li>
-<li>废除在<code>Metamorphs</code>上设置<code>tagNames</code>。</li>
-<li>避免了父级隐藏的<code>index</code>路由影响子级显示的<code>index</code>。</li>
-<li><code>App#reset</code>行为更接近<code>App#create</code>。</li>
-<li><code>Evented#on、#off、#one</code>支持链式调用。</li>
-<li>为<code>{{action}}</code>助手添加一个基本的<code>allowedKeys</code>的实现。</li>
-<li>改进了<code>Ember.Array#slice</code>的实现。</li>
-<li>修正了<code>ArrayProxy</code>的<code>arrangedObject</code>处理，修正了#2121，#2138。</li>
-<li>支持自定义默认生成的控制器和路由。</li>
-<li>改进了<code>HistoryLocation</code>的<code>popstate</code>处理，修正了#2234。</li>
-<li>修正了IE7的问题。</li>
-<li>标准化了<code>Ember.run.later</code>和<code>Ember.run.next</code>的行为。</li>
-<li>修正了<code>classNameBindings</code>尝试更新已经删除的元素的问题。</li>
-<li><code>Ember.Array</code>方法总是返回<code>Ember.Arrays</code>。</li>
-<li><code>RSVP</code>可以通过<code>Ember.RSVP</code>来调用。</li>
-<li><code>ObjectProxy</code>不再尝试在创建的时候代理不可知的属性。</li>
-<li>可以通过将<code>ENV.LOG_VERSION</code>设置为<code>false</code>来关闭日志中输出版本信息。</li>
-<li><code>Ember.ArrayController#lastObject</code>不再抛出异常，即便是空的。</li>
-<li>Fixes to {{render}} helper when used with model</li>
-<li>修正了<code>{{render}}</code>助手与模型一起使用的时候的问题。</li>
-<li>增强了<code>{{linkTo}}</code>控制器处理。</li>
-<li>修正了目标属性在<code>{{#each prop in array}}</code>时的<code>{{bindAttr}}</code> - #1523。</li>
-<li><code>String#camelize</code>将首字母小写。</li>
-<li>另外还修正了许多其他的问题，并改进了文档。</li>
+<li>修复了因为改动了运行循环计划而导致的性能问题。</li>
+<li>修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。</li>
+<li>包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。</li>
+</ul>
+
+<p>详细的修订记录：</p>
+
+<ul>
+<li>为不正确的容器搜索名称添加断言</li>
+<li>增加了<code>Ember.beforeObserver</code>的文档</li>
+<li>从生产构建中移除了ember-testing</li>
+<li>修复了承诺（Promise）在启动时的缺陷。修复 #2756</li>
+<li>同步router.js修复<code>App#reset</code>在ember-testing中的问题</li>
+<li>声明<code>replaceWith</code>只工作在&#39;history&#39;模式下</li>
+<li>修正了IE7下测试不通过的问题</li>
+<li>更新backburner，修复IE8下测试失败的问题</li>
+<li>更新Backburner.js修复RC4中的性能问题</li>
+<li>维护gem包的ruby版本</li>
+<li>移除starter_kit上传任务</li>
 </ul>
 
 

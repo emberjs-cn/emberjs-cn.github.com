@@ -105,6 +105,8 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
+        
           <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
@@ -160,22 +162,20 @@
 <h1>Recent Posts</h1>
 
   <article class="blog-post-summary">
-    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
-    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
+    <h2><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a> &ndash; <time>Jun 01, 2013</time></span></h2>
+    <p>今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。</p>
 
-<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+<p>RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：</p>
 
-<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
-<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
-<p>首先是相同的创建应用：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre>App = Ember.Application.create();
-</pre></td>
-</tr></table>
-</div></div>
-    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">Read more...</a>
+<ul>
+<li>修复了因为改动了运行循环计划而导致的性能问题。</li>
+<li>修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。</li>
+<li>包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。</li>
+</ul>
+
+<p>详细的修订记录：</p>
+
+    <a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Read more...</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
@@ -204,6 +204,24 @@ App.Store = DS.Store.extend({
 </tr></table>
 </div></div>
     <a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">Read more...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
+    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
+
+<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+
+<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
+<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
+<p>首先是相同的创建应用：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create();
+</pre></td>
+</tr></table>
+</div></div>
+    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">Read more...</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a> &ndash; <time>Apr 23, 2013</time></span></h2>
@@ -322,5 +340,11 @@ App.Store = DS.Store.extend({
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
   </body>
 </html>
