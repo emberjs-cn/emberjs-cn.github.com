@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 入门指南: Adding the First Route and Template</title>
+    <title>Ember.js - 入门指南: 添加第一个路由与模板</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -124,7 +124,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/getting-started/adding-a-route-and-template">Adding the First Route and Template</a>
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
             </li>
           
             <li class="level-3">
@@ -466,17 +466,17 @@
 
   <div class="chapter">
     
-        <h1>Adding the First Route and Template 
+        <h1>添加第一个路由与模板 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/adding-a-route-and-template.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_adding-the-first-route-and-template'>Adding the First Route and Template</h2>
-<p>Next, we will create an Ember.js application, a route (&#39;<code>/</code>&#39;), and convert our static mockup into a Handlebars template.</p>
+    <h2 class='anchorable-toc' id='toc_'>添加第一个路由与模板</h2>
+<p>接下来，我们将会创建一个Ember.js应用、一个路由（&#39;<code>/</code>&#39;），并且将我们的静态页面转换为Handlebars模板。</p>
 
-<p>Inside your <code>js</code> directory, add a file for the application at <code>js/application.js</code> and a file for the router at <code>js/router.js</code>. You may place these files anywhere you like (even just putting all code into the same file), but this guide will assume you have separated them into their own files and named them as indicated.</p>
+<p>在<code>js</code>目录下，为应用添加一个<code>js/application.js</code>文件，为路由添加一个<code>js/router.js</code>文件。你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。</p>
 
-<p>Inside <code>js/application.js</code> add the following code:</p>
+<p>在<code>js/application.js</code>文件中添加如下代码：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -484,9 +484,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>This will create a new instance of <code>Ember.Application</code> and make it available as a variable within your browser&#39;s JavaScript environment.</p>
+<p>这会创建一个<code>Ember.Application</code>的实例，并将它作为你本地浏览器JavaScript环境的一个变量供使用。</p>
 
-<p>Inside <code>js/router.js</code> add the following code:</p>
+<p>在<code>js/router.js</code>文件中添加如下代码：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -498,9 +498,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>This will tell Ember.js to detect when the application&#39;s URL matches <code>&#39;/&#39;</code> and to render the <code>todos</code> template.</p>
+<p>这会告诉Ember.js，当应用的URL与<code>&#39;/&#39;</code>匹配时，渲染（render）<code>todos</code>模板。</p>
 
-<p>Next, update your <code>index.html</code> to wrap the inner contents of <code>&lt;body&gt;</code> in a Handlebars script tag and include <code>js/application.js</code> and <code>js/router.js</code>:</p>
+<p>接着，更新<code>index.html</code>里的代码，将<code>&lt;body&gt;</code>里的内容包在一个Handlebars的<code>&lt;script&gt;</code>标签中，并引用<code>js/application.js</code>和<code>js/router.js</code></p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -525,7 +525,7 @@
 21
 22
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!-- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!-- ... 为确保简洁，略去头尾代码 ... --&gt;</span>
 <span class="tag">&lt;body&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todos</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="inline">
@@ -546,19 +546,19 @@
 
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/application.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/router.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-<span class="comment">&lt;!-- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!-- ... 为确保简洁，略去头尾代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Reload your web browser to ensure that all files have been referenced correctly and no errors occur.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+<p>重新加载浏览器页面，确保所有的文件被正确引用，且没有错误产生。</p>
+<h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/uzeqih/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/8775d1bf4c05eb82adf178be4429e5b868ac145b">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/guides/templates/handlebars-basics">Handlebars Guide</a></li>
-<li><a href="/guides/application">Ember.Application Guide</a></li>
-<li><a href="/api/classes/Ember.Application.html">Ember.Application API Documentation</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/8775d1bf4c05eb82adf178be4429e5b868ac145b">采用<code>diff</code>格式显示这步骤所作的修改</a></li>
+<li><a href="/guides/templates/handlebars-basics">Handlebars指南</a></li>
+<li><a href="/guides/application">Ember.Application指南</a></li>
+<li><a href="/api/classes/Ember.Application.html">Ember.Application API文档</a></li>
 </ul>
 
     
