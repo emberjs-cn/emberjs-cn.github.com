@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 入门指南: Planning The Application</title>
+    <title>Ember.js - 入门指南: 应用规划</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -112,11 +112,11 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/getting-started/planning-the-application">Planning The Application</a>
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/creating-a-static-mockup">Creating a Static Mockup</a>
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
             </li>
           
             <li class="level-3">
@@ -466,31 +466,33 @@
 
   <div class="chapter">
     
-        <h1>Planning The Application 
+        <h1>应用规划 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/planning-the-application.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_planning-the-application'>Planning The Application</h2>
-<p>TodoMVC, despite its small size, contains most of the behaviors typical in modern single page applications. Before continuing, take a moment to understand how TodoMVC works from the user&#39;s perspective.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/planning-the-application">http://emberjs.com/guides/getting-started/planning-the-application</a></p>
+<h2 class='anchorable-toc' id='toc_'>应用规划</h2>
+<p>尽管TodoMVC是一个小应用，但是它涵盖了现今典型单页面应用（single page applications）几乎所有的行为。在继续之前，先从用户视角了解一下TodoMVC是怎样工作的。</p>
 
-<p>TodoMVC has the following main features:
-<img src="/guides/getting-started/images/todo-mvc.png" width="680"></p>
+<p>TodoMVC包含了以下几个主要功能：</p>
+
+<p><img src="/guides/getting-started/images/todo-mvc.png" width="680"></p>
 
 <ol>
-<li><p>It displays a list of todos for a user to see. This list will grow and shrink as the user adds and removes todos.</p></li>
-<li><p>It accepts text in an <code>&lt;input&gt;</code> for entry of new todos. Hitting <code>&lt;return&gt;</code> creates the new item and displays it in the list below.</p></li>
-<li><p>It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.</p></li>
-<li><p>It display the number of incomplete todos and keeps this count updated as new todos are added and existing todos are completed.</p></li>
-<li><p>It provides links for the user to navigate between lists showing all, incomplete, and completed todos.</p></li>
-<li><p>It provide a button to remove all completed todos and informs the user of the number of completed todos. This button will not be visible if there are no completed todos.</p></li>
-<li><p>It provide a button to remove a single specific todo. This button displays as a user hovers over a todo and takes the form of a red X.</p></li>
-<li><p>It provide a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.</p></li>
-<li><p>It allows a user to double click to show a textfield for editing a single todo. Hitting <code>&lt;enter&gt;</code> or moving focus outside of this textfield will persist the changed text.</p></li>
-<li><p>It retains a user&#39;s todos between application loads by using the browser&#39;s <code>localstorage</code> mechanism.</p></li>
+<li><p>为用户提供一个todos的列表，并且会随着用户添加或移除todos进行增长与缩减。</p></li>
+<li><p>从一个<code>&lt;input&gt;</code>框接收文本作为新建todos的入口，当点击<code>&lt;return&gt;</code>时，创建一项，并在列表下方显示。</p></li>
+<li><p>为每一个todo提供一个<code>checkbox</code>用于切换完成与未完成状态。新建的todo默认为未完成状态。</p></li>
+<li><p>显示所有未完成的todos的数量，并在添加新todos和现有todos完成时，动态改变显示的值。</p></li>
+<li><p>提供导航链接，使用户能切换显示全部（all）、未完成（incomplete）与完成（completed）的todos。</p></li>
+<li><p>提供一个按钮用于提示用户当前已完成的todos数目，并在点击时移除所有已完成的todos。当无已完成todos时，此按钮不显示。</p></li>
+<li><p>为每一个todo提供一个删除按钮，这个按钮显示为一个红色的X，并只在用户鼠标移动到这个todo上时显示。</p></li>
+<li><p>提供一个<code>checkbox</code>用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。</p></li>
+<li><p>允许用户双击某一个todo，显示一个<code>textfield</code>用于修改这个todo。点击<code>&lt;enter&gt;</code>或者当鼠标焦点从这个<code>textfield</code>移除时，持久化更改的内容。</p></li>
+<li><p>使用<code>本地存储(localstorage)</code>机制保存用户的todos列表，在应用程序启动时重新加载。</p></li>
 </ol>
 
-<p>You can interact with a completed version of the application by visiting the <a href="http://addyosmani.github.com/todomvc/">the TodoMVC site</a>.</p>
+<p>你可以通过访问<a href="http://addyosmani.github.com/todomvc/">the TodoMVC site</a>来体验一下完整的版本。</p>
 
     
       <footer>
@@ -500,7 +502,7 @@
           </a>
          
         <a class="next-guide" href="/guides/getting-started/creating-a-static-mockup">
-          Creating a Static Mockup →
+          创建静态页面 →
         </a>
       
       </footer>

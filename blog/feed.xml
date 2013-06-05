@@ -88,22 +88,6 @@
 </content>
   </entry>
   <entry>
-    <title>使用ember-dev开发Ember.js库</title>
-    <link rel="alternate" href="/blog/2013/05/28/using-ember-dev-to-develop-ember-js-packages.html"/>
-    <id>/blog/2013/05/28/using-ember-dev-to-develop-ember-js-packages.html</id>
-    <published>2013-05-28T00:00:00Z</published>
-    <updated>2013-05-28T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;在第三期周报中，我们曾经推荐了&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;。目前作者还不建议我们在生产环境中使用ember-dev来开发Ember.js包，主要原因是ember-dev目前还不够成熟，接口不稳定，另外也缺失了一些重要特性，比如项目目录结构生成器。尽管如此，也无法遮住ember-dev的光芒，通过其目前提供的功能，已经可以很好的帮助我们进行Ember.js扩展功能的开发。下面将一步步介绍如何使用ember-dev来开发一个扩展包。&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;在第三期周报中，我们曾经推荐了&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;。目前作者还不建议我们在生产环境中使用ember-dev来开发Ember.js包，主要原因是ember-dev目前还不够成熟，接口不稳定，另外也缺失了一些重要特性，比如项目目录结构生成器。尽管如此，也无法遮住ember-dev的光芒，通过其目前提供的功能，已经可以很好的帮助我们进行Ember.js扩展功能的开发。下面将一步步介绍如何使用ember-dev来开发一个扩展包。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;注意：&lt;/em&gt; ember-dev是用来开发Ember.js扩展包的，而不是用来开发Ember.js应用的。请注意区分！&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title>第五期周报</title>
     <link rel="alternate" href="/blog/2013/05/24/ember-js-weekly.html"/>
     <id>/blog/2013/05/24/ember-js-weekly.html</id>
@@ -193,6 +177,38 @@ APIs的两种不同风格（ID风格和URL风格）。ID风格简单易用，也
 &lt;p&gt;一个简单使用的国际化工具，可以让我们的Ember.js很容易的支持国际化。&lt;/p&gt;
 &lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-emberjs-ember-dev-ember-dev-a'&gt;&lt;a href="https://github.com/emberjs/ember-dev"&gt;ember-dev&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;ember-dev是一个用于开发Ember.js扩展的一个辅助工具，&lt;a href="https://github.com/emberjs/data"&gt;ember-data&lt;/a&gt;便是基于ember-dev来构建的。如果准备开发一个Ember.js的扩展，这将是你的不二之选。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>第二期周报</title>
+    <link rel="alternate" href="/blog/2013/05/02/ember-js-weekly.html"/>
+    <id>/blog/2013/05/02/ember-js-weekly.html</id>
+    <published>2013-05-02T00:00:00Z</published>
+    <updated>2013-05-02T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;&lt;em&gt;本期对周报的内容进行了一点小的调整，就是主要内容的标题如果是英文的对被翻译为中文。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-tech-pro-tutorial-1249-modern-emberjs-application-workflow-with-yeoman-and-mocha-yeoman-mocha-ember-js-a'&gt;&lt;a href="http://tech.pro/tutorial/1249/modern-emberjs-application-workflow-with-yeoman-and-mocha"&gt;运用Yeoman和Mocha的Ember.js应用开发工作流&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;文章介绍了如何使用&lt;code&gt;Yeoman&lt;/code&gt;来构建一个Ember.js应用。其中包括如何使用&lt;code&gt;Yeoman&lt;/code&gt;来创建一个应用结构，如何编译，如何运行和如何测试等。&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;&lt;em&gt;本期对周报的内容进行了一点小的调整，就是主要内容的标题如果是英文的对被翻译为中文。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;本周Ember.js热点：&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;读物&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-tech-pro-tutorial-1249-modern-emberjs-application-workflow-with-yeoman-and-mocha-yeoman-mocha-ember-js-a'&gt;&lt;a href="http://tech.pro/tutorial/1249/modern-emberjs-application-workflow-with-yeoman-and-mocha"&gt;运用Yeoman和Mocha的Ember.js应用开发工作流&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;文章介绍了如何使用&lt;code&gt;Yeoman&lt;/code&gt;来构建一个Ember.js应用。其中包括如何使用&lt;code&gt;Yeoman&lt;/code&gt;来创建一个应用结构，如何编译，如何运行和如何测试等。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;视频&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-youtube-com-watch-v-obawh8xl2c0-ember-js-rss-a'&gt;&lt;a href="http://www.youtube.com/watch?v=obaWh8xL2C0"&gt;从零开始使用Ember.js构建RSS阅读器&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Gordon通过一个40分钟的视频，讲述了如何使用Ember.js从零开始来构建一个RSS阅读器。该阅读器实现的模型部分采用&lt;a href="https://github.com/emberjs/data"&gt;ember-data&lt;/a&gt;来实现。本视频可以帮助我们更深入的理解如何使用Ember.js去构建优秀的应用。&lt;a href="https://github.com/emberjs-seattle/ember-reader"&gt;示例代码下载&lt;/a&gt;&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-http-www-youtube-com-watch-v-no1hxt9gbts-ember-js-a'&gt;&lt;a href="http://www.youtube.com/watch?v=nO1hxT9GBTs"&gt;简单且快速的测试Ember.js应用&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Erik在视频中为我们介绍了如何使用&lt;a href="https://github.com/emberjs/ember.js/tree/master/packages/ember-testing"&gt;ember-testing&lt;/a&gt;对Ember.js应用进行验收测试。&lt;a href="https://github.com/emberjs/ember.js/tree/master/packages/ember-testing"&gt;ember-testing&lt;/a&gt;是Ember.js大家庭中新近加入的成员，旨在为我们提供一些列辅助测试的基础方法，方便我们为Ember.js应用编写测试。&lt;a href="https://github.com/ebryn/bloggr-client-rails/blob/master/test/javascripts/integration/bloggr_test.js"&gt;查看演示代码&lt;/a&gt;&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-stefanpenner-ember-inflector-ember-inflector-a'&gt;&lt;a href="https://github.com/stefanpenner/ember-inflector"&gt;ember-inflector&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;提供一个与rails兼容的inflector，参见&lt;a href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html"&gt;ActiveSupport::Inflector&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-addepar-ember-table-ember-table-a'&gt;&lt;a href="https://github.com/Addepar/ember-table"&gt;ember-table&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;表格是每个应用的核心控件之一，ember-table是一个非常优秀的采用Ember.js实现的表格控件。它几乎涵盖了大部分的应用场景，包括按列排序、树状表、Ajax加载、可编辑的单元格等等。&lt;a href="http://addepar.github.io/ember-table/"&gt;在线演示&lt;/a&gt;&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_a-href-https-github-com-heartsentwined-ember-auth-ember-auth-a'&gt;&lt;a href="https://github.com/heartsentwined/ember-auth"&gt;ember-auth&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/heartsentwined/ember-auth"&gt;ember-auth&lt;/a&gt;是一个基于token进行身份验证的库，它假定服务器端实现了基于token的身份验证。它将在登录成功后从服务器获取token，并在之后所有的针对模型的查询和持久化的操作上附加该token。在用户注销时销毁该token。&lt;/p&gt;
 </content>
   </entry>
 </feed>
