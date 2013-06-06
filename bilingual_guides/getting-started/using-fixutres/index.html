@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Using Fixtures</title>
+    <title>Ember.js - 使用静态数据</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -132,7 +132,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/using-fixutres">Using Fixtures</a>
+              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -464,15 +464,20 @@
 
   <div class="chapter">
     
-        <h1>Using Fixtures 
+        <h1>使用静态数据 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/using-fixutres.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_using-fixtures'>Using Fixtures</h2>
+    <p>英文原文：<a href="http://emberjs.cn/guides/getting-started/using-fixutres/">http://emberjs.cn/guides/getting-started/using-fixutres/</a></p>
+<h2 class='anchorable-toc' id='toc_using-fixtures'>Using Fixtures</h2><h2 class='anchorable-toc' id='toc_'>使用静态数据</h2>
 <p>Now we&#39;ll add fixture data. Fixtures are a way to put sample data into an application before connecting the application to long-term persistence.</p>
 
+<p>现在，我们添加一些静态数据。在我们连接应用服务器对数据进行永久持久化之前，使用静态数据是在应用中添加示例数据的一种很好的方式。</p>
+
 <p>Update the file at <code>js/models/todo.js</code> to include the following fixture data:</p>
+
+<p>更新 <code>js/models/todo.js</code> ，添加如下数据：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -492,8 +497,10 @@
 16
 17
 18
+19
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
+<span class="comment">// ... 为确保简洁，略去头尾代码 ...</span>
 Todos.Todo.FIXTURES = [
  {
    <span class="key">id</span>: <span class="integer">1</span>,
@@ -515,11 +522,17 @@ Todos.Todo.FIXTURES = [
 </tr></table>
 </div></div>
 <p>Reload your web browser to ensure that all files have been referenced correctly and no errors occur.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+
+<p>重新加载浏览器页面，确保所有的文件被正确引用，且没有错误产生。</p>
+<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/akoguw/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/9e6e638f4d156399e38b17ae36e191d9cb1f2797">Changes in this step in <code>diff</code> format</a></li>
+</ul>
+<h3 class='anchorable-toc' id='toc_'>附加资源</h3>
+<ul>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/9e6e638f4d156399e38b17ae36e191d9cb1f2797">采用<code>diff</code>格式显示这步骤所作的修改</a></li>
 </ul>
 
     
