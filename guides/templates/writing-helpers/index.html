@@ -140,7 +140,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Models's Complete State</a>
+              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Model's Complete State</a>
             </li>
           
             <li class="level-3">
@@ -482,7 +482,7 @@
 3
 4
 </pre></td>
-  <td class="code"><pre>Ember.Handlebars.registerBoundHelper(<span class="string"><span class="delimiter">'</span><span class="content">highlight</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(value, options) {
+  <td class="code"><pre>Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><span class="content">highlight</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(value, options) {
   <span class="keyword">var</span> escaped = Handlebars.Utils.escapeExpression(value);
   <span class="keyword">return</span> <span class="keyword">new</span> Handlebars.SafeString(<span class="string"><span class="delimiter">'</span><span class="content">&lt;span class=&quot;highlight&quot;&gt;</span><span class="delimiter">'</span></span> + escaped + <span class="string"><span class="delimiter">'</span><span class="content">&lt;/span&gt;</span><span class="delimiter">'</span></span>);
 });
@@ -515,7 +515,7 @@
 2
 3
 </pre></td>
-  <td class="code"><pre>Ember.Handlebars.registerBoundHelper(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(person) {
+  <td class="code"><pre>Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(person) {
   <span class="keyword">return</span> person.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + person.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
 }, <span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
 </pre></td>
@@ -532,7 +532,33 @@
 <p>现在，一旦上下文中的 person 变化了，或任何 <em>依赖的键值</em> 发生变化，输出都会自动更新。</p>
 
 <p>传递给 <code>fullName</code> 助手方法的路径以及它的依赖键值都可以是完整的 <em>属性路径</em> （如<code>person.address.country</code>）</p>
+<h3 class='anchorable-toc' id='toc_'>自定义视图助手</h3>
+<p>有时需要经常在多个地方使用<code>{{view}}</code>来渲染视图类。其实在这样的情况下，可以通过注册一个自定义的视图助手来简化。</p>
 
+<p>例如，假设有一个视图名为<code>App.CalendarView</code>，那么可以注册一个如下的助手：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><span class="content">calendar</span><span class="delimiter">'</span></span>, App.CalendarView);
+</pre></td>
+</tr></table>
+</div></div>
+<p>这样在模板中使用<code>App.CalendarView</code>就变成：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">calendar</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>该助手提供了与视图助手相同的功能，并且可以接收相同的参数：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.CalendarView</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
     
       <footer>
         

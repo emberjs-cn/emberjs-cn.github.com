@@ -140,7 +140,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Models's Complete State</a>
+              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Model's Complete State</a>
             </li>
           
             <li class="level-3">
@@ -490,7 +490,7 @@
 
 <p><img src="/guides/views/images/todo-list.png" alt="Todo List"></p>
 
-<p>视图负责将一个 <em>原始事件</em> (点击) 转换成一个 <em>语义化事件</em>：删除此<code>todo</code>！这些语义化事件会发送到你应用的路由，路由负责根据当前应用的状态响应该事件。</p>
+<p>视图负责将一个 <em>原始事件</em> (点击) 转换成一个 <em>语义化事件</em>：删除此<code>todo</code>！这些语义化事件首先会发送给控制器，如果控制器没有定义相关的处理方法，那么会发送到应用的路由，路由负责根据当前应用的状态响应该事件。</p>
 
 <p><img src="/guides/views/images/primitive-to-semantic-event.png" alt="Todo List"></p>
 

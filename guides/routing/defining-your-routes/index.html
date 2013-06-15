@@ -140,7 +140,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Models's Complete State</a>
+              <a href="/guides/getting-started/displaying-a-models-completeness">Displaying a Model's Complete State</a>
             </li>
           
             <li class="level-3">
@@ -747,6 +747,44 @@ App.PostRoute = Ember.Route.extend({
 
 <p>这不是巧合，而是<code>Ember Data</code>所想要的。所以如果你使用<code>Ember</code>路由和<code>Ember Data</code>，
 你的动态段将会以默认的方式工作。</p>
+
+<p>如果模型没有在url中使用<code>id</code>属性，那么应该在路由中定义一个序列化方法：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_slug</span><span class="delimiter">'</span></span>});
+});
+
+App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="comment">// the server returns `{ slug: 'foo-post' }`</span>
+    <span class="keyword">return</span> jQuery.getJSON(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/</span><span class="delimiter">&quot;</span></span> + params.post_slug);
+  },
+
+  <span class="function">serialize</span>: <span class="keyword">function</span>(model) {
+    <span class="comment">// this will make the URL `/posts/foo-post`</span>
+    <span class="keyword">return</span> { <span class="key">post_slug</span>: model.slug };
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>缺省的<code>serialize</code>方法将模型的<code>id</code>插入到路由的动态段中（上述的<code>:post_id</code>)。</p>
 <h3 class='anchorable-toc' id='toc_'>嵌套资源</h3>
 <p>你不能嵌套路由，但是你可以嵌套资源：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
