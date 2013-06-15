@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Keeping Templates Up-to-Date</title>
+    <title>Ember.js - 模板自动更新</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -440,7 +440,7 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/understanding-ember/the-view-layer">Understanding Ember.js</a>
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol class='selected'>
         
             <li class="level-3">
@@ -452,7 +452,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">Keeping Templates Up-to-Date</a>
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
             </li>
           </ol></li></ol>
   
@@ -464,13 +464,16 @@
 
   <div class="chapter">
     
-        <h1>Keeping Templates Up-to-Date 
+        <h1>模板自动更新 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/understanding-ember/keeping-templates-up-to-date.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_keeping-templates-up-to-date'>Keeping Templates Up-to-Date</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/understanding-ember/keeping-templates-up-to-date/">http://emberjs.com/guides/understanding-ember/keeping-templates-up-to-date/</a></p>
+<h2 class='anchorable-toc' id='toc_keeping-templates-up-to-date'>Keeping Templates Up-to-Date</h2><h2 class='anchorable-toc' id='toc_'>模板自动更新</h2>
 <p>In order to know which part of your HTML to update when an underlying property changes, Handlebars will insert marker elements with a unique ID. If you look at your application while it&#39;s running, you might notice these extra elements:</p>
+
+<p>为了知道当一个属性改变时，HTML中哪一部分需要更新，Handlebars添加了一些具有唯一ID的标签。如果在应用运行期查看过其代码，那么应该见到过如下的元素：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -485,6 +488,8 @@ blue
 </tr></table>
 </div></div>
 <p>Because all Handlebars expressions are wrapped in these markers, make sure each HTML tag stays inside the same block. For example, you shouldn&#39;t do this:</p>
+
+<p>因为所有的Handlebars表达式均被包裹在这些标签里，请确保所有的HTML标签都是闭合的。例如，不能像下面这样：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -495,6 +500,8 @@ blue
 </tr></table>
 </div></div>
 <p>If you want to avoid your property output getting wrapped in these markers, use the <code>unbound</code> helper:</p>
+
+<p>如果不希望输出的属性被这些标签包裹，那么可以使用<code>unbound</code>助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -503,6 +510,8 @@ blue
 </tr></table>
 </div></div>
 <p>Your output will be free of markers, but be careful, because the output won&#39;t be automatically updated!</p>
+
+<p>如上输出不会被标签包裹，但是需要注意的是这样的输出不会自动更新！</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
