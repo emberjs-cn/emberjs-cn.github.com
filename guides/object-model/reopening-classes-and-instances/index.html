@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 对象模型: Reopening Classes and Instances</title>
+    <title>Ember.js - 对象模型: 重新打开类和实例</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -404,7 +404,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
             </li>
           
             <li class="level-3">
@@ -412,15 +412,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/bindings">Bindings</a>
+              <a href="/guides/object-model/bindings">绑定</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -466,14 +466,14 @@
 
   <div class="chapter">
     
-        <h1>Reopening Classes and Instances 
+        <h1>重新打开类和实例 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/object-model/reopening-classes-and-instances.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h3 class='anchorable-toc' id='toc_reopening-classes-and-instances'>Reopening Classes and Instances</h3>
-<p>You don&#39;t need to define a class all at once. You can reopen a class and
-define new properties using the <code>reopen</code> method.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/reopening-classes-and-instances/">http://emberjs.com/guides/object-model/reopening-classes-and-instances/</a></p>
+<h3 class='anchorable-toc' id='toc_'>重新打开类和实例</h3>
+<p>Ember.js的类不需要一次性完成所有的定义。可以通过<code>reopen</code>方法重新打开一个类来定义新的属性。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -489,8 +489,7 @@ Person.create().get(<span class="string"><span class="delimiter">'</span><span c
 </pre></td>
 </tr></table>
 </div></div>
-<p>When using <code>reopen</code>, you can also override existing methods and
-call <code>this._super</code>.</p>
+<p>当使用<code>reopen</code>时，还可以重写已有的方法。在重写的方法中可以通过<code>this._super</code>来调用被重写的方法。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -508,10 +507,9 @@ call <code>this._super</code>.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p><code>reopen</code> is used to add instance methods and properties that are shared across all instances of a class. It does not add
-methods and properties to a particular instance of a class as in vanilla JavaScript (without using prototype).</p>
+<p><code>reopen</code>用来添加被所有类的实例共享的实例方法和属性。它不能像Vanilla Javascript那样，用来为某一特定的实例来添加方法和属性（不使用prototype）。</p>
 
-<p>But when you need to create class method or add the properties to the class itself you can use <code>reopenClass</code>.</p>
+<p>但是如果需要为类添加方法和属性，则可以使用<code>reopenClass</code>方法。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -535,11 +533,11 @@ Person.createMan().get(<span class="string"><span class="delimiter">'</span><spa
       <footer>
         
           <a class="previous-guide" href="/guides/object-model/bindings">
-            ← Bindings
+            ← 绑定
           </a>
          
         <a class="next-guide" href="/guides/object-model/what-do-i-use-when">
-          Bindings, Observers, Computed Properties: What Do I Use When? →
+          绑定，观察器，计算属性：如何选择？ →
         </a>
       
       </footer>

@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Bindings, Observers, Computed Properties: What Do I Use When?</title>
+    <title>Ember.js - 绑定，观察器，计算属性：如何选择？</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -404,7 +404,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
             </li>
           
             <li class="level-3">
@@ -412,15 +412,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -464,14 +464,17 @@
 
   <div class="chapter">
     
-        <h1>Bindings, Observers, Computed Properties: What Do I Use When? 
+        <h1>绑定，观察器，计算属性：如何选择？ 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/object-model/what-do-i-use-when.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_what-do-i-use-when'>What Do I Use When?</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/what-do-i-use-when/">http://emberjs.com/guides/object-model/what-do-i-use-when/</a></p>
+<h2 class='anchorable-toc' id='toc_what-do-i-use-when'>What Do I Use When?</h2><h2 class='anchorable-toc' id='toc_'>如何选择？</h2>
 <p>Sometimes new users are confused about when to use computed properties,
 bindings and observers. Here are some guidelines to help:</p>
+
+<p>刚刚接触Ember.js的用户常常为什么时候使用计算属性、绑定和观察器感到困惑。下面给出几条建议：</p>
 
 <ol>
 <li><p>Use <em>computed properties</em> to build a new property by synthesizing other
@@ -485,13 +488,16 @@ behavior after a binding has finished synchronizing.</p></li>
 <li><p><em>Bindings</em> are most often used to ensure objects in two different layers
 are always in sync. For example, you bind your views to your controller using
 Handlebars.</p></li>
+<li><p><em>计算属性</em>通常通过整合其他属性来构建新的属性。计算属性不应该包含任何应用行为，而且不应该在调用的时候产生任何副作用。除了在极少数的情况下，重复调用计算属性应该返回相同的结果（除非其依赖的属性发生了变化）。</p></li>
+<li><p><em>观察器</em>应该包含能够针对其他属性的改变做出反应的行为。观察器最适合在一个绑定被同步后需要执行一些操作情况。</p></li>
+<li><p><em>绑定</em>常用于确保两个不同层的对象之间的属性是否同步。例如，使用Handlebars绑定视图与控制器。</p></li>
 </ol>
 
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/object-model/reopening-classes-and-instances">
-            ← Reopening Classes and Instances
+            ← 重新打开类和实例
           </a>
          
           <a class="next-guide" href="/bilingual_guides/enumerables">

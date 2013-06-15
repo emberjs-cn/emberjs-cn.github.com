@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Bindings</title>
+    <title>Ember.js - 绑定</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -404,7 +404,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
             </li>
           
             <li class="level-3">
@@ -412,15 +412,15 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/object-model/bindings">Bindings</a>
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -464,20 +464,25 @@
 
   <div class="chapter">
     
-        <h1>Bindings 
+        <h1>绑定 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/object-model/bindings.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_bindings'>Bindings</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/bindings/">http://emberjs.com/guides/object-model/bindings/</a></p>
+<h2 class='anchorable-toc' id='toc_bindings'>Bindings</h2><h2 class='anchorable-toc' id='toc_'>绑定</h2>
 <p>A binding creates a link between two properties such that when one changes, the
 other one is updated to the new value automatically. Bindings can connect
 properties on the same object, or across two different objects. Unlike most other
 frameworks that include some sort of binding implementation, bindings in
 Ember.js can be used with any object, not just between views and models.</p>
 
+<p>一个绑定在两个属性之间建立了一个连接，当其中一个发生改变时，另外一个将自动更新为新的值。绑定连接同一对象中属性，也可以连接不同对象的属性。不同于其他一些也实现了类似绑定的框架，Ember.js中的绑定可以在任意对象中使用，而并不紧紧局限于视图和模型。</p>
+
 <p>The easiest way to create a two-way binding is by creating a new property
 with the string <code>Binding</code> at the end, then specifying a path from the global scope:</p>
+
+<p>建立一个双向的关联最简单的方法是添加一个具有相同名称，但以<code>Binding</code>为后缀的新属性，并指定一个从全局域开始的路径：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -513,11 +518,15 @@ App.wife.get(<span class="string"><span class="delimiter">'</span><span class="c
 application code has finished running before synchronizing changes, so you can
 change a bound property as many times as you&#39;d like without worrying about the
 overhead of syncing bindings when values are transient.</p>
-<h2 class='anchorable-toc' id='toc_one-way-bindings'>One-Way Bindings</h2>
+
+<p>需要注意的是绑定并不会在发生变化时立即得到更新。Ember.js将等待应用代码全部执行完毕后才对变更进行同步，因此可以随意对一个绑定的属性进行修改，而无需担心会引发无止境的同步。</p>
+<h2 class='anchorable-toc' id='toc_one-way-bindings'>One-Way Bindings</h2><h2 class='anchorable-toc' id='toc_'>单向绑定</h2>
 <p>A one-way binding only propagates changes in one direction. Usually, one-way
 bindings are just a performance optimization and you can safely use
 the more concise two-way binding syntax (as, of course, two-way bindings are
 de facto one-way bindings if you only ever change one side).</p>
+
+<p>单向绑定顾名思义只会向一个方向传播更新。通常情况下，使用单向绑定只是为了优化性能，其实完全可以使用更为简洁的双向绑定的语法来实现单向绑定（因为如果一个双向绑定只有一端会发生变化的话，其实际上就是一个单向绑定）。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -565,7 +574,7 @@ App.user.get(<span class="string"><span class="delimiter">'</span><span class="c
           </a>
          
         <a class="next-guide" href="/bilingual_guides/object-model/reopening-classes-and-instances">
-          Reopening Classes and Instances →
+          重新打开类和实例 →
         </a>
       
       </footer>

@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 对象模型: Computed Properties and Aggregate Data with @each</title>
+    <title>Ember.js - 对象模型: 计算属性和带@each的集合数据</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -404,7 +404,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">Computed Properties and Aggregate Data with @each</a>
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
             </li>
           
             <li class="level-3">
@@ -412,15 +412,15 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/bindings">Bindings</a>
+              <a href="/guides/object-model/bindings">绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">Reopening Classes and Instances</a>
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">Bindings, Observers, Computed Properties: What Do I Use When?</a>
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -466,17 +466,16 @@
 
   <div class="chapter">
     
-        <h1>Computed Properties and Aggregate Data with @each 
+        <h1>计算属性和带@each的集合数据 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/object-model/computed-properties-and-aggregate-data.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_computed-properties-and-aggregate-data'>Computed Properties and Aggregate Data</h2>
-<p>Often, you may have a computed property that relies on all of the items in an
-array to determine its value. For example, you may want to count all of the
-todo items in a controller to determine how many of them are completed.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/computed-properties-and-aggregate-data/">http://emberjs.com/guides/object-model/computed-properties-and-aggregate-data/</a></p>
+<h2 class='anchorable-toc' id='toc_each'>计算属性和带@each的集合数据</h2>
+<p>计算属性时常依赖一个数组中的全部元素来计算其值。例如，要知道有多少已经完成的待办事项，那么需要计算控制器中所有的待办事项才能得出结果。</p>
 
-<p>Here&#39;s what that computed property might look like:</p>
+<p>下面是一个计算属性的示例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -502,18 +501,16 @@ todo items in a controller to determine how many of them are completed.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Note here that the dependent key (<code>todos.@each.isDone</code>) contains the special
-key <code>@each</code>. This instructs Ember.js to update bindings and fire observers for
-this computed property when one of the following four events occurs:</p>
+<p>这里需要注意的是依赖（<code>todos.@each.isDone</code>）中包含一个特殊的关键字<code>@each</code>。使用了<code>@each</code>意味着Ember.js在下述的四种情况下，将更新计算属性的绑定和触发其观察器：</p>
 
 <ol>
-<li>The <code>isDone</code> property of any of the objects in the <code>todos</code> array changes.</li>
-<li>An item is added to the <code>todos</code> array.</li>
-<li>An item is removed from the <code>todos</code> array.</li>
-<li>The <code>todos</code> property of the controller is changed to a different array.</li>
+<li><code>todos</code>数组中任意一个元素的<code>isDone</code>属性发生改变；</li>
+<li><code>todos</code>数组中添加了一个新成员；</li>
+<li><code>todos</code>数组中有一个成员被移除了；</li>
+<li>控制器的<code>todos</code>数组变为了另外一个不同的数组。</li>
 </ol>
 
-<p>In the example above, the <code>remaining</code> count is <code>1</code>:</p>
+<p>在上面的示例中，<code>remaining</code>为<code>1</code>：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -525,8 +522,7 @@ App.todosController.get(<span class="string"><span class="delimiter">'</span><sp
 </pre></td>
 </tr></table>
 </div></div>
-<p>If we change the todo&#39;s <code>isDone</code> property, the <code>remaining</code> property is updated
-automatically:</p>
+<p>如果改变待办事项的<code>isDone</code>属性，<code>remaining</code>属性会被自动更新：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
