@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Displaying Model Data</title>
+    <title>Ember.js - 显示模型数据</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -136,11 +136,11 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/displaying-model-data">Displaying Model Data</a>
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">Displaying a Model's Complete State</a>
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
             </li>
           
             <li class="level-3">
@@ -464,15 +464,19 @@
 
   <div class="chapter">
     
-        <h1>Displaying Model Data 
+        <h1>显示模型数据 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/displaying-model-data.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_displaying-model-data'>Displaying Model Data</h2>
+    <h2 class='anchorable-toc' id='toc_displaying-model-data'>Displaying Model Data</h2><h2 class='anchorable-toc' id='toc_'>显示模型数据</h2>
 <p>Next we&#39;ll update our application to display dynamic todos, replacing our hard coded section in the <code>todos</code> template.</p>
 
+<p>接下来，我们将更新我们的应用，使其可以显示动态的待办事项，而不再是显示我们在<code>todos</code>模板中硬编码的内容。</p>
+
 <p>Inside the file <code>js/router.js</code> implement a <code>TodosRoute</code> object with a <code>model</code> function that returns all the existing todos:</p>
+
+<p>在<code>js/router.js</code>这个文件中，通过<code>model</code>函数实现了一个<code>TodosRoute</code>对象，这个函数的返回值是所有现存的待办事项：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -490,9 +494,15 @@
 </div></div>
 <p>Because we hadn&#39;t implemented this object before, Ember.js provided a <code>Route</code> for us with the default behavior of rendering a matching template named <code>todos</code> using its <a href="/guides/concepts/naming-conventions/">naming conventions for object creation</a>.</p>
 
+<p>由于之前我们一直都没有实现这个对象，所以Ember.js默认根据<a href="/guides/concepts/naming-conventions/">对象创建的命名惯例</a>为我们创建了一个<code>Route</code>，这个被Ember.js自动创建的<code>Route</code>将会默认渲染一个名为<code>todos</code>的模板。</p>
+
 <p>Now that we need custom behavior (returning a specific set of models), we implement the class and add the desired behavior.</p>
 
+<p>现在我们需要自定义的行为（返回一个指定的对象集合），因此我们实现了这个类，并为其添加了期望的行为。</p>
+
 <p>Update <code>index.html</code> to remove the static <code>&lt;li&gt;</code> elements with a Handlebars <code>{{each}}</code> helper and a dynamic <code>{{title}}</code> for each item.</p>
+
+<p>通过删除<code>index.html</code>中的静态元素<code>&lt;li&gt;</code>，用Handlebars的<code>{{each}}</code>助手和每项元素的动态<code>{{title}}</code>来替代。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -504,8 +514,11 @@
 8
 9
 <strong>10</strong>
+11
+12
 </pre></td>
   <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo-list</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
     <span class="tag">&lt;li&gt;</span>
@@ -515,20 +528,29 @@
   <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/ul&gt;</span>
 <span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
 <p>The template loops over the content of its controller. This controller is an instance of <code>ArrayController</code> that Ember.js has provided for us as the container for our models. Because we don&#39;t need custom behavior for this object yet, we can use the default object provided by the framework.</p>
 
+<p>上面的模板遍历了其控制器的<code>content</code>。这里的控制器是一个<code>ArrayController</code>的实例，<code>ArrayController</code>是Ember.js提供的用于存储我们的对象的容器。因为我们这里并不需要为这个对象添加自定义行为，所以可以使用框架提供的缺省对象。</p>
+
 <p>Reload your web browser to ensure that all files have been referenced correctly and no errors occur.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+
+<p>重新载入你的Web浏览器，以确保所有文件均被正确引用，且没有发生任何错误。</p>
+<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/ihugoj/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/72b1ccde5e157b20fcfe5da9bd52496e73533d47">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="/guides/templates/handlebars-basics">Templates Guide</a></li>
 <li><a href="/guides/controllers">Controllers Guide</a></li>
-<li><a href="/guides/concepts/naming-conventions">Naming Conventions Guide</a></li>
+<li><p><a href="/guides/concepts/naming-conventions">Naming Conventions Guide</a></p></li>
+<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/72b1ccde5e157b20fcfe5da9bd52496e73533d47">用<code>diff</code>格式呈现本次修改</a></p></li>
+<li><p><a href="/guides/templates/handlebars-basics">模板指南</a></p></li>
+<li><p><a href="/guides/controllers">控制器指南</a></p></li>
+<li><p><a href="/guides/concepts/naming-conventions">命名惯例指南</a></p></li>
 </ul>
 
     
@@ -539,7 +561,7 @@
           </a>
          
         <a class="next-guide" href="/bilingual_guides/getting-started/displaying-a-models-completeness">
-          Displaying a Model's Complete State →
+          显示模型的完成状态 →
         </a>
       
       </footer>

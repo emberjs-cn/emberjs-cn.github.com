@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - Displaying a Model's Complete State</title>
+    <title>Ember.js - 显示模型的完成状态</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -136,11 +136,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/displaying-model-data">Displaying Model Data</a>
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">Displaying a Model's Complete State</a>
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
             </li>
           
             <li class="level-3">
@@ -464,47 +464,85 @@
 
   <div class="chapter">
     
-        <h1>Displaying a Model's Complete State 
+        <h1>显示模型的完成状态 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/displaying-a-models-completeness.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_displaying-a-model-s-complete-state'>Displaying a Model&#39;s Complete State</h2>
+    <h2 class='anchorable-toc' id='toc_displaying-a-model-s-complete-state'>Displaying a Model&#39;s Complete State</h2><h2 class='anchorable-toc' id='toc_'>显示模型的完成状态</h2>
 <p>TodoMVC strikes through completed todos by applying a CSS class <code>completed</code> to the <code>&lt;li&gt;</code> element. Update <code>index.html</code> to apply a CSS class to this element when a todo&#39;s <code>isCompleted</code> property is true:</p>
-<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+
+<p>TodoMVC通过在<code>&lt;li&gt;</code>元素上应用了一个名为<code>completed</code>的CSS类来标识已完成的待办事项。因此需要在一个待办事项的<code>isCompleted</code>属性为真的时候，更新<code>index.html</code>，为这个待办事项的元素添加一个CSS类：
+```handlebars</p>
+
+<!--- ... additional lines truncated for brevity ... -->
+
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+
+<p><li {{bindAttr class="isCompleted:completed"}}>
+  <input type="checkbox" class="toggle">
+  <label>{{title}}</label><button class="destroy"></button>
+</li></p>
+
+<!--- ... additional lines truncated for brevity ... -->
+
+<!--- ... 为保持代码简洁，在此省略了其他代码 ... -->
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 4
 5
 6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
-<span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;/li&gt;</span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre>
+This code will apply the CSS class `completed` when the todo's `isCompleted` property is `true` and remove it when the property becomes `false`.
+
+以上代码将在待办事项的`isCompleted`属性为真的时候设置`completed`这个CSS类，当`isCompleted`为假的时候移除该CSS类。
+
+The first fixture todo in our application has an `isCompleted` property of `true`. Reload the application to see the first todo is now decorated with a strike-through to visually indicate it has been completed.
+
+为我们应用构造的第一条待办事项的`isCompleted`属性是`true`，因此重载应用将会看到第一个待办事项有一条中划线，这表面其已经完成。
+
+### Live Preview
+### 在线演示
+&lt;a class=&quot;jsbin-embed&quot; href=&quot;http://jsbin.com/iqofac/2/embed?live&quot;&gt;Ember.js • TodoMVC&lt;/a&gt;&lt;script src=&quot;http://static.jsbin.com/js/embed.js&quot;&gt;&lt;/script&gt; 
+
+### Additional Resources
+### 附加资源
+
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/19d08dd3b294187fadbe57860cf68fc0dc629ad8)
+  * [bindAttr API documentation](/api/classes/Ember.Handlebars.helpers.html#method_bindAttr)
+  * [bind and bindAttr article by Peter Wagenet](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
+
+  * [用`diff`格式呈现本次修改](https://github.com/emberjs/quickstart-code-sample/commit/72b1ccde5e157b20fcfe5da9bd52496e73533d47)
+  * [bindAttr API文档](/api/classes/Ember.Handlebars.helpers.html#method_bindAttr)
+  * [Peter Wagenet写的关于bind和bindAttr的文章](http://www.emberist.com/2012/04/06/bind-and-bindattr.html)
 </pre></td>
 </tr></table>
 </div></div>
-<p>This code will apply the CSS class <code>completed</code> when the todo&#39;s <code>isCompleted</code> property is <code>true</code> and remove it when the property becomes <code>false</code>.</p>
-
-<p>The first fixture todo in our application has an <code>isCompleted</code> property of <code>true</code>. Reload the application to see the first todo is now decorated with a strike-through to visually indicate it has been completed.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/iqofac/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> </p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
-<ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/19d08dd3b294187fadbe57860cf68fc0dc629ad8">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_bindAttr">bindAttr API documentation</a></li>
-<li><a href="http://www.emberist.com/2012/04/06/bind-and-bindattr.html">bind and bindAttr article by Peter Wagenet</a></li>
-</ul>
-
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/getting-started/displaying-model-data">
-            ← Displaying Model Data
+            ← 显示模型数据
           </a>
          
         <a class="next-guide" href="/bilingual_guides/getting-started/creating-a-new-model">
