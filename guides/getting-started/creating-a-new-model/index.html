@@ -483,8 +483,9 @@
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_creating-new-model-instance'>Creating New Model Instance</h2>
-<p>Next we&#39;ll update our static HTML <code>&lt;input&gt;</code> to an Ember view that can expose more complex behaviors.  Update <code>index.html</code> to replace the new todo <code>&lt;input&gt;</code> with an <code>Ember.TextField</code>:</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/creating-a-new-model/">http://emberjs.com/guides/getting-started/creating-a-new-model/</a></p>
+<h2 class='anchorable-toc' id='toc_'>创建新的模型实例</h2>
+<p>接下来，我们将更新我们的静态HTML<code>&lt;input&gt;</code>为一个Ember视图，以便能够提供更多复杂一些的行为。我们将<code>index.html</code>中的新建待办事项的<code>&lt;input&gt;</code>替换为一个<code>Ember.TextField</code>：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -492,23 +493,23 @@
 4
 5
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 <span class="tag">&lt;h1&gt;</span>todos<span class="tag">&lt;/h1&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">new-todo</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">What needs to be done?</span><span class="delimiter">&quot;</span></span>
        <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">newTitle</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">createTodo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>This will render an <code>&lt;input&gt;</code> element at this location with the same <code>id</code> and <code>placeholder</code> attributes applied. It will also connect the <code>newTitle</code> property of this template&#39;s controller to the <code>value</code> attribute of the <code>&lt;input&gt;</code>. When one changes, the other will automatically update to remain synchronized.</p>
+<p>上述模板将在这渲染一个具有相同<code>id</code>和<code>placeholder</code>属性的<code>&lt;input&gt;</code>元素。并且将这个模板对应的控制器的<code>newTitle</code>属性与<code>&lt;input&gt;</code>的<code>value</code>属性相连。当一个发生改变时，另外一个将自动保持同步。</p>
 
-<p>Additionally, we connect user interaction (pressing the <code>&lt;enter&gt;</code> key) to a method <code>createTodo</code> on this template&#39;s controller.</p>
+<p>另外，我们还将使用模板控制器的<code>createTodo</code>方法来处理用户交互（按下<code>&lt;enter&gt;</code>键）。</p>
 
-<p>Because we have not needed custom controller behavior until this point, Ember.js provided a default controller object for this template. To handle our new behavior, we can implement the controller class Ember.js expects to find <a href="/guides/concepts/naming-conventions">according to its naming conventions</a> and add our custom behavior. This new controller class will automatically be associated with this template for us.</p>
+<p>因此目前我们并不需要自定义控制器行为，Ember.js为模板提供了一个缺省的控制器。为了处理新的行为，我们可以实现一个Ember可以根据<a href="/guides/concepts/naming-conventions">命名惯例</a>找到，并能添加自定义行为的控制器。这个新控制器类将自动的关联到该模板。</p>
 
-<p>Add a <code>js/controllers/todos_controller.js</code> file. You may place this file anywhere you like (even just putting all code into the same file), but this guide will assume you have created the file and named it as indicated.</p>
+<p>添加一个<code>js/controllers/todos_controller.js</code>文件。你可以将该文件放置到任意你喜欢的地方（即使将所有代码放置在同一个文件中），不过本指南将假设你按照指定的方式创建和命名该文件。</p>
 
-<p>Inside <code>js/controllers/todos_controller.js</code> implement the controller Ember.js expects to find <a href="/guides/concepts/naming-conventions">according to its naming conventions</a>:</p>
+<p>在<code>js/controllers/todos_controller.js</code>中实现了Ember.js根据<a href="/guides/concepts/naming-conventions">命名惯例</a>可以找到的控制器：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -552,9 +553,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>This controller will now respond to user interaction by using its <code>newTitle</code> property as the title of a new todo whose <code>isCompleted</code> property is false.  Then it will clear its <code>newTitle</code> property which will synchronize to the template and reset the textfield. Finally, it persists any unsaved changes on the todo.</p>
+<p>上述控制器现在负责使用<code>newTitle</code>属性作为一个<code>isCompleted</code>属性为假的新待办事项的标题的用户交互。接着将清除这个将用于同步模板和重置文本框的<code>newTitle</code>属性。最后将待办事项所有未保存的修改持久化。</p>
 
-<p>In <code>index.html</code> include <code>js/controllers/todos_controller.js</code> as a dependency:</p>
+<p>在<code>index.html</code>中包含<code>js/controllers/todos_controller.js</code>依赖：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -563,24 +564,24 @@
 5
 6
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/store.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/todo.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/controllers/todos_controller.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
  <span class="tag">&lt;/body&gt;</span>
- <span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Reload your web browser to ensure that all files have been referenced correctly and no errors occur. You should now be able to add additional todos by entering a title in the <code>&lt;input&gt;</code> and hitting the <code>&lt;enter&gt;</code> key.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+<p>重新载入Web浏览器以确保所有被引用的文件正确无误且没有任何错误发生。现在可以通过在<code>&lt;input&gt;</code>中输入一个标题，然后点击<code>&lt;enter&gt;</code>键来添加其他的待办事项。</p>
+<h3 class='anchorable-toc' id='toc_'>在线示例</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/irutag/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> </p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/39443bce54a8a7465221ae443b83d3c4a1e3980f">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/api/classes/Ember.TextField.html">Ember.TextField API documention</a></li>
-<li><a href="/guides/controllers">Ember Controller Guide</a></li>
-<li><a href="/guides/concepts/naming-conventions">Naming Conventions Guide</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/39443bce54a8a7465221ae443b83d3c4a1e3980f">用<code>diff</code>格式呈现本次修改</a></li>
+<li><a href="/guides/templates/handlebars-basics">Ember.TextField API文档</a></li>
+<li><a href="/guides/controllers">控制器指南</a></li>
+<li><a href="/guides/concepts/naming-conventions">命名惯例指南</a></li>
 </ul>
 
     
