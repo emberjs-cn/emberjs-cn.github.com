@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 入门指南: Deleting a Model</title>
+    <title>Ember.js - 入门指南: 删除模型</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -152,23 +152,23 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">Displaying the Number of Incomplete Todos</a>
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/toggle-todo-editing-state">Toggling between Showing and Editing States</a>
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/accepting-edits">Accepting Edits</a>
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/getting-started/deleting-todos">Deleting a Model</a>
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/adding-child-routes">Adding Child Routes</a>
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
             </li>
           
             <li class="level-3">
@@ -478,27 +478,28 @@
 
   <div class="chapter">
     
-        <h1>Deleting a Model 
+        <h1>删除模型 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/deleting-todos.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_deleting-a-model'>Deleting A Model</h2>
-<p>TodoMVC displays a button for removing todos next to each todo when its <code>&lt;li&gt;</code> is hovered. Clicking this button will remove the todo and update the display of remaining incomplete todos and remaining completed todos appropriately.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/deleting-todos/">http://emberjs.com/guides/getting-started/deleting-todos/</a></p>
+<h2 class='anchorable-toc' id='toc_'>删除模型</h2>
+<p>当光标悬浮在待办事项的<code>&lt;li&gt;</code>标签之上时，TodoMVC会在其上显示一个删除待办事项的按钮。点击该按钮，将删除对应的待办事项，并更新显示的完成和未完成待办事项的相关信息。</p>
 
-<p>In <code>index.html</code> update the static <code>&lt;button&gt;</code> element to include an <code>{{action}}</code> Handlebars helper:</p>
+<p>在<code>index.html</code>中，在静态的<code>&lt;button&gt;</code>元素上增加一个<code>{{action}}</code>Handlebar助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">removeTodo</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>In <code>js/controllers/todo_controller.js</code> implement the <code>removeTodo</code> method referenced in the template&#39;s <code>{{action}}</code> Handlebars helper:</p>
+<p>在<code>js/controllers/todo_controller.js</code>中，实现在模板中的<code>{{action}}</code>Handlebars助手引用的<code>removeTodo</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -508,38 +509,38 @@
 6
 7
 </pre></td>
-  <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
+  <td class="code"><pre><span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
   <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
   todo.deleteRecord();
   todo.save();
 },
-<span class="comment">// ... additional lines truncated for brevity ...</span>
+<span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>This method will delete the todo locally and then persist this data change.</p>
+<p>本方法将从本地删除待办事项，并将数据的改变持久化。</p>
 
-<p>Because the todo is no longer part of the collection of all todos, its <code>&lt;li&gt;</code> element in the page will be automatically removed for us. If the deleted todo was incomplete, the count of remaining todos will be decreased by one and the display of this number will be automatically re-rendered. If the new count results in an inflection change between &quot;item&quot; and &quot;items&quot; this area of the page will be automatically re-rendered.</p>
+<p>因为删除的待办事项不再是所有待办事项集合的一部分，因此其对应的<code>&lt;li&gt;</code>元素将自动的从页面上移除。如果被删除的待办事项是未完成的，那么对应的未完成待办事项的数量将减一，显示该数字的部分也将自动重新渲染。如果数量的变化导致<code>item</code>和<code>items</code>间的变形，那么对应的页面部分也将自动重新渲染。</p>
 
-<p>Reload your web browser to ensure that there are no errors and the behaviors described above occurs. </p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+<p>重新载入Web浏览器以确保没有任何错误发生，并且之前描述的行为均工作正常。</p>
+<h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/asokal/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/dfffa6edfa98d8948715a755e04cd03890336969">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_action">action API documention</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/dfffa6edfa98d8948715a755e04cd03890336969">用<code>diff</code>格式呈现本次修改</a></li>
+<li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API文档</a></li>
 </ul>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/getting-started/accepting-edits">
-            ← Accepting Edits
+            ← 接受修改
           </a>
          
         <a class="next-guide" href="/guides/getting-started/adding-child-routes">
-          Adding Child Routes →
+          添加子路由 →
         </a>
       
       </footer>
