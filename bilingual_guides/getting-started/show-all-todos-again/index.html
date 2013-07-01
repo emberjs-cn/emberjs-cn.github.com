@@ -218,15 +218,15 @@
             <li class="level-3">
               <a href="/bilingual_guides/application">介绍</a>
             </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/application/the-application-template">应用模板</a>
-            </li>
           </ol></li>
           <li class="level-1">
-            <a href="/bilingual_guides/templates/handlebars-basics">模板</a>
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
             <ol>
         
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
             <li class="level-3">
               <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
             </li>
@@ -438,6 +438,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">Embedding Applications</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
@@ -488,13 +492,13 @@
 </pre></td>
   <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
 <span class="tag">&lt;li&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">todos.index</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>All<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">todos.index</span><span class="error">'</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>All<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/li&gt;</span>
 <span class="tag">&lt;li&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">todos.active</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>Active<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">todos.active</span><span class="error">'</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>Active<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/li&gt;</span>
 <span class="tag">&lt;li&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="attribute-name">todos.completed</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>Completed<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">todos.completed</span><span class="error">'</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>Completed<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/li&gt;</span>
 <span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
 </pre></td>

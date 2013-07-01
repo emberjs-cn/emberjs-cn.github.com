@@ -218,15 +218,15 @@
             <li class="level-3">
               <a href="/guides/application">介绍</a>
             </li>
-          
-            <li class="level-3">
-              <a href="/guides/application/the-application-template">应用模板</a>
-            </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/templates/handlebars-basics">模板</a>
+            <a href="/guides/templates/the-application-template">模板</a>
             <ol class='selected'>
         
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
             <li class="level-3">
               <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
             </li>
@@ -438,6 +438,10 @@
             <li class="level-3">
               <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">Embedding Applications</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
@@ -471,11 +475,12 @@
             编辑页面</a>
         </h1>
       
-    <p>英文原文：<a href="http://emberjs.com/guides/templates/actions/">http://emberjs.com/guides/templates/actions/</a></p>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/actions/">http://emberjs.com/guides/templates/actions/</a>
+中英对照：<a href="http://emberjs.cn/bilingual_guides/templates/actions/">http://emberjs.c/bilingual_guides/templates/actions/</a></p>
 <h2 class='anchorable-toc' id='toc_action'>操作（{{action}}助手方法）</h2>
-<p>你可能希望通过触发一个高层的事件来响应一个简单的用户操作（比如一次点击）。
-通常，这些事件将修改控制器的某些属性，并且将通过绑定来改变当前的模板。
-比如，你有一个显示一条博文的模板，博文可以展开以显示更多的信息。</p>
+<p>应用常常需要一种让用户通过控件进行交互来修改应用状态的方式。例如，有一个用来显示一篇博客的模板，并且支持展开查看博客更多的信息。</p>
+
+<p>那么可以使用<code>{{action}}</code>助手来使得一个HTML元素可以被点击。当用户点击这个元素时，一个命名事件将会被发送给应用。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -498,15 +503,13 @@
 
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isExpanded</span><span class="inline-delimiter">}}</span></span>
   <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">contract</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Contract<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">'</span><span class="attribute-name">contract</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Contract<span class="tag">&lt;/button&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">expand</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">'</span><span class="attribute-name">expand</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
-</div></div>
-<p>这种情况下，<code>post</code>控制器就是<code>Ember.ObjectController</code>，它的<code>model</code> 是<code>App.Post</code>的一个实例。</p>
-<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -534,17 +537,78 @@
 });
 </pre></td>
 </tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>事件冒泡</h3>
+<p>缺省情况下，<code>{{action}}</code>助手触发模板控制器的一个方法（如上所述）。</p>
+
+<p>如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至模板对应的路由。</p>
+
+<p>注意路由处理事件**必须将事件处理器放置在<code>events</code>哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>App.PostRoute = Ember.Route.extend({
+  <span class="key">events</span>: {
+    <span class="function">expand</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>).set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+    },
+
+    <span class="function">contract</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>).set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
 </div></div>
-<p>默认情况下， <code>{{action}}</code>助手方法在当前的控制器上触发一个方法。你还可以传递参数路径到这个方法。下面代码中的按钮在被点击时会调用<code>controller.select( context.post )</code>。</p>
+<p>如果模板对应的控制器和关联的路由都没有实现事件处理器，这个事件将被冒泡到其父级的路由。如果应用定义了<code>ApplicationRoute</code>，这里是能处理该事件的最后地方。</p>
+
+<p>如果一个事件处理器在控制器、路由、任何父路由和<code>ApplicationRoute</code>中实现，那么应用会抛出一个异常。</p>
+
+<p><img src="/images/template-guide/event-bubbling.png" alt="事件冒泡"></p>
+<h3 class='anchorable-toc' id='toc_'>事件参数</h3>
+<p>Ember.js支持传递参数给事件处理器。任何在事件名称之后传递给<code>{{action}}</code>助手的值，都会作为参数传递给事件处理器。</p>
+
+<p>例如，如果需要将<code>post</code>作为参数：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;p&gt;</span><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
+  <td class="code"><pre> <span class="tag">&lt;p&gt;</span><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>路由的<code>select</code>事件处理器被调用，并且将博客模型作为参数：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.PostController = Ember.ObjectController.extend({
+  <span class="key">events</span>: {
+    <span class="function">select</span>: <span class="keyword">function</span>(post) {
+      console.log(post.get(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>));
+    }
+  }
+});
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>指定事件的类型</h3>
-<p>默认情况下，<code>{{action}}</code>助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。
-你还可以通过<code>on</code>选项指定一个替代事件来侦听。</p>
+<p>默认情况下，<code>{{action}}</code>助手方法侦听事件，并且在用户点击到此元素时触发指定的操作。</p>
+
+<p>你还可以通过<code>on</code>选项指定一个替代事件来侦听。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -579,8 +643,9 @@
 </div></div>
 <p>这样，{{action}}助手方法会在用户按下alt键后点击时被触发。</p>
 <h3 class='anchorable-toc' id='toc_'>阻止事件传递（译注：即不让冒泡）</h3>
-<p>{{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。
-比如，你有一个链接包含一个<strong>✗</strong>按钮，你想保证这个按钮点击时，链接却不会被点击。</p>
+<p>{{action}}助手方法允许将由它处理的事件冒泡到父级DOM节点。如果你想禁掉这个行为，你完全可以做到。</p>
+
+<p>比如，你有一个链接包含一个<strong>✗</strong>按钮，你想保证这个按钮点击时，链接却不会被点击。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -598,8 +663,9 @@
 
 <p>指定<code>bubbles=false</code>时，Ember.js 就会阻止浏览器将此点击事件传递到父级元素。</p>
 <h3 class='anchorable-toc' id='toc_'>向目标冒泡</h3>
-<p>如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。
-在路由的<code>events</code>属性里定义操作。</p>
+<p>如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。</p>
+
+<p>在路由的<code>events</code>属性里定义操作。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -620,16 +686,6 @@
 </tr></table>
 </div></div>
 <p>上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 <code>/posts</code>路由中，你想在侧边栏创建一个按钮来完成某种操作，而在<code>/about</code>路由中时，此按钮却是做另外一件不同的事。</p>
-<h3 class='anchorable-toc' id='toc_'>视图操作处理（目标）</h3>
-<p>视图类有时候需要处理一些操作（比如当创建新的自定义组件时），那么可以通过指定操作的目标来实现。</p>
-<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">expand</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">view</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Show More...<span class="tag">&lt;/button&gt;</span>
-</pre></td>
-</tr></table>
-</div></div>
-<p>如上，视图将被检测看是否能处理该操作。</p>
 
     
       <footer>
