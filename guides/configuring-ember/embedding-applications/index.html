@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ember.js - 配置Ember.js: Embedding Applications</title>
+    <title>Ember.js - 配置Ember.js: 嵌入式应用</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -440,7 +440,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/configuring-ember/embedding-applications">Embedding Applications</a>
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -470,24 +470,22 @@
 
   <div class="chapter">
     
-        <h1>Embedding Applications 
+        <h1>嵌入式应用 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/configuring-ember/embedding-applications.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_embedding-applications'>Embedding Applications</h2>
-<p>In most cases, your application&#39;s entire UI will be created by templates
-that are managed by the router.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/configuring-ember/embedding-applications/">http://emberjs.com/guides/configuring-ember/embedding-applications/</a></p>
 
-<p>But what if you have an Ember.js app that you need to embed into an
-existing page, or run alongside other JavaScript frameworks?</p>
-<h3 class='anchorable-toc' id='toc_changing-the-root-element'>Changing the Root Element</h3>
-<p>By default, your application will render the <a href="/guides/application/the-application-template">application
-template</a> and attach it to
-the document&#39;s <code>body</code> element.</p>
+<p>中英对照：<a href="/bilingual_guides/configuring-ember/embedding-applications/">/bilingual_guides/configuring-ember/embedding-applications/</a></p>
+<h2 class='anchorable-toc' id='toc_'>嵌入式应用</h2>
+<p>大多数情况下，应用所有的UI都将通过路由器管理的模板来创建。</p>
 
-<p>You can tell the application to append the application template to a
-different element by specifying its <code>rootElement</code> property:</p>
+<p>但是如果需要将一个Ember.js应用嵌入一个现有的网页，与其他的Javascript框架共存应该怎么做呢？</p>
+<h3 class='anchorable-toc' id='toc_'>改变根元素</h3>
+<p>缺省情况下，应用将渲染<a href="/guides/application/the-appliation-template">应用模板</a>到网页的<code>body</code>元素中。</p>
+
+<p>通过指定<code>rootElement</code>属性可以将应用模板渲染到其他的元素中：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -499,13 +497,9 @@ different element by specifying its <code>rootElement</code> property:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>This property can be specified as either an element or a
-<a href="http://api.jquery.com/category/selectors/">jQuery-compatible selector
-string</a>.</p>
-<h3 class='anchorable-toc' id='toc_disabling-url-management'>Disabling URL Management</h3>
-<p>You can prevent Ember from making changes to the URL by <a href="/guides/routing/specifying-the-location-api">changing the
-router&#39;s <code>location</code></a> to
-<code>none</code>:</p>
+<p><code>rootElement</code>可以通过一个元素来指定，也可以通过<a href="http://api.jquery.com/category/selectors">jQuery兼容的选择字符串</a>来指定。</p>
+<h3 class='anchorable-toc' id='toc_url'>禁用URL管理</h3>
+<p>通过将<a href="/guides/routing/specifying-the-location-api">路由的<code>location</code></a>设置为<code>none</code>来禁止Ember改变URL：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
