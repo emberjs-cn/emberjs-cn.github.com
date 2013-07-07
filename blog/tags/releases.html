@@ -107,6 +107,8 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a></li>
+        
           <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
@@ -165,6 +167,28 @@
         
 <h1>Releases</h1>
 
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a> &ndash; <time>Jul 06, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>Ember.js 1.0 RC6 发布，可以在官方网站<a href="http://builds.emberjs.com">builds.emberjs.com</a>下载。本次发布主要有个大的更新：</p>
+
+<ul>
+<li>路由器更新</li>
+<li>Ember组件</li>
+</ul>
+
+<p><strong><em>路由更新</em></strong></p>
+
+<p>最大的修改就是路由器更新（或“路由整容”），围绕两个方面的主要问题：第一是基于URL的转换与<code>transitionTo</code>的语义不一致。第二是异步支持不够好，使得很难在路由入口的地方实现一些禁止和延时的操作，比如身份验证和异步代码加载。</p>
+
+<p>Ember现在统一了URL改变和<code>transitionTo</code>的语义，并且采用了Promise来增强异步行为。</p>
+
+    <a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">更多内容...</a>
+  </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a> &ndash; <time>Jun 01, 2013</time></span></h2>
     

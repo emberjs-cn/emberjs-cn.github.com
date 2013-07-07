@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 第六期周报</title>
+    <title>Ember.js - Ember.js 1.0.0-rc6发布</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -80,7 +80,7 @@
     
   </head>
 
-  <body class="blog blog_2013 blog_2013_05 blog_2013_05_30 blog_2013_05_30_ember-js-weekly">
+  <body class="blog blog_2013 blog_2013_07 blog_2013_07_06 blog_2013_07_06_ember-js-1-0-0-rc6">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -166,26 +166,50 @@
       
       <div id="content" class="has-sidebar">
           <article class="blog-post">
-    <h1>第六期周报</h1>
+    <h1>Ember.js 1.0.0-rc6发布</h1>
     
-      <h3 class="blog-post-author">作者： Tower He &ndash; <time>May 30, 2013</time></h3>
+      <h3 class="blog-post-author">作者： Tower He &ndash; <time>Jul 06, 2013</time></h3>
     
 
-    <p>本期周报主要介绍如何搭建Ember.js应用的开发环境。</p>
-<h3 class='anchorable-toc' id='toc_'>读物</h3><h4 class='anchorable-toc' id='toc_a-href-http-www-thomasboyt-com-2013-05-02-announcing-charcoal-html-charcoal-ember-a'><a href="http://www.thomasboyt.com/2013/05/02/announcing-charcoal.html">使用Charcoal创建Ember项目</a></h4>
-<p>Charcoal是一个Yeoman的生成器，用于创建Ember项目的基本目录结构和文件。</p>
-<h4 class='anchorable-toc' id='toc_a-href-http-blog-embed-ly-post-46586649344-introduction-to-ember-development-ember-a'><a href="http://blog.embed.ly/post/46586649344/introduction-to-ember-development">如何进行Ember开发</a></h4>
-<p>Embedly在其产品中使用了Ember进行开发，在开发过程终于到了许多问题。本文主要介绍了如何构建一个开发Ember应用基础环境。</p>
-<h3 class='anchorable-toc' id='toc_'>库、代码和工具</h3><h4 class='anchorable-toc' id='toc_a-href-https-github-com-yeoman-generator-ember-generator-ember-a'><a href="https://github.com/yeoman/generator-ember">generator-ember</a></h4>
-<p>Yeoman的Ember生成器，用来构建一个Ember的“Hello World”应用。</p>
-<h4 class='anchorable-toc' id='toc_a-href-https-github-com-zigomir-ember-skeleton-ember-skeleton-a'><a href="https://github.com/zigomir/ember-skeleton">ember-skeleton</a></h4>
-<p>ember-skeleton主要关注在开发的过程中实现在线重新载入，支持CoffeeScript，以及支持模板的预编译等。</p>
-<h4 class='anchorable-toc' id='toc_a-href-https-github-com-lsdafjklsd-grunt-ember-boilerplate-grunt-ember-boilerplate-a'><a href="https://github.com/lsdafjklsd/grunt-ember-boilerplate">grunt-ember-boilerplate</a></h4>
-<p>grunt-ember-boilerplate中几乎涵盖了在开发Ember应用过程中会遇到和用到的所有相关技术。包括：Handlebars预编译、基于QUnit的集成测试、生成基础目录结构、commonjs模块、CoffeeScript、Stylus for CSS、Normalize.css、生成部署的预编译指令和本地开发的动态重载。</p>
-<h4 class='anchorable-toc' id='toc_a-href-https-github-com-thomasboyt-charcoal-charcoal-a'><a href="https://github.com/thomasboyt/charcoal">charcoal</a></h4>
-<p>一个Fork自<a href="https://github.com/yeoman/generator-ember">generator-ember</a>的Yeoman的Ember生成器。</p>
-<h4 class='anchorable-toc' id='toc_a-href-https-github-com-emberjs-ember-rails-ember-rails-a'><a href="https://github.com/emberjs/ember-rails">ember-rails</a></h4>
-<p>ember-rails使得Ember在Rails 3.1+应用中得以使用。其可以将Handlebars模板在编译assets的时候进行预编译。</p>
+    <p>Ember.js 1.0 RC6 发布，可以在官方网站<a href="http://builds.emberjs.com">builds.emberjs.com</a>下载。本次发布主要有个大的更新：</p>
+
+<ul>
+<li>路由器更新</li>
+<li>Ember组件</li>
+</ul>
+
+<p><strong><em>路由更新</em></strong></p>
+
+<p>最大的修改就是路由器更新（或“路由整容”），围绕两个方面的主要问题：第一是基于URL的转换与<code>transitionTo</code>的语义不一致。第二是异步支持不够好，使得很难在路由入口的地方实现一些禁止和延时的操作，比如身份验证和异步代码加载。</p>
+
+<p>Ember现在统一了URL改变和<code>transitionTo</code>的语义，并且采用了Promise来增强异步行为。</p>
+
+<p>此外，路由的转换被提升到最高级别，并且为其添加了新的钩子，可以实现禁止或者修饰转换：</p>
+
+<p><code>willTransition</code>：无论什么时候一个转换将发生时将触发该钩子。
+<code>beforeModel</code>/<code>model</code>/<code>afterModel</code>：这些钩子在异步验证期间被触发。</p>
+
+<p>最后，还有一个<code>error</code>事件，当无论什么时候，如果出现拒绝的承诺或者在<code>beforeModel</code>/<code>model</code>/<code>afterModel</code>中有错误被抛出都会出发该事件。</p>
+
+<p>更多的关于路由新特性的介绍，请参看：</p>
+
+<ul>
+<li><a href="https://machty.s3.amazonaws.com/ember-facelift-presentation/index.html#/1">新路由概述（Alex Matchneer六月在Ember
+NYC见面会上）</a></li>
+<li><a href="https://gist.github.com/machty/5647589">使用实例</a></li>
+<li><a href="http://www.embercasts.com/episodes/client-side-authentication-part-2">客户端身份验证（二）</a></li>
+</ul>
+
+<p><strong><em>Ember组件</em></strong></p>
+
+<p>另外一个重要的改变就是Ember组件，其采用了Web组件的推动创建高层次的可重用的页面元素目标。</p>
+
+<p>Ember组件由一个<code>模板</code>和一个<code>视图</code>构成，其封装了<code>模板</code>的属性的访问和操作。所有外部构建的引用通过传递给<code>视图</code>的上下文信息来处理。组件可以通过自定义子类来实现。</p>
+
+<p>Ember组件命名惯例：</p>
+
+<p>1）<code>模板</code>名以&#39;components/&#39;开头；
+2）组件名称必须包含&#39;-&#39;（这与Web组件标准保持一致，可以避免与包裹HTML元素的内置控件发生冲突）。例如，一个组件可能被命名为<code>&#39;radio-button&#39;</code>。它的<code>模板</code>就是<code>&#39;components/radio-button&#39;</code>，在其他的<code>模板</code>中用<code>{{radio-button}}</code>调用。</p>
 
 
     <hr>
