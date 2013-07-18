@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 绑定</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_object-model bilingual_guides_object-model_bindings bilingual_guides_object-model_bindings_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">模型生命周期</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">The Fixture Adapter</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">REST适配器</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/testing/integration">Testing</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">Integration Testing</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    
+        <h1>绑定 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/object-model/bindings.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/bindings/">http://emberjs.com/guides/object-model/bindings/</a></p>
+<h2 class='anchorable-toc' id='toc_bindings'>Bindings</h2><h2 class='anchorable-toc' id='toc_'>绑定</h2>
+<p>A binding creates a link between two properties such that when one changes, the
+other one is updated to the new value automatically. Bindings can connect
+properties on the same object, or across two different objects. Unlike most other
+frameworks that include some sort of binding implementation, bindings in
+Ember.js can be used with any object, not just between views and models.</p>
+
+<p>一个绑定在两个属性之间建立了一个连接，当其中一个发生改变时，另外一个将自动更新为新的值。绑定连接同一对象中属性，也可以连接不同对象的属性。不同于其他一些也实现了类似绑定的框架，Ember.js中的绑定可以在任意对象中使用，而并不紧紧局限于视图和模型。</p>
+
+<p>The easiest way to create a two-way binding is by creating a new property
+with the string <code>Binding</code> at the end, then specifying a path from the global scope:</p>
+
+<p>建立一个双向的关联最简单的方法是添加一个具有相同名称，但以<code>Binding</code>为后缀的新属性，并指定一个从全局域开始的路径：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.wife = Ember.Object.create({
+  <span class="key">householdIncome</span>: <span class="integer">80000</span>
+});
+
+App.husband = Ember.Object.create({
+  <span class="key">householdIncomeBinding</span>: <span class="string"><span class="delimiter">'</span><span class="content">App.wife.householdIncome</span><span class="delimiter">'</span></span>
+});
+
+App.husband.get(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>); <span class="comment">// 80000</span>
+
+<span class="comment">// Someone gets raise.</span>
+App.husband.set(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>, <span class="integer">90000</span>);
+App.wife.get(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>); <span class="comment">// 90000</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that bindings don&#39;t update immediately. Ember waits until all of your
+application code has finished running before synchronizing changes, so you can
+change a bound property as many times as you&#39;d like without worrying about the
+overhead of syncing bindings when values are transient.</p>
+
+<p>需要注意的是绑定并不会在发生变化时立即得到更新。Ember.js将等待应用代码全部执行完毕后才对变更进行同步，因此可以随意对一个绑定的属性进行修改，而无需担心会引发无止境的同步。</p>
+<h2 class='anchorable-toc' id='toc_one-way-bindings'>One-Way Bindings</h2><h2 class='anchorable-toc' id='toc_'>单向绑定</h2>
+<p>A one-way binding only propagates changes in one direction. Usually, one-way
+bindings are just a performance optimization and you can safely use
+the more concise two-way binding syntax (as, of course, two-way bindings are
+de facto one-way bindings if you only ever change one side).</p>
+
+<p>单向绑定顾名思义只会向一个方向传播更新。通常情况下，使用单向绑定只是为了优化性能，其实完全可以使用更为简洁的双向绑定的语法来实现单向绑定（因为如果一个双向绑定只有一端会发生变化的话，其实际上就是一个单向绑定）。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+  <td class="code"><pre>App.user = Ember.Object.create({
+  <span class="key">fullName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kara Gates</span><span class="delimiter">&quot;</span></span>
+});
+
+App.userView = Ember.View.create({
+  <span class="key">userNameBinding</span>: Ember.Binding.oneWay(<span class="string"><span class="delimiter">'</span><span class="content">App.user.fullName</span><span class="delimiter">'</span></span>)
+});
+
+<span class="comment">// Changing the name of the user object changes</span>
+<span class="comment">// the value on the view.</span>
+App.user.set(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Krang Gates</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// App.userView.userName will become &quot;Krang Gates&quot;</span>
+
+<span class="comment">// ...but changes to the view don't make it back to</span>
+<span class="comment">// the object.</span>
+App.userView.set(<span class="string"><span class="delimiter">'</span><span class="content">userName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Truckasaurus Gates</span><span class="delimiter">&quot;</span></span>);
+App.user.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>); <span class="comment">// &quot;Krang Gates&quot;</span>
+</pre></td>
+</tr></table>
+</div></div>
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/object-model/observers">
+            ← 观察器
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/object-model/reopening-classes-and-instances">
+          重新打开类和实例 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

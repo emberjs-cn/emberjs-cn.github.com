@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - </title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="blog blog_tags blog_tags_releases">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          <ol id='toc-list'>
+  
+    <li class='level-1'>
+      <a href="/blog/tags/recent-posts.html">最近文章</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/31/ember-baby-steps.html">Ember入门实践</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html">Emberjs.cn域名正式启用</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/19/why-discourse-uses-ember.html">为什么Discourse选择Ember.JS</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/18/come-into-being.html">EmberJS.CN之诞生</a></li>
+        
+      </ol>
+    </li>
+  
+  
+    <li class='level-1'>
+      <a href="/blog/tags/weekly.html">Ember.js周报</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/06/14/ember-js-weekly.html">第七期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/30/ember-js-weekly.html">第六期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/24/ember-js-weekly.html">第五期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/17/ember-js-weekly.html">第四期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/09/ember-js-weekly.html">第三期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a></li>
+        
+      </ol>
+    </li>
+  
+</ol>
+
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+        
+<h1>Releases</h1>
+
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a> &ndash; <time>Jul 06, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>Ember.js 1.0 RC6 发布，可以在官方网站<a href="http://builds.emberjs.com">builds.emberjs.com</a>下载。本次发布主要有个大的更新：</p>
+
+<ul>
+<li>路由器更新</li>
+<li>Ember组件</li>
+</ul>
+
+<p><strong><em>路由更新</em></strong></p>
+
+<p>最大的修改就是路由器更新（或“路由整容”），围绕两个方面的主要问题：第一是基于URL的转换与<code>transitionTo</code>的语义不一致。第二是异步支持不够好，使得很难在路由入口的地方实现一些禁止和延时的操作，比如身份验证和异步代码加载。</p>
+
+<p>Ember现在统一了URL改变和<code>transitionTo</code>的语义，并且采用了Promise来增强异步行为。</p>
+
+    <a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a> &ndash; <time>Jun 01, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。</p>
+
+<p>RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：</p>
+
+<ul>
+<li>修复了因为改动了运行循环计划而导致的性能问题。</li>
+<li>修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。</li>
+<li>包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。</li>
+</ul>
+
+<p>详细的修订记录：</p>
+
+    <a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a> &ndash; <time>Apr 23, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tiffany Zhou
+      </h5>
+    
+    <p><code>Ember.js</code>
+1.0.0-rc3发布了。正如在发布rc1时曾经提到过的那样，在1.0版本结束之前的所有版本都只会做bug修复和代码完善，不会有其他重大变化。</p>
+<h3 class='anchorable-toc' id='toc_'>性能</h3>
+<p>自RC2以来，Embe.js改善了一系列性能问题。</p>
+
+<ul>
+<li>当相关联的多个子视图准备做插入时，不再像以前那样一个一个添加，而是批量插入。</li>
+<li>删除对象改成异步操作，这样做可以保证在删除一个对象的时候，与其相关联的对象不会出现不必要的扰动。</li>
+<li>减少了在视图渲染时分配的对象的数量。</li>
+</ul>
+<h3 class='anchorable-toc' id='toc_'>测试</h3>
+<p>为<code>App#reset</code>做了大量的修复以及改善工作，现在，当它被调用的时候，应该会正确的清理应用程序状态。通常情况下，这只用于集成测试。</p>
+
+    <a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a> &ndash; <time>Mar 29, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>今天<code>Ember.js</code>
+1.0.0-rc2发布了，改版本主要完成了Bug的修订和文档的增强，另外也改进了一些内部的处理逻辑，使<code>Ember.js</code>更加趋于稳定。</p>
+
+<p>变更记录：</p>
+
+<ul>
+<li>改进了应用初始化过程，废弃了<code>Ember.Application#initialize</code>，使用<code>deferReadiness</code>和<code>advanceReadiness</code>取代。</li>
+<li>添加<code>Ember.Application#then</code>，其如同<code>isReady</code>钩子一样触发。</li>
+<li>添加更多<code>Ember.computed</code>宏。</li>
+</ul>
+
+    <a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a> &ndash; <time>Mar 27, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>为了更好的为大家提供信息，我们对指南的目录结构进行了调整。原来的中英对照指南改为<a href="http://emberjs.cn/guides">中文指南</a>，并将原来的<a href="http://emberjs.cn/bilingual_guides">中英双语对照指南</a>独立开来。这样我们可以更加方便的保持中文指南与官方的指南同步。但这会影响到现在已经在进行的翻译工作，需要各位根据最新的目录结构进行调整，由此带来的不便，敬请原谅！</p>
+
+<p>经过调整后，我们提供了独立的中英双语对照指南，这也就成为了我们翻译工作新的工作目录（<code>source/bilingual_guides</code>）。由于目录结构发生了改变，我们翻译工作的流程也随之需要进行一些调整。调整后的翻译步骤为：</p>
+
+    <a href="/blog/2013/03/27/changed-the-directories-of-guides.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a> &ndash; <time>Mar 11, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tower He
+      </h5>
+    
+    <p>大新闻，<code>Ember.js</code>团队已经开始了发布RC2的相关工作。</p>
+
+<p>今天看到@wycats在<a href="https://github.com/emberjs/website">website</a>上创建了一个rc2-release的分支，并且在一篇即将发布的文章中说已经开始了<code>Ember.js</code> RC2发布的的相关工作。这说明了什么呢？这说明了我们离1.0正式版的发布又近了一步。这实在是一个不得不让人为之兴奋的消息。</p>
+
+<p>如RC1发布时所声明的一样，之后发布的版本只会做一些问题修正和增强性改变，不会进行破坏性变更。那么我们看看RC2会给我们带来些什么呢？</p>
+
+    <a href="/blog/2013/03/11/ember-js-1-0-rc2.html">更多内容...</a>
+  </article>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

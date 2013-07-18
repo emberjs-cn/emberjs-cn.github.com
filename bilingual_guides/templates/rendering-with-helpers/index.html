@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 用助手来渲染</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var backToTop = $('#back-to-top');
+        var doc = $(document);
+        var offset = backToTop.offset();
+        var marginTop = 90;
+        var showing = false;
+
+        positionBackToTop = function(reset) {
+          if (reset) {
+            backToTop.css({
+              top: '',
+              position: ''
+            });
+            offset = backToTop.offset();
+          }
+
+          if (!showing && doc.scrollTop() > offset.top+200) {
+            showing = true;
+            backToTop.css({
+              position: 'fixed',
+              top: 20,
+              left: offset.left,
+              display:' block'
+            });
+          } else if (showing && doc.scrollTop() <= offset.top+200) {
+            showing = false;
+            backToTop.css({
+              display:'none'
+            });
+          }
+        };
+
+        if (backToTop.length) {
+          backToTop.on('click', function(evt) {
+            $('html,body').animate({scrollTop: 0}, 200);
+            return false;
+          });
+
+          doc.on('scroll', function() {
+            positionBackToTop();
+          });
+        }
+
+        $('.bx-wrapper, .bx-window').width(940);
+      });
+    </script>
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_templates bilingual_guides_templates_rendering-with-helpers bilingual_guides_templates_rendering-with-helpers_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/blog">博客</a></li>
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/model-lifecycle">模型生命周期</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">The Fixture Adapter</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-rest-adapter">REST适配器</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/testing/integration">Testing</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">Integration Testing</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+
+  <div class="chapter">
+    
+        <h1>用助手来渲染 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/templates/rendering-with-helpers.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <h2 class='anchorable-toc' id='toc_rendering-with-helpers'>Rendering with Helpers</h2><h2 class='anchorable-toc' id='toc_'>用助手来渲染</h2>
+<p>Ember provides several helpers that allow you to render other views and templates in different ways.</p>
+
+<p>Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
+<h3 class='anchorable-toc' id='toc_the-code-partial-code-helper'>The <code>{{partial}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-partial-code'><code>{{partial}}</code> 助手</h3>
+<p><code>{{partial}}</code> takes the template to be rendered as an argument, and renders that template in place.</p>
+
+<p><code>{{partial}}</code>接收一个模板作为其参数，然后恰当地渲染这个模板</p>
+
+<p><code>{{partial}}</code> does not change context or scope.  It simply drops the given template into place with the current scope.  </p>
+
+<p><code>{{partial}}</code>不改变上下文或作用域。它只是简单地在当前作用域下将指定的模板渲染出来。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">_author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">author.lastName</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">partial</span> <span class="error">&quot;</span><span class="attribute-name">author</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div></div><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Why You Should Use Ember.JS<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span>Because it's awesome!<span class="tag">&lt;/div&gt;</span>
+  Written by Yehuda Katz
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>The partial&#39;s <code>data-template-name</code> must start with an underscore (e.g.
+<code>data-template-name=&#39;_author&#39;</code> or <code>data-template-name=&#39;foo/_bar&#39;</code>)</p>
+
+<p>Partial的<code>data-template-name</code>必须以下划线开头（例如：<code>data-template-name=&#39;_author&#39;</code>或者<code>data-template-name=&#39;foo/_bar&#39;</code>）</p>
+
+<p>Note: in cases where you may have used <code>{{template}}</code> in the past, you should likely use <code>{{partial}}</code> instead.</p>
+
+<p>注意：如果你之前用过 <code>{{template}}</code> 助手，那么，现在你应该使用 {{partial}}助手来代替它了。</p>
+<h3 class='anchorable-toc' id='toc_the-code-view-code-helper'>The <code>{{view}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-view-code'><code>{{view}}</code> 助手</h3>
+<p>This helper works like the partial helper, except instead of providing a template to be rendered within the current template, you provide a view class.  The view controls what template is rendered.</p>
+
+<p>此助手和 partial 类似，不同的是你需要提供一个视图类，而不是在当前模板内提供一个待渲染的模板。这个视图类控制哪个模板将被渲染，如下所示：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>App.AuthorView = Ember.View.extend({
+  <span class="comment">// We are setting templateName manually here to the default value</span>
+  <span class="key">templateName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>,
+
+  <span class="comment">// A fullName property should probably go on App.Author, </span>
+  <span class="comment">// but we're doing it here for the example</span>
+  <span class="key">fullName</span>: (<span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>).get(<span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>) + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>).get(<span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>);
+  }).property(<span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>)
+})
+</pre></td>
+</tr></table>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view.fullName</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span> <span class="attribute-name">authorBinding</span>=<span class="attribute-value">author</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div></div><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Why You Should Use Ember.JS<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span>Because it's awesome!<span class="tag">&lt;/div&gt;</span>
+  Written by Yehuda Katz
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>When using <code>{{partial &quot;author&quot;}}</code>:</p>
+
+<ul>
+<li>No instance of App.AuthorView will be created</li>
+<li>The given template will be rendered</li>
+</ul>
+
+<p>当使用 <code>{{partial &quot;author&quot;}}</code> 时：
+* 不会创建 App.AuthorView 的实例
+* 会渲染指定模板</p>
+
+<p>When using <code>{{view App.AuthorView}}</code>:</p>
+
+<ul>
+<li>An instance of App.AuthorView will be created</li>
+<li>It will be rendered here, using the template associated with that view (the default template being &quot;author&quot;)</li>
+</ul>
+
+<p>当使用 <code>{{view App.AuthorView}}</code> 时：
+* 会创建 App.AuthorView 的实例
+* 会渲染与指定视图相关联的模板(默认的模板是 &quot;author&quot;)</p>
+
+<p>For more information, see <a href="/guides/views/inserting-views-in-templates">Inserting Views in Templates</a></p>
+
+<p>更多信息，请见<a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a></p>
+<h3 class='anchorable-toc' id='toc_the-code-render-code-helper'>The <code>{{render}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-render-code'><code>{{render}}</code> 助手</h3>
+<p><code>{{render}}</code> takes two parameters:</p>
+
+<ul>
+<li>The first parameter describes the context to be setup</li>
+<li>The optional second parameter is a model, which will be passed to the controller if provided</li>
+</ul>
+
+<p><code>{{render}}</code> 需要两个参数：</p>
+
+<ul>
+<li>第一个参数描述需要建立的上下文</li>
+<li>第二个参数是可选参数，它接收一个模型，如果提供了这个参数，就会被传递给控制器。</li>
+</ul>
+
+<p><code>{{render}}</code> does several things:</p>
+
+<ul>
+<li>When no model is provided it gets the singleton instance of the corresponding controller</li>
+<li>When a model is provided it gets a unique instance of the corresponding controller</li>
+<li>Renders the named template using this controller</li>
+<li>Sets the model of the corresponding controller </li>
+</ul>
+
+<p><code>{{render}}</code> 可以完成以下几个功能：</p>
+
+<ul>
+<li>如果没有提供model，那么将使用对应controller的单例实例</li>
+<li>如果提供了model，那么将使用对应controller的一个独立实例</li>
+<li>用此控制器渲染命名模板</li>
+<li>设置相应控制器的模型</li>
+</ul>
+
+<p>Modifying the post / author example slightly:</p>
+
+<p>稍微修改一下 post / author 的例子：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">author</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  Written by </span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">firstName</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">lastName</span><span class="inline-delimiter">}}</span></span>. 
+  Total Posts: <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">postCount</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
+<span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">render</span> <span class="error">&quot;</span><span class="attribute-name">author</span><span class="error">&quot;</span> <span class="attribute-name">author</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.AuthorController = Ember.ObjectController.extend({
+  <span class="function">postCount</span>: <span class="keyword">function</span>() { 
+    <span class="keyword">return</span> App.Post.countForAuthor(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">model</span><span class="delimiter">&quot;</span></span>));
+  }.property(<span class="string"><span class="delimiter">&quot;</span><span class="content">model</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">App.Post.@each.author</span><span class="delimiter">&quot;</span></span>)
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>In this example, render will:</p>
+
+<ul>
+<li>Get an instance of App.AuthorView if that class exists, otherwise uses a default generated view</li>
+<li>Use the corresponding template (in this case the default of &quot;author&quot;)</li>
+<li>Get (or generate) the singleton instance of AuthorController</li>
+<li>Set the AuthorController&#39;s model to the 2nd argument passed to render, here the author field on the post</li>
+<li>Render the template in place, with the context created in the previous steps.</li>
+</ul>
+
+<p>在此例中，render 助手会：</p>
+
+<ul>
+<li>如果 App.AuthorView 存在，获取它的一个实例，否则就使用默认生成的视图</li>
+<li>使用相应的模板（此处为默认的 &quot;author&quot;）</li>
+<li>获取（或生成）AuthorController 的单体实例</li>
+<li>设置 AuthorController的模型为{{render}}助手的第二个参数，此处为 post 里的 author 字段</li>
+<li>根据前几步创建的上下文，恰当地渲染模板</li>
+</ul>
+
+<p><code>{{render}}</code> does not require the presence of a matching route.  </p>
+
+<p><code>{{render}}</code> is similar to <code>{{outlet}}</code>. Both tell Ember to devote this portion of the page to something.</p>
+
+<p><code>{{outlet}}</code>: The router determines the route and sets up the appropriate controllers/views/models.
+<code>{{render}}</code>: You specify (directly and indirectly) the appropriate controllers/views/models.</p>
+
+<p><code>{{render}}</code> 不需要匹配路由。</p>
+
+<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember</code>将这一部分页面用来渲染其他模板。</p>
+
+<p><code>{{outlet}}</code>: 路由器决定路由，并且创建合适的控制器/视图/模型
+<code>{{render}}</code>: 你（直接或间接地）指定合适的控制器/视图/模型</p>
+
+<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route when not specifying a model.  For that you&#39;ll need <code>{{control}}</code>.</p>
+
+<p>注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
+<h3 class='anchorable-toc' id='toc_the-code-control-code-helper'>The <code>{{control}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-control-code'><code>{{control}}</code> 助手</h3>
+<p><code>{{control}}</code> works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.</p>
+
+<p>This helper is currently under heavy development, and will likely change soon.</p>
+
+<p><code>{{control}}</code> 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。</p>
+
+<p>此助手目前仍在开发中，以后极有可能变化很大。</p>
+
+<p>Note: The <code>{{control}}</code> helper is currently disabled by default. To enable it set <code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code> before requiring Ember.</p>
+
+<p>注意：<code>{{control}}</code>助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：<code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code>。</p>
+<h3 class='anchorable-toc' id='toc_comparison-table'>Comparison Table</h3><h3 class='anchorable-toc' id='toc_'>比较表</h3><h4 class='anchorable-toc' id='toc_general'>General</h4><h4 class='anchorable-toc' id='toc_'>整体概念性比较</h4>
+<table>
+  <thead>
+  <tr>
+    <th>Helper</th>
+    <th>Template</th>
+    <th>Model</th>
+    <th>View</th>
+    <th>Controller</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>{{partial}}</code></td>
+    <td>Specified Template</td>
+    <td>Current Model</td>
+    <td>Current View</td>
+    <td>Current Controller</td>
+  </tr>
+  <tr>
+    <td><code>{{view}}</code></td>
+    <td>View's Template</td>
+    <td>Current Model</td>
+    <td>Specified View</td>
+    <td>Current Controller</td>
+  </tr>
+  <tr>
+    <td><code>{{render}}</code></td>
+    <td>View's Template</td>
+    <td>Specified Model</td>
+    <td>Specified View</td>
+    <td>Specified Controller</td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>助手</th>
+    <th>模板</th>
+    <th>模型</th>
+    <th>视图</th>
+    <th>控制器</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>{{partial}}</code></td>
+    <td>指定模板</td>
+    <td>当前模型</td>
+    <td>当前视图</td>
+    <td>当前控制器</td>
+  </tr>
+  <tr>
+    <td><code>{{view}}</code></td>
+    <td>视图的模板</td>
+    <td>当前模型</td>
+    <td>指定视图</td>
+    <td>当前控制器</td>
+  </tr>
+  <tr>
+    <td><code>{{render}}</code></td>
+    <td>视图的模板</td>
+    <td>指定模型</td>
+    <td>指定视图</td>
+    <td>指定控制器</td>
+  </tr>
+  </tbody>
+</table>
+<h4 class='anchorable-toc' id='toc_specific'>Specific</h4><h4 class='anchorable-toc' id='toc_'>基于特定实例的比较</h4>
+<table>
+  <thead>
+  <tr>
+    <th>助手</th>
+    <th>模板</th>
+    <th>模型</th>
+    <th>视图</th>
+    <th>控制器</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>{{partial author}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Post</td>
+    <td><code>App.PostView</code></td>
+    <td><code>App.PostController</code></td>
+  </tr>
+  <tr>
+    <td><code>{{view App.AuthorView}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Post</td>
+    <td><code>App.AuthorView</code></td>
+    <td><code>App.PostController</code></td>
+  </tr>
+  <tr>
+    <td><code>{{render author author}}</code></td>
+    <td><code>author.hbs</code></td>
+    <td>Author</td>
+    <td><code>App.AuthorView</code></td>
+    <td><code>App.AuthorController</code></td>
+  </tr>
+  </tbody>
+</table>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/templates/actions">
+            ← 操作
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/templates/writing-helpers">
+          编写助手方法 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+  <script>
+    $(function(){
+      $("#toc-list .level-1 > a").click(function() {
+        $(this).parent().find('> ol').slideToggle(function() {
+          positionBackToTop(true);
+        });
+
+        return false;
+      });
+
+      $(function(){
+        $('.anchorable-toc').each(function(){
+          var toc = $(this),
+          id = toc.attr('id'),
+          href = "#" + id,
+          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
+
+          toc.prepend(anchor);
+        });
+      });
+
+    });
+  </script>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>
