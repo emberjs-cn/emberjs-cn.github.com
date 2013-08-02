@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Passing Properties to a Component</title>
+    <title>Ember.js - 传递属性</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -306,31 +306,31 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/components">Components</a>
+            <a href="/bilingual_guides/components">组件</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/bilingual_guides/components">Introduction</a>
+              <a href="/bilingual_guides/components">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/defining-a-component">Defining a Component</a>
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/components/passing-properties-to-a-component">Passing Properties to a Component</a>
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/wrapping-content-in-a-component">Wrapping Content in a Component</a>
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/customizing-a-components-element">Customizing a Component's Element</a>
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">Handling User Interaction with Actions</a>
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -514,16 +514,24 @@
 
   <div class="chapter">
     
-        <h1>Passing Properties to a Component 
+        <h1>传递属性 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/components/passing-properties-to-a-component.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <p>By default, a component does not have access to properties in the
+    <p>英文原文：<a href="http://emberjs.com/guides/components/passing-properties-to-a-component/">http://emberjs.com/guides/components/passing-properties-to-a-component/</a></p>
+
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/">http://emberjs.cn/bilingual_guides/components/passing-properties-to-a-component/</a></p>
+
+<p>By default, a component does not have access to properties in the
 template scope in which it is used.</p>
+
+<p>默认情况下，组件不能访问模板作用域下的属性。</p>
 
 <p>For example, imagine you have a <code>blog-post</code> component that is used to
 display a blog post:</p>
+
+<p>例如，假设有一个用于显示一篇博客的<code>blog-post</code>组件：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -540,7 +548,11 @@ display a blog post:</p>
 <p>You can see that it has a <code>{{title}}</code> Handlebars expression to print the
 value of the <code>title</code> property inside the <code>&lt;h1&gt;</code>.</p>
 
+<p>其中有一个Handlebars表达式<code>{{title}}</code>，用于将<code>title</code>属性的值输出到<code>&lt;h1&gt;</code>里。</p>
+
 <p>Now imagine we have the following template and route:</p>
+
+<p>现在假设有如下的模板和路由：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -574,10 +586,14 @@ value of the <code>title</code> property inside the <code>&lt;h1&gt;</code>.</p>
 template) displays the <code>title</code> property, but the second <code>&lt;h1&gt;</code> (from
 inside the component) is empty.</p>
 
+<p>运行这段代码，第一个<code>&lt;h1&gt;</code>（在外部模板中）显示了<code>title</code>属性，当时第二个<code>&lt;h1&gt;</code>（在组件中）的则是空的。</p>
+
 <p><a class="jsbin-embed" href="http://jsbin.com/ufedet/2/embed?live">JS Bin</a></p>
 
 <p>We can fix this by making the <code>title</code> property available to the
 component:</p>
+
+<p>让<code>title</code>属性在组件中可用，可以修复这个问题。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -588,12 +604,16 @@ component:</p>
 <p>This will make the <code>title</code> property in the outer template scope
 available inside the component&#39;s template using the same name, <code>title</code>.</p>
 
+<p>这使得外部模板作用域下的<code>title</code>属性在组件模板有效，且有相同的名称<code>title</code>。</p>
+
 <p><a class="jsbin-embed" href="http://jsbin.com/ufedet/3/embed?live">JS Bin</a></p>
 
 <script src="http://static.jsbin.com/js/embed.js"></script>
 
 <p>If, in the above example, the model&#39;s <code>title</code> property was instead
 called <code>name</code>, we would change the component usage to:</p>
+
+<p>还是上面的例子，如果模型的<code>title</code>属性的名称为<code>name</code>，那么组件的使用需要修改为：</p>
 <div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -609,11 +629,15 @@ called <code>name</code>, we would change the component usage to:</p>
 a named property in the component scope, with the syntax
 <code>componentProperty=outerProperty</code>.</p>
 
+<p>其实际上，就是采用类似<code>componentProperty=outerProperty</code>的语法，将外部作用域的一个属性通过命名属性绑定到了组件的作用域。</p>
+
 <p>It is important to note that the value of these properties is bound.
 Whether you change the value on the model or inside the component, the
 values stay in sync. In the following example, type some text in the
 text field either in the outer template or inside the component and note
 how they stay in sync.</p>
+
+<p>需要注意的是这些属性是绑定的，无论是在模型或组件中修改了其值，这些值都会被自动同步。在下面的例子中，在文本输入框中输入一些文本，无论是在外部模板还是组件内，或是说明中都被同步了。</p>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/ufedet/5/embed?live">JS Bin</a></p>
 
@@ -621,6 +645,8 @@ how they stay in sync.</p>
 
 <p>You can also bind properties from inside an <code>{{#each}}</code> loop. This will
 create a component for each item and bind it to each model in the loop.</p>
+
+<p>此外，还可以在<code>{{#each}}</code>循环中来绑定属性。这将为每个条目创建一个组件并将在循环中绑定到每个模型。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -640,11 +666,11 @@ create a component for each item and bind it to each model in the loop.</p>
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/components/defining-a-component">
-            ← Defining a Component
+            ← 定义组件
           </a>
          
         <a class="next-guide" href="/bilingual_guides/components/wrapping-content-in-a-component">
-          Wrapping Content in a Component →
+          包裹内容 →
         </a>
       
       </footer>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Components: Defining a Component</title>
+    <title>Ember.js - 组件: 定义组件</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -306,31 +306,31 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/components">Components</a>
+            <a href="/guides/components">组件</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/components">Introduction</a>
+              <a href="/guides/components">介绍</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/components/defining-a-component">Defining a Component</a>
+              <a href="/guides/components/defining-a-component">定义组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/passing-properties-to-a-component">Passing Properties to a Component</a>
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/wrapping-content-in-a-component">Wrapping Content in a Component</a>
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/customizing-a-components-element">Customizing a Component's Element</a>
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/handling-user-interaction-with-actions">Handling User Interaction with Actions</a>
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -516,18 +516,19 @@
 
   <div class="chapter">
     
-        <h1>Defining a Component 
+        <h1>定义组件 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/components/defining-a-component.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <p>To define a component, create a template whose name starts with
-<code>components/</code>. To define a new component <code>{{blog-post}}</code>, for example,
-create a <code>components/blog-post</code> template.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/components/defining-a-component/">http://emberjs.com/guides/components/defining-a-component/</a></p>
 
-<p>If you are including your Handlebars templates inside an HTML file via
-<code>&lt;script&gt;</code> tags, it would look like this:</p>
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/components/defining-a-component/">http://emberjs.cn/bilingual_guides/components/defining-a-component/</a></p>
+
+<p>为了定义一个组件，需要先创建一个名字以<code>components/</code>开始的模板。例如：如果需要定义一个新组建<code>{{blog-post}}</code>，需要创建<code>components/blog-post</code>模板。</p>
+
+<p>如果在HTML文件中使用<code>&lt;script&gt;</code>标签来定义Handlebars模板，模板定义方法如下：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -541,12 +542,9 @@ create a <code>components/blog-post</code> template.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>If you&#39;re using build tools, create a Handlebars file at
-<code>templates/components/blog-post.handlebars</code>.</p>
+<p>如果使用了编译工具，那么应该创建一个名为<code>templates/components/blog-post.handlebars</code>的Handlebars文件。</p>
 
-<p>Having a template whose name starts with <code>components/</code> creates a
-component of the same name. Given the above template, you can now use the
-<code>{{blog-post}}</code> custom element:</p>
+<p>如果存在一个模板以<code>components/</code>开始的模板，那么就创建了一个与模板同名的组件。如果给定了上述的模板，那么就可以使用<code>{{blog-post}}</code>这个自定义元素了。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -562,38 +560,21 @@ component of the same name. Given the above template, you can now use the
 </div></div>
 <p><a class="jsbin-embed" href="http://jsbin.com/ifuxey/1/embed?live,html">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
-<p>Each component, under the hood, is backed by an element. By default,
-Ember will use a <code>&lt;div&gt;</code> element to contain your component&#39;s template.
-To learn how to change the element Ember uses for your component, see
-<a href="/guides/components/customizing-a-components-element">Customizing a Component&#39;s
-Element</a>.</p>
-<h3 class='anchorable-toc' id='toc_defining-a-component-subclass'>Defining a Component Subclass</h3>
-<p>Often times, your components will just encapsulate certain snippets of
-Handlebars templates that you find yourself using over and over. In
-those cases, you do not need to write any JavaScript at all. Just define
-the Handlebars template as described above and use the component that is
-created.</p>
+<p>每个组件都由一个元素组成。默认情况下，Ember使用<code>&lt;div&gt;</code>元素来包裹组件模板。阅读<a href="/guides/components/customizing-a-components-element">Customizing a Component&#39;s Element</a>可以学习如何修改Ember默认使用的元素。</p>
+<h3 class='anchorable-toc' id='toc_'>定义组件子类</h3>
+<p>通常情况下，组件只封装一些会被不停的重复使用的Handlebars模板片段。在这些情况下，不需要编写任何Javascript代码，只需要像之前所述，定义好Handlebars模板，就能使用组件了。</p>
 
-<p>If you need to customize the behavior of the component, however, you&#39;ll
-need to define a subclass of `Ember.Component. For example, you would
-need a custom subclass if you wanted to change a component&#39;s element,
-respond to actions from the component&#39;s template, or manually make
-changes to the component&#39;s element using JavaScript.</p>
+<p>如果需要自定义组件的行为，那么需要定义一个<code>Ember.Component</code>的子类。例如，如果需要改变包裹组件的元素的时候，需要响应组件模板操作的时候，或需要通过Javascript手动修改组件元素的时候，就需要一个自定义的子类。</p>
 
-<p>Ember knows which subclass powers a component based on its name. For
-example, if you have a component called <code>blog-post</code>, you would create a
-subclass called <code>App.BlogPostComponent</code>. If your component was called
-<code>audio-player-controls</code>, the class name would be
-<code>App.AudioPlayerControlsComponent</code>.</p>
+<p>Ember通过子类的命名来确定其对应的组件。例如，如果有一个名为<code>blog-post</code>的组件，那么就应该创建一个名为<code>App.BlogPostComponent</code>的子类。如果组件命名为<code>audio-player-controls</code>，那么子类的命名应该为<code>App.AudioPlayerControlsComponents</code>。</p>
 
-<p>In other words, Ember will look for a class with the camelized name of
-the component, followed by <code>Component</code>.</p>
+<p>换句话说，Ember采用组件名的驼峰形式再加上<code>Component</code>作为后缀的类名，来查找与其对应的类。</p>
 
 <table>
   <thead>
   <tr>
-    <th>Component Name</th>
-    <th>Component Class</th>
+    <th>组件名</th>
+    <th>组件类</th>
   </tr>
   </thead>
   <tr>
@@ -610,11 +591,11 @@ the component, followed by <code>Component</code>.</p>
       <footer>
         
           <a class="previous-guide" href="/guides/components">
-            ← Introduction
+            ← 介绍
           </a>
          
         <a class="next-guide" href="/guides/components/passing-properties-to-a-component">
-          Passing Properties to a Component →
+          传递属性 →
         </a>
       
       </footer>

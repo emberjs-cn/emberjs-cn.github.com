@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Components: Wrapping Content in a Component</title>
+    <title>Ember.js - 组件: 包裹内容</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -306,31 +306,31 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/guides/components">Components</a>
+            <a href="/guides/components">组件</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/components">Introduction</a>
+              <a href="/guides/components">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/defining-a-component">Defining a Component</a>
+              <a href="/guides/components/defining-a-component">定义组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/passing-properties-to-a-component">Passing Properties to a Component</a>
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/components/wrapping-content-in-a-component">Wrapping Content in a Component</a>
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/customizing-a-components-element">Customizing a Component's Element</a>
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/handling-user-interaction-with-actions">Handling User Interaction with Actions</a>
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -516,17 +516,19 @@
 
   <div class="chapter">
     
-        <h1>Wrapping Content in a Component 
+        <h1>包裹内容 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/components/wrapping-content-in-a-component.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <p>Sometimes, you may want to define a component that wraps content
-provided by other templates.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/components/wrapping-content-in-a-component/">http://emberjs.com/guides/components/wrapping-content-in-a-component/</a></p>
 
-<p>For example, imagine we are building a <code>blog-post</code> component that we can
-use in our application to display a blog post:</p>
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/">http://emberjs.cn/bilingual_guides/components/wrapping-content-in-a-component/</a></p>
+
+<p>有时候，可能需要定义一个组件来包裹其他模板提供的内容。</p>
+
+<p>例如，假设正在创建一个用于显示一篇博客的<code>blog-post</code>组件：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -540,8 +542,7 @@ use in our application to display a blog post:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Now, we can use the <code>{{blog-post}}</code> component and pass it properties
-in another template:</p>
+<p>现在可以使用<code>{{blog-post}}</code>组件并且传递其他模板的属性到该组件：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -551,27 +552,15 @@ in another template:</p>
 </div></div>
 <p><a class="jsbin-embed" href="http://jsbin.com/obogub/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
-<p>(See <a href="/guides/components/passing-proprties-to-a-component/">Passing Properties to a
-Component</a> for
-more.)</p>
+<p>（关于如何传递属性给组件，请参看<a href="/guides/components/passing-proprties-to-a-component/">Passing Properties to a Component</a>）</p>
 
-<p>In this case, the content we wanted to display came from the model. But
-what if we want the developer using our component to be able to provide custom
-HTML content?</p>
+<p>在本例中，用于显示的内容来源于模型。那么如果开发者想使用该组件来提供自定义的HTML内容该怎么做呢？</p>
 
-<p>In addition to the simple form you&#39;ve learned so far, components also
-support being used in <strong>block form</strong>. In block form, components can be
-passed a Handlebars template that is rendered inside the component&#39;s
-template wherever the <code>{{yield}}</code> expression appears.</p>
+<p>在已经描述的简单形式之外，组件还支持使用<strong>块</strong>的方式。在块方式下，可以传递一个Handlebars模板给组件，该模板将在组件模板中声明<code>{{yield}}</code>表达式的地方显示。</p>
 
-<p>To use the block form, add a <code>#</code> character to the
-beginning of the component name, then make sure to add a closing tag.
-(See the Handlebars documentation on <a href="http://handlebarsjs.com/#block-expressions">block expressions</a> for more.)</p>
+<p>为了使用块方式，需要在使用组件的时候，在组名前加上<code>#</code>，并确定添加了结束标签。（详细内容参见模板文档中的<a href="http://handlebarsjs.com/#block-expressions">块表达式</a>）。</p>
 
-<p>In that case, we can use the <code>{{blog-post}}</code> component in <strong>block form</strong>
-and tell Ember where the block content should be rendered using the
-<code>{{yield}}</code> helper. To update the example above, we&#39;ll first change the component&#39;s
-template:</p>
+<p>在这种情况下，可以使用<code>{{blog-post}}</code>组件的<strong>块方式</strong>，并使用<code>{{yield}}</code>助手告知Ember块内容将被渲染到什么地方。为了更新上面的例子，首先需要修改组件的模板为：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -585,11 +574,9 @@ template:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>You can see that we&#39;ve replaced <code>{{body}}</code> with <code>{{yield}}</code>. This tells
-Ember that this content will be provided when the component is used.</p>
+<p>由此可见，<code>{{body}}</code>被替换为<code>{{yield}}</code>。这告知Ember这里的内容会在组件使用的时候提供。</p>
 
-<p>Next, we&#39;ll update the template using the component to use the block
-form:</p>
+<p>接下来，更新使用组件的模板采用块方式：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -605,11 +592,9 @@ form:</p>
 </div></div>
 <p><a class="jsbin-embed" href="http://jsbin.com/osulic/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
-<p>It&#39;s important to note that the template scope inside the component
-block is the same as outside. If a property is available in the template
-outside the component, it is also available inside the component block.</p>
+<p>这里需要注意的时，在组件块中的作用域与模板的作用域与外部模板的作用域是相同的。如果一个属性在组件外部的模板有效，那么其在组件块内部也有效。</p>
 
-<p>This JSBin illustrates the concept:</p>
+<p>下面的JSBin展示了这个概念：</p>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/iqocuf/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
@@ -617,11 +602,11 @@ outside the component, it is also available inside the component block.</p>
       <footer>
         
           <a class="previous-guide" href="/guides/components/passing-properties-to-a-component">
-            ← Passing Properties to a Component
+            ← 传递属性
           </a>
          
         <a class="next-guide" href="/guides/components/customizing-a-components-element">
-          Customizing a Component's Element →
+          自定义组件元素 →
         </a>
       
       </footer>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Introduction</title>
+    <title>Ember.js - 介绍</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -306,31 +306,31 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/components">Components</a>
+            <a href="/bilingual_guides/components">组件</a>
             <ol class='selected'>
         
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/components">Introduction</a>
+              <a href="/bilingual_guides/components">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/defining-a-component">Defining a Component</a>
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/passing-properties-to-a-component">Passing Properties to a Component</a>
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/wrapping-content-in-a-component">Wrapping Content in a Component</a>
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/customizing-a-components-element">Customizing a Component's Element</a>
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">Handling User Interaction with Actions</a>
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -514,26 +514,38 @@
 
   <div class="chapter">
     
-        <h1>Introduction 
+        <h1>介绍 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/components.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <p>HTML was designed in a time when the browser was a simple document
+    <p>英文原文：<a href="http://emberjs.com/guides/components/">http://emberjs.com/guides/components/</a></p>
+
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/components/">http://emberjs.cn/bilingual_guides/components/</a></p>
+
+<p>HTML was designed in a time when the browser was a simple document
 viewer. Developers building great web apps need something more.</p>
+
+<p>HTML设计之初浏览器还只是一个简单的文档阅读器。而今开发者需要更多东西来构建精彩的Web应用。</p>
 
 <p>Instead of trying to replace HTML, however, Ember.js embraces it, then adds
 powerful new features that modernize it for building web apps.</p>
+
+<p>Ember.js没有选择去尝试替换掉HTML，而是通过增强HTML，来添加一些非常有用的新特性给HTML，使其能跟上时代的脚步，可以用来构建Web应用。</p>
 
 <p>Currently, you are limited to the tags that are created for you by the
 W3C. Wouldn&#39;t it be great if you could define your own,
 application-specific HTML tags, then implement their behavior using
 JavaScript?</p>
 
+<p>目前，能使用的标签仅限于W3C定义的。如果可以进行自定义应用相关的HTML标签，并能够通过Javascript来实现其行为，将带来非常大的帮助。</p>
+
 <p>That&#39;s exactly what components let you do. In fact, it&#39;s such a good
 idea that the W3C is currently working on the <a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html">Custom
 Elements</a>
 spec.</p>
+
+<p>这正是组件提供的功能。实际上，这也是W3C正在定义的一个非常好的想法<a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html">自定义元素规范</a></p>
 
 <p>Ember&#39;s implementation of components hews as closely to the Web
 Components specification as possible. Once Custom Elements are widely
@@ -541,14 +553,20 @@ available in browsers, you should be able to easily migrate your Ember
 components to the W3C standard and have them be usable by other
 frameworks.</p>
 
+<p>Ember中组件的实现与Web组件规范非常接近。一旦自定义元素被浏览器广泛的支持后，能非常容易的将Ember组件迁移为W3C标准实现，使其能在其他的框架中得到使用。</p>
+
 <p>This is so important to us that we are working closely with the
 standards bodies to ensure our implementation of components matches the
 roadmap of the web platform.</p>
+
+<p>紧紧跟随标准，确保组件的实现与Web平台的发展路线图一致，这一点非常重要。</p>
 
 <p>To highlight the power of components, here is a short example of turning a blog post into a reusable
 <code>blog-post</code> custom element that you could use again and again in your
 application. Keep reading this section for more details on building
 components.</p>
+
+<p>为了展示组件超凡的作用，这里给出了一个简单的例子，本例使用一个自定义的<code>blog-post</code>元素来表示一篇博客，该标签可以不停的在应用中重复使用。可以通过继续阅读本章其他部分来进一步了解如何创建组件。</p>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/ifuxey/2/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
@@ -560,7 +578,7 @@ components.</p>
           </a>
          
         <a class="next-guide" href="/bilingual_guides/components/defining-a-component">
-          Defining a Component →
+          定义组件 →
         </a>
       
       </footer>

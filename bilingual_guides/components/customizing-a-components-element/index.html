@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Customizing a Component's Element</title>
+    <title>Ember.js - 自定义组件元素</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -306,31 +306,31 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/components">Components</a>
+            <a href="/bilingual_guides/components">组件</a>
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/bilingual_guides/components">Introduction</a>
+              <a href="/bilingual_guides/components">介绍</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/defining-a-component">Defining a Component</a>
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/passing-properties-to-a-component">Passing Properties to a Component</a>
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/wrapping-content-in-a-component">Wrapping Content in a Component</a>
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/components/customizing-a-components-element">Customizing a Component's Element</a>
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">Handling User Interaction with Actions</a>
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -514,14 +514,20 @@
 
   <div class="chapter">
     
-        <h1>Customizing a Component's Element 
+        <h1>自定义组件元素 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/components/customizing-a-components-element.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <p>By default, each component is backed by a <code>&lt;div&gt;</code> element. If you were
+    <p>英文原文：<a href="http://emberjs.com/guides/components/customizing-a-components-element/">http://emberjs.com/guides/components/customizing-a-components-element/</a></p>
+
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/">http://emberjs.cn/bilingual_guides/components/customizing-a-components-element/</a></p>
+
+<p>By default, each component is backed by a <code>&lt;div&gt;</code> element. If you were
 to look at a rendered component in your developer tools, you would see
 a DOM representation that looked something like:</p>
+
+<p>默认情况下，每个组件是一个<code>&lt;div&gt;</code>元素。如果使用开发工具查看渲染后的组件，将看到一个如下所示的DOM表示：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -536,10 +542,14 @@ a DOM representation that looked something like:</p>
 <p>You can customize what type of element Ember generates for your
 component, including its attributes and class names, by creating a
 subclass of <code>Ember.Component</code> in your JavaScript.</p>
-<h3 class='anchorable-toc' id='toc_customizing-the-element'>Customizing the Element</h3>
+
+<p>通过使用Javascript创建一个<code>Ember.Component</code>子类，可以自定义Ember生成的组件使用的元素类型，包括其属性和类名。</p>
+<h3 class='anchorable-toc' id='toc_customizing-the-element'>Customizing the Element</h3><h3 class='anchorable-toc' id='toc_'>自定义元素</h3>
 <p>To use a tag other than <code>div</code>, subclass <code>Ember.Component</code> and assign it
 a <code>tagName</code> property. This property can be any valid HTML5 tag name as a
 string.</p>
+
+<p>为了不使用<code>div</code>，继承<code>Ember.Component</code>并为其添加一个<code>tagName</code>属性。这个属性可以是任何合法的HTML5标签。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -564,9 +574,11 @@ string.</p>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_customizing-class-names'>Customizing Class Names</h3>
+</div></div><h3 class='anchorable-toc' id='toc_customizing-class-names'>Customizing Class Names</h3><h3 class='anchorable-toc' id='toc_'>自定义类名</h3>
 <p>You can also specify which class names are applied to the component&#39;s
 element by setting its <code>classNames</code> property to an array of strings:</p>
+
+<p>通过设置<code>classNames</code>属性为一个字符串数组，可以指定组件元素的类名：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -581,6 +593,8 @@ element by setting its <code>classNames</code> property to an array of strings:<
 <p>If you want class names to be determined by properties of the component,
 you can use class name bindings. If you bind to a Boolean property, the
 class name will be added or removed depending on the value:</p>
+
+<p>如果需要通过组件的属性来决定使用的类名，可以使用类名绑定。如果绑定一个布尔型属性，类名将根据该属性的值来决定是添加还是移除类名：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -595,6 +609,8 @@ class name will be added or removed depending on the value:</p>
 </tr></table>
 </div></div>
 <p>This component would render the following:</p>
+
+<p>组件将渲染为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -604,8 +620,12 @@ class name will be added or removed depending on the value:</p>
 </div></div>
 <p>If <code>isUrgent</code> is changed to <code>false</code>, then the <code>is-urgent</code> class name will be removed.</p>
 
+<p>如果<code>isUrgent</code>变为<code>false</code>，那么<code>is-urgent</code>类名将被移除。</p>
+
 <p>By default, the name of the Boolean property is dasherized. You can customize the class name
 applied by delimiting it with a colon:</p>
+
+<p>默认情况下，布尔属性的名称会用&#39;-&#39;来连接。使用分号可以自定义类名：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -620,6 +640,8 @@ applied by delimiting it with a colon:</p>
 </tr></table>
 </div></div>
 <p>This would render this HTML:</p>
+
+<p>组件将渲染为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -628,6 +650,8 @@ applied by delimiting it with a colon:</p>
 </tr></table>
 </div></div>
 <p>Besides the custom class name for the value being <code>true</code>, you can also specify a class name which is used when the value is <code>false</code>:</p>
+
+<p>除了为值为<code>true</code>的添加自定义类名外，还可以在值为<code>false</code>的时候来指定类名：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -642,6 +666,8 @@ applied by delimiting it with a colon:</p>
 </tr></table>
 </div></div>
 <p>This would render this HTML:</p>
+
+<p>组件将渲染为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -651,6 +677,8 @@ applied by delimiting it with a colon:</p>
 </div></div>
 <p>You can also specify a class should only be added when the property is
 <code>false</code> by declaring <code>classNameBindings</code> like this:</p>
+
+<p>另外，还可以通过定义<code>classNameBindings</code>，实现只在属性为<code>false</code>的时候添加类名：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -665,6 +693,8 @@ applied by delimiting it with a colon:</p>
 </tr></table>
 </div></div>
 <p>This would render this HTML:</p>
+
+<p>组件将渲染为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -673,6 +703,8 @@ applied by delimiting it with a colon:</p>
 </tr></table>
 </div></div>
 <p>If the <code>isEnabled</code> property is set to <code>true</code>, no class name is added:</p>
+
+<p>如果<code>isEnabled</code>属性设置为<code>true</code>，则不会添加类名：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -682,6 +714,8 @@ applied by delimiting it with a colon:</p>
 </div></div>
 <p>If the bound value is a string, that value will be added as a class name without
 modification:</p>
+
+<p>如果绑定的值是一个字符串，那么该值将作为类名，且不加任何修改：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -696,15 +730,19 @@ modification:</p>
 </tr></table>
 </div></div>
 <p>This would render this HTML:</p>
+
+<p>组件将渲染为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ember-view highestPriority</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_customizing-attributes'>Customizing Attributes</h3>
+</div></div><h3 class='anchorable-toc' id='toc_customizing-attributes'>Customizing Attributes</h3><h3 class='anchorable-toc' id='toc_'>自定义属性</h3>
 <p>You can bind attributes to the DOM element that represents a component
 by using <code>attributeBindings</code>:</p>
+
+<p>通过<code>attributeBindings</code>可以绑定属性到代表组件的DOM元素：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -721,6 +759,8 @@ by using <code>attributeBindings</code>:</p>
 </tr></table>
 </div></div>
 <p>You can also bind these attributes to differently named properties:</p>
+
+<p>也可以使用不同的命名属性来绑定这些属性：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -735,9 +775,11 @@ by using <code>attributeBindings</code>:</p>
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_example'>Example</h3>
+</div></div><h3 class='anchorable-toc' id='toc_example'>Example</h3><h3 class='anchorable-toc' id='toc_'>例子</h3>
 <p>Here is an example todo application that shows completed todos with a
 red background:</p>
+
+<p>下面是一个Todo应用的例子，展示了使用红色的背景来显示已完成的待办事项：</p>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/utonef/1/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
@@ -745,11 +787,11 @@ red background:</p>
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/components/wrapping-content-in-a-component">
-            ← Wrapping Content in a Component
+            ← 包裹内容
           </a>
          
         <a class="next-guide" href="/bilingual_guides/components/handling-user-interaction-with-actions">
-          Handling User Interaction with Actions →
+          使用Action处理用户交互 →
         </a>
       
       </footer>
