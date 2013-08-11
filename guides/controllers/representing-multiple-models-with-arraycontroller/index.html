@@ -603,6 +603,20 @@
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">longSongCount</span><span class="inline-delimiter">}}</span></span> songs over 30 seconds.
 </pre></td>
 </tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>排序</h3>
+<p><code>Ember.ArrayController</code>使用<code>Ember.SortableMixin</code>来支持排序。为了支持排序，需要设置两个属性：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.SongsController = Ember.ArrayController.extend({
+  <span class="key">sortProperties</span>: [<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">artist</span><span class="delimiter">'</span></span>],
+  <span class="key">sortAscending</span>: <span class="predefined-constant">true</span> <span class="comment">// false for descending</span>
+});
+</pre></td>
+</tr></table>
 </div></div>
     
       <footer>

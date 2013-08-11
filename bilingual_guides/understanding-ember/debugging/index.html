@@ -559,7 +559,7 @@
 </div></div><h4 class='anchorable-toc' id='toc_log-object-bindings'>Log object bindings</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出对象绑定</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
-  <td class="code"><pre>Ember.LOG_BINDING = <span class="predefined-constant">true</span>
+  <td class="code"><pre>Ember.LOG_BINDINGS = <span class="predefined-constant">true</span>
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_view-all-registered-routes'>View all registered routes</h4><h4 class='anchorable-toc' id='toc_'>查看所有注册的路由</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -656,6 +656,28 @@ Ember.LOG_STACKTRACE_ON_DEPRECATION = <span class="predefined-constant">true</sp
     <span class="key">otherInformation</span>: <span class="string"><span class="delimiter">'</span><span class="content">exception message</span><span class="delimiter">'</span></span>
   });
 }
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_import-the-console'>Import the console</h4><h4 class='anchorable-toc' id='toc_'>引入控制台</h4>
+<p>If you are using imports with Ember, be sure to import the console:</p>
+
+<p>如果使用imports，需要引入控制台：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>Ember = {
+  <span class="key">imports</span>: {
+    <span class="key">Handlebars</span>: Handlebars,
+    <span class="key">jQuery</span>: <span class="predefined">$</span>,
+    <span class="key">console</span>: window.console
+  }
+};
 </pre></td>
 </tr></table>
 </div></div>
