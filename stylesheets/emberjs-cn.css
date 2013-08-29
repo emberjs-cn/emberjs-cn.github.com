@@ -12,3 +12,52 @@ blockquote {
 #github a {
   float: left;
   margin-right: 10px; }
+
+/* line 20, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+.projects .section {
+  width: 100%; }
+/* line 24, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+.projects h1 {
+  margin-bottom: 10px; }
+/* line 28, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+.projects #content {
+  margin: 3em auto 0 auto;
+  width: 54em; }
+/* line 33, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+.projects .button {
+  display: block;
+  text-align: center;
+  margin: 0 auto; }
+
+/* line 41, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+.projects_index .projects.section {
+  margin-top: 0px; }
+
+/* line 45, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+#showcase {
+  margin: 0 auto;
+  width: 100%; }
+
+/* line 50, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+#content #showcase tr {
+  background: transparent;
+  border-bottom: none; }
+
+/* line 55, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+#showcase td {
+  padding: 10px; }
+  /* line 57, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+  #showcase td:nth-child(2) a {
+    margin: 0 auto; }
+  /* line 61, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+  #showcase td:nth-child(3) a {
+    margin-left: auto; }
+  /* line 66, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+  #showcase td a {
+    display: block;
+    height: 103px;
+    width: 210px; }
+
+/* line 73, /Users/tower/Repository/codes/emberjs.cn/www.emberjs.cn/source/stylesheets/emberjs-cn.css.scss */
+#showcase a:hover {
+  border-bottom: none; }

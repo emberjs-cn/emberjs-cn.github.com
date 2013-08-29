@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -520,8 +521,8 @@
         </h1>
       
     <p>英文原文： <a href="http://emberjs.com/guides/templates/links/">http://emberjs.com/guides/templates/links/</a></p>
-<h2 class='anchorable-toc' id='toc_links-the-code-linkto-code-helper'>Links (The <code>{{linkTo}}</code> Helper)</h2><h2 class='anchorable-toc' id='toc_code-linkto-code'>链接 (<code>{{linkTo}}</code>助手)</h2>
-<p>You create a link to a route using the <code>{{linkTo}}</code> helper.</p>
+<h2 class='anchorable-toc' id='toc_links-the-code-link-to-code-helper'>Links (The <code>{{link-to}}</code> Helper)</h2><h2 class='anchorable-toc' id='toc_code-link-to-code'>链接 (<code>{{link-to}}</code>助手)</h2>
+<p>You create a link to a route using the <code>{{link-to}}</code> helper.</p>
 
 <p>你可以使用如下的方式创建一个指向一个路由的链接：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -551,7 +552,7 @@
 
 <span class="tag">&lt;ul&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">photo</span> <span class="attribute-name">in</span> <span class="attribute-name">photos</span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">photos.photo</span><span class="error">'</span> <span class="attribute-name">photo</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">photo.title</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">photos.photo</span><span class="error">'</span> <span class="attribute-name">photo</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">photo.title</span><span class="inline-delimiter">}}</span></span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/ul&gt;</span>
 </pre></td>
@@ -578,9 +579,9 @@ rendered HTML would look something like this:</p>
 </div></div>
 <p>When the rendered link matches the current route, and the same object instance is passed into the helper, then the link is given <code>class=&quot;active&quot;</code>.</p>
 
-<p>当被渲染的链接与当前路由匹配时，并且传入{{linkTo}}助手的是相同的对象实例，那么链接的class被设置为active。</p>
+<p>当被渲染的链接与当前路由匹配时，并且传入{{link-to}}助手的是相同的对象实例，那么链接的class被设置为active。</p>
 
-<p>The <code>{{linkTo}}</code> helper takes:</p>
+<p>The <code>{{link-to}}</code> helper takes:</p>
 
 <ul>
 <li>The name of a route. In this example, it would be <code>index</code>, <code>photos</code>, or
@@ -592,7 +593,7 @@ value of the corresponding object&#39;s <code>id</code> property.</li>
 <li>An optional title which will be bound to the <code>a</code> title attribute</li>
 </ul>
 
-<p><code>{{linkTo}}</code>助手可以接收以下三个参数：</p>
+<p><code>{{link-to}}</code>助手可以接收以下三个参数：</p>
 
 <ul>
 <li>路由名称。在上面例子中，可以是<code>index</code>, <code>photos</code>或者 <code>photos.edit</code>。</li>
@@ -639,7 +640,7 @@ segment.</p>
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/div&gt;</span>
 
-<span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">photo.comment</span><span class="error">'</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">photo.comment</span><span class="error">'</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>Main Comment<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -650,7 +651,7 @@ segment <code>:comment_id</code>. The <code>:photo_id</code> segment will use th
 
 <p>Alternatively, you could pass both a photo and a comment to the helper:</p>
 
-<p>此外，你还可以同时给<code>{{linkTo}}</code>助手指定一张照片和一条评论，如下所示：</p>
+<p>此外，你还可以同时给<code>{{link-to}}</code>助手指定一张照片和一条评论，如下所示：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -659,9 +660,9 @@ segment <code>:comment_id</code>. The <code>:photo_id</code> segment will use th
 5
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;p&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">photo.comment</span><span class="error">'</span> <span class="attribute-name">nextPhoto</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">photo.comment</span><span class="error">'</span> <span class="attribute-name">nextPhoto</span> <span class="attribute-name">primaryComment</span><span class="inline-delimiter">}}</span></span>
     Main Comment for the Next Photo
-  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/p&gt;</span>
 </pre></td>
 </tr></table>

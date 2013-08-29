@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -572,11 +573,11 @@ name. In this case, the following is equivalent to the above example:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Inside your templates, you can use <code>{{linkTo}}</code> to navigate between
+<p>Inside your templates, you can use <code>{{link-to}}</code> to navigate between
 routes, using the name that you provided to the <code>route</code> method (or, in
 the case of <code>/</code>, the name <code>index</code>).</p>
 
-<p>在模板里面，你可以用{{linkTo}}来导向路由，这需要用到你在route方法中定义的名字
+<p>在模板里面，你可以用{{link-to}}来导向路由，这需要用到你在route方法中定义的名字
 （对于&#39;/&#39;来说，名字就是index）。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -586,19 +587,19 @@ the case of <code>/</code>, the name <code>index</code>).</p>
 5
 6
 </pre></td>
-  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">index</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;img</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">index</span><span class="error">'</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;img</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 
 <span class="tag">&lt;nav&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">about</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>About<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
-  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">favorites</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>Favorites<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">about</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>About<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">favorites</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>Favorites<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/nav&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>The <code>{{linkTo}}</code> helper will also add an <code>active</code> class to the link that
+<p>The <code>{{link-to}}</code> helper will also add an <code>active</code> class to the link that
 points to the currently active route.</p>
 
-<p>{{linkTo}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。</p>
+<p>{{link-to}}助手会在链接上面加上active的类名（class）来指出当前活跃的路由。</p>
 
 <p>You can customize the behavior of a route by creating an <code>Ember.Route</code>
 subclass. For example, to customize what happens when your user visits
@@ -778,11 +779,11 @@ and <code>resource</code> template.</p>
 
 <p>Routes nested under a resource take the name of the resource plus their
 name as their route name. If you want to transition to a route (either
-via <code>transitionTo</code> or <code>{{#linkTo}}</code>, make sure to use the full route
+via <code>transitionTo</code> or <code>{{#link-to}}</code>, make sure to use the full route
 name (<code>posts.new</code>, not <code>new</code>).</p>
 
 <p>一个资源下的嵌套路由的名字会是资源名加上路由名。如果你想跳转到一个路由（用<code>transitionTo</code>或
-<code>{{#linkTo}}</code>），请确保使用了完整的路由名（如：<code>post.new</code>，而不是<code>new</code>）。</p>
+<code>{{#link-to}}</code>），请确保使用了完整的路由名（如：<code>post.new</code>，而不是<code>new</code>）。</p>
 
 <p>Visiting <code>/</code> renders the <code>index</code> template, as you would expect.</p>
 
@@ -931,7 +932,7 @@ App.PostRoute = Ember.Route.extend({
 
   <span class="function">serialize</span>: <span class="keyword">function</span>(model) {
     <span class="comment">// this will make the URL `/posts/foo-post`</span>
-    <span class="keyword">return</span> { <span class="key">post_slug</span>: model.slug };
+    <span class="keyword">return</span> { <span class="key">post_slug</span>: model.get(<span class="string"><span class="delimiter">'</span><span class="content">slug</span><span class="delimiter">'</span></span>) };
   }
 });
 </pre></td>
@@ -1033,7 +1034,7 @@ dynamic segment (in this case, <code>:post_id</code>).</p>
   </table>
 </div>
 
-<p><small><sup>2</sup> :post_id is the post&#39;s id.  For a post with id = 1, the route will be:
+<p><small><sup>2</sup> <code>:post_id</code> is the post&#39;s id.  For a post with id = 1, the route will be:
 <code>/post/1</code></small></p>
 
 <p><small><sup>2</sup> <code>:post_id</code>就是post的id。例如一个post的id是1，那么路由就是<code>/post/1</code></small></p>

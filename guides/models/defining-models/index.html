@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -674,7 +675,33 @@ App.Post = DS.Model.extend({
 </tr></table>
 </div></div>
 <p>当然也可以在<code>belongsTo</code>一侧指定，它将按照预期那样工作。</p>
+<h4 class='anchorable-toc' id='toc_'>嵌套对象</h4>
+<p>当有数据结构的嵌套数据不使用或者需要IDS，必须指定<code>hasMany</code>包含的<code>belongsTo</code>。</p>
 
+<p>为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.Comment = DS.Model.extend({});
+
+App.Post = DS.Model.extend({
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>)
+});
+
+App.Adapter.map(<span class="string"><span class="delimiter">'</span><span class="content">App.Post</span><span class="delimiter">'</span></span>, {
+  <span class="key">comments</span>: { <span class="key">embedded</span>: <span class="string"><span class="delimiter">'</span><span class="content">always</span><span class="delimiter">'</span></span> }
+});
+</pre></td>
+</tr></table>
+</div></div>
     
       <footer>
         

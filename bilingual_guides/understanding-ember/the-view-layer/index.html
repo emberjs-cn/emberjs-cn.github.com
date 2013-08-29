@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -679,9 +680,9 @@ are unnecessary for getting started with Ember.</p>
   <img src="/images/view-guide/render-buffer.png">
 </figure>
 
-<p>In addition to children (Strings and other <code>RenderBuffer</code>s), a <code>RenderBuffer</code> also encapsulates the element&#39;s tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using <code>bindAttr</code>), this makes the process robust and transparent.</p>
+<p>In addition to children (Strings and other <code>RenderBuffer</code>s), a <code>RenderBuffer</code> also encapsulates the element&#39;s tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using <code>bind-attr</code>), this makes the process robust and transparent.</p>
 
-<p>除了子视图之外（字符串或其他<code>RenderBuffer</code>），一个<code>RenderBuffer</code>还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用<code>bindAttr</code>），因此整个过程非常稳定且透明。</p>
+<p>除了子视图之外（字符串或其他<code>RenderBuffer</code>），一个<code>RenderBuffer</code>还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用<code>bind-attr</code>），因此整个过程非常稳定且透明。</p>
 <h5 class='anchorable-toc' id='toc_3-element-creation-and-insertion'>3. Element Creation and Insertion</h5><h5 class='anchorable-toc' id='toc_3'>3. 元素创建与插入</h5>
 <p>At the end of the rendering process, the root view asks the <code>RenderBuffer</code> for its element. The <code>RenderBuffer</code> takes its completed string and uses jQuery to convert it into an element. The view assigns that element to its <code>element</code> property and places it into the correct place in the DOM (the location specified in <code>appendTo</code> or the application&#39;s root element if the application used <code>append</code>).</p>
 

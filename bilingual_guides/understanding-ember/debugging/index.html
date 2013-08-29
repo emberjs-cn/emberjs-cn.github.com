@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -526,17 +527,62 @@
 <p>Here are some tips you can use to help debug your Ember application.</p>
 
 <p>下面是一些调试Ember应用的小技巧。</p>
-<h4 class='anchorable-toc' id='toc_log-router-transitions'>Log router transitions</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出路由转换信息</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+
+<p>Also, check out the
+<a href="https://github.com/tildeio/ember-extension">ember-extension</a>
+project, which adds an Ember tab to Chrome DevTools that allows you
+to inspect Ember objects in your application.</p>
+
+<p>另外，检出<a href="https://github.com/tildeio/ember-extension">ember-extension</a>项目，ember-extension是一个Chrome开发工具，可以用来查看应用中的Ember对象。</p>
+<h2 class='anchorable-toc' id='toc_routing'>Routing</h2><h2 class='anchorable-toc' id='toc_'>路由</h2><h4 class='anchorable-toc' id='toc_log-router-transitions'>Log router transitions</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出路由转换信息</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
 </pre></td>
   <td class="code"><pre>window.App = Ember.Application.create({
-  <span class="key">LOG_TRANSITIONS</span>: <span class="predefined-constant">true</span>
+  <span class="comment">// Basic logging, e.g. &quot;Transitioned into 'post'&quot;</span>
+  <span class="comment">// 基础日志，例如：'Transitioned into 'post'&quot;</span>
+  <span class="key">LOG_TRANSITIONS</span>: <span class="predefined-constant">true</span>, 
+
+  <span class="comment">// Extremely detailed logging, highlighting every internal</span>
+  <span class="comment">// step made while transitioning into a route, including</span>
+  <span class="comment">// `beforeModel`, `model`, and `afterModel` hooks, and</span>
+  <span class="comment">// information about redirects and aborted transition</span>
+
+  <span class="comment">// 更为详尽的日志，记录切换到一个路由时所有的内部步骤，包括：</span>
+  <span class="comment">// `beforeModel`，`model`和`afterModel`钩子，以及跳转和取消的切换的信息</span>
+  <span class="key">LOG_TRANSITIONS_INTERNAL</span>: <span class="predefined-constant">true</span>
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_log-view-lookups'>Log view lookups</h4><h4 class='anchorable-toc' id='toc_'>在日志中输入视图查询</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h4 class='anchorable-toc' id='toc_view-all-registered-routes'>View all registered routes</h4><h4 class='anchorable-toc' id='toc_'>查看所有注册的路由</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.keys(App.Router.router.recognizer.names)
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_get-current-route-name-path'>Get current route name / path</h4><h4 class='anchorable-toc' id='toc_'>获取当前路由名/路径</h4>
+<p>Ember installs the current route name and path on your
+app&#39;s <code>ApplicationController</code> as the properties
+<code>currentRouteName</code> and <code>currentPath</code>. <code>currentRouteName</code>&#39;s
+value (e.g. <code>&quot;comments.edit&quot;</code>) can be used as the destination parameter of 
+<code>transitionTo</code> and the <code>{{linkTo}}</code> Handlebars helper, while 
+<code>currentPath</code> serves as a full descriptor of each
+parent route that has been entered (e.g. <code>&quot;admin.posts.show.comments.edit&quot;</code>).</p>
+
+<p>Ember在<code>ApplicationController</code>中以<code>currentRouteName</code>和<code>currentPath</code>属性来记录当前路由和路径。<code>currentRouteName</code>的值（例如：&quot;comments.edit&quot;）可以用来作为<code>transitionTo</code>和<code>{{linkTo}}</code>Handlebars助手的目标参数，<code>currentPath</code>完整表述了路由进入的整个路径（如：<code>&quot;admin.posts.show.comments.edit&quot;</code>）。</p>
+<h2 class='anchorable-toc' id='toc_views-templates'>Views / Templates</h2><h2 class='anchorable-toc' id='toc_'>视图/模板</h2><h4 class='anchorable-toc' id='toc_log-view-lookups'>Log view lookups</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出视图查询</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -546,7 +592,27 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_log-generated-controller'>LOG generated controller</h4><h4 class='anchorable-toc' id='toc_'>在日志中记录自动生成的控制器</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h4 class='anchorable-toc' id='toc_get-the-view-object-from-its-dom-element-s-id'>Get the View object from its DOM Element&#39;s ID</h4><h4 class='anchorable-toc' id='toc_dom-id'>通过DOM元素ID获取视图对象</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.View.views[<span class="string"><span class="delimiter">'</span><span class="content">ember605</span><span class="delimiter">'</span></span>]
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_view-all-registered-templates'>View all registered templates</h4><h4 class='anchorable-toc' id='toc_'>查看所有注册模板</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.keys(Ember.TEMPLATES)
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_handlebars-debugging-helpers'>Handlebars Debugging Helpers</h4><h4 class='anchorable-toc' id='toc_handlebars'>Handlebars调试助手</h4><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">debugger</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">log</span> <span class="attribute-name">record</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><h2 class='anchorable-toc' id='toc_controllers'>Controllers</h2><h2 class='anchorable-toc' id='toc_'>控制器</h2><h4 class='anchorable-toc' id='toc_log-generated-controller'>LOG generated controller</h4><h4 class='anchorable-toc' id='toc_'>在日志中记录自动生成的控制器</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -556,48 +622,16 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_log-object-bindings'>Log object bindings</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出对象绑定</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre>Ember.LOG_BINDINGS = <span class="predefined-constant">true</span>
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_view-all-registered-routes'>View all registered routes</h4><h4 class='anchorable-toc' id='toc_'>查看所有注册的路由</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre> Ember.keys(App.Router.router.recognizer.names)
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_view-all-registered-templates'>View all registered templates</h4><h4 class='anchorable-toc' id='toc_'>查看所有注册的模板</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre>Ember.keys(Ember.TEMPLATES)
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_get-the-state-history-of-an-ember-data-record'>Get the state history of an ember-data record</h4><h4 class='anchorable-toc' id='toc_ember-data'>获取Ember Data记录的状态历史</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h2 class='anchorable-toc' id='toc_ember-data'>Ember Data</h2><h4 class='anchorable-toc' id='toc_get-the-state-history-of-an-ember-data-record'>Get the state history of an ember-data record</h4><h4 class='anchorable-toc' id='toc_ember-data'>获取Ember Data记录的状态历史</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>record.stateManager.get(<span class="string"><span class="delimiter">'</span><span class="content">currentPath</span><span class="delimiter">'</span></span>)
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_get-the-view-object-for-a-generated-ember-code-div-code-by-its-div-id'>Get the View object for a generated ember <code>div</code> by its div id</h4><h4 class='anchorable-toc' id='toc_code-div-code-id'>通过生成的<code>div</code>的ID视图来获取视图对象</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-</pre></td>
-  <td class="code"><pre>Ember.View.views[<span class="string"><span class="delimiter">'</span><span class="content">ember605</span><span class="delimiter">'</span></span>]
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_log-state-transitions'>Log state transitions</h4><h4 class='anchorable-toc' id='toc_'>在日志中输出状态转换</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>record.set(<span class="string"><span class="delimiter">&quot;</span><span class="content">stateManager.enableLogging</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_view-an-instance-of-something-from-the-container'>View an instance of something from the container</h4><h4 class='anchorable-toc' id='toc_'>查看容器中的实例</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-</pre></td>
-  <td class="code"><pre>App.__container__.lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">controller:posts</span><span class="delimiter">&quot;</span></span>)
-App.__container__.lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">route:application</span><span class="delimiter">&quot;</span></span>)
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_view-ember-data-s-identity-map'>View ember-data&#39;s identity map</h4><h4 class='anchorable-toc' id='toc_ember-data'>查看ember-data的标示符映射</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -620,10 +654,24 @@ App.__container__.lookup(<span class="string"><span class="delimiter">'</span><s
 App.__container__.lookup(<span class="string"><span class="delimiter">'</span><span class="content">store:main</span><span class="delimiter">'</span></span>).recordCache[<span class="integer">2</span>].get(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>)
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_see-all-observers-for-a-object-key'>See all observers for a object, key</h4><h4 class='anchorable-toc' id='toc_'>查看一个对象、键值的所有观察器</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h2 class='anchorable-toc' id='toc_observers-binding'>Observers / Binding</h2><h2 class='anchorable-toc' id='toc_'>观察器/绑定</h2><h4 class='anchorable-toc' id='toc_see-all-observers-for-a-object-key'>See all observers for a object, key</h4><h4 class='anchorable-toc' id='toc_'>查看一个对象、键值的所有观察器</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
   <td class="code"><pre>Ember.observersFor(comments, keyName);
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_log-object-bindings'>Log object bindings</h4><h4 class='anchorable-toc' id='toc_'>在日志中记录对象绑定</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.LOG_BINDINGS = <span class="predefined-constant">true</span>
+</pre></td>
+</tr></table>
+</div></div><h2 class='anchorable-toc' id='toc_'>其他</h2><h4 class='anchorable-toc' id='toc_view-an-instance-of-something-from-the-container'>View an instance of something from the container</h4><h4 class='anchorable-toc' id='toc_'>查看容器中的实例</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>App.__container__.lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">controller:posts</span><span class="delimiter">&quot;</span></span>)
+App.__container__.lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">route:application</span><span class="delimiter">&quot;</span></span>)
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_dealing-with-deprecations'>Dealing with deprecations</h4><h4 class='anchorable-toc' id='toc_'>处理废弃信息</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -632,14 +680,6 @@ App.__container__.lookup(<span class="string"><span class="delimiter">'</span><s
 </pre></td>
   <td class="code"><pre>Ember.ENV.RAISE_ON_DEPRECATION = <span class="predefined-constant">true</span>
 Ember.LOG_STACKTRACE_ON_DEPRECATION = <span class="predefined-constant">true</span>
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_handlebars'>Handlebars</h4><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-</pre></td>
-  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">debugger</span><span class="inline-delimiter">}}</span></span>
-<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">log</span> <span class="attribute-name">record</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_implement-a-code-ember-onerror-code-hook-to-log-all-errors-in-production'>Implement a <code>Ember.onerror</code> hook to log all errors in production</h4><h4 class='anchorable-toc' id='toc_code-ember-oneerror-code'>实现一个<code>Ember.oneerror</code>钩子来记录生产环境下的所有错误</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>

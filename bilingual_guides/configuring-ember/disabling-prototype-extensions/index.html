@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -569,8 +570,8 @@ described above.</p>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 </pre></td>
-  <td class="code"><pre>window.Ember = {};
-Ember.EXTEND_PROTOTYPES = <span class="predefined-constant">false</span>;
+  <td class="code"><pre>window.ENV = {};
+ENV.EXTEND_PROTOTYPES = <span class="predefined-constant">false</span>;
 </pre></td>
 </tr></table>
 </div></div>

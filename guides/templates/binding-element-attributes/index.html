@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -533,7 +534,7 @@
 3
 </pre></td>
   <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;img</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logoUrl</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">src</span>=<span class="attribute-value">logoUrl</span><span class="inline-delimiter">}}</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Logo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
@@ -550,16 +551,16 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>如果你使用<code>{{bindAttr}}</code>绑定一个布尔类型的属性,
+<p>如果你使用<code>{{bind-attr}}</code>绑定一个布尔类型的属性,
 它将增加或移除指定属性。例如下面的模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">disabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isAdministrator</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
+  <td class="code"><pre><span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">disabled</span>=<span class="attribute-value">isAdministrator</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>如果<code>isAdministrator</code>的值是<code>true</code>，<code>Handlebars</code>将生成如下所示的HTML元素：</p>
+<p>如果<code>isAdministrator</code>的值是<code>false</code>，<code>Handlebars</code>将生成如下所示的HTML元素：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>
@@ -567,7 +568,7 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>否则，如果<code>isAdministrator</code>是<code>false</code>，生成的HTML元素如下：</p>
+<p>否则，如果<code>isAdministrator</code>是<code>true</code>，生成的HTML元素如下：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 </pre></td>

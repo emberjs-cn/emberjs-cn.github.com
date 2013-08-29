@@ -84,8 +84,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li class="active"><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -106,6 +107,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">Windows下Ember应用开发环境搭建</a></li>
         
@@ -170,6 +173,32 @@
       <div id="content" class="has-sidebar">
         
   <article class="blog-post-summary">
+    <h2><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a> &ndash; <time>Aug 28, 2013</time></span></h2>
+    
+    <p>Ember 1.0 RC8是1.0正式版前的最后一次发布，如果一切顺利本周末将发布Ember
+1.0正式版。</p>
+
+<p>在RC8中做了一些1.0正式版之前的重大更改，这些更改对应用代码只有很少的影响，不过带来了很大的性能提升。</p>
+
+<p>这些更改都与观察器有关。如果编码的时候使用了大量的观察器，那么可能意味着代码不符合语言习惯。通常只在与其他不支持绑定机制的库桥接的时候需要使用观察器。</p>
+
+<p>例如，如果编写一个包裹jQuery
+UI控件的组件时，可能需要使用观察器来监视组件上的改变，并将这些改变反映到控件上。</p>
+
+<p>在应用代码中，应该尽可能的使用计算属性。</p>
+
+    <a href="/blog/2013/08/28/ember-1-0-rc8.html">阅读全文</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a> &ndash; <time>Aug 14, 2013</time></span></h2>
+    
+    <p>今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。</p>
+<h3 class='anchorable-toc' id='toc_'>重要改变</h3><h4 class='anchorable-toc' id='toc_code-route-controllerfor-code'><code>Route#controllerFor</code>不再自动生成控制器</h4>
+<p>有的时候，人们依赖<code>controllerFor</code>来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当进入一个路由时，Ember查找一个与其名字对应的控制器。如果控制器没有找到，Ember会根据路由的模型的类型为其生成一个。如果模型是一个数组，那么将生成一个<code>ArrayController</code>；如果是一个对象，那么则生成一个<code>ObjectController</code>；如果两者都不是，则生成一个标准<code>Controller</code>。在大多数情况下，当在路由之外使用<code>controllerFor</code>时，并没有提供一个模型，那么Ember会创建一个基础的<code>Controller</code>。如果之后进入到该路由，这个控制器不会被重新创建，那么控制器的类型就可能与提供的model不匹配。</p>
+
+    <a href="/blog/2013/08/14/ember-1-0-rc7.html">阅读全文</a>
+  </article>
+  <article class="blog-post-summary">
     <h2><a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">Windows下Ember应用开发环境搭建</a> &ndash; <time>Aug 14, 2013</time></span></h2>
     
       <h5 class="blog-post-summary-author">
@@ -200,19 +229,6 @@
 </ul>
 
     <a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">阅读全文</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a> &ndash; <time>Aug 14, 2013</time></span></h2>
-    
-      <h5 class="blog-post-summary-author">
-          作者： Tower He
-      </h5>
-    
-    <p>今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。</p>
-<h3 class='anchorable-toc' id='toc_'>重要改变</h3><h4 class='anchorable-toc' id='toc_code-route-controllerfor-code'><code>Route#controllerFor</code>不再自动生成控制器</h4>
-<p>有的时候，人们依赖<code>controllerFor</code>来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当进入一个路由时，Ember查找一个与其名字对应的控制器。如果控制器没有找到，Ember会根据路由的模型的类型为其生成一个。如果模型是一个数组，那么将生成一个<code>ArrayController</code>；如果是一个对象，那么则生成一个<code>ObjectController</code>；如果两者都不是，则生成一个标准<code>Controller</code>。在大多数情况下，当在路由之外使用<code>controllerFor</code>时，并没有提供一个模型，那么Ember会创建一个基础的<code>Controller</code>。如果之后进入到该路由，这个控制器不会被重新创建，那么控制器的类型就可能与提供的model不匹配。</p>
-
-    <a href="/blog/2013/08/14/ember-1-0-rc7.html">阅读全文</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a> &ndash; <time>Jul 06, 2013</time></span></h2>

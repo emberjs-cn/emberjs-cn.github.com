@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -539,7 +540,7 @@
 9
 <strong>10</strong>
 </pre></td>
-  <td class="code"><pre>App.TodosController = Ember.Object.extend({
+  <td class="code"><pre>App.TodosController = Ember.Controller.extend({
   <span class="key">todos</span>: [
     Ember.Object.create({ <span class="key">isDone</span>: <span class="predefined-constant">false</span> })
   ],
@@ -603,6 +604,8 @@ App.todosController.get(<span class="string"><span class="delimiter">'</span><sp
 </pre></td>
 </tr></table>
 </div></div>
+<p>注意<code>@each</code>只工作在第一级。不能嵌套使用，如：<code>todos.@ech.owner.name</code>或者<code>todos.@each.owner.@each.name</code></p>
+
     
       <footer>
         

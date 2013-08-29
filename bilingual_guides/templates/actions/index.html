@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -519,8 +520,9 @@
             编辑页面</a>
         </h1>
       
-    <p>英文原文：<a href="http://emberjs.com/guides/templates/actions/">http://emberjs.com/guides/templates/actions/</a>
-中英对照：<a href="http://emberjs.cn/bilingual_guides/templates/actions/">http://emberjs.c/bilingual_guides/templates/actions/</a></p>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/actions/">http://emberjs.com/guides/templates/actions/</a></p>
+
+<p>中英对照：<a href="http://emberjs.cn/bilingual_guides/templates/actions/">http://emberjs.c/bilingual_guides/templates/actions/</a></p>
 <h2 class='anchorable-toc' id='toc_actions-the-code-action-code-helper'>Actions (The <code>{{action}}</code> Helper)</h2><h2 class='anchorable-toc' id='toc_action'>操作（{{action}}助手方法）</h2>
 <p>Your app will often need a way to let users interact with controls that
 change application state. For example, imagine that you have a template
@@ -575,38 +577,47 @@ application.</p>
 <strong>10</strong>
 11
 12
+13
+14
 </pre></td>
   <td class="code"><pre>App.PostController = Ember.ObjectController.extend({
   <span class="comment">// initial value</span>
   <span class="key">isExpanded</span>: <span class="predefined-constant">false</span>,
 
-  <span class="function">expand</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
-  },
+  <span class="key">actions</span>: {
+    <span class="function">expand</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+    },
 
-  <span class="function">contract</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+    <span class="function">contract</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+    }
   }
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_event-bubbling'>Event Bubbling</h3>
+</div></div><h3 class='anchorable-toc' id='toc_action-bubbling'>Action Bubbling</h3>
 <p>By default, the <code>{{action}}</code> helper triggers a method on the template&#39;s
 controller, as illustrated above.</p>
 
 <p>缺省情况下，<code>{{action}}</code>助手触发模板控制器的一个方法（如上所述）。</p>
 
 <p>If the controller does not implement a method with the same name as the
-event, the event will be sent to the router, where the currently active
-leaf route will be given a chance to handle the event.</p>
+action in its actions object, the action will be sent to the router,
+where the currently active leaf route will be given a chance to handle the
+action.</p>
 
-<p>如果控制器没有实现一个与事件的同名方法，那么这个事件将被发送至路由，这样当前处于激活状态的叶节点路由可以处理该事件。</p>
+<p>如果控制器没有实现一个与操作的同名方法，那么这个操作将被发送至路由，这样当前处于激活状态的叶节点路由可以处理该操作。</p>
 
-<p>Routes that handle events <strong>must place event handlers inside an <code>events</code>
-hash</strong>. Even if a route has a method with the same name as the event,
-it will not be triggered unless it is inside an <code>events</code> hash.</p>
+<p>Routes and controllers that handle actions <strong>must place action handlers
+inside an <code>actions</code> hash</strong>. Even if a route has a method with the same
+name as the actions, it will not be triggered unless it is inside an
+<code>actions</code> hash. In the case of a controller, while there is deprecated support for
+triggering a method directly on the controller, it is strongly recommended that
+you put your action handling methods inside an <code>actions</code> hash for forward
+compatibility.</p>
 
-<p>路由处理事件**必须将事件处理器放置在<code>events</code>哈希中。尽管路由具有与事件相同名称的方法，这个方法也不会被触发。</p>
+<p>路由和控制器处理操作<strong>必须将操作处理函数定义在<code>actions</code>哈希中</strong>。即便一个路由有一个与操作同名的的方法，如果不定义在<code>ations</code>哈希中也不会被触发。对于一个控制器，强烈推荐将操作处理函数定义在<code>actions</code>哈希中来保证向前兼容。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -621,7 +632,7 @@ it will not be triggered unless it is inside an <code>events</code> hash.</p>
 11
 </pre></td>
   <td class="code"><pre>App.PostRoute = Ember.Route.extend({
-  <span class="key">events</span>: {
+  <span class="key">actions</span>: {
     <span class="function">expand</span>: <span class="keyword">function</span>() {
       <span class="local-variable">this</span>.controller.set(<span class="string"><span class="delimiter">'</span><span class="content">isExpanded</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
     },
@@ -634,31 +645,31 @@ it will not be triggered unless it is inside an <code>events</code> hash.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>As you can see in this example, the event handlers are called such
-that when executed, <code>this</code> is the route, not the <code>events</code> hash.</p>
+<p>As you can see in this example, the action handlers are called such
+that when executed, <code>this</code> is the route, not the <code>actions</code> hash.</p>
 
-<p>正如在上例中所示，事件处理器在执行的时候被调用，<code>this</code>是路由的实例，而非<code>events</code>这个哈希。</p>
+<p>正如在上例中所示，操作处理器在执行的时候被调用，<code>this</code>是路由的实例，而非<code>actions</code>这个哈希。</p>
 
 <p>If neither the template&#39;s controller nor its associated route implements
-a handler, the event will continue to bubble to any parent routes.
+a handler, the action will continue to bubble to any parent routes.
 Ultimately, if an <code>ApplicationRoute</code> is defined, it will have an
-opportunity to handle the event.</p>
+opportunity to handle the action.</p>
 
-<p>如果模板对应的控制器和关联的路由都没有实现事件处理器，这个事件将被冒泡到其父级的路由。如果应用定义了<code>ApplicationRoute</code>，这里是能处理该事件的最后地方。</p>
+<p>如果模板对应的控制器和关联的路由都没有实现操作处理器，这个操作将被冒泡到其父级的路由。如果应用定义了<code>ApplicationRoute</code>，这里是能处理该操作的最后地方。</p>
 
-<p>When an action is triggered, but no matching event handler is
+<p>When an action is triggered, but no matching action handler is
 implemented on the controller, the current route, or any of the
 current route&#39;s ancestors, an error will be thrown.</p>
 
-<p>当一个操作被触发时，如果在控制器中没有实现对应的事件处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。</p>
+<p>当一个操作被触发时，如果在控制器中没有实现对应的操作处理器，当前路由或当前路由的任意一个父节点也没有实现时，将抛出一个错误。</p>
 
-<p><img src="/images/template-guide/event-bubbling.png" alt="事件冒泡（Event Bubbling）"></p>
-<h3 class='anchorable-toc' id='toc_event-parameters'>Event Parameters</h3><h3 class='anchorable-toc' id='toc_'>事件参数</h3>
-<p>You can optionally pass arguments to the event handler. Any values
-passed to the <code>{{action}}</code> helper after the event name will be passed
+<p><img src="/images/template-guide/action-bubbling.png" alt="操作冒泡（Action Bubbling）"></p>
+<h3 class='anchorable-toc' id='toc_action-parameters'>Action Parameters</h3><h3 class='anchorable-toc' id='toc_'>操作参数</h3>
+<p>You can optionally pass arguments to the action handler. Any values
+passed to the <code>{{action}}</code> helper after the action name will be passed
 to the handler as arguments.</p>
 
-<p>Ember.js支持传递参数给事件处理器。任何在事件名称之后传递给<code>{{action}}</code>助手的值，都会作为参数传递给事件处理器。</p>
+<p>Ember.js支持传递参数给操作处理器。任何在操作名称之后传递给<code>{{action}}</code>助手的值，都会作为参数传递给操作处理器。</p>
 
 <p>For example, if the <code>post</code> argument was passed:</p>
 
@@ -670,20 +681,24 @@ to the handler as arguments.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>The route&#39;s <code>select</code> event handler would be called with a single
+<p>The route&#39;s <code>select</code> action handler would be called with a single
 argument containing the post model:</p>
 
-<p>路由的<code>select</code>事件处理器被调用，并且将博客模型作为参数：</p>
+<p>路由的<code>select</code>操作处理器被调用，并且将博客模型作为参数：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 4
 5
+6
+7
 </pre></td>
   <td class="code"><pre>App.PostController = Ember.ObjectController.extend({
-  <span class="function">select</span>: <span class="keyword">function</span>(post) {
-    console.log(post.get(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>));
+  <span class="key">actions</span>: {
+    <span class="function">select</span>: <span class="keyword">function</span>(post) {
+      console.log(post.get(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>));
+    }
   }
 });
 </pre></td>
@@ -758,10 +773,10 @@ clicked.</p>
 3
 4
 </pre></td>
-  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">'</span><span class="attribute-name">post</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">post</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>
   Post
   <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">close</span> <span class="attribute-name">bubbles</span>=<span class="attribute-value">false</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✗<span class="tag">&lt;/button&gt;</span>
-<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -782,9 +797,9 @@ route handlers until it reaches the application route.</p>
 
 <p>如果在当前控制器没有找到指定的操作，当前路由就会接管来处理。经由路由，再冒泡到父级路由处理，最终到达应用程序路由。</p>
 
-<p>Define actions on the route&#39;s <code>events</code> property.</p>
+<p>Define actions on the route&#39;s <code>actions</code> property.</p>
 
-<p>在路由的<code>events</code>属性里定义操作。</p>
+<p>在路由的<code>actions</code>属性里定义操作。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
@@ -795,7 +810,7 @@ route handlers until it reaches the application route.</p>
 7
 </pre></td>
   <td class="code"><pre>App.PostsIndexRoute = Ember.Route.extend({
-  <span class="key">events</span>: {
+  <span class="key">actions</span>: {
     <span class="function">myCoolAction</span>: <span class="keyword">function</span>() {
       <span class="comment">// do your business.</span>
     }
@@ -811,7 +826,53 @@ the <code>/posts</code> route, and another thing if you are inside of the <code>
 route.</p>
 
 <p>上面的代码允许你根据你目前在应用程序中的位置来创建具有不同行为的按钮。比如，如果你在 <code>/posts</code>路由中，你想在侧边栏创建一个按钮来完成某种操作，而在<code>/about</code>路由中时，此按钮却是做另外一件不同的事。</p>
+<h3 class='anchorable-toc' id='toc_specifying-a-target'>Specifying a Target</h3><h3 class='anchorable-toc' id='toc_'>指定目标</h3>
+<p>By default, the <code>{{action}}</code> helper will send the action to the view&#39;s
+target, which is generally the view&#39;s controller. (Note: in the case of
+an Ember.Component, the default target is the component itself.)</p>
 
+<p>在默认情况下，<code>{{action}}</code>助手将操作发送到视图的目标，通常是视图的控制器。（注意：Ember.Component默认的目标是组件自身。）</p>
+
+<p>You can specify an alternative target by using the <code>target</code> option.
+This is most commonly used to send actions to a view instead of a
+controller.</p>
+
+<p>使用<code>target</code>选项可以指定其他的目标。经常使用这个选项将目标指向视图而非控制器。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;p&gt;</span>
+  <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">view</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/p&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>You would handle it this in an <code>actions</code> hash on your view.</p>
+
+<p>这样应该在视图的<code>actions</code>哈希中处理。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.PostsIndexView = Ember.View.extend({
+  <span class="key">actions</span>: {
+    <span class="function">select</span>: <span class="keyword">function</span>(post) {
+      <span class="comment">// do your business.</span>
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
     
       <footer>
         

@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -547,7 +548,7 @@
   <td class="code"><pre> <span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
 <span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed isEditing:editing</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed isEditing:editing</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
     <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isEditing</span><span class="inline-delimiter">}}</span></span>
       <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">'</span><span class="content">edit</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
     <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
@@ -611,14 +612,14 @@ isEditing: <span class="predefined-constant">false</span>,
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="/guides/templates/conditionals">Handlebars Conditionals Guide</a></li>
-<li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bindAttr">bindAttr API documentation</a></li>
+<li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr">bind-attr API documentation</a></li>
 <li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API documentation</a></li>
-<li><p><a href="http://www.emberist.com/2012/04/06/bind-and-bindattr.html">bind and bindAttr article by Peter Wagenet</a></p></li>
+<li><p><a href="http://www.emberist.com/2012/04/06/bind-and-bindattr.html">bind and bind-attr article by Peter Wagenet</a></p></li>
 <li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/7eb87f8f987714385e8381197ec7c77215df8cf9">用<code>diff</code>格式呈现本次修改</a></p></li>
 <li><p><a href="/guides/templates/conditionals">Handlebars条件表达式指南</a></p></li>
-<li><p><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bindAttr">bindAttr API文档</a></p></li>
+<li><p><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_bind-attr">bind-attr API文档</a></p></li>
 <li><p><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API文档</a></p></li>
-<li><p><a href="http://www.emberist.com/2012/04/06/bind-and-bindattr.html">Peter Wagenet编写的bind和bindAttr文章</a></p></li>
+<li><p><a href="http://www.emberist.com/2012/04/06/bind-and-bindattr.html">Peter Wagenet编写的bind和bind-attr文章</a></p></li>
 </ul>
 
     

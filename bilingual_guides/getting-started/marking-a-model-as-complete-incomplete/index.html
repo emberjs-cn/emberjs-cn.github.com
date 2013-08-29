@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -528,7 +529,7 @@
 <p>In <code>index.html</code> update your template to wrap each todo in its own controller by adding an <code>itemController</code> argument to the <code>{{each}}</code> Handlebars helper. Then convert our static <code>&lt;input type=&quot;checkbox&quot;&gt;</code> into an <code>Ember.Checkbox</code>:</p>
 
 <p>在<code>index.html</code>中更新模板，通过添加一个<code>itemController</code>参数在Handlebars的<code>{{each}}</code>助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的<code>&lt;input type=&quot;checkbox&quot;&gt;</code>转换为一个<code>Ember.Checkbox</code>：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
@@ -540,17 +541,17 @@
 9
 <strong>10</strong>
 </pre></td>
-  <td class="code"><pre>... additional lines truncated <span class="keyword">for</span> brevity ...
-... <span class="error">为</span><span class="error">保</span><span class="error">持</span><span class="error">代</span><span class="error">码</span><span class="error">简</span><span class="error">洁</span><span class="error">，</span><span class="error">在</span><span class="error">此</span><span class="error">省</span><span class="error">略</span><span class="error">了</span><span class="error">其</span><span class="error">他</span><span class="error">代</span><span class="error">码</span> ...
-{{<span class="error">#</span>each controller itemController=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo</span><span class="delimiter">&quot;</span></span>}}
-  <span class="tag">&lt;li</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>
-    {{view Ember.Checkbox checkedBinding=&quot;isCompleted&quot; class=&quot;toggle&quot;}}
-    <span class="tag">&lt;label&gt;</span>{{title}}<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... ---&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... ---&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
+    <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Checkbox</span> <span class="attribute-name">checkedBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+    <span class="tag">&lt;label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
   <span class="tag">&lt;/li&gt;</span>
-{{<span class="regexp"><span class="delimiter">/</span><span class="content">each}}
-... additional lines truncated for brevity ...
-... 为保持代码简洁，在此省略了其他代码 ...
-</span></span></pre></td>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="comment">&lt;!--- ... additional lines truncated for brevity ... ---&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... ---&gt;</span>
+</pre></td>
 </tr></table>
 </div></div>
 <p>When this <code>Ember.Checkbox</code> is rendered it will ask for the current value of the controller&#39;s <code>isCompleted</code> property. When a user clicks this input, it will call the controller&#39;s <code>isCompleted</code> property with an argument of either <code>true</code> or <code>false</code> depending on the new checked value of the input.</p>

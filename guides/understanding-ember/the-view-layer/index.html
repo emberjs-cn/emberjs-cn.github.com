@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li class="active"><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -614,7 +615,7 @@
   <img src="/images/view-guide/render-buffer.png">
 </figure>
 
-<p>除了子视图之外（字符串或其他<code>RenderBuffer</code>），一个<code>RenderBuffer</code>还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用<code>bindAttr</code>），因此整个过程非常稳定且透明。</p>
+<p>除了子视图之外（字符串或其他<code>RenderBuffer</code>），一个<code>RenderBuffer</code>还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用<code>bind-attr</code>），因此整个过程非常稳定且透明。</p>
 <h5 class='anchorable-toc' id='toc_3'>3. 元素创建与插入</h5>
 <p>在渲染过程的最后阶段，根视图向<code>RenderBuffer</code>请求它的元素。这时<code>RenderBuffer</code>将完整的字符串使用jQuery转换成一个元素。根视图将这个元素赋给它的<code>element</code>属性，将其放置到DOM中正确的位置（<code>appendTo</code>指定的位置，如果应用使用<code>append</code>则是应用的根元素）。</p>
 

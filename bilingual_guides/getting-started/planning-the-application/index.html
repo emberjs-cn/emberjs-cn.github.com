@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -534,8 +535,8 @@
 <ol>
 <li><p>It displays a list of todos for a user to see. This list will grow and shrink as the user adds and removes todos.</p></li>
 <li><p>为用户提供一个todos的列表，并且会随着用户添加或移除todos进行增长与缩减。</p></li>
-<li><p>It accepts text in an <code>&lt;input&gt;</code> for entry of new todos. Hitting <code>&lt;return&gt;</code> creates the new item and displays it in the list below.</p></li>
-<li><p>从一个 <code>&lt;input&gt;</code> 框接收文本作为新建todos的入口，当点击 <code>&lt;return&gt;</code> 时，创建一项，并在列表下方显示。</p></li>
+<li><p>It accepts text in an <code>&lt;input&gt;</code> for entry of new todos. Hitting the <code>&lt;enter&gt;</code> creates the new item and displays it in the list below.</p></li>
+<li><p>从一个 <code>&lt;input&gt;</code> 框接收文本作为新建todos的入口，当点击 <code>&lt;enter&gt;</code> 时，创建一项，并在列表下方显示。</p></li>
 <li><p>It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.</p></li>
 <li><p>为每一个todo提供一个 <code>checkbox</code> 用于切换完成与未完成状态。新建的todo默认为未完成状态。</p></li>
 <li><p>It display the number of incomplete todos and keeps this count updated as new todos are added and existing todos are completed.</p></li>
@@ -548,7 +549,7 @@
 <li><p>为每一个todo提供一个删除按钮，这个按钮显示为一个红色的X，并只在用户鼠标移动到这个todo上时显示。</p></li>
 <li><p>It provide a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.</p></li>
 <li><p>提供一个 <code>checkbox</code> 用于切换列表中所有的todos的完成与未完成状态。而且，当所有的todos状态为完成时，它自动变为勾选状态。</p></li>
-<li><p>It allows a user to double click to show a textfield for editing a single todo. Hitting <code>&lt;enter&gt;</code> or moving focus outside of this textfield will persist the changed text.</p></li>
+<li><p>It allows a user to double click to show a textfield for editing a single todo. Hitting the <code>&lt;enter&gt;</code> or moving focus outside of this textfield will persist the changed text.</p></li>
 <li><p>允许用户双击某一个todo，显示一个 <code>textfield</code> 用于修改这个todo。点击 <code>&lt;enter&gt;</code> 或者当鼠标焦点从这个 <code>textfield</code> 移除时，持久化更改的内容。</p></li>
 <li><p>It retains a user&#39;s todos between application loads by using the browser&#39;s <code>localstorage</code> mechanism.</p></li>
 <li><p>使用 <code>本地存储(localstorage)</code> 机制保存用户的todos列表，在应用程序启动时重新加载。</p></li>

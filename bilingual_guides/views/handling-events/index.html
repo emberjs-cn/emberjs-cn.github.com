@@ -86,8 +86,9 @@
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
-          <li><a href="/blog">博客</a></li>
           <li><a href="/guides">指南</a></li>
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
@@ -586,19 +587,23 @@ your application, simply send an event to the view&#39;s controller:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>If the controller has a method called <code>turnItUp</code>, it will be called:</p>
+<p>If the controller has an action handler called <code>turnItUp</code>, it will be called:</p>
 
-<p>如果控制器有一个叫<code>turnInUp</code>的方法，它将会被调用：</p>
+<p>如果控制器有一个叫<code>turnInUp</code>的操作处理器，它将会被调用：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
 2
 3
 4
 5
+6
+7
 </pre></td>
   <td class="code"><pre>App.PlaybackController = Ember.ObjectController.extend({
-  <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
-    <span class="comment">//Do your thing</span>
+  <span class="key">actions</span>: {
+    <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
+      <span class="comment">//Do your thing</span>
+    }
   }
 });
 </pre></td>
@@ -617,7 +622,7 @@ your application, simply send an event to the view&#39;s controller:</p>
 7
 </pre></td>
   <td class="code"><pre>App.PlaybackRoute = Ember.Route.extend({
-  <span class="key">events</span>: {
+  <span class="key">actions</span>: {
     <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
       <span class="comment">//This won't be called if it's defined on App.PlaybackController</span>
     }
