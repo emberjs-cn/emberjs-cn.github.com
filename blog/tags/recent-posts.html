@@ -25,56 +25,12 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
   </head>
@@ -85,11 +41,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -107,6 +63,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
@@ -175,6 +133,22 @@
 <h1>Recent Posts</h1>
 
   <article class="blog-post-summary">
+    <h2><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a> &ndash; <time>Aug 31, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： The Core Team
+      </h5>
+    
+    <p>Today, we&#39;re excited to announce the final release of Ember.js 1.0.</p>
+
+<p>The first commit to the repository that would become Ember.js happened on April
+30th, 2011, almost two and a half years ago.</p>
+
+<p>At the time, Backbone.js was rocketing to popularity. In response to large</p>
+
+    <a href="/blog/2013/08/31/ember-1-0-released.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
     <h2><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a> &ndash; <time>Aug 28, 2013</time></span></h2>
     
     <p>Ember 1.0 RC8是1.0正式版前的最后一次发布，如果一切顺利本周末将发布Ember
@@ -192,6 +166,15 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
     <a href="/blog/2013/08/28/ember-1-0-rc8.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">
+    <h2><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a> &ndash; <time>Aug 14, 2013</time></span></h2>
+    
+    <p>今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。</p>
+<h3 class='anchorable-toc' id='toc_'>重要改变</h3><h4 class='anchorable-toc' id='toc_code-route-controllerfor-code'><code>Route#controllerFor</code>不再自动生成控制器</h4>
+<p>有的时候，人们依赖<code>controllerFor</code>来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当进入一个路由时，Ember查找一个与其名字对应的控制器。如果控制器没有找到，Ember会根据路由的模型的类型为其生成一个。如果模型是一个数组，那么将生成一个<code>ArrayController</code>；如果是一个对象，那么则生成一个<code>ObjectController</code>；如果两者都不是，则生成一个标准<code>Controller</code>。在大多数情况下，当在路由之外使用<code>controllerFor</code>时，并没有提供一个模型，那么Ember会创建一个基础的<code>Controller</code>。如果之后进入到该路由，这个控制器不会被重新创建，那么控制器的类型就可能与提供的model不匹配。</p>
+
+    <a href="/blog/2013/08/14/ember-1-0-rc7.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
     <h2><a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">Windows下Ember应用开发环境搭建</a> &ndash; <time>Aug 14, 2013</time></span></h2>
     
       <h5 class="blog-post-summary-author">
@@ -202,7 +185,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 <h3 class='anchorable-toc' id='toc_nodejs'>安装nodejs</h3><h3 class='anchorable-toc' id='toc_grunt'>安装grunt</h3><h4 class='anchorable-toc' id='toc_grunt-grunt-cli'>安装grunt命令行工具grunt-cli</h4>
 <p>执行全局安装</p>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -222,15 +205,6 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 </ul>
 
     <a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a> &ndash; <time>Aug 14, 2013</time></span></h2>
-    
-    <p>今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。</p>
-<h3 class='anchorable-toc' id='toc_'>重要改变</h3><h4 class='anchorable-toc' id='toc_code-route-controllerfor-code'><code>Route#controllerFor</code>不再自动生成控制器</h4>
-<p>有的时候，人们依赖<code>controllerFor</code>来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当进入一个路由时，Ember查找一个与其名字对应的控制器。如果控制器没有找到，Ember会根据路由的模型的类型为其生成一个。如果模型是一个数组，那么将生成一个<code>ArrayController</code>；如果是一个对象，那么则生成一个<code>ObjectController</code>；如果两者都不是，则生成一个标准<code>Controller</code>。在大多数情况下，当在路由之外使用<code>controllerFor</code>时，并没有提供一个模型，那么Ember会创建一个基础的<code>Controller</code>。如果之后进入到该路由，这个控制器不会被重新创建，那么控制器的类型就可能与提供的model不匹配。</p>
-
-    <a href="/blog/2013/08/14/ember-1-0-rc7.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a> &ndash; <time>Jul 06, 2013</time></span></h2>
@@ -290,7 +264,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 <h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
 <p>首先是相同的创建应用：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>App = Ember.Application.create();
 </pre></td>
@@ -311,7 +285,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 <h3 class='anchorable-toc' id='toc_'>第一篇讲述使用第一种方案实现的过程。</h3>
 <p>首先是创建应用：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -377,7 +351,7 @@ App.Store = DS.Store.extend({
 
 <p>首先让我们用<code>Ember</code><a href="http://emberjs.com/">官方网站</a>上的一句话来介绍<code>Ember</code>:</p>
 <div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>A framework for creating ambitious web applications
 </pre></td>
@@ -406,19 +380,6 @@ App.Store = DS.Store.extend({
 </ul>
 
     <a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a> &ndash; <time>Mar 27, 2013</time></span></h2>
-    
-      <h5 class="blog-post-summary-author">
-        撰写人： Tower He
-      </h5>
-    
-    <p>为了更好的为大家提供信息，我们对指南的目录结构进行了调整。原来的中英对照指南改为<a href="http://emberjs.cn/guides">中文指南</a>，并将原来的<a href="http://emberjs.cn/bilingual_guides">中英双语对照指南</a>独立开来。这样我们可以更加方便的保持中文指南与官方的指南同步。但这会影响到现在已经在进行的翻译工作，需要各位根据最新的目录结构进行调整，由此带来的不便，敬请原谅！</p>
-
-<p>经过调整后，我们提供了独立的中英双语对照指南，这也就成为了我们翻译工作新的工作目录（<code>source/bilingual_guides</code>）。由于目录结构发生了改变，我们翻译工作的流程也随之需要进行一些调整。调整后的翻译步骤为：</p>
-
-    <a href="/blog/2013/03/27/changed-the-directories-of-guides.html">更多内容...</a>
   </article>
 
       </div>

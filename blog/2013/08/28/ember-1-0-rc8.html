@@ -26,56 +26,12 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
   </head>
@@ -86,11 +42,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -108,6 +64,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
@@ -194,7 +152,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 <p>以前的方法：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -222,7 +180,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 </div></div>
 <p>现在只需要：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -242,7 +200,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 <p>当前最简单的实现方法是：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -260,7 +218,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 <p>这时可以使用数组计算属性性：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -272,7 +230,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 </div></div>
 <p>可以将数组计算属性链接在一起：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -324,7 +282,7 @@ Data模型的属性、一对多关联），支持通过检查器修改对象。<
 
 <p>如果在初始化过程中需要出发一个观察器，不能通过<code>set</code>来实现，需要在观察器上通过<code>.on(&#39;init&#39;)</code>指定其在<code>init</code>下也工作。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -360,7 +318,7 @@ Data模型的属性、一对多关联），支持通过检查器修改对象。<
 <h4 class='anchorable-toc' id='toc_code-init-code'>在<code>init</code>中设置属性</h4>
 <p>当前，传递一个哈希给<code>create</code>和在<code>init</code>中设置同样的属性是不一致的。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -382,7 +340,7 @@ App.Person.create({ <span class="key">firstName</span>: <span class="string"><sp
 
 <p>下面看一看在RC7中在<code>init</code>方法里完成同样的出发会发生什么：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -420,7 +378,7 @@ App.Person.create({ <span class="key">lastName</span>: <span class="string"><spa
 
 <p>此外，因为如果为包含数组、对象值的属性进行初始化只能在<code>init</code>中，这导致了不一致性：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -452,7 +410,7 @@ App.Person = Ember.Object.extend({
 
 <p>如果有代码需要不论是在初始化过程还是当一个属性改变时执行，必须使用<code>.on(&#39;init&#39;)</code>将其标记为需要在初始化过程执行。这种情况最好是进行重构，来避免<code>init</code>时<code>set</code>的负面效应。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -470,7 +428,7 @@ App.Person = Ember.Object.extend({
 
 <p>为了理解这个更新，通过一个计算属性的例子来介绍。假设尝试用Ember.js对象来为<a href="http://en.wikipedia.org/wiki/Schr%C3%B6dinger&#x27;s_cat">Schrödinger&#39;s famous cat</a> 建模。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -492,7 +450,7 @@ App.Person = Ember.Object.extend({
 
 <p>而实际上，并非猫超凡脱俗，而是取决于第一次调用。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -508,7 +466,7 @@ App.Person = Ember.Object.extend({
 
 <p>在之前版本的Ember.js中，答案是肯定的。例如：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -536,7 +494,7 @@ App.Person = Ember.Object.extend({
 </div></div>
 <p>依赖的任意键发生改变，都会触发观察者：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -574,7 +532,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 
 <p>例如，假设构造一个模型表示一篇博客，如果需要使用博客的评论，采用延迟加载的方式加载评论（例如在模板中）。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -594,7 +552,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
     <span class="keyword">var</span> comments = [];
     <span class="keyword">var</span> url = <span class="string"><span class="delimiter">'</span><span class="content">/post/</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">/comments.json</span><span class="delimiter">'</span></span>);
 
-    <span class="predefined">$</span>.getJSON(url) + <span class="string"><span class="delimiter">'</span><span class="content">/comments.json</span><span class="delimiter">'</span></span>).then(<span class="keyword">function</span>(data) {
+    <span class="predefined">$</span>.getJSON(url).then(<span class="keyword">function</span>(data) {
       data.forEach(<span class="keyword">function</span>(comment) {
         comments.pushObject(comment);
       });
@@ -608,7 +566,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 </div></div>
 <p>在这里跟预期的行为一样，博文的评论只会在第一次使用<code>post.get(&#39;comments&#39;)</code>或者在模板中使用的时候，才通过网络去加载：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -624,7 +582,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 </div></div>
 <p>然而，现在希望添加一个计算属性，用来从加载的评论中选择第一条：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -693,7 +651,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 
 <p>例如，为了更新上述的观察器例子，能通过&quot;precomputing&quot;<code>fullName</code>属性来保持RC8之前版本的行为：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -733,7 +691,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 
 <p>下面的模板例子将在当前上下文（通常是一个控制器）查找<code>destinationRoute</code>，并使用其来决定链接的<code>href</code>和点击链接将切换至的路由。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="attribute-name">destinationRoute</span><span class="inline-delimiter">}}</span></span>Link Text<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
@@ -741,7 +699,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 </div></div>
 <p>下面的例子将一直指向<code>articles.show</code>路由（因为路由名称参数加了引号），但是当<code>article</code>的值改变时，链接的<code>href</code>将更新为对应<code>article</code>新值的URL。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">articles.show</span><span class="error">'</span> <span class="attribute-name">article</span><span class="inline-delimiter">}}</span></span>Read More...<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
@@ -751,7 +709,7 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
 <h4 class='anchorable-toc' id='toc_'>绑定助手：加引号的字符串，数字和路径</h4>
 <p>调用自定义的绑定助手（如通过<code>Ember.Handlebars.helper</code>定义的）时传入加引号的字符串或者原生数字会将其原值直接传入，而不是将所有的都作为绑定属性的路径，每次在属性变化的时候都重新渲染助手。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4

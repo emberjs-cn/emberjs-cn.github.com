@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="bilingual_guides bilingual_guides_getting-started bilingual_guides_getting-started_deleting-todos bilingual_guides_getting-started_deleting-todos_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -487,6 +457,34 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol>
         
@@ -512,6 +510,7 @@
       
       <div id="content" class="has-sidebar">
           
+  
 
   <div class="chapter">
     
@@ -530,7 +529,7 @@
 
 <p>在<code>index.html</code>中，在静态的<code>&lt;button&gt;</code>元素上增加一个<code>{{action}}</code>Handlebar助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -548,7 +547,7 @@
 
 <p>在<code>js/controllers/todo_controller.js</code>中，实现在模板中的<code>{{action}}</code>Handlebars助手引用的<code>removeTodo</code>方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -557,14 +556,18 @@
 7
 8
 9
+<strong>10</strong>
+11
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
-<span class="function">removeTodo</span>: <span class="keyword">function</span> () {
-  <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
-  todo.deleteRecord();
-  todo.save();
-},
+actions: {
+    <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
+      <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
+      todo.deleteRecord();
+      todo.save();
+    },
+}
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 </pre></td>
@@ -582,12 +585,12 @@
 
 <p>重新载入Web浏览器以确保没有任何错误发生，并且之前描述的行为均工作正常。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/asokal/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/eREkanA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/dfffa6edfa98d8948715a755e04cd03890336969">Changes in this step in <code>diff</code> format</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/14e1f129f76bae8f8ea6a73de1e24d810678a8fe">Changes in this step in <code>diff</code> format</a></li>
 <li><p><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API documention</a></p></li>
-<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/dfffa6edfa98d8948715a755e04cd03890336969">用<code>diff</code>格式呈现本次修改</a></p></li>
+<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/14e1f129f76bae8f8ea6a73de1e24d810678a8fe">用<code>diff</code>格式呈现本次修改</a></p></li>
 <li><p><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API文档</a></p></li>
 </ul>
 
@@ -605,30 +608,6 @@
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>

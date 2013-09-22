@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="bilingual_guides bilingual_guides_understanding-ember bilingual_guides_understanding-ember_the-view-layer bilingual_guides_understanding-ember_the-view-layer_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -486,6 +456,34 @@
               <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
           </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
           <li class="level-1 selected">
             <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol class='selected'>
@@ -512,6 +510,7 @@
       
       <div id="content" class="has-sidebar">
           
+  
 
   <div class="chapter">
     
@@ -735,7 +734,7 @@ are unnecessary for getting started with Ember.</p>
 
 <p>当Ember渲染一个模板化的视图时，将生成一个视图层级。假设有一个<code>form</code>模板。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.Search</span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
@@ -747,7 +746,7 @@ are unnecessary for getting started with Ember.</p>
 
 <p>并以如下方式加入到DOM中：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -769,7 +768,7 @@ are unnecessary for getting started with Ember.</p>
 
 <p>通过<code>parentView</code>和<code>childViews</code>属性可以游弋在这个视图层级中。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> children = view.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>) <span class="comment">// [ &lt;App.Search&gt;, &lt;Ember.Button&gt; ]</span>
@@ -781,7 +780,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 
 <p><code>parentView</code>的一个常见的使用场景就是在一个子视图的实例中。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -818,7 +817,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 
 <p>应用可以通过在视图中定义一个与钩子名称相同的方法来实现钩子。另外，也可以在视图上注册一个钩子的监听器：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -846,7 +845,7 @@ API. The public view hierarchy reflects only views created using the
 
 <p>例如，考虑如下的Handlebars模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -902,7 +901,7 @@ or <code>_childViews</code>, which will include virtual views:</p>
 
 <p>通过询问包含虚拟视图的<code>_parentView</code>或<code>_childViews</code>可以查看视图层级的内部结构：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -942,7 +941,7 @@ implements that event as a method:</p>
 
 <p>为了响应用户事件，可以创建一个视图的子类，来将事件实现为一个方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -990,7 +989,7 @@ techniques as normal jQuery event handlers:</p>
 
 <p>例如，假定定义了如下的视图类：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1034,7 +1033,7 @@ App.ChildView = Ember.View.extend({
 
 <p>下面是使用这些视图类的Handlebars模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1057,7 +1056,7 @@ browser&#39;s console:</p>
 
 <p>如果点击了<code>&lt;h1&gt;</code>，那么在浏览器的控制台应该看到如下的输出：</p>
 <div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>Child!
@@ -1080,7 +1079,7 @@ form view will &quot;just work&quot;.</p>
 
 <p>同样，也可以使用事件冒泡技术来实现类似的模式。例如，可以实现一个定义了<code>submit</code>方法的<code>FormView</code>。因为浏览器会在用户在一个文本输入框中敲回车的时候触发<code>submit</code>事件，因此在表单视图上定义一个<code>submit</code>方法是可以正常工作的。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1100,7 +1099,7 @@ form view will &quot;just work&quot;.</p>
 </pre></td>
 </tr></table>
 </div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1166,7 +1165,7 @@ new application:</p>
 
 <p>在创建新的应用时，可以给事件分发器添加更多的事件：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1272,7 +1271,7 @@ any time by calling the <code>addButton</code> method:</p>
 
 <p>下面是一个使用<code>childViews</code>API来创建视图的例子。有一个假设的<code>DescriptionView</code>开始，并可以通过调用<code>addButton</code>方法在任何时刻添加一个按钮：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1319,7 +1318,7 @@ override the <code>init</code> method:</p>
 
 <p>如上例中所述，使用了两个视图来对<code>ContainerView</code>进行初始化，而且还可以在运行期添加附加的视图。按照惯例，与通过重写<code>init</code>方法不同，还有另外一种更为简便的初始化方法：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1387,7 +1386,7 @@ path as the context.</p>
 
 <p>如果被路径引用的对象发生改变，那么Ember将自动使用适当的上下文重新渲染该块。在一个保留上下文的助手情况下，Ember在重新渲染块的时候使用初始的上下文。否则，Ember将使用路径对应的新值作为上下文。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1441,7 +1440,7 @@ You can get access to a view&#39;s parent using <code>view.parentView</code>.</p
 
 <p>例如，假定有一个视图包含如下的属性：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1457,7 +1456,7 @@ You can get access to a view&#39;s parent using <code>view.parentView</code>.</p
 
 <p>及如下的模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -1526,7 +1525,7 @@ but remain in the same scope as where the template invoked the <code>each</code>
 <p>这在提供<code>{{#each person in
 people}}</code>形式的<code>{{#each}}</code>助手中尤为重要。这种形式派生的上下文能够访问<code>person</code>变量，且同时保持了模板中调用<code>each</code>处相同的作用域。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -1575,8 +1574,8 @@ recent template-backed view.</p>
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/configuring-ember/embedding-applications">
-             ← 配置Ember.js: 嵌入式应用
+          <a class="previous-guide" href="/bilingual_guides/cookbook/working_with_objects/setting_multiple_properties_at_once">
+             ← Cookbook: Setting Multiple Properties At Once
           </a>
          
         <a class="next-guide" href="/bilingual_guides/understanding-ember/managing-asynchrony">
@@ -1586,30 +1585,6 @@ recent template-backed view.</p>
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>

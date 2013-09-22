@@ -25,56 +25,12 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
   </head>
@@ -85,11 +41,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -107,6 +63,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
@@ -174,6 +132,22 @@
         
 <h1>Releases</h1>
 
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a> &ndash; <time>Aug 31, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： The Core Team
+      </h5>
+    
+    <p>Today, we&#39;re excited to announce the final release of Ember.js 1.0.</p>
+
+<p>The first commit to the repository that would become Ember.js happened on April
+30th, 2011, almost two and a half years ago.</p>
+
+<p>At the time, Backbone.js was rocketing to popularity. In response to large</p>
+
+    <a href="/blog/2013/08/31/ember-1-0-released.html">更多内容...</a>
+  </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a> &ndash; <time>Aug 28, 2013</time></span></h2>
     

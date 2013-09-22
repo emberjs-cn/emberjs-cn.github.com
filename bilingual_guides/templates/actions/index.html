@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="bilingual_guides bilingual_guides_templates bilingual_guides_templates_actions bilingual_guides_templates_actions_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -487,6 +457,34 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol>
         
@@ -512,6 +510,7 @@
       
       <div id="content" class="has-sidebar">
           
+  
 
   <div class="chapter">
     
@@ -537,7 +536,7 @@ application.</p>
 
 <p>那么可以使用<code>{{action}}</code>助手来使得一个HTML元素可以被点击。当用户点击这个元素时，一个命名事件将会被发送给应用。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -565,7 +564,7 @@ application.</p>
 </pre></td>
 </tr></table>
 </div></div><div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -619,7 +618,7 @@ compatibility.</p>
 
 <p>路由和控制器处理操作<strong>必须将操作处理函数定义在<code>actions</code>哈希中</strong>。即便一个路由有一个与操作同名的的方法，如果不定义在<code>ations</code>哈希中也不会被触发。对于一个控制器，强烈推荐将操作处理函数定义在<code>actions</code>哈希中来保证向前兼容。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -675,7 +674,7 @@ to the handler as arguments.</p>
 
 <p>例如，如果需要将<code>post</code>作为参数：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre> <span class="tag">&lt;p&gt;</span><span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">select</span><span class="error">&quot;</span> <span class="attribute-name">post</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>✓<span class="tag">&lt;/button&gt;</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">post.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/p&gt;</span>
 </pre></td>
@@ -686,7 +685,7 @@ argument containing the post model:</p>
 
 <p>路由的<code>select</code>操作处理器被调用，并且将博客模型作为参数：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -713,7 +712,7 @@ the action when the user clicks on the element.</p>
 
 <p>你还可以通过<code>on</code>选项指定一个替代事件来侦听。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -737,7 +736,7 @@ to specify which keys should not be ignored.</p>
 
 <p>默认情况下，<code>{{action}}</code>助手方法会忽略掉用户点击时同时按下的辅助键。你可以通过提供一个<code>allowedKeys</code>的选项来指定哪些键按下时不会被忽略掉。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -768,7 +767,7 @@ clicked.</p>
 
 <p>比如，你有一个链接包含一个<strong>✗</strong>按钮，你想保证这个按钮点击时，链接却不会被点击。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -801,7 +800,7 @@ route handlers until it reaches the application route.</p>
 
 <p>在路由的<code>actions</code>属性里定义操作。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -839,7 +838,7 @@ controller.</p>
 
 <p>使用<code>target</code>选项可以指定其他的目标。经常使用这个选项将目标指向视图而非控制器。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -855,7 +854,7 @@ controller.</p>
 
 <p>这样应该在视图的<code>actions</code>哈希中处理。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -887,30 +886,6 @@ controller.</p>
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>

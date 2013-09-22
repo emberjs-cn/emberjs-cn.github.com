@@ -26,56 +26,12 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
   </head>
@@ -86,11 +42,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -108,6 +64,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
@@ -188,7 +146,7 @@
 <h3 class='anchorable-toc' id='toc_'>按命名空间查找控制器</h3>
 <p>在之前的版本中，我们只能从应用的主命名空间来查找控制器。在RC2中，我们可以从其他的命名空间来查找了。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">render</span> <span class="error">'</span><span class="attribute-name">posts</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
@@ -196,7 +154,7 @@
 </div></div>
 <p>意味着使用<code>App.PostsController</code>来渲染<code>posts</code>模板。现在我们还可以使用其他命名空间下的控制器来进行渲染。例如：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">render</span> <span class="error">'</span><span class="attribute-name">blog</span><span class="error">/</span><span class="attribute-name">posts</span><span class="error">'</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
@@ -208,7 +166,7 @@
 
 <p>而在RC2中，可以使用一个特定的模型来渲染模板，例如<code>{{render &#39;post&#39; post}}</code>。如果我们使用<code>render</code>渲染模板的时候指定了一个模型，那么<code>Ember.js</code>会每次创建一个新的<code>App.PostController</code>实例，而不是使用同一个。这样我们就可以在循环中使用<code>{{render}}</code>。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -222,7 +180,7 @@
 
 <p>如果我们有一个这样的模板：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -242,7 +200,7 @@
 </div></div>
 <p>那么我们的<code>App.PostsController</code>应该是这样的：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4

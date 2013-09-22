@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="bilingual_guides bilingual_guides_getting-started bilingual_guides_getting-started_modeling-data bilingual_guides_getting-started_modeling-data_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -487,6 +457,34 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol>
         
@@ -512,6 +510,7 @@
       
       <div id="content" class="has-sidebar">
           
+  
 
   <div class="chapter">
     
@@ -522,15 +521,15 @@
       
     <p>英文原文：<a href="http://emberjs.com/guides/getting-started/modeling-data">http://emberjs.com/guides/getting-started/modeling-data</a></p>
 <h2 class='anchorable-toc' id='toc_modeling-your-data'>Modeling Your Data</h2><h2 class='anchorable-toc' id='toc_'>为数据建立模型</h2>
-<p>Next we will create a model class to describe todo items and a data store to track them locally. </p>
+<p>Next we will create a model class to describe todo items. </p>
 
-<p>接下来我们建立一个模型用来描述todo项和一个存储器（store）进行本地追踪（track them locally）。</p>
+<p>接下来我们建立一个模型用来描述todo项。</p>
 
 <p>Create a file at <code>js/models/todo.js</code> and put the following code inside:</p>
 
 <p>新建一个名为 <code>js/models/todo.js</code> 的文件，加入以下代码：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -546,45 +545,23 @@
 
 <p>这段代码创建了一个新的 <code>Todo</code> 类，并将它置于你应用的命名空间下。每一个todo有两个属性： <code>title</code> 和 <code>isCompleted</code>。</p>
 
-<p>Create a file at <code>js/models/store.js</code> and put the following code inside:</p>
-
-<p>新建一个名为 <code>js/models/store.js</code> 的文件，加入以下代码：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre>Todos.Store = DS.Store.extend({
-  <span class="key">revision</span>: <span class="integer">12</span>,
-  <span class="key">adapter</span>: <span class="string"><span class="delimiter">'</span><span class="content">DS.FixtureAdapter</span><span class="delimiter">'</span></span>
-});
-</pre></td>
-</tr></table>
-</div></div>
-<p>This code creates a new class <code>Store</code> and places it within your application&#39;s namespace. The store will track local instances of <code>Todos.Todo</code>. It will persist these instances using the built-in <code>DS.FixtureAdapter</code>, an adapter for using fixture data in the early stages of development before long-term persistence is required.</p>
-
-<p>这段代码创建了一个新的 <code>Store</code> 类，并将它置于你应用的命名空间下。这个Store会追踪本地 <code>Todos.Todo</code> 的所有实例，它会使用内置的 <code>DS.FixtureAdapter</code> 来持久化这些实例。在开发初期，我们还不需要对数据进行永久保存时，我们可以使用 <code>DS.FixtureAdapter</code> ，它是一个用于静态数据（fixture data）的适配器。</p>
-
 <p>You may place these files anywhere you like (even just putting all code into the same file), but this guide will assume you have separated them into their own files and named them as indicated.</p>
 
 <p>你可以将这两个文件放在任意你喜欢的地方（甚至把它们所有的代码放在同一个文件内），但是本指南假定你将它们分开了，并且按照前面讲的进行命名。</p>
 
-<p>Finally, update your <code>index.html</code> to include references to these new files:</p>
+<p>Finally, update your <code>index.html</code> to include references to these new file:</p>
 
 <p>最后，更新 <code>index.html</code> ，将下列引用添加到其中：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
 5
 6
-7
 </pre></td>
   <td class="code"><pre><span class="comment">&lt;!-- ... additional lines truncated for brevity ... --&gt;</span>
 <span class="comment">&lt;!-- ... 为确保简洁，略去头尾代码 ... --&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/store.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/todo.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="comment">&lt;!-- ... additional lines truncated for brevity ... --&gt;</span>
@@ -596,16 +573,16 @@
 
 <p>重新加载浏览器页面，确保所有的文件被正确引用，且没有错误产生。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/ovizun/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/AJoyOGo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/979ba3a329b8157bb199fda4b8c6a43bab5b6900">Changes in this step in <code>diff</code> format</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="/guides/models/defining-a-store">Defining A Store Guide</a></li>
 <li><a href="/guides/models/defining-models">Defining Models Guide</a></li>
 </ul>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/979ba3a329b8157bb199fda4b8c6a43bab5b6900">采用<code>diff</code>格式显示这步骤所作的修改</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/a1ccdb43df29d316a7729321764c00b8d850fcd1">采用<code>diff</code>格式显示这步骤所作的修改</a></li>
 <li><a href="/guides/models/defining-a-store">创建一个存储器指南</a></li>
 <li><a href="/guides/models/defining-models">定义模型指南</a></li>
 </ul>
@@ -617,37 +594,13 @@
             ← 添加第一个路由与模板
           </a>
          
-        <a class="next-guide" href="/bilingual_guides/getting-started/using-fixutres">
+        <a class="next-guide" href="/bilingual_guides/getting-started/using-fixutures">
           使用静态数据 →
         </a>
       
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>

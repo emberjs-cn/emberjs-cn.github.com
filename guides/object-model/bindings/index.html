@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="guides guides_object-model guides_object-model_bindings guides_object-model_bindings_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li class="active"><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -487,6 +457,34 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol>
         
@@ -512,6 +510,7 @@
       
       <div id="content" class="has-sidebar">
           
+  
 
   
 
@@ -529,7 +528,7 @@
 
 <p>建立一个双向的关联最简单的方法是添加一个具有相同名称，但以<code>Binding</code>为后缀的新属性，并指定一个从全局域开始的路径：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -563,7 +562,7 @@ App.wife.get(<span class="string"><span class="delimiter">'</span><span class="c
 <h2 class='anchorable-toc' id='toc_'>单向绑定</h2>
 <p>单向绑定顾名思义只会向一个方向传播更新。通常情况下，使用单向绑定只是为了优化性能，其实完全可以使用更为简洁的双向绑定的语法来实现单向绑定（因为如果一个双向绑定只有一端会发生变化的话，其实际上就是一个单向绑定）。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -615,30 +614,6 @@ App.user.get(<span class="string"><span class="delimiter">'</span><span class="c
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>

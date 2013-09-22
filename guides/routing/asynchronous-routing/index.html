@@ -1,0 +1,932 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 路由: Asynchronous Routing</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+  </head>
+
+  <body class="guides guides_routing guides_routing_asynchronous-routing guides_routing_asynchronous-routing_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixutures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/routing">路由</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-models">查找模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/modifying-attributes">修改属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/model-lifecycle">模型生命周期</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">The Fixture Adapter</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-rest-adapter">REST适配器</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/testing/integration">Testing</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/testing/integration">Integration Testing</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+        <h1>Asynchronous Routing 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/routing/asynchronous-routing.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <hr>
+    <p>This section covers some more advanced features of the router and its
+capability for handling complex async logic within your app.</p>
+<h3 class='anchorable-toc' id='toc_a-word-on-promises'>A Word on Promises...</h3>
+<p>Ember&#39;s approach to handling asynchronous logic in the router makes
+heavy use of the concept of Promises. In short, promises are objects that
+represent an eventual value. A promise can either <em>fulfill</em>
+(successfully resolve the value) or <em>reject</em> (fail to resolve the
+value). The way to retrieve this eventual value, or handle the cases
+when the promise rejects, is via the promise&#39;s <code>then</code> method, which
+accepts two optional callbacks, one for fulfillment and one for
+rejection. If the promise fulfills, the fulfillment handler gets called
+with the fulfilled value as its sole argument, and if the promise rejects, 
+the rejection handler gets called with a reason for the rejection as its
+sole argument. For example:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> promise = fetchTheAnswer();
+
+promise.then(fulfill, reject);
+
+<span class="keyword">function</span> <span class="function">fulfill</span>(answer) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">The answer is </span><span class="delimiter">&quot;</span></span> + answer);
+}
+
+<span class="keyword">function</span> <span class="function">reject</span>(reason) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Couldn't get the answer! Reason: </span><span class="delimiter">&quot;</span></span> + reason);
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p>Much of the power of promises comes from the fact that they can be
+chained together to perform sequential asynchronous operations:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="comment">// Note: jQuery AJAX methods return promises</span>
+<span class="keyword">var</span> usernamesPromise = Ember.<span class="predefined">$</span>.getJSON(<span class="string"><span class="delimiter">'</span><span class="content">/usernames.json</span><span class="delimiter">'</span></span>);
+
+usernamesPromise.then(fetchPhotosOfUsers)
+                .then(applyInstagramFilters)
+                .then(uploadTrendyPhotoAlbum)
+                .then(displaySuccessMessage, handleErrors);
+</pre></td>
+</tr></table>
+</div></div>
+<p>In the above example, if any of the methods
+<code>fetchPhotosOfUsers</code>, <code>applyInstagramFilters</code>, or
+<code>uploadTrendyPhotoAlbum</code> reject (either by throwing an exception or
+returning <code>Ember.RSVP.reject()</code>), <code>handleErrors</code> will be called with
+the reason for the failure. In this manner, promises approximate an
+asynchronous form of try-catch statements that prevent the rightward
+flow of nested callback after nested callback and facilitate a saner
+approach to managing complex asynchronous logic in your applications.</p>
+
+<p>This guide doesn&#39;t intend to fully delve into all the different ways
+promises can be used, but if you&#39;d like a more thorough introduction,
+take a look at the readme for <a href="https://github.com/tildeio/rsvp.js">RSVP</a>, 
+the promise library that Ember uses. </p>
+<h3 class='anchorable-toc' id='toc_the-router-pauses-for-promises'>The Router Pauses for Promises</h3>
+<p>When transitioning between routes, the Ember router collects all of the
+models (via the <code>model</code> hook) that will be passed to the route&#39;s
+controllers at the end of the transition. If the <code>model</code> hook (or the related
+<code>beforeModel</code> or <code>afterModel</code> hooks) return normal (non-promise) objects or 
+arrays, the transition will complete immediately. But if the <code>model</code> hook 
+(or the related <code>beforeModel</code> or <code>afterModel</code> hooks) returns a promise (or 
+if a promise was provided as an argument to <code>transitionTo</code>), the transition 
+will pause until that promise fulfills or rejects.</p>
+
+<p><aside>
+<strong>Note:</strong> the router considers any object with a <code>then</code> method
+defined on it to be a promise.
+</aside></p>
+
+<p>If the promise fulfills, the transition will pick up where it left off and
+begin resolving the next (child) route&#39;s model, pausing if it too is a
+promise, and so on, until all destination route models have been
+resolved. The values passed to the <code>setupController</code> hook for each route
+will be the fulfilled values from the promises.</p>
+
+<p>A basic example:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.TardyRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="keyword">new</span> Ember.RSVP.Promise(<span class="keyword">function</span>(resolve) {
+      Ember.run.later(<span class="keyword">function</span>() {
+        resolve({ <span class="key">msg</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Hold Your Horses</span><span class="delimiter">&quot;</span></span> });
+      }, <span class="integer">3000</span>);
+    });
+  }, 
+
+  <span class="function">setupController</span>: <span class="keyword">function</span>(model) {
+    console.log(model.msg); <span class="comment">// &quot;Hold Your Horses&quot;</span>
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>When transitioning into <code>TardyRoute</code>, the <code>model</code> hook will be called and
+return a promise that won&#39;t resolve until 3 seconds later, during which time
+the router will be paused in mid-transition. When the promise eventually
+fulfills, the router will continue transitioning and eventually call
+<code>TardyRoute</code>&#39;s <code>setupController</code> hook with the resolved object.</p>
+
+<p>This pause-on-promise behavior is extremely valuable for when you need
+to guarantee that a route&#39;s data has fully loaded before displaying a
+new template. </p>
+<h3 class='anchorable-toc' id='toc_when-promises-reject'>When Promises Reject...</h3>
+<p>We&#39;ve covered the case when a model promise fulfills, but what if it rejects? </p>
+
+<p>By default, if a model promise rejects during a transition, the transition is
+aborted, no new destination route templates are rendered, and an error
+is logged to the console.</p>
+
+<p>You can configure this error-handling logic via the <code>error</code> handler on
+the route&#39;s <code>actions</code> hash. When a promise rejects, an <code>error</code> event
+will be fired on that route and bubble up to <code>ApplicationRoute</code>&#39;s
+default error handler unless it is handled by a custom error handler
+along the way, e.g.:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>App.GoodForNothingRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> Ember.RSVP.reject(<span class="string"><span class="delimiter">&quot;</span><span class="content">FAIL</span><span class="delimiter">&quot;</span></span>);
+
+    <span class="comment">// The following would have the same effect:</span>
+    <span class="comment">// throw &quot;FAIL&quot;;</span>
+  },
+
+  <span class="key">actions</span>: {
+    <span class="function">error</span>: <span class="keyword">function</span>(reason) {
+      alert(reason); <span class="comment">// &quot;FAIL&quot;</span>
+
+      <span class="comment">// Can transition to another route here, e.g.</span>
+      <span class="comment">// this.transitionTo('index');</span>
+
+      <span class="comment">// Uncomment the line below to bubble this error event:</span>
+      <span class="comment">// return true;</span>
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In the above example, the error event would stop right at
+<code>GoodForNothingRoute</code>&#39;s error handler and not continue to bubble. To
+make the event continue bubbling up to <code>ApplicationRoute</code>, you can
+return true from the error handler.</p>
+<h3 class='anchorable-toc' id='toc_recovering-from-rejection'>Recovering from Rejection</h3>
+<p>Rejected model promises halt transitions, but because promises are chainable,
+you can catch promise rejects within the <code>model</code> hook itself and convert 
+them into fulfills that won&#39;t halt the transition.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.FunkyRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> iHopeThisWorks().then(<span class="predefined-constant">null</span>, <span class="keyword">function</span>() {
+      <span class="comment">// Promise rejected, fulfill with some default value to</span>
+      <span class="comment">// use as the route's model and continue on with the transition</span>
+      <span class="keyword">return</span> { <span class="key">msg</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Recovered from rejected promise</span><span class="delimiter">&quot;</span></span> };
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_code-beforemodel-code-and-code-aftermodel-code'><code>beforeModel</code> and <code>afterModel</code></h3>
+<p>The <code>model</code> hook covers many use cases for pause-on-promise transitions,
+but sometimes you&#39;ll need the help of the related hooks <code>beforeModel</code>
+and <code>afterModel</code>. The most common reason for this is that if you&#39;re
+transitioning into a route with a dynamic URL segment via <code>{{link-to}}</code> or
+<code>transitionTo</code> (as opposed to a transition caused by a URL change), 
+the model for the route you&#39;re transitioning into will have already been
+specified (e.g. <code>{{#link-to &#39;article&#39; article}}</code> or
+<code>this.transitionTo(&#39;article&#39;, article)</code>), in which case the <code>model</code> hook
+won&#39;t get called. In these cases, you&#39;ll need to make use of either
+the <code>beforeModel</code> or <code>afterModel</code> hook to house any logic while the
+router is still gathering all of the route&#39;s models to perform a
+transition.</p>
+<h4 class='anchorable-toc' id='toc_code-beforemodel-code'><code>beforeModel</code></h4>
+<p>Easily the more useful of the two, the <code>beforeModel</code> hook is called
+before the router attempts to resolve the model for the given route. In
+other words, it is called before the <code>model</code> hook gets called, or, if
+<code>model</code> doesn&#39;t get called, it is called before the router attempts to
+resolve any model promises passed in for that route.</p>
+
+<p>Like <code>model</code>, returning a promise from <code>beforeModel</code> will pause the
+transition until it resolves, or will fire an <code>error</code> if it rejects.</p>
+
+<p>The following is a far-from-exhaustive list of use cases in which
+<code>beforeModel</code> is very handy:</p>
+
+<ul>
+<li>Deciding whether to redirect to another route before performing a
+potentially wasteful server query in <code>model</code></li>
+<li>Ensuring that the user has an authentication token before proceeding
+onward to <code>model</code></li>
+<li>Loading application code required by this route </li>
+</ul>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.SecretArticlesRoute  = Ember.Route.extend({
+  <span class="function">beforeModel</span>: <span class="keyword">function</span>() {
+    <span class="keyword">if</span> (!<span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">auth</span><span class="delimiter">'</span></span>).get(<span class="string"><span class="delimiter">'</span><span class="content">isLoggedIn</span><span class="delimiter">'</span></span>)) {
+      <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">login</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a href="/api/classes/Ember.Route.html#method_beforeModel">See the API Docs for <code>beforeModel</code></a></p>
+<h4 class='anchorable-toc' id='toc_code-aftermodel-code'><code>afterModel</code></h4>
+<p>The <code>afterModel</code> hook is called after a route&#39;s model (which might be a
+promise) is resolved, and follows the same pause-on-promise semantics as
+<code>model</code> and <code>beforeModel</code>. It is passed the already-resolved model 
+and can therefore perform any additional logic that
+depends on the fully resolved value of a model.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>App.ArticlesRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="comment">// App.Article.find() returns a promise-like object</span>
+    <span class="comment">// (it has a `then` method that can be used like a promise)</span>
+    <span class="keyword">return</span> App.Article.find();
+  },
+  <span class="function">afterModel</span>: <span class="keyword">function</span>(articles) {
+    <span class="keyword">if</span> (articles.get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>) === <span class="integer">1</span>) {
+      <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">article.show</span><span class="delimiter">'</span></span>, articles.get(<span class="string"><span class="delimiter">'</span><span class="content">firstObject</span><span class="delimiter">'</span></span>));
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>You might be wondering why we can&#39;t just put the <code>afterModel</code> logic
+into the fulfill handler of the promise returned from <code>model</code>; the
+reason, as mentioned above, is that transitions initiated 
+via <code>{{link-to}}</code> or <code>transitionTo</code> likely already provided the
+model for this route, so <code>model</code> wouldn&#39;t be called in these cases.</p>
+
+<p><a href="/api/classes/Ember.Route.html#method_afterModel">See the API Docs for <code>afterModel</code></a></p>
+<h3 class='anchorable-toc' id='toc_using-code-loadingroute-code-to-display-ui-while-the-router-is-loading'>Using <code>LoadingRoute</code> to Display UI While the Router is Loading</h3>
+<p>The Ember Router will enter a loading state if, during a transition, it
+encounters a promise that does not immediately resolve. (Technically
+speaking, a promise is considered to resolve &quot;immediately&quot; if it 
+resolves within the same <a href="/api/classes/Ember.run.html">run loop</a> in which 
+it was created.)</p>
+
+<p>While the router is in this loading state, you may want to give your
+users some visual indication that your app is loading. One way to do 
+this is to define <code>LoadingRoute</code> on your application&#39;s namespace:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>App.LoadingRoute = Ember.Route.extend();
+</pre></td>
+</tr></table>
+</div></div>
+<p>By default, <code>LoadingRoute</code> will attempt to render a template called
+&quot;loading&quot;. </p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">loading-modal</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;p&gt;</span>
+    <span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/images/loading-spinner.png</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span> Loading
+  <span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that this template will be rendered at the top level in your
+application, as opposed to being nested in an outlet.</p>
+
+<p>Like any other route, you can make use of <code>LoadingRoute</code>&#39;s <code>activate</code>
+and <code>deactivate</code> hooks to further configure what happens when the router
+enters and exits a loading state. The router will enter a loading state
+for the first promise encountered within a transition that does not
+immediately resolve, and it exits this loading state when the transition
+runs to completion or aborts.</p>
+<h3 class='anchorable-toc' id='toc_more-resources'>More Resources</h3>
+<ul>
+<li><a href="http://www.embercasts.com/episodes/client-side-authentication-part-2">Embercasts: Client-side Authentication Part 2</a></li>
+<li><a href="/blog/2013/06/23/ember-1-0-rc6.html">RC6 Blog Post describing these new features</a></li>
+</ul>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/routing/specifying-the-location-api">
+            ← 指定地址API
+          </a>
+         
+        <a class="next-guide" href="/guides/routing/preventing-and-retrying-transitions">
+          Preventing and Retrying Transitions →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

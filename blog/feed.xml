@@ -5,10 +5,306 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2013-08-28T00:00:00Z</updated>
+  <updated>2013-08-31T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>Ember 1.0 Released</title>
+    <link rel="alternate" href="/blog/2013/08/31/ember-1-0-released.html"/>
+    <id>/blog/2013/08/31/ember-1-0-released.html</id>
+    <published>2013-08-31T00:00:00Z</published>
+    <updated>2013-08-31T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;Today, we&amp;#39;re excited to announce the final release of Ember.js 1.0.&lt;/p&gt;
+
+&lt;p&gt;The first commit to the repository that would become Ember.js happened on April
+30th, 2011, almost two and a half years ago.&lt;/p&gt;
+
+&lt;p&gt;At the time, Backbone.js was rocketing to popularity. In response to large&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;Today, we&amp;#39;re excited to announce the final release of Ember.js 1.0.&lt;/p&gt;
+
+&lt;p&gt;The first commit to the repository that would become Ember.js happened on April
+30th, 2011, almost two and a half years ago.&lt;/p&gt;
+
+&lt;p&gt;At the time, Backbone.js was rocketing to popularity. In response to large
+JavaScript frameworks like SproutCore, Cappuccino, and Dojo, which tried to
+abstract away HTML, most web developers began rejecting any solution whose
+source code they couldn&amp;#39;t read over in an afternoon. The &amp;quot;microlibrary&amp;quot; frenzy
+had hit full tilt.&lt;/p&gt;
+
+&lt;p&gt;However, we knew that as web browsers became more and more powerful, these
+simplistic abstractions wouldn&amp;#39;t scale up to the kind of apps that users would
+begin to demand.&lt;/p&gt;
+
+&lt;p&gt;We realized that helping developers grapple with the complexity of building
+100% JavaScript web applications could only happen if we embraced the tools
+that they were most comfortable with: HTML and CSS.&lt;/p&gt;
+
+&lt;p&gt;Based on the current popularity of frameworks like Ember, Angular and Knockout,
+it&amp;#39;s clear that this strategy turned out to be the right one.&lt;/p&gt;
+
+&lt;p&gt;As we began work on Ember.js, however, we soon realized that there was a
+fundamental problem. Just having templates that were bound to models was
+not enough. We also needed to help developers decide &lt;em&gt;which&lt;/em&gt; templates and
+models to display at any given time.&lt;/p&gt;
+
+&lt;p&gt;While struggling to figure out the best solution, we couldn&amp;#39;t help but notice
+that many JavaScript applications on the web felt broken. Basic things that
+we had taken for granted for two decades all of a sudden stopped working.
+Just clicking the browser&amp;#39;s back button was enough to break many of these apps.&lt;/p&gt;
+
+&lt;p&gt;We realized that the solution to our problem had been sitting under our noses
+all along: the URL is what web applications use to decide what to display!&lt;/p&gt;
+
+&lt;p&gt;We knew that we had to go back to the drawing board. We rebooted the entire
+project mid-course to refocus on how to build JavaScript apps that not only
+helped you architect large, multi-page applications, but helped you to do so
+without breaking the basic building blocks of the web.&lt;/p&gt;
+
+&lt;p&gt;Over time, we&amp;#39;ve added even more features, like components, that help bring
+solid UI architecture to the web. We are incredibly proud of the job that
+the community has done to lay a solid foundation that we can build upon for the
+years to come.&lt;/p&gt;
+
+&lt;p&gt;This 1.0 release is a promise from us: the pain that many experienced while we
+were figuring out how to build a JavaScript framework for the future of the web
+is now over. In keeping with the Semantic Versioning spec, there will be no
+more intentional breaking changes until we release Ember 2.0, which we don&amp;#39;t
+anticipate happening for some time.&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_recent-developments'&gt;Recent Developments&lt;/h2&gt;&lt;h3 class='anchorable-toc' id='toc_router-facelift'&gt;Router Facelift&lt;/h3&gt;
+&lt;p&gt;Over the past few months, Alex Matchneer has taken the Ember router to the next
+level. Alex&amp;#39;s changes focus on making the router an excellent tool for managing
+complex asynchronous flows (like authentication), and you can learn all about it
+in his recently completed guides:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://emberjs.com/guides/routing/asynchronous-routing/"&gt;Asynchronous Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://emberjs.com/guides/routing/preventing-and-retrying-transitions/"&gt;Preventing and Retrying Transitions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class='anchorable-toc' id='toc_preparation-for-modules'&gt;Preparation for Modules&lt;/h3&gt;
+&lt;p&gt;In the years since we started Ember, the JavaScript module ecosystem has become
+increasingly mature.&lt;/p&gt;
+
+&lt;p&gt;Today, tools like &lt;a href="http://requirejs.org/"&gt;require.js&lt;/a&gt; and module systems like &lt;a href="https://github.com/amdjs/amdjs-api/wiki/AMD"&gt;AMD&lt;/a&gt;, &lt;a href="http://nodejs.org/api/modules.html"&gt;Node&lt;/a&gt;,
+and &lt;a href="https://github.com/square/es6-module-transpiler"&gt;ES6 Modules&lt;/a&gt; continue to gain traction. Increasingly, people are using
+named modules and module loaders rather than storing their code in globals.&lt;/p&gt;
+
+&lt;p&gt;To prepare for this future, all of the code lookup and naming conventions in
+Ember.js now go through a single &lt;code&gt;Resolver&lt;/code&gt;. The default &lt;code&gt;Resolver&lt;/code&gt; still looks
+for code under global namespaces, but &lt;a href="https://github.com/stefanpenner/ember-app-kit/blob/master/vendor/loader.js#L41-L136"&gt;Ember App Kit&lt;/a&gt; already provides an
+alternative resolver that looks for code in AMD modules.&lt;/p&gt;
+
+&lt;p&gt;In the near future, we plan to roll in first-class support for modules into the
+framework, based on the experiences of users of the increasingly popular Ember
+App Kit.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_ember-testing'&gt;Ember Testing&lt;/h3&gt;
+&lt;p&gt;The Ember community has always been passionate about testing. Even at the earliest
+meetups, testing was one of the most frequently asked-about topics, and testing
+featured prominently in our thinking as we built out the new router.&lt;/p&gt;
+
+&lt;p&gt;As we got closer to Ember 1.0, we realized that we needed to provide an official
+set of testing-framework agnostic testing helpers. The Ember Testing
+package is the start of a longer-term focus on testing facilities that we plan
+to improve even more in the 1.x timeframe.&lt;/p&gt;
+
+&lt;p&gt;You can see some of our thoughts for future improvements on the &lt;a href="http://discuss.emberjs.com/t/ember-testing-improvements/1652"&gt;Ember
+Discussion Forum&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_ember-inspector-for-chrome'&gt;Ember Inspector for Chrome&lt;/h3&gt;
+&lt;p&gt;Teddy Zeenny&amp;#39;s relentless work on the Ember Inspector has been some of the most
+awe-inspiring work we&amp;#39;ve seen in open source.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi"&gt;Ember Inspector&lt;/a&gt; that ships with Ember 1.0 makes it easy to see how an
+Ember application is laid out, and presents all of the naming conventions in an easy-to-read table.
+If you&amp;#39;re using Ember Data, it also lets you see all of the records that your application has loaded at
+a glance.&lt;/p&gt;
+
+&lt;p&gt;Coming up next is asynchronous debugging to help make sense of some of the more
+quirky behavior of Promises.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="https://lh6.googleusercontent.com/TGLbr4UoyLqBNvZACqghquEMo5bVWWrlA8f_UkCf4F5etIcqNM0HcBLVRRCQHHLWwBilJbznxrk=s1280-h800-e365-rw"&gt;&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_performance-performance-performance'&gt;Performance, Performance, Performance&lt;/h3&gt;
+&lt;p&gt;A number of community members, especially Kris Selden, Erik Bryn and Robin Ward
+have done heroic work lately on performance.&lt;/p&gt;
+
+&lt;p&gt;Over the years, Ember&amp;#39;s internals have been significantly sped up time and
+time again, and we will continue to hone the performance of Ember going forward.&lt;/p&gt;
+
+&lt;p&gt;In the 1.x timeframe, we have a number of ideas that should significantly
+improve rendering performance and decrease the amount of GC during rendering,
+so keep an eye out!&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_docs-docs-docs'&gt;Docs, Docs, Docs&lt;/h3&gt;
+&lt;p&gt;The early lack of good documentation for Ember seriously pained us, as we&amp;#39;re all
+big believers in the idea that user confusion should be considered a bug in the
+framework.&lt;/p&gt;
+
+&lt;p&gt;Over the past year, we&amp;#39;ve significantly improved both the &lt;a href="http://emberjs.com/api"&gt;API documentation&lt;/a&gt;
+and the &lt;a href="http://emberjs.com/guides"&gt;Guides&lt;/a&gt;. Trek Glowacki has led up the effort, which has resulted in
+comprehensive coverage of how to use Ember, an excellent, up-to-date Getting
+Started Guide, and most recently, a Cookbook section for common scenarios.&lt;/p&gt;
+
+&lt;p&gt;For Ember 1.0, Trek led a documentation audit of all of the API documentation in
+the entire codebase, which led to 1,700 new lines of documentation, and an
+across-the-board freshening for new idioms and best practices.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_ember-data-1-0-beta-1'&gt;Ember Data 1.0 Beta 1&lt;/h3&gt;
+&lt;p&gt;With the release of Ember 1.0, we&amp;#39;re glad to also release the first beta of
+Ember Data 1.0.&lt;/p&gt;
+
+&lt;p&gt;Ember Data 1.0 is a reboot of our data layer. The focus of the effort (codenamed
+&lt;code&gt;jj-abrams&lt;/code&gt;, famous for franchise reboots) was:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A more flexible codebase, able to handle streaming, custom JSON, and edits
+while saving with ease. If you&amp;#39;ve found Ember Data too inflexible for your
+backend in the past, try it again!&lt;/li&gt;
+&lt;li&gt;Asynchronous operations are now all backed by promises. This will integrate
+better with Ember&amp;#39;s own asynchronous handling, and make it easier to combine
+and pipeline asynchronous operations like &lt;code&gt;find&lt;/code&gt; and &lt;code&gt;save&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Better support for modules. Ember.js itself now has good support for modules,
+through Ember App Kit&amp;#39;s drop-in resolver, but Ember Data&amp;#39;s reliance on global
+lookups (through &lt;code&gt;App.Post.find&lt;/code&gt;, etc.) made Ember Data hard to use with
+modules. The Ember Data 1.0 API is much more friendly to modules, and
+therefore the future of Ember.js and the web platform.&lt;/li&gt;
+&lt;li&gt;Much better documentation of Ember Data&amp;#39;s APIs, including the adapter and
+serializer APIs. Flexible APIs are no good if it&amp;#39;s impossible to learn about
+them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;#39;re a current user of Ember Data, you may want to check out the
+&lt;a href="https://github.com/emberjs/data/blob/master/TRANSITION.md"&gt;Transition Guide&lt;/a&gt;. If you have issues upgrading that aren&amp;#39;t covered in the
+guide, please let us know right away so we can improve it.&lt;/p&gt;
+
+&lt;p&gt;Note: If you aren&amp;#39;t ready to upgrade just yet, we&amp;#39;ve released Ember Data 0.14,
+which includes a number of useful performance optimization for Ember Data 0.13
+but no breaking changes.&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_community'&gt;Community&lt;/h2&gt;
+&lt;p&gt;The Ember community is amazing.&lt;/p&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p&gt;I love the Ember community&lt;/p&gt;&amp;mdash; Yehuda Katz (@wycats) &lt;a href="https://twitter.com/wycats/statuses/372760498187427841"&gt;August 28, 2013&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;In addition to the insane amount of work that members of the Ember community
+have been doing to prepare the Ember 1.0 release, the community has also been
+churning out a number of awesome Ember-related projects.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/stefanpenner/ember-app-kit"&gt;Ember App Kit&lt;/a&gt;: An effort by a number of members of the Ember community
+to work on tooling for Ember that will eventually become the core of official
+Ember tools.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rpflorence/ember-tools"&gt;Ember Tools&lt;/a&gt;: Similar work by Ryan Florence, which will be merged into Ember
+App Kit as we begin to bring tooling into core.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ember-addons.github.io/bootstrap-for-ember/dist/"&gt;Bootstrap for Ember&lt;/a&gt;: Twitter Bootstrap wrapped in Ember components!&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/billysbilling/ember-animated-outlet"&gt;Ember Animated Outlet&lt;/a&gt;: Support for animated &lt;code&gt;{{outlet}}&lt;/code&gt;s and
+&lt;code&gt;{{link-to}}&lt;/code&gt; on top of the current Ember by Sebastian Seilund of Billy&amp;#39;s
+Billings.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://adminjs.com/"&gt;Admin.js&lt;/a&gt;: An awesome, flexible and configurable admin for your site
+written in Ember by Gordon Hempton. You can use it with an Ember app or just
+to provide an admin interface for your Rails, Django, PHP, or whatever app!&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://emberhotseat.com/"&gt;The Ember Hot Seat&lt;/a&gt;: A regular podcast brought to you by DeVaris Brown.
+It regularly features members of the Ember Core Team and prominent members of
+the Ember community.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.com/EmberWatch"&gt;EmberWatch&lt;/a&gt;: Philip Poot&amp;#39;s EmberWatch Twitter account and website will
+keep you up-to-date on the latest projects and news.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://emberweekly.com/"&gt;Ember Weekly&lt;/a&gt;: Ember Weekly, curated by the inimitable Owain
+Williams, packs all the Ember news that&amp;#39;s fit to print into your inbox
+every week.&lt;/li&gt;
+&lt;li&gt;And way more projects. Keep an eye out on this blog, or follow us on the
+official @emberjs Twitter account. We plan to feature more projects like these
+in the future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We&amp;#39;ve also been grateful to be the beneficiary of large amounts of support from
+a number of companies over the years.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;LivingSocial, which funded much of the original work on Ember Data.&lt;/li&gt;
+&lt;li&gt;Yapp, whose employees have been working on Ember (and SproutCore before
+Ember) for years, and which has dedicated countless man-hours to making Ember
+better.&lt;/li&gt;
+&lt;li&gt;Zendesk, an early user and contributor to Ember. Thank you for betting on
+Ember as early as you did.&lt;/li&gt;
+&lt;li&gt;McGraw-Hill Education Labs, which has been funding Ember work for over a year,
+with great patience, resolve and vision.&lt;/li&gt;
+&lt;li&gt;Tilde, which employs Tom, Yehuda, Peter and Leah, and which handles much of
+the (unseen) administrative work of the project.&lt;/li&gt;
+&lt;li&gt;Billy&amp;#39;s Billings, which has given Sebastian Selund time to work on Ember, and
+hosted the work on &lt;code&gt;ember-animated-outlet&lt;/code&gt;, which will make its way into a
+future version of Ember.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, a number of large open source projects have bet on Ember. These
+projects contribute significantly to Ember&amp;#39;s development, and also give Ember
+users a place to look at large, real-world projects.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://travis-ci.org/"&gt;Travis CI&lt;/a&gt;: A very early Ember adopter. The Ember project makes heavy use of
+Travis, so thank you!&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.discourse.org/"&gt;Discourse&lt;/a&gt;: The increasingly popular forum engine that now powers
+TalkingPointsMemo and BoingBoing. These guys have contributed heavily to Ember
+and its community.&lt;/li&gt;
+&lt;li&gt;Balanced: Balanced is an &lt;a href="https://github.com/balanced"&gt;open-source&lt;/a&gt;, &lt;strong&gt;open company&lt;/strong&gt;. They use Ember
+for their &lt;a href="https://github.com/balanced/balanced-dashboard"&gt;dashboard&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class='anchorable-toc' id='toc_undefined-semantics'&gt;Undefined Semantics&lt;/h2&gt;
+&lt;p&gt;There are two areas of Ember.js that have semantics that may accidentally work
+in some cases today, but are the source of a number of bugs, and which we don&amp;#39;t
+plan to support in the future.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_observer-timing'&gt;Observer Timing&lt;/h3&gt;
+&lt;p&gt;At present, Ember observers sometimes fire synchronously, but sometimes fire
+asynchronously. The only thing your code should rely on is that the observer
+will fire &lt;strong&gt;after&lt;/strong&gt; the property it observes has changed.&lt;/p&gt;
+
+&lt;p&gt;We plan to bring all observers into alignment with &lt;a href="http://wiki.ecmascript.org/doku.php?id=harmony:observe"&gt;Object.observe&lt;/a&gt;, a
+future JavaScript feature. In the future, observers will &lt;strong&gt;never&lt;/strong&gt; fire
+synchronously. If you rely on specific timing, your code may break.&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_observing-properties-of-framework-objects'&gt;Observing Properties of Framework Objects&lt;/h3&gt;
+&lt;p&gt;In general, you should not observe properties of framework objects defined by
+the framework that are not explicitly documented as observable. Some of these
+observations may happen to work today, but may not work in the future.&lt;/p&gt;
+
+&lt;p&gt;For example, you should not observe the &lt;code&gt;element&lt;/code&gt; property on an Ember view or
+component. Instead, you should use the &lt;code&gt;didInsertElement&lt;/code&gt; hook.&lt;/p&gt;
+
+&lt;p&gt;If you find yourself observing a framework-defined property that is not
+documented as observable to work around an issue, &lt;strong&gt;please&lt;/strong&gt; file an issue with
+us so we can give you a publicly defined API.&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_the-future'&gt;The Future&lt;/h2&gt;
+&lt;p&gt;Despite our commitment to stability, we are not resting on our laurels. We have
+an aggressive pipeline of new features planned, which we&amp;#39;ll be announcing soon.&lt;/p&gt;
+
+&lt;p&gt;We&amp;#39;re also switching our releases to follow a more Chrome-like model. This means
+that you can expect a new release every six weeks. We&amp;#39;ll have more details about
+this soon.&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_thanks'&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;Special thanks to a number of community members who have done heroic work
+leading up to Ember 1.0:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Eric Berry, for the new Cookbook section in the guides and examples&lt;/li&gt;
+&lt;li&gt;Paul Chavard, for help reviewing Ember Data 1.0 Beta 1&lt;/li&gt;
+&lt;li&gt;Domenic Denicola, for putting us on the right path with promises&lt;/li&gt;
+&lt;li&gt;Dan Gebhardt, for website infrastructure&lt;/li&gt;
+&lt;li&gt;David Hamilton, for the Array Computed feature&lt;/li&gt;
+&lt;li&gt;Robert Jackson, for the new emberjs.com/builds&lt;/li&gt;
+&lt;li&gt;Julien Knebel, for design work&lt;/li&gt;
+&lt;li&gt;Alex Matchneer, for the async router guide&lt;/li&gt;
+&lt;li&gt;Luke Melia, for &lt;code&gt;actions&lt;/code&gt; namespacing, last minute bugfix work, and the Ember NYC community&lt;/li&gt;
+&lt;li&gt;Alex Navasardyan, for inline examples on the homepage and design work&lt;/li&gt;
+&lt;li&gt;Stanley Stuart, for testing infrastructure&lt;/li&gt;
+&lt;li&gt;Igor Terzic, for help reviewing Ember Data 1.0 Beta 1&lt;/li&gt;
+&lt;li&gt;Teddy Zeenny, for the Ember Inspector&lt;/li&gt;
+&lt;li&gt;The 300 people who submitted code and documentation to Ember 1.0&lt;/li&gt;
+&lt;li&gt;The 131 people who submitted code and documentation to Ember Data 1.0 Beta 1&lt;/li&gt;
+&lt;li&gt;The 269 people who helped with &lt;a href="http://emberjs.com"&gt;emberjs.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Go forth and build great things!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Ember 1.0 RC8发布</title>
     <link rel="alternate" href="/blog/2013/08/28/ember-1-0-rc8.html"/>
@@ -46,7 +342,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 &lt;p&gt;以前的方法：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -74,7 +370,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;现在只需要：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -94,7 +390,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 &lt;p&gt;当前最简单的实现方法是：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -112,7 +408,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 
 &lt;p&gt;这时可以使用数组计算属性性：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 &lt;/pre&gt;&lt;/td&gt;
@@ -124,7 +420,7 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;可以将数组计算属性链接在一起：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -176,7 +472,7 @@ Data模型的属性、一对多关联），支持通过检查器修改对象。&
 
 &lt;p&gt;如果在初始化过程中需要出发一个观察器，不能通过&lt;code&gt;set&lt;/code&gt;来实现，需要在观察器上通过&lt;code&gt;.on(&amp;#39;init&amp;#39;)&lt;/code&gt;指定其在&lt;code&gt;init&lt;/code&gt;下也工作。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -212,7 +508,7 @@ Data模型的属性、一对多关联），支持通过检查器修改对象。&
 &lt;h4 class='anchorable-toc' id='toc_code-init-code'&gt;在&lt;code&gt;init&lt;/code&gt;中设置属性&lt;/h4&gt;
 &lt;p&gt;当前，传递一个哈希给&lt;code&gt;create&lt;/code&gt;和在&lt;code&gt;init&lt;/code&gt;中设置同样的属性是不一致的。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -234,7 +530,7 @@ App.Person.create({ &lt;span class="key"&gt;firstName&lt;/span&gt;: &lt;span cla
 
 &lt;p&gt;下面看一看在RC7中在&lt;code&gt;init&lt;/code&gt;方法里完成同样的出发会发生什么：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -272,7 +568,7 @@ App.Person.create({ &lt;span class="key"&gt;lastName&lt;/span&gt;: &lt;span clas
 
 &lt;p&gt;此外，因为如果为包含数组、对象值的属性进行初始化只能在&lt;code&gt;init&lt;/code&gt;中，这导致了不一致性：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -304,7 +600,7 @@ App.Person = Ember.Object.extend({
 
 &lt;p&gt;如果有代码需要不论是在初始化过程还是当一个属性改变时执行，必须使用&lt;code&gt;.on(&amp;#39;init&amp;#39;)&lt;/code&gt;将其标记为需要在初始化过程执行。这种情况最好是进行重构，来避免&lt;code&gt;init&lt;/code&gt;时&lt;code&gt;set&lt;/code&gt;的负面效应。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -322,7 +618,7 @@ App.Person = Ember.Object.extend({
 
 &lt;p&gt;为了理解这个更新，通过一个计算属性的例子来介绍。假设尝试用Ember.js对象来为&lt;a href="http://en.wikipedia.org/wiki/Schr%C3%B6dinger&amp;#x27;s_cat"&gt;Schrödinger&amp;#39;s famous cat&lt;/a&gt; 建模。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -344,7 +640,7 @@ App.Person = Ember.Object.extend({
 
 &lt;p&gt;而实际上，并非猫超凡脱俗，而是取决于第一次调用。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 &lt;/pre&gt;&lt;/td&gt;
@@ -360,7 +656,7 @@ App.Person = Ember.Object.extend({
 
 &lt;p&gt;在之前版本的Ember.js中，答案是肯定的。例如：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -388,7 +684,7 @@ App.Person = Ember.Object.extend({
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;依赖的任意键发生改变，都会触发观察者：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -426,7 +722,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 
 &lt;p&gt;例如，假设构造一个模型表示一篇博客，如果需要使用博客的评论，采用延迟加载的方式加载评论（例如在模板中）。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -446,7 +742,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
     &lt;span class="keyword"&gt;var&lt;/span&gt; comments = [];
     &lt;span class="keyword"&gt;var&lt;/span&gt; url = &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;/post/&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt; + &lt;span class="local-variable"&gt;this&lt;/span&gt;.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;id&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;) + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;/comments.json&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
 
-    &lt;span class="predefined"&gt;$&lt;/span&gt;.getJSON(url) + &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;/comments.json&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;).then(&lt;span class="keyword"&gt;function&lt;/span&gt;(data) {
+    &lt;span class="predefined"&gt;$&lt;/span&gt;.getJSON(url).then(&lt;span class="keyword"&gt;function&lt;/span&gt;(data) {
       data.forEach(&lt;span class="keyword"&gt;function&lt;/span&gt;(comment) {
         comments.pushObject(comment);
       });
@@ -460,7 +756,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;在这里跟预期的行为一样，博文的评论只会在第一次使用&lt;code&gt;post.get(&amp;#39;comments&amp;#39;)&lt;/code&gt;或者在模板中使用的时候，才通过网络去加载：&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -476,7 +772,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;然而，现在希望添加一个计算属性，用来从加载的评论中选择第一条：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -545,7 +841,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 
 &lt;p&gt;例如，为了更新上述的观察器例子，能通过&amp;quot;precomputing&amp;quot;&lt;code&gt;fullName&lt;/code&gt;属性来保持RC8之前版本的行为：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -585,7 +881,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 
 &lt;p&gt;下面的模板例子将在当前上下文（通常是一个控制器）查找&lt;code&gt;destinationRoute&lt;/code&gt;，并使用其来决定链接的&lt;code&gt;href&lt;/code&gt;和点击链接将切换至的路由。&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 &lt;/pre&gt;&lt;/td&gt;
   &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;link-to&lt;/span&gt; &lt;span class="attribute-name"&gt;destinationRoute&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;Link Text&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;link-to&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;
@@ -593,7 +889,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;下面的例子将一直指向&lt;code&gt;articles.show&lt;/code&gt;路由（因为路由名称参数加了引号），但是当&lt;code&gt;article&lt;/code&gt;的值改变时，链接的&lt;code&gt;href&lt;/code&gt;将更新为对应&lt;code&gt;article&lt;/code&gt;新值的URL。&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 &lt;/pre&gt;&lt;/td&gt;
   &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;link-to&lt;/span&gt; &lt;span class="error"&gt;'&lt;/span&gt;&lt;span class="attribute-name"&gt;articles.show&lt;/span&gt;&lt;span class="error"&gt;'&lt;/span&gt; &lt;span class="attribute-name"&gt;article&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;Read More...&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;link-to&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;
@@ -603,7 +899,7 @@ person.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&g
 &lt;h4 class='anchorable-toc' id='toc_'&gt;绑定助手：加引号的字符串，数字和路径&lt;/h4&gt;
 &lt;p&gt;调用自定义的绑定助手（如通过&lt;code&gt;Ember.Handlebars.helper&lt;/code&gt;定义的）时传入加引号的字符串或者原生数字会将其原值直接传入，而不是将所有的都作为绑定属性的路径，每次在属性变化的时候都重新渲染助手。&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
 3
 4
@@ -619,6 +915,318 @@ Pass the property pointed-to by the path 'hello' to myHelper:
 &lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;如果之前调用绑定助手时传入加引号的字符串，并期望其是一个绑定属性路径，那么会导致应用出现一些问题。因此需要确定只有当确实需要传入一个字符串的时候才给参数加引号，而不是路径对应的值。
 如果之前写的应用没有正确的区分加引号的字符串和属性路径，这可能导致一些问题。因此当升级到RC8时，需要确定所有&lt;code&gt;link-to&lt;/code&gt;参数的静态字符串都正确的添加了引号。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Windows下Ember应用开发环境搭建</title>
+    <link rel="alternate" href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html"/>
+    <id>/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html</id>
+    <published>2013-08-14T00:00:00Z</published>
+    <updated>2013-08-14T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;环境：windows 7&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_nodejs'&gt;安装nodejs&lt;/h3&gt;&lt;h3 class='anchorable-toc' id='toc_grunt'&gt;安装grunt&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_grunt-grunt-cli'&gt;安装grunt命令行工具grunt-cli&lt;/h4&gt;
+&lt;p&gt;执行全局安装&lt;/p&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  # grunt 必须依赖
+  npm install -g grunt-cli
+  # 生成项目脚手架 grunt-init --help
+  npm install -g grunt-init
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_yeoman'&gt;安装Yeoman&lt;/h3&gt;
+&lt;p&gt;Yeoman 是 yo + bower + grunt&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;yo:   生成 项目脚手架&lt;/li&gt;
+&lt;li&gt;bower: 包管理工具&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+    <content type="html">&lt;p&gt;环境：windows 7&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_nodejs'&gt;安装nodejs&lt;/h3&gt;&lt;h3 class='anchorable-toc' id='toc_grunt'&gt;安装grunt&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_grunt-grunt-cli'&gt;安装grunt命令行工具grunt-cli&lt;/h4&gt;
+&lt;p&gt;执行全局安装&lt;/p&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  # grunt 必须依赖
+  npm install -g grunt-cli
+  # 生成项目脚手架 grunt-init --help
+  npm install -g grunt-init
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_yeoman'&gt;安装Yeoman&lt;/h3&gt;
+&lt;p&gt;Yeoman 是 yo + bower + grunt&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;yo:   生成 项目脚手架&lt;/li&gt;
+&lt;li&gt;bower: 包管理工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  npm install -g yo
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;自动安装grunt 和 bower&lt;/p&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  # 生成项目脚手架
+  npm install -g generator-webapp
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;准备项目文件夹&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;创建项目文件夹&lt;/h4&gt;&lt;h4 class='anchorable-toc' id='toc_grunt'&gt;安装grunt及插件，安装在项目根目录&lt;/h4&gt;
+&lt;p&gt;进入项目根目录&lt;/p&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  npm install grunt --save-dev
+  npm install grunt-contrib-qunit --save-dev
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;验证版本 &lt;code&gt;grunt -version&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight  "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  grunt-cli v0.1.9
+  grunt v0.4.1
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;创建一个项目脚手架代码&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  yo wabapp
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;查看目录下的文件，自动生成 package.json 和 Gruntfile&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_'&gt;安装依赖的模块&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  npm install
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;运行&lt;/h3&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  grunt server --force
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;http://localhost:9000 出现欢迎页面&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_ember'&gt;与ember集成&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_ember'&gt;下载ember相关包&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  bower install ember
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;app 目录下自动生成 bower_components&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_'&gt;安装模版编译插件&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  npm install grunt-ember-templates --save-dev
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;建立模版文件夹 templates&lt;/p&gt;
+&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  mkdir app/templates
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_gruntfile-js'&gt;修改Gruntfile.js 自动编译模版&lt;/h4&gt;
+&lt;p&gt;在Gruntfile.js文件添加&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  grunt.loadNpmTasks(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;grunt-ember-templates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在grunt.initConfig内添加&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;emberTemplates: {
+  &lt;span class="key"&gt;compile&lt;/span&gt;: {
+    &lt;span class="key"&gt;options&lt;/span&gt;: {
+      &lt;span class="function"&gt;templateName&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(sourceFile) {
+        &lt;span class="keyword"&gt;return&lt;/span&gt; sourceFile.replace(&lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;app&lt;/span&gt;&lt;span class="content"&gt;\/&lt;/span&gt;&lt;span class="content"&gt;templates&lt;/span&gt;&lt;span class="content"&gt;\/&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+      }
+    },
+    &lt;span class="key"&gt;files&lt;/span&gt;: {
+      &lt;span class="key"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app %&amp;gt;/scripts/templates.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: [&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app%&amp;gt;/templates/**/*.handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
+    }
+  }
+},
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在 watch处添加如下内容：&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;emberTemplates: {
+    &lt;span class="key"&gt;files&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app %&amp;gt;/templates/**/*.handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class="key"&gt;tasks&lt;/span&gt;: [&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;emberTemplates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;]
+},
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;最后添加emberTemplates到server任务&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;grunt.registerTask(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;server&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="keyword"&gt;function&lt;/span&gt; (target) {
+    ...
+    grunt.task.run([
+        ...
+        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;compass:server&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt; emberTemplates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="comment"&gt;// Add this line.&lt;/span&gt;
+        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;livereload-start&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
+        ...
+    ]);
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;开发一个简单应用&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_app-scripts-main-js'&gt;在app/scripts/main.js 中 添加如下代码&lt;/h4&gt;&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;App = Em.Application.create({
+  &lt;span class="key"&gt;rootElement&lt;/span&gt;: &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;#app&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;),
+});
+
+App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;(){
+  &lt;span class="local-variable"&gt;this&lt;/span&gt;.route(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;about&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
+});
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_index-html'&gt;在 index.html&lt;/h4&gt;&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt; &lt;span class="tag"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="attribute-name"&gt;id&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;app&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;class&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;container&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;   
+ &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;添加js文件&lt;/p&gt;
+&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/jquery/jquery.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;       
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/handlebars/handlebars.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/ember/ember.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;scripts/main.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;scripts/templates.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;建立模版&lt;/h4&gt;
+&lt;p&gt;在 app/templates目录下建立模版文件&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;application.handlebars&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;My App&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;outlet&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;index.handlebars&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;My App&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;index&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt; &lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="attribute-name"&gt;about&lt;/span&gt;&lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;About&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;about.handlebars&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;About&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt; &lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="attribute-name"&gt;index&lt;/span&gt;&lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;index&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;运行&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;  grunt server --force
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;http://localhost:9000 出现欢迎页面，内容如下：&lt;/p&gt;
+
+&lt;p&gt;My App
+  index
+  About&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_grunt-gruntfile-js'&gt;下一步，修改 grunt Gruntfile.js&lt;/h3&gt;
+&lt;p&gt;对components、controllers、models、routes、views等js文件进行合并和压缩。&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -658,318 +1266,6 @@ Pass the property pointed-to by the path 'hello' to myHelper:
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;em&gt;更新：&lt;/em&gt;之前建议在控制器没有关联到一个路由时，使用&lt;code&gt;Route#generateController&lt;/code&gt;。现在建议显示的声明控制器的类来取代依赖生成。&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Windows下Ember应用开发环境搭建</title>
-    <link rel="alternate" href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html"/>
-    <id>/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html</id>
-    <published>2013-08-14T00:00:00Z</published>
-    <updated>2013-08-14T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;环境：windows 7&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_nodejs'&gt;安装nodejs&lt;/h3&gt;&lt;h3 class='anchorable-toc' id='toc_grunt'&gt;安装grunt&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_grunt-grunt-cli'&gt;安装grunt命令行工具grunt-cli&lt;/h4&gt;
-&lt;p&gt;执行全局安装&lt;/p&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  # grunt 必须依赖
-  npm install -g grunt-cli
-  # 生成项目脚手架 grunt-init --help
-  npm install -g grunt-init
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_yeoman'&gt;安装Yeoman&lt;/h3&gt;
-&lt;p&gt;Yeoman 是 yo + bower + grunt&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;yo:   生成 项目脚手架&lt;/li&gt;
-&lt;li&gt;bower: 包管理工具&lt;/li&gt;
-&lt;/ul&gt;
-</summary>
-    <content type="html">&lt;p&gt;环境：windows 7&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_nodejs'&gt;安装nodejs&lt;/h3&gt;&lt;h3 class='anchorable-toc' id='toc_grunt'&gt;安装grunt&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_grunt-grunt-cli'&gt;安装grunt命令行工具grunt-cli&lt;/h4&gt;
-&lt;p&gt;执行全局安装&lt;/p&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  # grunt 必须依赖
-  npm install -g grunt-cli
-  # 生成项目脚手架 grunt-init --help
-  npm install -g grunt-init
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_yeoman'&gt;安装Yeoman&lt;/h3&gt;
-&lt;p&gt;Yeoman 是 yo + bower + grunt&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;yo:   生成 项目脚手架&lt;/li&gt;
-&lt;li&gt;bower: 包管理工具&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  npm install -g yo
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;自动安装grunt 和 bower&lt;/p&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  # 生成项目脚手架
-  npm install -g generator-webapp
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;准备项目文件夹&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;创建项目文件夹&lt;/h4&gt;&lt;h4 class='anchorable-toc' id='toc_grunt'&gt;安装grunt及插件，安装在项目根目录&lt;/h4&gt;
-&lt;p&gt;进入项目根目录&lt;/p&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  npm install grunt --save-dev
-  npm install grunt-contrib-qunit --save-dev
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;验证版本 &lt;code&gt;grunt -version&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight  "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  grunt-cli v0.1.9
-  grunt v0.4.1
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;创建一个项目脚手架代码&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  yo wabapp
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;查看目录下的文件，自动生成 package.json 和 Gruntfile&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_'&gt;安装依赖的模块&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  npm install
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;运行&lt;/h3&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  grunt server --force
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;http://localhost:9000 出现欢迎页面&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_ember'&gt;与ember集成&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_ember'&gt;下载ember相关包&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  bower install ember
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;app 目录下自动生成 bower_components&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_'&gt;安装模版编译插件&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  npm install grunt-ember-templates --save-dev
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;建立模版文件夹 templates&lt;/p&gt;
-&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  mkdir app/templates
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_gruntfile-js'&gt;修改Gruntfile.js 自动编译模版&lt;/h4&gt;
-&lt;p&gt;在Gruntfile.js文件添加&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  grunt.loadNpmTasks(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;grunt-ember-templates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;在grunt.initConfig内添加&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;emberTemplates: {
-  &lt;span class="key"&gt;compile&lt;/span&gt;: {
-    &lt;span class="key"&gt;options&lt;/span&gt;: {
-      &lt;span class="function"&gt;templateName&lt;/span&gt;: &lt;span class="keyword"&gt;function&lt;/span&gt;(sourceFile) {
-        &lt;span class="keyword"&gt;return&lt;/span&gt; sourceFile.replace(&lt;span class="regexp"&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;span class="content"&gt;app&lt;/span&gt;&lt;span class="content"&gt;\/&lt;/span&gt;&lt;span class="content"&gt;templates&lt;/span&gt;&lt;span class="content"&gt;\/&lt;/span&gt;&lt;span class="delimiter"&gt;/&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-      }
-    },
-    &lt;span class="key"&gt;files&lt;/span&gt;: {
-      &lt;span class="key"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app %&amp;gt;/scripts/templates.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: [&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app%&amp;gt;/templates/**/*.handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
-    }
-  }
-},
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;在 watch处添加如下内容：&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;emberTemplates: {
-    &lt;span class="key"&gt;files&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;&amp;lt;%= yeoman.app %&amp;gt;/templates/**/*.handlebars&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
-    &lt;span class="key"&gt;tasks&lt;/span&gt;: [&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;emberTemplates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;]
-},
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;最后添加emberTemplates到server任务&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;grunt.registerTask(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;server&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="keyword"&gt;function&lt;/span&gt; (target) {
-    ...
-    grunt.task.run([
-        ...
-        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;compass:server&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
-        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt; emberTemplates&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="comment"&gt;// Add this line.&lt;/span&gt;
-        &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;livereload-start&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
-        ...
-    ]);
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;开发一个简单应用&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_app-scripts-main-js'&gt;在app/scripts/main.js 中 添加如下代码&lt;/h4&gt;&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;App = Em.Application.create({
-  &lt;span class="key"&gt;rootElement&lt;/span&gt;: &lt;span class="predefined"&gt;$&lt;/span&gt;(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;#app&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;),
-});
-
-App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;(){
-  &lt;span class="local-variable"&gt;this&lt;/span&gt;.route(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;about&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;);
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_index-html'&gt;在 index.html&lt;/h4&gt;&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt; &lt;span class="tag"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="attribute-name"&gt;id&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;app&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class="attribute-name"&gt;class&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;container&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;   
- &lt;span class="tag"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;添加js文件&lt;/p&gt;
-&lt;div class="highlight html "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/jquery/jquery.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;       
-  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/handlebars/handlebars.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;bower_components/ember/ember.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;scripts/main.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class="tag"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="attribute-name"&gt;src&lt;/span&gt;=&lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;scripts/templates.js&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;gt;&lt;/span&gt;&lt;span class="tag"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;建立模版&lt;/h4&gt;
-&lt;p&gt;在 app/templates目录下建立模版文件&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;application.handlebars&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;My App&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{&lt;/span&gt;&lt;span class="attribute-name"&gt;outlet&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;index.handlebars&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;My App&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;index&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt; &lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="attribute-name"&gt;about&lt;/span&gt;&lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;About&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;about.handlebars&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  &lt;span class="tag"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;About&lt;span class="tag"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{#&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt; &lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="attribute-name"&gt;index&lt;/span&gt;&lt;span class="error"&gt;&amp;quot;&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;index&lt;span class="inline"&gt;&lt;span class="inline-delimiter"&gt;{{/&lt;/span&gt;&lt;span class="attribute-name"&gt;linkTo&lt;/span&gt;&lt;span class="inline-delimiter"&gt;}}&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;运行&lt;/h4&gt;&lt;div class="highlight bash "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"&gt;&lt;pre&gt;1
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;  grunt server --force
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;http://localhost:9000 出现欢迎页面，内容如下：&lt;/p&gt;
-
-&lt;p&gt;My App
-  index
-  About&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_grunt-gruntfile-js'&gt;下一步，修改 grunt Gruntfile.js&lt;/h3&gt;
-&lt;p&gt;对components、controllers、models、routes、views等js文件进行合并和压缩。&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -1062,53 +1358,5 @@ NYC见面会上）&lt;/a&gt;&lt;/li&gt;
 &lt;h3 class='anchorable-toc' id='toc_'&gt;库、代码和工具&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-t-cn-zhyyobo-bloggr-client-rails-a'&gt;&lt;a href="http://t.cn/zHYYObo"&gt;bloggr-client-rails&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;一个介绍如何使用QUnit和ember-testing来进行集成测试的例子。&lt;/p&gt;
 &lt;h4 class='anchorable-toc' id='toc_a-href-http-t-cn-zhyh6er-jsfiddle-mocha-ember-js-a'&gt;&lt;a href="http://t.cn/zHYH6er"&gt;jsfiddle上使用mocha对Ember.js进行测试的实例&lt;/a&gt;&lt;/h4&gt;&lt;h4 class='anchorable-toc' id='toc_a-href-http-t-cn-zhyhleq-jsfiddle-qunit-ember-js-a'&gt;&lt;a href="http://t.cn/zHYHlEQ"&gt;jsfiddle上使用QUnit对Ember.js进行测试的实例&lt;/a&gt;&lt;/h4&gt;</content>
-  </entry>
-  <entry>
-    <title>Ember.js 1.0.0-rc5发布</title>
-    <link rel="alternate" href="/blog/2013/06/01/ember-js-1-0-0-rc5.html"/>
-    <id>/blog/2013/06/01/ember-js-1-0-0-rc5.html</id>
-    <published>2013-06-01T00:00:00Z</published>
-    <updated>2013-06-01T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。&lt;/p&gt;
-
-&lt;p&gt;RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;修复了因为改动了运行循环计划而导致的性能问题。&lt;/li&gt;
-&lt;li&gt;修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。&lt;/li&gt;
-&lt;li&gt;包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;详细的修订记录：&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;今天是快乐的六一儿童节，Ember.js 1.0 RC5也在这一天发布了。本次发布预示着我们等待已久的Ember.js 1.0正式版马上就要横空出世了。&lt;/p&gt;
-
-&lt;p&gt;RC5中主要修复了在RC4中发现的回归问题和缺陷。主要包括：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;修复了因为改动了运行循环计划而导致的性能问题。&lt;/li&gt;
-&lt;li&gt;修复了如果路由的模型钩子返回承诺（Promise）页面刷新时会挂起的问题。&lt;/li&gt;
-&lt;li&gt;包含辅助测试方法的ember-testing不在包含在生产构建中。这意味着介绍了用户需要从网络加载的Javascript代码。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;详细的修订记录：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;为不正确的容器搜索名称添加断言&lt;/li&gt;
-&lt;li&gt;增加了&lt;code&gt;Ember.beforeObserver&lt;/code&gt;的文档&lt;/li&gt;
-&lt;li&gt;从生产构建中移除了ember-testing&lt;/li&gt;
-&lt;li&gt;修复了承诺（Promise）在启动时的缺陷。修复 #2756&lt;/li&gt;
-&lt;li&gt;同步router.js修复&lt;code&gt;App#reset&lt;/code&gt;在ember-testing中的问题&lt;/li&gt;
-&lt;li&gt;声明&lt;code&gt;replaceWith&lt;/code&gt;只工作在&amp;#39;history&amp;#39;模式下&lt;/li&gt;
-&lt;li&gt;修正了IE7下测试不通过的问题&lt;/li&gt;
-&lt;li&gt;更新backburner，修复IE8下测试失败的问题&lt;/li&gt;
-&lt;li&gt;更新Backburner.js修复RC4中的性能问题&lt;/li&gt;
-&lt;li&gt;维护gem包的ruby版本&lt;/li&gt;
-&lt;li&gt;移除starter_kit上传任务&lt;/li&gt;
-&lt;/ul&gt;
-</content>
   </entry>
 </feed>

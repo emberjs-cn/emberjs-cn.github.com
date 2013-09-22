@@ -26,56 +26,12 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
   </head>
@@ -86,11 +42,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li class="active"><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -108,6 +64,8 @@
     <li class='level-1'>
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
         
@@ -184,7 +142,7 @@
 <h3 class='anchorable-toc' id='toc_nodejs'>安装nodejs</h3><h3 class='anchorable-toc' id='toc_grunt'>安装grunt</h3><h4 class='anchorable-toc' id='toc_grunt-grunt-cli'>安装grunt命令行工具grunt-cli</h4>
 <p>执行全局安装</p>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -203,7 +161,7 @@
 <li>bower: 包管理工具</li>
 </ul>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  npm install -g yo
 </pre></td>
@@ -211,7 +169,7 @@
 </div></div>
 <p>自动安装grunt 和 bower</p>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>  # 生成项目脚手架
@@ -221,7 +179,7 @@
 </div></div><h3 class='anchorable-toc' id='toc_'>准备项目文件夹</h3><h4 class='anchorable-toc' id='toc_'>创建项目文件夹</h4><h4 class='anchorable-toc' id='toc_grunt'>安装grunt及插件，安装在项目根目录</h4>
 <p>进入项目根目录</p>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>  npm install grunt --save-dev
@@ -231,7 +189,7 @@
 </div></div>
 <p>验证版本 <code>grunt -version</code></p>
 <div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>  grunt-cli v0.1.9
@@ -239,7 +197,7 @@
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_'>创建一个项目脚手架代码</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  yo wabapp
 </pre></td>
@@ -247,13 +205,13 @@
 </div></div>
 <p>查看目录下的文件，自动生成 package.json 和 Gruntfile</p>
 <h4 class='anchorable-toc' id='toc_'>安装依赖的模块</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  npm install
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>运行</h3><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  grunt server --force
 </pre></td>
@@ -261,7 +219,7 @@
 </div></div>
 <p>http://localhost:9000 出现欢迎页面</p>
 <h3 class='anchorable-toc' id='toc_ember'>与ember集成</h3><h4 class='anchorable-toc' id='toc_ember'>下载ember相关包</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  bower install ember
 </pre></td>
@@ -269,7 +227,7 @@
 </div></div>
 <p>app 目录下自动生成 bower_components</p>
 <h4 class='anchorable-toc' id='toc_'>安装模版编译插件</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  npm install grunt-ember-templates --save-dev
 </pre></td>
@@ -277,7 +235,7 @@
 </div></div>
 <p>建立模版文件夹 templates</p>
 <div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  mkdir app/templates
 </pre></td>
@@ -285,7 +243,7 @@
 </div></div><h4 class='anchorable-toc' id='toc_gruntfile-js'>修改Gruntfile.js 自动编译模版</h4>
 <p>在Gruntfile.js文件添加</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  grunt.loadNpmTasks(<span class="string"><span class="delimiter">'</span><span class="content">grunt-ember-templates</span><span class="delimiter">'</span></span>);
 </pre></td>
@@ -293,7 +251,7 @@
 </div></div>
 <p>在grunt.initConfig内添加</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -323,7 +281,7 @@
 </div></div>
 <p>在 watch处添加如下内容：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -337,7 +295,7 @@
 </div></div>
 <p>最后添加emberTemplates到server任务</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -361,7 +319,7 @@
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>开发一个简单应用</h3><h4 class='anchorable-toc' id='toc_app-scripts-main-js'>在app/scripts/main.js 中 添加如下代码</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -379,7 +337,7 @@ App.Router.map(<span class="keyword">function</span>(){
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_index-html'>在 index.html</h4><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre> <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">app</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   
@@ -389,7 +347,7 @@ App.Router.map(<span class="keyword">function</span>(){
 </div></div>
 <p>添加js文件</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -411,7 +369,7 @@ App.Router.map(<span class="keyword">function</span>(){
 <li>application.handlebars</li>
 </ul>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>  <span class="tag">&lt;h1&gt;</span>My App<span class="tag">&lt;/h1&gt;</span>
@@ -423,7 +381,7 @@ App.Router.map(<span class="keyword">function</span>(){
 <li>index.handlebars</li>
 </ul>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -437,7 +395,7 @@ App.Router.map(<span class="keyword">function</span>(){
 <li>about.handlebars</li>
 </ul>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>  <span class="tag">&lt;h1&gt;</span>About<span class="tag">&lt;/h1&gt;</span>
@@ -445,7 +403,7 @@ App.Router.map(<span class="keyword">function</span>(){
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_'>运行</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>  grunt server --force
 </pre></td>

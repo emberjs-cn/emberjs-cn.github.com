@@ -27,58 +27,16 @@
       })();
     </script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery.bxSlider.min.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-        var backToTop = $('#back-to-top');
-        var doc = $(document);
-        var offset = backToTop.offset();
-        var marginTop = 90;
-        var showing = false;
-
-        positionBackToTop = function(reset) {
-          if (reset) {
-            backToTop.css({
-              top: '',
-              position: ''
-            });
-            offset = backToTop.offset();
-          }
-
-          if (!showing && doc.scrollTop() > offset.top+200) {
-            showing = true;
-            backToTop.css({
-              position: 'fixed',
-              top: 20,
-              left: offset.left,
-              display:' block'
-            });
-          } else if (showing && doc.scrollTop() <= offset.top+200) {
-            showing = false;
-            backToTop.css({
-              display:'none'
-            });
-          }
-        };
-
-        if (backToTop.length) {
-          backToTop.on('click', function(evt) {
-            $('html,body').animate({scrollTop: 0}, 200);
-            return false;
-          });
-
-          doc.on('scroll', function() {
-            positionBackToTop();
-          });
-        }
-
-        $('.bx-wrapper, .bx-window').width(940);
-      });
-    </script>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
 
     
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
   </head>
 
   <body class="guides guides_getting-started guides_getting-started_using-other-adapters guides_getting-started_using-other-adapters_index">
@@ -87,11 +45,11 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li class="active"><a href="/guides">指南</a></li>
-          <li><a href="/projects">项目</a></li>
           <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
           </li>
+          <li><a href="/builds">构建</a></li>
         </ul>
         <div id="github">
           <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
@@ -135,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/using-fixutres">使用静态数据</a>
+              <a href="/guides/getting-started/using-fixutures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -305,6 +263,14 @@
             <li class="level-3">
               <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">Preventing and Retrying Transitions</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/components">组件</a>
@@ -332,6 +298,10 @@
           
             <li class="level-3">
               <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -487,6 +457,34 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">Introduction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/contributing">Contributing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">Helpers & Components</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">Working with Objects</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
             <ol>
         
@@ -512,19 +510,8 @@
       
       <div id="content" class="has-sidebar">
           
-
   
-    
-        <div class="under_construction_warning">
-          <h1>
-            <div class="msg">
-              警告: ember-data处在快速成长的开发阶段。
-              <br/>
-              <span class="more_caution">使用的时候请自己关注ember-data的最新动态！！！</span>
-            </div>
-          </h1>
-        </div>
-      
+
   
 
   <div class="chapter">
@@ -538,25 +525,19 @@
     <h2 class='anchorable-toc' id='toc_replacing-the-fixture-adapter-with-another-adapter'>Replacing the Fixture Adapter with Another Adapter</h2>
 <p>Finally we&#39;ll replace our fixture data with real persistence so todos will remain between application loads by replacing the fixture adapter with a <code>localstorage</code>-aware adapter instead.</p>
 
-<p>Change <code>js/models/store.js</code> to:</p>
+<p>Change <code>js/application.js</code> to:</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
 5
-6
-7
-8
 </pre></td>
-  <td class="code"><pre>Todos.Store = DS.Store.extend({
-  <span class="key">revision</span>: <span class="integer">12</span>,
-  <span class="key">adapter</span>: <span class="string"><span class="delimiter">'</span><span class="content">Todos.LSAdapter</span><span class="delimiter">'</span></span>
-});
+  <td class="code"><pre>window.Todos = Ember.Application.create();
 
-Todos.LSAdapter = DS.LSAdapter.extend({
-  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">todos-emberjs</span><span class="delimiter">'</span></span>
-});
+Todos.ApplicationAdapter = DS.LSAdapter.extend({
+   <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">todos-emberjs</span><span class="delimiter">'</span></span>
+ });
 </pre></td>
 </tr></table>
 </div></div>
@@ -564,7 +545,7 @@ Todos.LSAdapter = DS.LSAdapter.extend({
 
 <p>In <code>index.html</code> include <code>js/libs/local_storage_adapter.js</code> as a dependency:</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -580,10 +561,10 @@ Todos.LSAdapter = DS.LSAdapter.extend({
 </div></div>
 <p>Reload your application. Todos you manage will now persist after the application has been closed.</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/aqexej/3/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/aZIXaYo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/4830fbe41ed41326ac26025cb98104a0c258dd03">Changes in this step in <code>diff</code> format</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/81801d87da42d0c83685ff946c46de68589ce38f">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="https://github.com/rpflorence/ember-localstorage-adapter">LocalStorage Adapter on GitHub</a></li>
 </ul>
 
@@ -601,30 +582,6 @@ Todos.LSAdapter = DS.LSAdapter.extend({
       </footer>
       
   </div>
-
-  <script>
-    $(function(){
-      $("#toc-list .level-1 > a").click(function() {
-        $(this).parent().find('> ol').slideToggle(function() {
-          positionBackToTop(true);
-        });
-
-        return false;
-      });
-
-      $(function(){
-        $('.anchorable-toc').each(function(){
-          var toc = $(this),
-          id = toc.attr('id'),
-          href = "#" + id,
-          anchor = '<a class="toc-anchor" href="'+href+'"></a>';
-
-          toc.prepend(anchor);
-        });
-      });
-
-    });
-  </script>
 
       </div>
     </div>
