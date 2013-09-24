@@ -11,8 +11,8 @@
   </author>
   <entry>
     <title>Ember 1.0 Released</title>
-    <link rel="alternate" href="/blog/2013/08/31/ember-1-0-released.html"/>
-    <id>/blog/2013/08/31/ember-1-0-released.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/08/31/ember-1-0-released.html"/>
+    <id>http://emberjs.cn/blog/2013/08/31/ember-1-0-released.html</id>
     <published>2013-08-31T00:00:00Z</published>
     <updated>2013-08-31T00:00:00Z</updated>
     <author>
@@ -307,8 +307,8 @@ leading up to Ember 1.0:&lt;/p&gt;
   </entry>
   <entry>
     <title>Ember 1.0 RC8发布</title>
-    <link rel="alternate" href="/blog/2013/08/28/ember-1-0-rc8.html"/>
-    <id>/blog/2013/08/28/ember-1-0-rc8.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/08/28/ember-1-0-rc8.html"/>
+    <id>http://emberjs.cn/blog/2013/08/28/ember-1-0-rc8.html</id>
     <published>2013-08-28T00:00:00Z</published>
     <updated>2013-08-28T00:00:00Z</updated>
     <author>
@@ -919,8 +919,8 @@ Pass the property pointed-to by the path 'hello' to myHelper:
   </entry>
   <entry>
     <title>Windows下Ember应用开发环境搭建</title>
-    <link rel="alternate" href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html"/>
-    <id>/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html"/>
+    <id>http://emberjs.cn/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html</id>
     <published>2013-08-14T00:00:00Z</published>
     <updated>2013-08-14T00:00:00Z</updated>
     <author>
@@ -1231,8 +1231,8 @@ App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;(){
   </entry>
   <entry>
     <title>Ember.js 1.0 RC7发布</title>
-    <link rel="alternate" href="/blog/2013/08/14/ember-1-0-rc7.html"/>
-    <id>/blog/2013/08/14/ember-1-0-rc7.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/08/14/ember-1-0-rc7.html"/>
+    <id>http://emberjs.cn/blog/2013/08/14/ember-1-0-rc7.html</id>
     <published>2013-08-14T00:00:00Z</published>
     <updated>2013-08-14T00:00:00Z</updated>
     <author>
@@ -1270,8 +1270,8 @@ App.Router.map(&lt;span class="keyword"&gt;function&lt;/span&gt;(){
   </entry>
   <entry>
     <title>Ember.js 1.0.0-rc6发布</title>
-    <link rel="alternate" href="/blog/2013/07/06/ember-js-1-0-0-rc6.html"/>
-    <id>/blog/2013/07/06/ember-js-1-0-0-rc6.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/07/06/ember-js-1-0-0-rc6.html"/>
+    <id>http://emberjs.cn/blog/2013/07/06/ember-js-1-0-0-rc6.html</id>
     <published>2013-07-06T00:00:00Z</published>
     <updated>2013-07-06T00:00:00Z</updated>
     <author>
@@ -1333,8 +1333,8 @@ NYC见面会上）&lt;/a&gt;&lt;/li&gt;
   </entry>
   <entry>
     <title>第七期周报</title>
-    <link rel="alternate" href="/blog/2013/06/14/ember-js-weekly.html"/>
-    <id>/blog/2013/06/14/ember-js-weekly.html</id>
+    <link rel="alternate" href="http://emberjs.cn/blog/2013/06/14/ember-js-weekly.html"/>
+    <id>http://emberjs.cn/blog/2013/06/14/ember-js-weekly.html</id>
     <published>2013-06-14T00:00:00Z</published>
     <updated>2013-06-14T00:00:00Z</updated>
     <author>

@@ -333,7 +333,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/defining-a-store">创建一个存储器</a>
+              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
             </li>
           
             <li class="level-3">
@@ -341,23 +341,31 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-models">查找模型</a>
+              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/modifying-attributes">修改属性</a>
+              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/model-lifecycle">模型生命周期</a>
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/the-fixture-adapter">The Fixture Adapter</a>
+              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/the-rest-adapter">REST适配器</a>
+              <a href="/bilingual_guides/models/working-with-records">Working with Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">Connecting to an HTTP Server</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -503,6 +511,14 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/contributing/adding-new-features">Contributing to Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/contributing/adding-new-features">Adding New Features</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -586,10 +602,10 @@
     <span class="keyword">var</span> model = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
 
     <span class="keyword">if</span> (value === <span class="predefined-constant">undefined</span>) {
-      <span class="comment">// property being used as getter</span>
+      <span class="comment">// property being used as a getter</span>
       <span class="keyword">return</span> model.get(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>);
     } <span class="keyword">else</span> {
-      <span class="comment">// property being used as setter</span>
+      <span class="comment">// property being used as a setter</span>
       model.set(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, value);
       model.save();
       <span class="keyword">return</span> value;
@@ -599,9 +615,13 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>When called from the template to display the current <code>isCompleted</code> state of the todo, this property will proxy that question to its underlying <code>model</code>. When called with a value because a user has toggled the checkbox in the template, this property will set the <code>isCompleted</code> property of its <code>model</code> to the passed value (<code>true</code> or <code>false</code>), persist the model update, and return the passed value so the checkbox will display correctly.</p>
+<p>When called from the template to display the current <code>isCompleted</code> state of the todo, this property will proxy that question to its underlying <code>model</code>. When called with a value because a user has toggled the checkbox in the template, this property will set the <code>isCompleted</code> property of its <code>model</code> to the passed value (<code>true</code> or <code>false</code>), persist the model update, and return the passed value so the checkbox will display correctly. </p>
+
+<p>The <code>isCompleted</code> function is marked a <a href="/guides/object-model/computed-properties/">computed property</a> whose value is dependent on the value of <code>model.isCompleted</code>.</p>
 
 <p>当模板中需要显示待办事项的当前<code>isCompleted</code>状态，这个属性将这个问题委派给其底层的<code>model</code>。当被调用时因为用户触发了模板中的复选框而带有一个参数，那么这个属性将设置<code>model</code>的<code>isCompleted</code>属性为传入的参数值（<code>true</code>或者<code>false</code>），并将模型的变更持久化，返回传入的值以便复选框显示正确。</p>
+
+<p><code>isCompleted</code>函数被声明为一个<a href="/guides/object-model/computed-properties/">计算属性</a>，其值依赖于<code>model.isCompleted</code>。</p>
 
 <p>In <code>index.html</code> include <code>js/controllers/todo_controller.js</code> as a dependency:</p>
 

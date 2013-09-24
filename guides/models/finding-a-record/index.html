@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 模型: 查找模型</title>
+    <title>Ember.js - 模型: Finding a Record</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -36,10 +36,11 @@
 
     
     <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
   
   </head>
 
-  <body class="guides guides_models guides_models_finding-models guides_models_finding-models_index">
+  <body class="guides guides_models guides_models_finding-a-record guides_models_finding-a-record_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -333,7 +334,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/defining-a-store">创建一个存储器</a>
+              <a href="/guides/models/using-the-store">Using the Store</a>
             </li>
           
             <li class="level-3">
@@ -341,23 +342,31 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/models/finding-models">查找模型</a>
+              <a href="/guides/models/finding-a-record">Finding a Record</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/modifying-attributes">修改属性</a>
+              <a href="/guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/model-lifecycle">模型生命周期</a>
+              <a href="/guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/the-fixture-adapter">The Fixture Adapter</a>
+              <a href="/guides/models/querying-the-server-for-records">Querying the Server for Records</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/the-rest-adapter">REST适配器</a>
+              <a href="/guides/models/working-with-records">Working with Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">Connecting to an HTTP Server</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -503,6 +512,14 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/contributing/adding-new-features">Contributing to Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/contributing/adding-new-features">Adding New Features</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -513,62 +530,68 @@
   
 
   
-    
-        <div class="under_construction_warning">
-          <h1>
-            <div class="msg">
-              警告: ember-data处在快速成长的开发阶段。
-              <br/>
-              <span class="more_caution">使用的时候请自己关注ember-data的最新动态！！！</span>
-            </div>
-          </h1>
-        </div>
-      
-  
 
   <div class="chapter">
     
-        <h1>查找模型 
-          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/finding-models.md" target="_blank" class="edit-page">
+        <h1>Finding a Record 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/finding-a-record.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/models/finding-models/">http://emberjs.com/guides/models/finding-models/</a></p>
-<h2 class='anchorable-toc' id='toc_'>查找模型</h2>
-<p>通过将记录的唯一ID传递给<code>find()</code>方法，可以获取记录：</p>
+<h2 class='anchorable-toc' id='toc_'>查找一个对象</h2>
+<p>通过将记录对应的模型和唯一ID传递给<code>find()</code>方法，可以获取记录。这将返回一个承诺，并解析为请求的记录：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
+2
+3
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> post = App.Post.find(<span class="integer">1</span>);
+  <td class="code"><pre>store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, <span class="integer">1</span>).then(<span class="keyword">function</span>(post) {
+  post.set(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My Dark Twisted Fantasy</span><span class="delimiter">&quot;</span></span>);
+});
 </pre></td>
 </tr></table>
-</div></div>
-<p>如果该ID的记录已经被创建，那么它将被立即返回。这个特性被称为 <em>标示符映射</em> 。</p>
+</div></div><h3 class='anchorable-toc' id='toc_integrating-with-the-route-s-model-hook'>Integrating with the Route&#39;s Model Hook</h3>
+<p>As discussed in <a href="/guides/routing/specifying-a-routes-model">Specifying a Route&#39;s
+Model</a>, routes are
+responsible for telling their template which model to render.</p>
 
-<p>否则，一个新的记录将被创建，其状态将被设置为加载中，并且返回。返回的记录可以在模板文件中使用；因为Ember.js中一切都是支持绑定的，因此模板在记录完成加载后会自动得到更新。</p>
-<h3 class='anchorable-toc' id='toc_'>查找所有记录</h3>
-<p>如果调用<code>find()</code>方法时不带任何参数，将返回该模型的所有记录：</p>
-<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> posts = App.Post.find();
-</pre></td>
-</tr></table>
-</div></div>
-<p>这将返回一个<code>DS.RecordArray</code>的实例。跟记录一样，记录数组开始的时候状态也是加载中，并且<code>length</code>为0，但是已经可以在模板文件中使用了。当服务端返回结果时，模板会监听数组长度的变化，从而自动的更新自己的内容。</p>
+<p><code>Ember.Route</code>&#39;s <code>model</code> hook supports asynchronous values
+out-of-the-box. If you return a promise from the <code>model</code> hook, the
+router will wait until the promise has resolved to render the
+template.</p>
 
-<p>注意：<code>DS.RecordArray</code>不是一个Javascript数组，它是一个实现了<code>Ember.Enumerable</code>接口的对象。如果需要通过索引来获取对象，可以使用<code>objectAt(index)</code>方法。由于该对象不是Javascript数组，因此不能使用<code>[]</code>来取其中的元素。更多详细信息请查看<a href="http://emberjs.com/api/classes/Ember.Enumerable.html">Ember.Enumerable</a>和<a href="http://emberjs.com/api/classes/Ember.Array.html">Ember.Array</a>。</p>
-<h3 class='anchorable-toc' id='toc_'>查询</h3>
-<p>通过将一个哈希传递给<code>find()</code>方法，可以实现查询：</p>
+<p>This makes it easy to write apps with asynchronous data using Ember
+Data. Just return the requested record from the <code>model</code> hook, and let
+Ember deal with figuring out whether a network request is needed or not:</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> people = App.Person.find({ <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Peter</span><span class="delimiter">&quot;</span></span> });
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">:post_id</span><span class="delimiter">'</span></span> });
+});
+
+App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
+  }
+});
 </pre></td>
 </tr></table>
 </div></div>
-<p>哈希的内容对于Ember Data来说是透明的，它将被服务器端解析并返回对应的记录。</p>
+<p>In fact, this pattern is so common, the above <code>model</code> hook is the
+default implementation for routes with a dynamic segment. If you&#39;re
+using Ember Data, you only need to override the <code>model</code> hook if you need
+to return a model different from the record with the provided ID.</p>
 
     
       <footer>
@@ -577,8 +600,8 @@
             ← 定义模型
           </a>
          
-        <a class="next-guide" href="/guides/models/modifying-attributes">
-          修改属性 →
+        <a class="next-guide" href="/guides/models/finding-all-records-of-a-type">
+          Finding All Records of a Type →
         </a>
       
       </footer>
