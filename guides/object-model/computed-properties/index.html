@@ -173,6 +173,38 @@
               <a href="/guides/concepts/naming-conventions">命名惯例</a>
             </li>
           </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
           <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1 selected">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol class='selected'>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3 sub-selected">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -561,8 +565,10 @@
 13
 14
 15
+16
 </pre></td>
   <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="comment">// these will be supplied by `create`</span>
   <span class="key">firstName</span>: <span class="predefined-constant">null</span>,
   <span class="key">lastName</span>: <span class="predefined-constant">null</span>,
 
@@ -609,10 +615,8 @@ ironMan.get(<span class="string"><span class="delimiter">'</span><span class="co
 21
 22
 23
-24
 </pre></td>
   <td class="code"><pre>App.Person = Ember.Object.extend({
-  <span class="comment">// these will be supplied by `create`</span>
   <span class="key">firstName</span>: <span class="predefined-constant">null</span>,
   <span class="key">lastName</span>: <span class="predefined-constant">null</span>,
   <span class="key">age</span>: <span class="predefined-constant">null</span>,
@@ -704,6 +708,8 @@ captainAmerica.get(<span class="string"><span class="delimiter">'</span><span cl
 </pre></td>
 </tr></table>
 </div></div>
+<p>Ember will call the computed property for both setters and getters, so if you want to use a computed property as a setter, you&#39;ll need to check the number of arguments to determine whether it is being called as a getter or a setter.</p>
+
     
       <footer>
         

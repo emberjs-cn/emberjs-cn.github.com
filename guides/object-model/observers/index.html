@@ -173,6 +173,38 @@
               <a href="/guides/concepts/naming-conventions">命名惯例</a>
             </li>
           </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
           <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1 selected">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol class='selected'>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3 sub-selected">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -540,10 +544,10 @@
       
     <hr>
     <h2 class='anchorable-toc' id='toc_'>观察器</h2>
-<p>原文：<a href="http://emberjs.com/guides/object-model/observers/">http://emberjs.com/guides/object-model/observers/</a></p>
+<p>原文：[http://emberjs.com/guides/object-model/observers/][source_link]</p>
 
 <blockquote>
-<p>译者按：Observer 通常都被译为“观察者模式”，它是一种软件设计模式，有时也叫做“发布/订阅（Pub/Sub）模式”，可参看 <a href="http://zh.wikipedia.org/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">Wikipedia 里的“观察者模式”词条</a>。在本指南中之所以译为“观察器”，是因为在这里 Observers 的意思是“Ember.js 框架用来实现观察者设计模式所使用的机制”，因此与惯用译法略有差别。</p>
+<p>译者按：Observer 通常都被译为“观察者模式”，它是一种软件设计模式，有时也叫做“发布/订阅（Pub/Sub）模式”，可参看 [Wikipedia 里的“观察者模式”词条][wiki_observer]。在本指南中之所以译为“观察器”，是因为在这里 Observers 的意思是“Ember.js 框架用来实现观察者设计模式所使用的机制”，因此与惯用译法略有差别。</p>
 </blockquote>
 
 <p>Ember 为包括计算后属性在内的任意一种属性提供了观察器。你可以通过使用 <code>addObserver</code> 方法来为一个对象设置一个观察器。</p>
@@ -582,7 +586,11 @@
     <span class="keyword">var</span> lastName = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
 
     <span class="keyword">return</span> firstName + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + lastName;
-  }.property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>),
+
+  <span class="function">fullNameChanged</span>: <span class="keyword">function</span>() {
+    <span class="comment">// 处理改变</span>
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
 });
 
 <span class="keyword">var</span> person = Person.create({
@@ -590,33 +598,136 @@
   <span class="key">lastName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Katz</span><span class="delimiter">&quot;</span></span>
 });
 
-person.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
-  <span class="comment">// 根据变化（fullName）进行处理</span>
-});
-
 person.set(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Brohuda</span><span class="delimiter">&quot;</span></span>); <span class="comment">// 观察器将被触发</span>
 </pre></td>
 </tr></table>
 </div></div>
 <p>由于 <code>fullName</code> 这个计算后属性依赖于 <code>firstName</code> 的变化，所以在更新 <code>firstName</code> 时也将触发 <code>fullName</code> 上的观察器。</p>
-
-<p>因为观察器是如此普遍，Ember 提供了一种在类定义中定义内联式观察器的途径。</p>
+<h3 class='anchorable-toc' id='toc_observers-and-asynchrony'>Observers and asynchrony</h3>
+<p>Observers in Ember are currently synchronous. This means that they will fire
+as soon as one of the properties they observe changes. Because of this, it
+is easy to introduce bugs where properties are not yet synchronized:</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 4
 5
+6
+7
+8
 </pre></td>
   <td class="code"><pre>Person.reopen({
-  <span class="function">fullNameChanged</span>: <span class="keyword">function</span>() {
-    <span class="comment">// 这是内联式版本的 .addObserver</span>
-  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
+  <span class="function">lastNameChanged</span>: <span class="keyword">function</span>() {
+    <span class="comment">// The observer depends on lastName and so does fullName. Because observers</span>
+    <span class="comment">// are synchronous, when this function is called the value of fullName is</span>
+    <span class="comment">// not updated yet so this will log the old value of fullName</span>
+    console.log(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>));
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
 });
 </pre></td>
 </tr></table>
 </div></div>
-<p>在没有原型扩展的前提下使用 Ember 的时候，你可以用 <code>Ember.observer</code> 方法来定义内联式观察器：</p>
+<p>This synchronous behaviour can also lead to observers being fired multiple
+times when observing multiple properties:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>Person.reopen({
+  <span class="function">partOfNameChanged</span>: <span class="keyword">function</span>() {
+    <span class="comment">// Because both firstName and lastName were set, this observer will fire twice.</span>
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
+});
+
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>);
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Smith</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>To get around these problems, you should make use of <code>Ember.run.once</code>. This will
+ensure that any processing you need to do only happens once, and happens in the
+next run loop once all bindings are synchronized:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>Person.reopen({
+  <span class="function">partOfNameChanged</span>: <span class="keyword">function</span>() {
+    Ember.run.once(<span class="local-variable">this</span>, <span class="string"><span class="delimiter">'</span><span class="content">processFullName</span><span class="delimiter">'</span></span>);
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>),
+
+  <span class="function">processFullName</span>: <span class="keyword">function</span>() {
+    <span class="comment">// This will only fire once if you set two properties at the same time, and</span>
+    <span class="comment">// will also happen in the next run loop once all properties are synchronized</span>
+    console.log(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>));
+  }
+});
+
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>);
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Smith</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_observers-and-object-initialization'>Observers and object initialization</h3>
+<p>Observers never fire until after the initialization of an object is complete.</p>
+
+<p>If you need an observer to fire as part of the initialization process, you
+cannot rely on the side effect of set. Instead, specify that the observer
+should also run after init by using <code>.on(&#39;init&#39;)</code>:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.Person = Ember.Object.extend({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">salutation</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Mr/Ms</span><span class="delimiter">&quot;</span></span>);
+  },
+
+  <span class="function">salutationDidChange</span>: <span class="keyword">function</span>() {
+    <span class="comment">// some side effect of salutation changing</span>
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">salutation</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">init</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_unconsumed-computed-properties-do-not-trigger-observers'>Unconsumed Computed Properties Do Not Trigger Observers</h3>
+<p>If you never <code>get</code> a computed property, its observers will not fire even if
+its dependent keys change. You can think of the value changing from one unknown
+value to another.</p>
+
+<p>This doesn&#39;t usually affect application code because computed properties are
+almost always observed at the same time as they are fetched. For example, you get
+the value of a computed property, put it in DOM (or draw it with D3), and then
+observe it so you can update the DOM once the property changes.</p>
+
+<p>If you need to observe a computed property but aren&#39;t currently retrieving it,
+just get it in your init method.</p>
+<h3 class='anchorable-toc' id='toc_without-prototype-extensions'>Without prototype extensions</h3>
+<p>在没有原型扩展的前提下使用 Ember 的时候，你可以用 <code>Ember.observer</code> 方法来定义内联式观察器</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -628,6 +739,19 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
   <span class="key">fullNameChanged</span>: Ember.observer(<span class="keyword">function</span>() {
     <span class="comment">// 这是内联式版本的 .addObserver</span>
   }, <span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_outside-of-class-definitions'>Outside of class definitions</h3>
+<p>You can also add observers to an object outside of a class definition
+using addObserver:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>person.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="comment">// deal with the change</span>
 });
 </pre></td>
 </tr></table>

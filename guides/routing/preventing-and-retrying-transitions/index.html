@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -547,7 +551,7 @@ and if the transition object is stored, it can be re-attempted at a
 later time by calling <code>transition.retry()</code>.</p>
 <h3 class='anchorable-toc' id='toc_preventing-transitions-via-code-willtransition-code'>Preventing Transitions via <code>willTransition</code></h3>
 <p>When a transition is attempted, whether via <code>{{link-to}}</code>, <code>transitionTo</code>,
-or a URL change, a <code>willTransition</code> event is fired on the currently
+or a URL change, a <code>willTransition</code> action is fired on the currently
 active routes. This gives each active route, starting with the leaf-most
 route, the opportunity to decide whether or not the transition should occur.</p>
 
@@ -580,7 +584,7 @@ made on the form, which can make for a pretty frustrating user experience.</p>
           !confirm(<span class="string"><span class="delimiter">&quot;</span><span class="content">Are you sure you want to abandon progress?</span><span class="delimiter">&quot;</span></span>)) {
         transition.abort();
       } <span class="keyword">else</span> {
-        <span class="comment">// Bubble the `willTransition` event so that</span>
+        <span class="comment">// Bubble the `willTransition` action so that</span>
         <span class="comment">// parent routes can decide whether or not to abort.</span>
         <span class="keyword">return</span> <span class="predefined-constant">true</span>;
       }

@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -563,21 +567,17 @@
   </tbody>
 </table>
 <h4 class='anchorable-toc' id='toc_'>自定义复数形态</h4>
-<p>不规则复数形态可以通过适配器的<code>configure</code>API来进行制定：</p>
+<p>不规则或不可数名词复数可以通过<code>Ember.Inflector.inflector</code>来指定：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
-3
-4
 </pre></td>
-  <td class="code"><pre>DS.RESTAdapter.configure(<span class="string"><span class="delimiter">&quot;</span><span class="content">plurals</span><span class="delimiter">&quot;</span></span>, {
-  <span class="key">person</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">people</span><span class="delimiter">&quot;</span></span>,
-  <span class="key">owner_reply</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">owner_replies</span><span class="delimiter">&quot;</span></span>
-});
+  <td class="code"><pre>Ember.Inflector.inflector.irregular(<span class="string"><span class="delimiter">'</span><span class="content">formula</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">formulae</span><span class="delimiter">'</span></span>);
+Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimiter">'</span><span class="content">advice</span><span class="delimiter">'</span></span>);
 </pre></td>
 </tr></table>
 </div></div>
-<p>如上的配置下，REST适配器会采用<code>/people/1</code>来获取<code>App.Person</code>，而不是使用<code>/persons/1</code>。</p>
+<p>如上的配置下，REST适配器会采用<code>/formulae/1</code>来获取<code>App.Formula</code>，而不是使用<code>/formulae/1</code>。</p>
 <h4 class='anchorable-toc' id='toc_'>自定义端点路径</h4>
 <p>端点路径可以有一个命名空间前缀，该前缀通过适配器的<code>namespace</code>属性来进行配置：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -593,14 +593,14 @@
 </div></div>
 <p>现在<code>App.Person</code>的请求就会变为<code>/api/1/people/1</code>。</p>
 <h4 class='anchorable-toc' id='toc_'>自定义宿主</h4>
-<p>适配器可以通过设置<code>url</code>属性来指向其他的宿主。</p>
+<p>适配器可以通过设置<code>host</code>属性来指向其他的宿主。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
   <td class="code"><pre>DS.RESTAdapter.reopen({
-  <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.example.com</span><span class="delimiter">'</span></span>
+  <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.example.com</span><span class="delimiter">'</span></span>
 });
 </pre></td>
 </tr></table>
@@ -804,7 +804,7 @@ Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型�
 <strong>10</strong>
 11
 </pre></td>
-  <td class="code"><pre>DS.RESTAdapter.registerTransform(<span class="string"><span class="delimiter">'</span><span class="content">coordinatePoint</span><span class="delimiter">'</span></span>, {
+  <td class="code"><pre>App.CoordinatePointTransform = DS.Transform.extend({
   <span class="function">serialize</span>: <span class="keyword">function</span>(value) {
     <span class="keyword">return</span> [value.get(<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>), value.get(<span class="string"><span class="delimiter">'</span><span class="content">y</span><span class="delimiter">'</span></span>)];
   },

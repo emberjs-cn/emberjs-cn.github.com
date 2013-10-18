@@ -173,6 +173,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/application">应用</a>
             <ol>
         
@@ -365,6 +397,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -402,38 +438,6 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -605,6 +609,8 @@
 58
 59
 <strong>60</strong>
+61
+62
 </pre></td>
   <td class="code"><pre><span class="doctype">&lt;!doctype html&gt;</span>
 <span class="tag">&lt;html&gt;</span>
@@ -614,7 +620,8 @@
     <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">style.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;/head&gt;</span>
   <span class="tag">&lt;body&gt;</span>
-    <span class="tag">&lt;section</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todoapp</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todos</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">    <span class="tag">&lt;section</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todoapp</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
       <span class="tag">&lt;header</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">header</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;h1&gt;</span>todos<span class="tag">&lt;/h1&gt;</span>
         <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">new-todo</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">What needs to be done?</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
@@ -659,11 +666,12 @@
             Clear completed (1)
           <span class="tag">&lt;/button&gt;</span>
         <span class="tag">&lt;/footer&gt;</span>
-    <span class="tag">&lt;/section&gt;</span>
+    &lt;<span class="regexp"><span class="delimiter">/</span><span class="content">section&gt;
 
-    <span class="tag">&lt;footer</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      <span class="tag">&lt;p&gt;</span>Double-click to edit a todo<span class="tag">&lt;/p&gt;</span>
-    <span class="tag">&lt;/footer&gt;</span>
+    &lt;footer id=&quot;info&quot;&gt;
+      &lt;p&gt;Double-click to edit a todo&lt;</span><span class="delimiter">/</span></span>p&gt;
+    &lt;<span class="regexp"><span class="delimiter">/</span><span class="content">footer&gt;</span></span></span>
+    <span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span>
 </pre></td>

@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -591,7 +595,7 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>通过创建一个绑定，可以提供一种更为简便的方式来访问<code>PostController</code>（因为<code>PostController</code>是一个<code>ObjectController</code>，这里并不直接需要一个<code>Post</code>实例）。</p>
+<p>通过创建一个别名属性，可以提供一种更为简便的方式来访问<code>PostController</code>（因为<code>PostController</code>是一个<code>ObjectController</code>，这里并不直接需要一个<code>Post</code>实例）。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -605,7 +609,7 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>更多关于绑定的信息，请查看API中的<code>Ember.Binding</code>。</p>
+<p>更多关于别名属性的信息，请查看<a href="http://emberjs.com/api/#method_computed_alias">aliased properties</a> API。</p>
 
     
       <footer>

@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -696,6 +700,20 @@ Ember.LOG_STACKTRACE_ON_DEPRECATION = <span class="predefined-constant">true</sp
     <span class="key">console</span>: window.console
   }
 };
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_code-rsvp-promise-code'><code>RSVP.Promise</code>中的错误</h4>
+<p>有时候，在处理承诺时，错误信息并没有被正确的抛出，就好像被吞下了一样。这使得跟踪问题出在什么地方变得十分困难。不过要感谢<code>RSVP</code>，它内置了一种专用于处理这种情况的方法。</p>
+
+<p>只需要提供一个<code>onerror</code>函数，供在承诺发生错误的时候被调用，来查看错误的详细信息。这个函数根据需要来设计，不过通常的方法是在其中调用<code>console.assert</code>在控制台里面输出错误信息。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>Ember.RSVP.configure(<span class="string"><span class="delimiter">'</span><span class="content">onerror</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(error) {
+  Ember.Logger.assert(<span class="predefined-constant">false</span>, error);
+});
 </pre></td>
 </tr></table>
 </div></div>

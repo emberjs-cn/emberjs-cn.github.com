@@ -173,6 +173,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/application">应用</a>
             <ol>
         
@@ -365,6 +397,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -402,38 +438,6 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -563,7 +567,7 @@
 6
 7
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!-- photos.handlebars --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! photos.handlebars }}</span>
 
 <span class="tag">&lt;ul&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">photo</span> <span class="attribute-name">in</span> <span class="attribute-name">photos</span><span class="inline-delimiter">}}</span></span>
@@ -615,7 +619,27 @@ value of the corresponding object&#39;s <code>id</code> property.</li>
 <li>每个<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>最多对应一个模型。默认情况下，Ember.js将使用对应对象的<code>id</code>属性来替换动态段。</li>
 <li>此外，我们也可以提供一个链接名称绑定到<code>a</code>标签的<code>title</code>属性。</li>
 </ul>
-<h3 class='anchorable-toc' id='toc_example-for-multiple-segments'>Example for Multiple Segments</h3><h3 class='anchorable-toc' id='toc_'>多动态段示例</h3>
+
+<p>If there is no model to pass to the helper, you can provide an explicit identifier value instead.
+The value will be filled into the <a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">dynamic segment</a>
+of the route, and will make sure that the <code>model</code> hook is triggered.</p>
+
+<p>如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>，并确保<code>model</code>钩子被触发。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="comment">{{! photos.handlebars }}</span>
+
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">photo.edit</span><span class="error">'</span> <span class="attribute-name">1</span><span class="inline-delimiter">}}</span></span>
+First Photo Ever
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_example-for-multiple-segments'>Example for Multiple Segments</h3><h3 class='anchorable-toc' id='toc_'>多动态段示例</h3>
 <p>If the route is nested, you can supply a model for each dynamic
 segment.</p>
 
@@ -631,12 +655,12 @@ segment.</p>
 8
 </pre></td>
   <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
-  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photos</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photo</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:photo_id</span><span class="delimiter">&quot;</span></span> }, <span class="keyword">function</span>(){
-      <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>);
-      <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/comments/:comment_id</span><span class="delimiter">&quot;</span></span> });
-    });
+<span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photos</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">&quot;</span><span class="content">photo</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/:photo_id</span><span class="delimiter">&quot;</span></span> }, <span class="keyword">function</span>(){
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>);
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/comments/:comment_id</span><span class="delimiter">&quot;</span></span> });
   });
+});
 });
 </pre></td>
 </tr></table>
@@ -649,7 +673,7 @@ segment.</p>
 6
 7
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!-- photoIndex.handlebars --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! photoIndex.handlebars }}</span>
 
 <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">photo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span>

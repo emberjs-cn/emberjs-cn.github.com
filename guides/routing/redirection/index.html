@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -540,8 +544,9 @@
       
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/routing/redirection/">http://emberjs.com/guides/routing/redirection/</a></p>
-<h2 class='anchorable-toc' id='toc_url'>重定向到不同的URL</h2>
-<p>如果你想从一个路由重定向到另外一个路由，只要在路由处理方法中实现一个<code>redirect</code>钩子即可。</p>
+<h3 class='anchorable-toc' id='toc_before-the-model-is-known'>Before the model is known</h3>
+<p>If you want to redirect from one route to another, you can do the transition in
+the <code>beforeModel</code> hook of your route handler.</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -558,14 +563,53 @@
 });
 
 App.IndexRoute = Ember.Route.extend({
-  <span class="function">redirect</span>: <span class="keyword">function</span>() {
+  <span class="function">beforeModel</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>);
   }
 });
 </pre></td>
 </tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_after-the-model-is-known'>After the model is known</h3>
+<p>If you need some information about the current model in order to decide about
+the redirection, you should either use the <code>afterModel</code> or the <code>redirect</code> hook. They
+receive the resolved model as the first parameter and the transition as the second one,
+and thus function as aliases. (In fact, the default implementation of <code>afterModel</code> just calls <code>redirect</code>.)</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>
+App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>);
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/post/:post_id</span><span class="delimiter">'</span></span> });
+});
+
+App.PostsRoute = Ember.Route.extend({
+  <span class="function">afterModel</span>: <span class="keyword">function</span>(posts, transition) {
+    <span class="keyword">if</span> (posts.length === <span class="integer">1</span>) {
+      <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, posts[<span class="integer">0</span>]);
+    }
+  }
+});
+</pre></td>
+</tr></table>
 </div></div>
-<p>你可以基于其他的应用状态，来进行有条件的切换。</p>
+<p>When transitioning to the <code>PostsRoute</code> it turns out that there is only one post,
+the current transition is aborted in favor of redirecting to the <code>PostRoute</code>
+with the single post object being its model.</p>
+<h3 class='anchorable-toc' id='toc_based-on-other-application-state'>Based on other application state</h3>
+<p>You can conditionally transition based on some other application state.</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -608,7 +652,7 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.TopChartsChooseRoute = Ember.Route.extend({
-  <span class="function">redirect</span>: <span class="keyword">function</span>() {
+  <span class="function">beforeModel</span>: <span class="keyword">function</span>() {
     <span class="keyword">var</span> lastFilter = <span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">application</span><span class="delimiter">'</span></span>).get(<span class="string"><span class="delimiter">'</span><span class="content">lastFilter</span><span class="delimiter">'</span></span>);
     <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">topCharts.</span><span class="delimiter">'</span></span> + lastFilter || <span class="string"><span class="delimiter">'</span><span class="content">songs</span><span class="delimiter">'</span></span>);
   }
@@ -631,7 +675,7 @@ App.TopChartsPlaylistsRoute = App.FilterRoute.extend();
 </div></div>
 <p>在上面这个例子中，用户浏览到<code>/</code>网址的时候会被立即跳转到用户曾经访问过的最后过滤网址。第一次访问<code>/</code>的时候，会被跳转到<code>songs</code>网址。</p>
 
-<p>你的路由还可以选择在特定的情况下才跳转。如果<code>redirect</code>钩子没有跳转到新的路由，剩下的钩子们(<code>model</code>, <code>setupController</code>, <code>renderTemplate</code>)还会照常执行。</p>
+<p>你的路由还可以选择在特定的情况下才跳转。如果<code>beforeModel</code>钩子没有跳转到新的路由，剩下的钩子们(<code>model</code>, <code>afterModel</code>,<code>setupController</code>, <code>renderTemplate</code>)还会照常执行。</p>
 
     
       <footer>

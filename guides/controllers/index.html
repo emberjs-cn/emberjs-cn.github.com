@@ -174,6 +174,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/application">应用</a>
             <ol>
         
@@ -366,6 +398,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -403,38 +439,6 @@
           
             <li class="level-3">
               <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -679,15 +683,19 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 8
 9
 <strong>10</strong>
+11
+12
 </pre></td>
   <td class="code"><pre>App.ApplicationController = Ember.Controller.extend({
   <span class="comment">// the initial value of the `search` property</span>
   <span class="key">search</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
 
-  <span class="function">query</span>: <span class="keyword">function</span>() {
-    <span class="comment">// the current value of the text field</span>
-    <span class="keyword">var</span> query = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>);
-    <span class="local-variable">this</span>.transitionToRoute(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>, { <span class="key">query</span>: query });
+  <span class="key">actions</span>: {
+    <span class="function">query</span>: <span class="keyword">function</span>() {
+      <span class="comment">// the current value of the text field</span>
+      <span class="keyword">var</span> query = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>);
+      <span class="local-variable">this</span>.transitionToRoute(<span class="string"><span class="delimiter">'</span><span class="content">search</span><span class="delimiter">'</span></span>, { <span class="key">query</span>: query });
+    }
   }
 });
 </pre></td>

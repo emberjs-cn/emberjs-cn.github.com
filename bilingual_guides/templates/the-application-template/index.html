@@ -173,6 +173,38 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/bilingual_guides/application">应用</a>
             <ol>
         
@@ -365,6 +397,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">Handling Metadata</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
             </li>
           </ol></li>
@@ -402,38 +438,6 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
-            </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/observers">观察器</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/bindings">绑定</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -591,10 +595,11 @@ currently at <code>/posts</code> or <code>/posts/15</code>, for example.</p>
 <p>更多关于入口是如何被路由填写，请参看<a href="/guides/routing">Routing</a>。</p>
 
 <p>If you are keeping your templates in HTML, create a <code>&lt;script&gt;</code> tag
-without a template name. It will automatically be compiled and appended
-to the screen.</p>
+without a template name. Ember will use the template without a name as
+the application template and it will automatically be compiled and
+appended to the screen.</p>
 
-<p>如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的<code>&lt;script&gt;</code>标签，它会自动被编译和加载到页面。</p>
+<p>如果你希望将应用模板放置在HTML文档中，你可以创建一个不带模板名字的<code>&lt;script&gt;</code>标签。Ember将使用这个没有命名的模板作为应用的模板，会将其编译和加载到页面。</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
