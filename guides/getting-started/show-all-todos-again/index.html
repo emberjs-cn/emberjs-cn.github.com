@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 入门指南: Transitioning back to Show All Todos</title>
+    <title>Ember.js - 入门指南: 显示所有待办事项</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -94,7 +94,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/using-fixutures">使用静态数据</a>
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -134,31 +134,31 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -537,16 +537,17 @@
 
   <div class="chapter">
     
-        <h1>Transitioning back to Show All Todos 
+        <h1>显示所有待办事项 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/show-all-todos-again.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <h2 class='anchorable-toc' id='toc_transitioning-back-to-showing-all-todos'>Transitioning back to showing all todos</h2>
-<p>Next we can update the application to allow navigating back to the list of all todos. </p>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/show-all-todos-again/">http://emberjs.com/guides/getting-started/show-all-todos-again/</a></p>
 
-<p>In <code>index.html</code> convert the <code>&lt;a&gt;</code> tag for &#39;All&#39; todos into a Handlebars <code>{{link-to}}</code> helper:</p>
+<p>接下来我们将对应用进行进一步的修改，使得用户可以查看所有待办事项。</p>
+
+<p>在<code>index.html</code>中，将‘全部’待办事项的<code>&lt;a&gt;</code>标签改为Handlebars的<code>{{link-to}}</code>助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -574,24 +575,24 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>Reload your web browser to ensure that there are no errors. You should be able to navigate between urls for all, active, and completed todos.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+<p>重载浏览器确保没有任何错误。现在应该可以在不同状态（全部、活动和已完成）的待办事项的URL之间进行切换了。</p>
+<h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/uYuGA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
-<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/843ff914873081560e4ba97df0237b8595b6ae51">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_link-to">link-to API documentation</a></li>
+<li><a href="https://github.com/emberjs/quickstart-code-sample/commit/843ff914873081560e4ba97df0237b8595b6ae51">用<code>diff</code>格式显示改动</a></li>
+<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_link-to">link-to API文档</a></li>
 </ul>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/getting-started/show-only-complete-todos">
-            ← Transitioning to Show Only Complete Todos
+            ← 显示已完成待办事项
           </a>
          
         <a class="next-guide" href="/guides/getting-started/display-a-button-to-remove-completed-todos">
-          Displaying a Button to Remove All Completed Todos →
+          添加移除所有已完成待办事项的按钮 →
         </a>
       
       </footer>

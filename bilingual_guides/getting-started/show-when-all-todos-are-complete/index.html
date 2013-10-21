@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Indicating When All Todos Are Complete</title>
+    <title>Ember.js - 提示所有待办事项已完成</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -133,31 +133,31 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -534,13 +534,16 @@
 
   <div class="chapter">
     
-        <h1>Indicating When All Todos Are Complete 
+        <h1>提示所有待办事项已完成 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/show-when-all-todos-are-complete.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_indicating-when-all-todos-are-complete'>Indicating When All Todos Are Complete</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/">http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/</a></p>
+
 <p>Next we&#39;ll update our template to indicate when all todos have been completed. In <code>index.html</code> replace the static checkbox <code>&lt;input&gt;</code> with <code>{{input}}</code>:</p>
+
+<p>接下来我们将修改模板来提示所有待办事项都已经完成。在<code>index.html</code>中替换静态的复选框<code>&lt;input&gt;</code>为<code>{{input}}</code>：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -562,7 +565,11 @@
 </div></div>
 <p>This checkbox will be checked when the controller property <code>allAreDone</code> is <code>true</code> and unchecked when the property <code>allAreDone</code> is <code>false</code>.</p>
 
+<p>这个复选框将在控制器的属性<code>allAreDone</code>为<code>true</code>的时候被自动选中，为<code>false</code>的时候不选中。</p>
+
 <p>In <code>js/controllers/todos_controller.js</code> implement the matching <code>allAreDone</code> property:</p>
+
+<p>在<code>js/controllers/todos_controller.js</code>中实现<code>allAreDone</code>属性：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -580,24 +587,30 @@
 </div></div>
 <p>This property will be <code>true</code> if the controller has any todos and every todo&#39;s <code>isCompleted</code> property is true. If the <code>isCompleted</code> property of any todo changes, this property will be recomputed. If the return value has changed, sections of the template that need to update will be automatically updated for us.</p>
 
+<p>这一属性在控制器包含待办事项，且每项都已完成的时候为<code>true</code>。如果任意待办事项的<code>isCompleted</code>属性发生改变，这个属性的值将被重新计算。如果返回值发生改变，模板中需要更新的内容会自动为我们保持更新。</p>
+
 <p>Reload your web browser to ensure that there are no errors and the behavior described above occurs. </p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+
+<p>重载浏览器确保没有任何错误，并且以上描述的功能正常。</p>
+<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/IcItARE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/9bf8a430bc4afb06f31be55f63f1d9806e6ab01c">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox API documentation</a></li>
+<li><p><a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox API documentation</a></p></li>
+<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/9bf8a430bc4afb06f31be55f63f1d9806e6ab01c">用<code>diff</code>格式显示改动</a></p></li>
+<li><p><a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox API文档</a></p></li>
 </ul>
 
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">
-            ← Displaying a Button to Remove All Completed Todos
+            ← 添加移除所有已完成待办事项的按钮
           </a>
          
         <a class="next-guide" href="/bilingual_guides/getting-started/toggle-all-todos">
-          Toggling All Todos Between Complete and Incomplete →
+          切换已完成和未完成待办事项 →
         </a>
       
       </footer>

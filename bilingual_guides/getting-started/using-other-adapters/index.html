@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Replacing the Fixture Adapter with Another Adapter</title>
+    <title>Ember.js - 更换FixtureAdapter</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -133,31 +133,31 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -534,15 +534,20 @@
 
   <div class="chapter">
     
-        <h1>Replacing the Fixture Adapter with Another Adapter 
+        <h1>更换FixtureAdapter 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/using-other-adapters.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_replacing-the-fixture-adapter-with-another-adapter'>Replacing the Fixture Adapter with Another Adapter</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/using-other-adapters/">http://emberjs.com/guides/getting-started/using-other-adapters/</a></p>
+
 <p>Finally we&#39;ll replace our fixture data with real persistence so todos will remain between application loads by replacing the fixture adapter with a <code>localstorage</code>-aware adapter instead.</p>
 
+<p>最后我们将修改之前使用的夹具数据为真实持久化的数据。这样才能在每次应用加载的时候保持代办事项。该功能通过将夹具适配器替换为<code>localstorage</code>适配器就能实现。</p>
+
 <p>Change <code>js/application.js</code> to:</p>
+
+<p>修改<code>js/application.js</code>为：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -560,7 +565,12 @@ Todos.ApplicationAdapter = DS.LSAdapter.extend({
 </div></div>
 <p>The local storage adapter, written by Ryan Florence, can be downloaded <a href="https://github.com/rpflorence/ember-localstorage-adapter">from its source</a>. Add it to your project as <code>js/libs/localstorage_adapter.js</code>. You may place this file anywhere you like (even just putting all code into the same file), but this guide will assume you have created the file and named it as indicated.</p>
 
+<p><code>localstorage</code>适配器由Ryan
+Florence编写，可以从<a href="https://github.com/rpflorence/ember-localstorage-adapter">其源</a>下载。将其添加至项目的<code>js/libs/localstorage_adapter.js</code>。当然你也可以将其放置到任何你喜欢的位置（或者将所有代码放置到一个文件中），不过本指南假设你按照指定的路径保存文件和对其命名。</p>
+
 <p>In <code>index.html</code> include <code>js/libs/localstorage_adapter.js</code> as a dependency:</p>
+
+<p>在<code>index.html</code>引入<code>js/libs/localstorage_adapter.js</code>依赖：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -577,19 +587,23 @@ Todos.ApplicationAdapter = DS.LSAdapter.extend({
 </tr></table>
 </div></div>
 <p>Reload your application. Todos you manage will now persist after the application has been closed.</p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+
+<p>重载应用，现在待办事项在应用被关闭后依然会被保存。</p>
+<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/aZIXaYo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/81801d87da42d0c83685ff946c46de68589ce38f">Changes in this step in <code>diff</code> format</a></li>
-<li><a href="https://github.com/rpflorence/ember-localstorage-adapter">LocalStorage Adapter on GitHub</a></li>
+<li><p><a href="https://github.com/rpflorence/ember-localstorage-adapter">LocalStorage Adapter on GitHub</a></p></li>
+<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/81801d87da42d0c83685ff946c46de68589ce38f">用<code>diff</code>格式显示改动</a></p></li>
+<li><p><a href="https://github.com/rpflorence/ember-localstorage-adapter">LocalStorage Adapter on GitHub</a></p></li>
 </ul>
 
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/getting-started/toggle-all-todos">
-            ← Toggling All Todos Between Complete and Incomplete
+            ← 切换已完成和未完成待办事项
           </a>
          
           <a class="next-guide" href="/bilingual_guides/concepts/core-concepts">

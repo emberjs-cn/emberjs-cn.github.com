@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Displaying a Button to Remove All Completed Todos</title>
+    <title>Ember.js - 添加移除所有已完成待办事项的按钮</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-fixutures">使用静态数据</a>
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
             </li>
           
             <li class="level-3">
@@ -133,31 +133,31 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">Transitioning to Show Only Incomplete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-only-complete-todos">Transitioning to Show Only Complete Todos</a>
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-all-todos-again">Transitioning back to Show All Todos</a>
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">Displaying a Button to Remove All Completed Todos</a>
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">Indicating When All Todos Are Complete</a>
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/toggle-all-todos">Toggling All Todos Between Complete and Incomplete</a>
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/getting-started/using-other-adapters">Replacing the Fixture Adapter with Another Adapter</a>
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -534,15 +534,20 @@
 
   <div class="chapter">
     
-        <h1>Displaying a Button to Remove All Completed Todos 
+        <h1>添加移除所有已完成待办事项的按钮 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/getting-started/display-a-button-to-remove-completed-todos.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_displaying-a-button-to-remove-all-completed-todos'>Displaying a Button to Remove All Completed Todos</h2>
+    <p>英文原文：<a href="http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/">http://emberjs.com/guides/getting-started/displaying-a-button-to-remove-completed-todos/</a></p>
+
 <p>TodoMVC allows users to delete all completed todos at once by clicking a button. This button is visible only when there are any completed todos, displays the number of completed todos, and removes all todos from the application when clicked.</p>
 
+<p>TodoMVC允许用户通过点击一个按钮来删除所有已完成的待办事项。这个按钮只在存在已完成的待办事项的时候才显示，并显示已完成的数量。当点击该按钮时，所有已完成的待办事项将被删除。</p>
+
 <p>In this step, we&#39;ll implement that behavior. In <code>index.html</code> update the static <code>&lt;button&gt;</code> for clearing all completed todos:</p>
+
+<p>在此，我们来实现这个功能。在<code>index.html</code>中，修改静态的<code>&lt;button&gt;</code>以便清除所有已完成的待办事项：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -563,6 +568,8 @@
 </tr></table>
 </div></div>
 <p>In <code>js/controllers/todos_controller.js</code> implement the matching properties and a method that will clear completed todos and persist these changes when the button is clicked:</p>
+
+<p>在<code>js/controllers/todos_controller.js</code>中实现匹配属性和一个在按钮点击时被调用的方法。该方法实现删除已完成待办事项和将这些改变持久化。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -603,24 +610,29 @@ actions: {
 </tr></table>
 </div></div>
 <p>Reload your web browser to ensure that there are no errors and the behavior described above occurs. </p>
-<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3>
+
+<p>重载浏览器确保没有任何错误，并且上面描述的功能正常。</p>
+<h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/ULovoJI/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
-<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>
+<h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/1da450a8d693f083873a086d0d21e031ee3c129e">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="/guides/templates/conditionals">Handlebars Conditionals Guide</a></li>
-<li><a href="/guides/enumerables">Enumerables Guide</a></li>
+<li><p><a href="/guides/enumerables">Enumerables Guide</a></p></li>
+<li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/1da450a8d693f083873a086d0d21e031ee3c129e">用<code>diff</code>格式显示改动</a></p></li>
+<li><p><a href="/guides/templates/conditionals">Handlebars条件语句指南</a></p></li>
+<li><p><a href="/guides/enumerables">Enumerables指南</a></p></li>
 </ul>
 
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/getting-started/show-all-todos-again">
-            ← Transitioning back to Show All Todos
+            ← 显示所有待办事项
           </a>
          
         <a class="next-guide" href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">
-          Indicating When All Todos Are Complete →
+          提示所有待办事项已完成 →
         </a>
       
       </footer>
