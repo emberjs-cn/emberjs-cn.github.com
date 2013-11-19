@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 观察器</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -297,6 +298,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">Query Parameters</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
           
@@ -467,6 +472,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">Feature Flags</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/cookbook">Cookbook</a>
@@ -590,7 +599,7 @@ method on a function.</p>
 
   <span class="function">fullNameChanged</span>: <span class="keyword">function</span>() {
     <span class="comment">// 处理改变</span>
-  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
+  }.observes(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">init</span><span class="delimiter">'</span></span>)
 });
 
 <span class="keyword">var</span> person = Person.create({

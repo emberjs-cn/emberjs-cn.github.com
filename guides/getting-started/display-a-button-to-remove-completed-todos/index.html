@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 入门指南: 添加移除所有已完成待办事项的按钮</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -298,6 +299,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/routing/query-params">Query Parameters</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
           
@@ -468,6 +473,10 @@
             <li class="level-3">
               <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">Feature Flags</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/cookbook">Cookbook</a>
@@ -590,7 +599,7 @@
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 actions: {
   <span class="function">clearCompleted</span>: <span class="keyword">function</span> () {
-    <span class="keyword">var</span> completed = <span class="local-variable">this</span>.filterProperty(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+    <span class="keyword">var</span> completed = <span class="local-variable">this</span>.filterBy(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
     completed.invoke(<span class="string"><span class="delimiter">'</span><span class="content">deleteRecord</span><span class="delimiter">'</span></span>);
 
     <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).commit();
@@ -601,7 +610,7 @@ actions: {
 }.property(<span class="string"><span class="delimiter">'</span><span class="content">completed</span><span class="delimiter">'</span></span>),
 
 <span class="function">completed</span>: <span class="keyword">function</span> () {
-  <span class="keyword">return</span> <span class="local-variable">this</span>.filterProperty(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>);
+  <span class="keyword">return</span> <span class="local-variable">this</span>.filterBy(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>);
 }.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>)
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 </pre></td>

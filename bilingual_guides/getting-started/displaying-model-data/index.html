@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 显示模型数据</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -297,6 +298,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">Query Parameters</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
           
@@ -467,6 +472,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">Feature Flags</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/bilingual_guides/cookbook">Cookbook</a>
@@ -544,9 +553,9 @@
 
 <p>接下来，我们将更新我们的应用，使其可以显示动态的待办事项，而不再是显示我们在<code>todos</code>模板中硬编码的内容。</p>
 
-<p>Inside the file <code>js/router.js</code> implement a <code>TodosRoute</code> object with a <code>model</code> function that returns all the existing todos:</p>
+<p>Inside the file <code>js/router.js</code> implement a <code>TodosRoute</code> class with a <code>model</code> function that returns all the existing todos:</p>
 
-<p>在<code>js/router.js</code>这个文件中，通过<code>model</code>函数实现了一个<code>TodosRoute</code>对象，这个函数的返回值是所有现存的待办事项：</p>
+<p>在<code>js/router.js</code>这个文件中，通过<code>model</code>函数实现了一个<code>TodosRoute</code>类，这个函数的返回值是所有现存的待办事项：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -562,9 +571,9 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>Because we hadn&#39;t implemented this object before, Ember.js provided a <code>Route</code> for us with the default behavior of rendering a matching template named <code>todos</code> using its <a href="/guides/concepts/naming-conventions/">naming conventions for object creation</a>.</p>
+<p>Because we hadn&#39;t implemented this class before, Ember.js provided a <code>Route</code> for us with the default behavior of rendering a matching template named <code>todos</code> using its <a href="/guides/concepts/naming-conventions/">naming conventions for object creation</a>.</p>
 
-<p>由于之前我们一直都没有实现这个对象，所以Ember.js默认根据<a href="/guides/concepts/naming-conventions/">对象创建的命名惯例</a>为我们创建了一个<code>Route</code>，这个被Ember.js自动创建的<code>Route</code>将会默认渲染一个名为<code>todos</code>的模板。</p>
+<p>由于之前我们一直都没有实现这个类，所以Ember.js默认根据<a href="/guides/concepts/naming-conventions/">对象创建的命名惯例</a>为我们创建了一个<code>Route</code>，这个被Ember.js自动创建的<code>Route</code>将会默认渲染一个名为<code>todos</code>的模板。</p>
 
 <p>Now that we need custom behavior (returning a specific set of models), we implement the class and add the desired behavior.</p>
 

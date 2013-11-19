@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 用助手来渲染</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -297,6 +298,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">Query Parameters</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
           
@@ -466,6 +471,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">Feature Flags</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -889,7 +898,7 @@
   </thead>
   <tbody>
   <tr>
-    <td><code>{{partial author}}</code></td>
+    <td><code>{{partial "author"}}</code></td>
     <td><code>author.hbs</code></td>
     <td>Post</td>
     <td><code>App.PostView</code></td>
@@ -903,7 +912,7 @@
     <td><code>App.PostController</code></td>
   </tr>
   <tr>
-    <td><code>{{render author author}}</code></td>
+    <td><code>{{render "author" author}}</code></td>
     <td><code>author.hbs</code></td>
     <td>Author</td>
     <td><code>App.AuthorView</code></td>

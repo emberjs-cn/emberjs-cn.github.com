@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 路由: Asynchronous Routing</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -297,6 +298,10 @@
               <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
             </li>
           
+            <li class="level-3">
+              <a href="/guides/routing/query-params">Query Parameters</a>
+            </li>
+          
             <li class="level-3 sub-selected">
               <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
@@ -468,6 +473,10 @@
             <li class="level-3">
               <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">Feature Flags</a>
+            </li>
           </ol></li>
           <li class="level-1">
             <a href="/guides/cookbook">Cookbook</a>
@@ -607,8 +616,8 @@ usernamesPromise.then(fetchPhotosOfUsers)
 </div></div>
 <p>In the above example, if any of the methods
 <code>fetchPhotosOfUsers</code>, <code>applyInstagramFilters</code>, or
-<code>uploadTrendyPhotoAlbum</code> reject (either by throwing an exception or
-returning <code>Ember.RSVP.reject()</code>), <code>handleErrors</code> will be called with
+<code>uploadTrendyPhotoAlbum</code> returns a promise that rejects,
+<code>handleErrors</code> will be called with
 the reason for the failure. In this manner, promises approximate an
 asynchronous form of try-catch statements that prevent the rightward
 flow of nested callback after nested callback and facilitate a saner
@@ -710,16 +719,10 @@ along the way, e.g.:</p>
 15
 16
 17
-18
-19
-<strong>20</strong>
 </pre></td>
   <td class="code"><pre>App.GoodForNothingRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>() {
     <span class="keyword">return</span> Ember.RSVP.reject(<span class="string"><span class="delimiter">&quot;</span><span class="content">FAIL</span><span class="delimiter">&quot;</span></span>);
-
-    <span class="comment">// The following would have the same effect:</span>
-    <span class="comment">// throw &quot;FAIL&quot;;</span>
   },
 
   <span class="key">actions</span>: {
@@ -871,8 +874,8 @@ model for this route, so <code>model</code> wouldn&#39;t be called in these case
     
       <footer>
         
-          <a class="previous-guide" href="/guides/routing/specifying-the-location-api">
-            ← 指定地址API
+          <a class="previous-guide" href="/guides/routing/query-params">
+            ← Query Parameters
           </a>
          
         <a class="next-guide" href="/guides/routing/preventing-and-retrying-transitions">

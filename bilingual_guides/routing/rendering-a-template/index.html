@@ -8,6 +8,7 @@
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
     <title>Ember.js - 渲染模板</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -297,6 +298,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">Query Parameters</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
             </li>
           
@@ -466,6 +471,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">Feature Flags</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -691,8 +700,8 @@ combination you&#39;d like:</p>
   <td class="code"><pre>App.PostRoute = App.Route.extend({
   <span class="function">renderTemplate</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.render(<span class="string"><span class="delimiter">'</span><span class="content">favoritePost</span><span class="delimiter">'</span></span>, {   <span class="comment">// the template to render</span>
-      <span class="key">into</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,                <span class="comment">// the template to render into</span>
-      <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,              <span class="comment">// the name of the outlet in that template</span>
+      <span class="key">into</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,                <span class="comment">// the route to render into</span>
+      <span class="key">outlet</span>: <span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>,              <span class="comment">// the name of the outlet in the route's template</span>
       <span class="key">controller</span>: <span class="string"><span class="delimiter">'</span><span class="content">blogPost</span><span class="delimiter">'</span></span>        <span class="comment">// the controller to use for the template</span>
     });
     <span class="local-variable">this</span>.render(<span class="string"><span class="delimiter">'</span><span class="content">comments</span><span class="delimiter">'</span></span>, {
