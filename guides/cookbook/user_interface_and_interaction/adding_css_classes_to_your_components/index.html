@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Cookbook: Adding CSS Classes to Your Components</title>
+    <title>Ember.js - Cookbook: 为组件添加CSS类</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -483,27 +483,23 @@
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/cookbook">Introduction</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/cookbook/contributing">Contributing</a>
+              <a href="/guides/cookbook">简介</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/helpers_and_components">Helpers & Components</a>
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/working_with_objects">Working with Objects</a>
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -525,14 +521,6 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/contributing/adding-new-features">Contributing to Ember.js</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/contributing/adding-new-features">Adding New Features</a>
-            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -546,16 +534,17 @@
 
   <div class="chapter">
     
-        <h1>Adding CSS Classes to Your Components 
+        <h1>为组件添加CSS类 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3>
-<p>You want to add CSS class names to your Ember Components.</p>
-<h3 class='anchorable-toc' id='toc_solution'>Solution</h3>
-<p>Set additional class names with the <code>classNames</code> property of subclassed components:</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components">http://emberjs.com/guides/cookbook/user<em>interface</em>and<em>interaction/adding</em>css<em>classes</em>to<em>your</em>components</a></p>
+<h3 class='anchorable-toc' id='toc_'>问题</h3>
+<p>需要给Ember Components（组件）添加CSS类名。</p>
+<h3 class='anchorable-toc' id='toc_'>解决方案</h3>
+<p>使用组件子类的<code>classNames</code>属性设置附件的CSS类名：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -578,28 +567,28 @@
   <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">css-framework-fancy-class</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_discussion'>Discussion</h3>
-<p>If desired, you can apply multiple class names.</p>
+</div></div><h3 class='anchorable-toc' id='toc_'>讨论</h3>
+<p>如果需要，可以添加多个CSS类名。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>classNames: [<span class="string"><span class="delimiter">'</span><span class="content">bold</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">italic</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blue</span><span class="delimiter">'</span></span>]
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_example'>Example</h4>
+</div></div><h4 class='anchorable-toc' id='toc_'>示例</h4>
 <p><a class="jsbin-embed" href="http://emberjs.jsbin.com/ifUDExu/2/edit?js,output">JS Bin</a></p>
 
-<p>See <a href="/guides/components/customizing-a-components-element/">Customizing a Component&#39;s Element</a> for further examples.</p>
+<p>查看<a href="/guides/components/customizing-a-components-element/">自定义组件元素</a>获取更多示例。</p>
 
     
       <footer>
         
           <a class="previous-guide" href="/guides/cookbook/user_interface_and_interaction">
-            ← User Interface and Interaction
+            ← 用户界面与交互
           </a>
          
         <a class="next-guide" href="/guides/cookbook/user_interface_and_interaction/adding_css_classes_to_your_components_based_on_properties">
-          Adding CSS Classes to Your Components Based on Properties →
+          通过属性为组件添加CSS类 →
         </a>
       
       </footer>

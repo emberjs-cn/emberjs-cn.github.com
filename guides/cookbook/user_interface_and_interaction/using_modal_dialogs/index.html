@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Cookbook: Using Modal Dialogs</title>
+    <title>Ember.js - Cookbook: 使用模态对话框</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -483,27 +483,23 @@
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/guides/cookbook">Introduction</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/cookbook/contributing">Contributing</a>
+              <a href="/guides/cookbook">简介</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/helpers_and_components">Helpers & Components</a>
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/cookbook/working_with_objects">Working with Objects</a>
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -525,14 +521,6 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/guides/contributing/adding-new-features">Contributing to Ember.js</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/guides/contributing/adding-new-features">Adding New Features</a>
-            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -546,21 +534,19 @@
 
   <div class="chapter">
     
-        <h1>Using Modal Dialogs 
+        <h1>使用模态对话框 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/cookbook/user_interface_and_interaction/using_modal_dialogs.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3>
-<p>You want to show part of your UI in a modal dialog.</p>
-<h3 class='anchorable-toc' id='toc_solution'>Solution</h3>
-<p>Render a specific controller into a named <code>modal</code> outlet in your application
-template.</p>
-<h3 class='anchorable-toc' id='toc_discussion'>Discussion</h3>
-<p>You can use a route&#39;s <code>render</code> method to render a specific controller and
-template into a named outlet. In this case we can setup our application template
-to handle the main outlet and a modal outlet:</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/cookbook/user_interface_and_interaction/using_modal_dialogs">http://emberjs.com/guides/cookbook/user<em>interface</em>and<em>interaction/using</em>modal_dialogs</a></p>
+<h3 class='anchorable-toc' id='toc_'>问题</h3>
+<p>希望用模态窗口来显示一部分UI。</p>
+<h3 class='anchorable-toc' id='toc_'>解决方案</h3>
+<p>渲染一个指定的控制器到应用模板中一个名为<code>modal</code>的插口（outlet）。</p>
+<h3 class='anchorable-toc' id='toc_'>讨论</h3>
+<p>可以使用路由的<code>render</code>方法来渲染一个指定的控制器和模板到一个命名插口（outlet）。这样的情况下，可以设置应用模板来出来主插口（outlet）和一个模态插口（outlet）。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -570,10 +556,9 @@ to handle the main outlet and a modal outlet:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Then you can render a controller and template into the <code>modal</code> outlet.  Sending
-an action in a template will propagate to the application route&#39;s actions.</p>
+<p>这样就可以渲染一个控制器和模板到<code>modal</code>插口（outlet）。在模板中触发一个操作，该操作会被传播到应用路由的操作哈希。</p>
 
-<p>In a template:</p>
+<p>模板如下：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -581,7 +566,7 @@ an action in a template will propagate to the application route&#39;s actions.</
 </pre></td>
 </tr></table>
 </div></div>
-<p>In your application route:</p>
+<p>应用路由如下：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -607,8 +592,7 @@ an action in a template will propagate to the application route&#39;s actions.</
 </pre></td>
 </tr></table>
 </div></div>
-<p>When closing a modal, you can use the route&#39;s <code>disconnectOutlet</code> method to remove
-the modal from the DOM.</p>
+<p>当关闭模态对话框时，可以使用路由的<code>disconnectOutlet</code>方法来将模态对话框从DOM中删除。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -626,17 +610,15 @@ the modal from the DOM.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>It may also be helpful to use a <code>modal-dialog</code> component to handle common markup
-and interactions such as rendering an overlay and handling clicks outside of the
-modal.</p>
-<h4 class='anchorable-toc' id='toc_example'>Example</h4>
-<p>This example shows:</p>
+<p>使用一个<code>modal-dialog</code>组件来处理通用标记和交互也是非常有用的。例如渲染一个叠加层，并处理在模态对话框外的点击事件。</p>
+<h4 class='anchorable-toc' id='toc_'>例子</h4>
+<p>本例中包含：</p>
 
 <ol>
-<li>Rendering a pop-up modal in a named outlet.</li>
-<li>Sending a specific model to the modal controller.</li>
-<li>Wrapping the common modal markup and actions in a component.</li>
-<li>Handling events to close the modal when the overlay is clicked.</li>
+<li>渲染一个弹出模态对话框到一个命名插口（outlet）。</li>
+<li>发送一个特定的模型到模态控制器。</li>
+<li>将通用模态对话框标记和操作包裹到一个组件中。</li>
+<li>处理叠加层被点击的事件，来关闭模态对话框 。</li>
 </ol>
 
 <p><a class="jsbin-embed" href="http://emberjs.jsbin.com/iluLOto/1/embed?output">JS Bin</a></p>
@@ -645,11 +627,11 @@ modal.</p>
       <footer>
         
           <a class="previous-guide" href="/guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update">
-            ← Specifying Data-Driven Areas of Templates That Do Not Need To Update
+            ← 指定模板中无需更新的数据驱动区域
           </a>
          
         <a class="next-guide" href="/guides/cookbook/event_handling_and_data_binding">
-          Event Handling & Data Binding →
+          事件处理和数据绑定 →
         </a>
       
       </footer>

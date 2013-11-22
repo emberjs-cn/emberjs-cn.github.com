@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Displaying Formatted Dates With Moment.js</title>
+    <title>Ember.js - 使用Moment.js显示格式化日期</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -482,27 +482,23 @@
             <ol class='selected'>
         
             <li class="level-3">
-              <a href="/bilingual_guides/cookbook">Introduction</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/cookbook/contributing">Contributing</a>
+              <a href="/bilingual_guides/cookbook">简介</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">User Interface and Interaction</a>
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">Event Handling & Data Binding</a>
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/cookbook/helpers_and_components">Helpers & Components</a>
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/cookbook/working_with_objects">Working with Objects</a>
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -524,14 +520,6 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
-          </ol></li>
-          <li class="level-1">
-            <a href="/bilingual_guides/contributing/adding-new-features">Contributing to Ember.js</a>
-            <ol>
-        
-            <li class="level-3">
-              <a href="/bilingual_guides/contributing/adding-new-features">Adding New Features</a>
-            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -543,26 +531,36 @@
 
   <div class="chapter">
     
-        <h1>Displaying Formatted Dates With Moment.js 
+        <h1>使用Moment.js显示格式化日期 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/cookbook/user_interface_and_interaction/displaying_formatted_dates_with_moment_js.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3>
+    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3><h3 class='anchorable-toc' id='toc_'>问题</h3>
 <p>Display JavaScript Date objects in human readable format.</p>
-<h3 class='anchorable-toc' id='toc_solution'>Solution</h3>
+
+<p>将Javascript Date对象显示为易读的格式。</p>
+<h3 class='anchorable-toc' id='toc_solution'>Solution</h3><h3 class='anchorable-toc' id='toc_'>解决方案</h3>
 <p>There are two ways of formatting the value:</p>
+
+<p>有两种方法可以实现对日期对象的格式化：</p>
 
 <ol>
 <li>Create a Handlebars helper <code>{{format-date}}</code> and use it in your template</li>
-<li>Create a computed property <code>formattedDate</code> that will return a transformed date</li>
+<li><p>Create a computed property <code>formattedDate</code> that will return a transformed date</p></li>
+<li><p>创建一个Handlebars助手<code>{{format-date}}</code>，并在模板中使用该助手</p></li>
+<li><p>创建一个计算属性<code>formattedDate</code>来返回一个格式化的日期</p></li>
 </ol>
 
 <p>We will use <a href="http://momentjs.com">MomentJs</a> for formatting dates.</p>
 
+<p>这里将使用<a href="http://momentjs.com">Moment.js</a>来做日期格式化。</p>
+
 <p>Let&#39;s look at a simple example. You&#39;re working on a website for your
 client, and one of the requirements is to have the current date on the index page in human readble format. This is a perfect place to use a
 Handlebars helper that &quot;pretty prints&quot; the current date:</p>
+
+<p>下面来看一个简单的例子。假设正在给客户开发一个网站，其中的一个需求是在首页显示一个易读的当前时间。这是一个非常适合使用Handlebars助手来实现的应用场景：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -575,6 +573,8 @@ Handlebars helper that &quot;pretty prints&quot; the current date:</p>
 </tr></table>
 </div></div>
 <p>Your template will look like:</p>
+
+<p>模板如下：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -583,6 +583,8 @@ Handlebars helper that &quot;pretty prints&quot; the current date:</p>
 </tr></table>
 </div></div>
 <p>You can even enhance your code and pass in the date format to the helper:</p>
+
+<p>此外还可以增强助手，使其支持指定日期格式：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -595,6 +597,8 @@ Handlebars helper that &quot;pretty prints&quot; the current date:</p>
 </tr></table>
 </div></div>
 <p>Now you would need to pass an additional parameter to the helper:</p>
+
+<p>现在需要传入一个额外的参数，来表示需要的日期格式：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -606,9 +610,13 @@ Handlebars helper that &quot;pretty prints&quot; the current date:</p>
 to create a simple control that allows you to type in a date and
 a date format. The date will be formatted accordingly.</p>
 
+<p>下面再看另外一个例子。假设需要创建一个简单的控件，允许输入一个日期和日期格式。日期更具输入的日期格式来进行格式化。</p>
+
 <p>Define <code>formattedDate</code> computed property that depends on
 <code>date</code> and <code>format</code>. Computed property in this example does
 the same thing as Handlebars helpers defined above.</p>
+
+<p>定义一个<code>formattedDate</code>计算属性，依赖于<code>date</code>和<code>format</code>。这个计算属性与上面写的Handlebars助手实现了相同的功能。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -641,33 +649,41 @@ the same thing as Handlebars helpers defined above.</p>
 <span class="tag">&lt;div&gt;</span>{{formattedDate}}<span class="tag">&lt;/div&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_discussion'>Discussion</h3>
+</div></div><h3 class='anchorable-toc' id='toc_discussion'>Discussion</h3><h3 class='anchorable-toc' id='toc_'>讨论</h3>
 <p>Both helper and computed property can format your date value. 
 Which one do I use and when?</p>
+
+<p>助手和计算属性都可以用于格式化日期。那么应该如何来选择呢？</p>
 
 <p>Handlebars helpers are shorthand for cases where you want to format
 a value specifically for presentation. That value may be used 
 across different models and controllers.</p>
 
+<p>Handlebars助手用于需要在表现层对值进行特定格式化的情况。而值本身可能被用在不同的模型和控制器。</p>
+
 <p>You can use <code>{{currentDate}}</code> across your application to format dates
 without making any changes to controllers.</p>
+
+<p><code>{{currentDate}}</code>可以在整个应用中用来格式化日期，而不需要对控制器做任何改变。</p>
 
 <p>Computed property in the example above does the same thing as the
 Handlebars helper with one big difference:
 <code>formattedDate</code> can be consumed later without applying
 date format on the date property again.</p>
-<h4 class='anchorable-toc' id='toc_example'>Example</h4>
+
+<p>上例中的计算属性与Handlebars助手完成相同的功能，但是也由一个重要的区别：<code>formattedDate</code>不需要在之后的使用中再次指定日期需要使用的格式。</p>
+<h4 class='anchorable-toc' id='toc_example'>Example</h4><h4 class='anchorable-toc' id='toc_'>例子</h4>
 <p><a class="jsbin-embed" href="http://emberjs.jsbin.com/iCaGUne/4/edit?output">JS Bin</a></p>
 
     
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/cookbook/user_interface_and_interaction/focusing_a_textfield_after_its_been_inserted">
-            ← Focusing a Textfield after It's Been Inserted
+            ← 实现将焦点放置在添加的文本框
           </a>
          
         <a class="next-guide" href="/bilingual_guides/cookbook/user_interface_and_interaction/specifying_data_driven_areas_of_templates_that_do_not_need_to_update">
-          Specifying Data-Driven Areas of Templates That Do Not Need To Update →
+          指定模板中无需更新的数据驱动区域 →
         </a>
       
       </footer>
