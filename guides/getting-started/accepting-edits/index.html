@@ -636,7 +636,7 @@ actions: {
     <span class="keyword">if</span> (Ember.isEmpty(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model.title</span><span class="delimiter">'</span></span>))) {
       <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">removeTodo</span><span class="delimiter">'</span></span>);
     } <span class="keyword">else</span> {
-      <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>)save();
+      <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>).save();
     }       
   }
 }
