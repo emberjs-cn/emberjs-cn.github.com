@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Creating and Deleting Records</title>
+    <title>Ember.js - 创建和删除记录</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -382,35 +382,35 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/working-with-records">Working with Records</a>
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/connecting-to-an-http-server">Connecting to an HTTP Server</a>
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/handling-metadata">Handling Metadata</a>
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -535,12 +535,14 @@
 
   <div class="chapter">
     
-        <h1>Creating and Deleting Records 
+        <h1>创建和删除记录 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/creating-and-deleting-records.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <p>You can create records by calling the <code>createRecord</code> method on the store.</p>
+
+<p>通过调用仓库的<code>createRecord</code>方法，可以创建记录：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -556,11 +558,17 @@
 </div></div>
 <p>The store object is available in controllers and routes using <code>this.store</code>.</p>
 
+<p>仓库对象在控制器和路由中都可以通过<code>this.store</code>来访问。</p>
+
 <p>Although <code>createRecord</code> is fairly straightforward, the only thing to watch out for
 is that you cannot assign a promise as a relationship, currently.</p>
 
+<p>尽管<code>createRecord</code>的使用已经非常直接，但是还需要注意一点，就是目前还不支持将一个承诺赋值给一个关联。</p>
+
 <p>For example, if you want to set the <code>author</code> property of a post, this would <strong>not</strong> work
 if the <code>user</code> with id isn&#39;t already loaded into the store:</p>
+
+<p>例如，如果希望给文章设置<code>author</code>属性，如果指定ID的<code>user</code>并没有加载到仓库中的话，下面的代码将不会正常工作。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -581,6 +589,8 @@ store.createRecord(<span class="string"><span class="delimiter">'</span><span cl
 </tr></table>
 </div></div>
 <p>However, you can easily set the relationship after the promise has fulfilled:</p>
+
+<p>不过在承诺履行时可以非常方便的进行关联关系的设置：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -605,11 +615,13 @@ store.find(<span class="string"><span class="delimiter">'</span><span class="con
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_deleting-records'>Deleting Records</h3>
+</div></div><h3 class='anchorable-toc' id='toc_deleting-records'>Deleting Records</h3><h3 class='anchorable-toc' id='toc_'>删除记录</h3>
 <p>Deleting records is just as straightforward as creating records. Just call <code>deleteRecord()</code>
 on any instace of <code>DS.Model</code>. This flags the record as <code>isDeleted</code> and thus removes
 it from <code>all()</code> queries on the <code>store</code>. The deletion can then be persisted using <code>save()</code>.
 Alternatively, you can use the <code>destroyRecord</code> method to delete and persist at the same time.</p>
+
+<p>删除记录与创建记录一样简单。只需要调用<code>DS.Model</code>实例的<code>deleteRecord()</code>方法即可。这将会吧记录标记为<code>isDeleted</code>，并且不在<code>store</code>的<code>all()</code>查询中返回。删除操作之后会通过使用<code>save()</code>来进行持久化。此外，也可以使用<code>destroyRecord</code>来将删除和持久化一次完成。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -649,7 +661,7 @@ post.destroyRecord(); <span class="comment">// =&gt; DELETE to /posts/2</span>
           </a>
          
         <a class="next-guide" href="/bilingual_guides/models/pushing-records-into-the-store">
-          Pushing Records into the Store →
+          将记录推入仓库 →
         </a>
       
       </footer>

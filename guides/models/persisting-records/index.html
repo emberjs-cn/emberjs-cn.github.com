@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 模型: Persisting Records</title>
+    <title>Ember.js - 模型: 持久化记录</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -383,35 +383,35 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/models/persisting-records">Persisting Records</a>
+              <a href="/guides/models/persisting-records">持久化记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/finding-records">Finding Records</a>
+              <a href="/guides/models/finding-records">查询记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/working-with-records">Working with Records</a>
+              <a href="/guides/models/working-with-records">使用记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/connecting-to-an-http-server">Connecting to an HTTP Server</a>
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/handling-metadata">Handling Metadata</a>
+              <a href="/guides/models/handling-metadata">处理元数据</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/frequently-asked-questions">Frequently Asked Questions</a>
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -538,16 +538,17 @@
 
   <div class="chapter">
     
-        <h1>Persisting Records 
+        <h1>持久化记录 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/persisting-records.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <p>Records in Ember Data are persisted on a per-instance basis.
-Call <code>save()</code> on any instance of <code>DS.Model</code> and it will make a network request.</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/models/persisting-records/">http://emberjs.com/guides/models/persisting-records/</a></p>
 
-<p>Here are a few examples:</p>
+<p>Ember Data中的记录都基于实例来进行持久化。调用<code>DS.Model</code>实例的<code>save()</code>会触发一个网络请求，来进行记录的持久化。</p>
+
+<p>下面是几个示例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -582,9 +583,8 @@ post.set(<span class="string"><span class="delimiter">'</span><span class="conte
 post.save(); <span class="comment">// =&gt; PUT to '/posts/1'</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_promises'>Promises</h3>
-<p><code>save()</code> returns a promise, so it is extremely easy to handle success and failure scenarios.
- Here&#39;s a common pattern:</p>
+</div></div><h3 class='anchorable-toc' id='toc_'>承诺</h3>
+<p><code>save()</code>会返回一个承诺，这使得可以非常容易的来处理保存成功和失败的场景。下面是一个通用的模式：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -612,7 +612,7 @@ post.save().then(<span class="keyword">function</span>(post) {
 </pre></td>
 </tr></table>
 </div></div>
-<p>Promises even make it easy to work with failed network requests:</p>
+<p>对于失败的网络请求，承诺也可以方便的来处理：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -652,8 +652,7 @@ post.save().then(onSuccess, onFail);
 </pre></td>
 </tr></table>
 </div></div>
-<p>You can read more about promises <a href="https://github.com/tildeio/rsvp.js">here</a>, but here is another
-example showing how to retry persisting:</p>
+<p>更多关于承诺的内容请参看<a href="https://github.com/tildeio/rsvp.js">这里</a>，下面是一个示例展示了如何在重试失败的持久化操作：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -701,11 +700,11 @@ retry(<span class="keyword">function</span>() {
       <footer>
         
           <a class="previous-guide" href="/guides/models/pushing-records-into-the-store">
-            ← Pushing Records into the Store
+            ← 将记录推入仓库
           </a>
          
         <a class="next-guide" href="/guides/models/finding-records">
-          Finding Records →
+          查询记录 →
         </a>
       
       </footer>

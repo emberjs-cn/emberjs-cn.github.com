@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Handling Metadata</title>
+    <title>Ember.js - 处理元数据</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -382,35 +382,35 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/working-with-records">Working with Records</a>
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/connecting-to-an-http-server">Connecting to an HTTP Server</a>
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/models/handling-metadata">Handling Metadata</a>
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/frequently-asked-questions">Frequently Asked Questions</a>
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -535,14 +535,18 @@
 
   <div class="chapter">
     
-        <h1>Handling Metadata 
+        <h1>处理元数据 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/handling-metadata.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <p>Along with the records returned from your store, you&#39;ll likely need to handle some kind of metadata. <em>Metadata</em> is data that goes along with a specific <em>model</em> or <em>type</em> instead of a record.</p>
 
+<p>与从仓库中返回的记录的同时，有时候需要处理一些元数据。<em>元数据</em>是除记录外，与特定<em>模型</em>或<em>类型</em>一同的数据。</p>
+
 <p>Pagination is a common example of using metadata. Imagine a blog with far more posts than you can display at once. You might query it like so:</p>
+
+<p>分页是常见的一种元数据。例如一个博客拥有一次无法显示完的文章，那么就需要使用如下的查询：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -558,7 +562,11 @@
 </div></div>
 <p>To get different <em>pages</em> of data, you&#39;d simply change your offset in increments of 100. So far, so good. But how do you know how many pages of data you have? Your server would need to return the total number of records as a piece of metadata.</p>
 
+<p>为了获取不同页面的数据，只需要以100为增量来修改<code>offset</code>。到目前为止，一切都正常。现在有一个问题，就是如何知道拥有多少页数据呢？服务器需要以元数据的形式返回所有的记录数。</p>
+
 <p>By default, Ember Data&#39;s JSON deserializer looks for a <code>meta</code> key:</p>
+
+<p>默认情况下，Ember Data的JSON反序列化会查找一个名为<code>meta</code>的键：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -595,6 +603,8 @@
 </tr></table>
 </div></div>
 <p>The metadata for a specific type is then set to the contents of <code>meta</code>. You can access it with <code>store.metadataFor</code>:</p>
+
+<p>特定类型的元数据将被设置到<code>meta</code>中。可以使用<code>store.metadataFor</code>来获取。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -604,7 +614,11 @@
 </div></div>
 <p>Now, <code>meta.total</code> can be used to calculate how many pages of posts you&#39;ll have.</p>
 
+<p>现在<code>meta.total</code>可以用来计算拥有多少页文章了。</p>
+
 <p>You can also customize metadata extraction by overriding the <code>extractMeta</code> method. For example, if instead of a <code>meta</code> object, your server simply returned:</p>
+
+<p>此外，通过重写<code>extractMeta</code>方法，可以自定义元数据抽取的方法。例如，服务器没有使用<code>meta</code>对象来返回元数据，而是返回了下面的格式：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -623,6 +637,8 @@
 </tr></table>
 </div></div>
 <p>You could extract it like so:</p>
+
+<p>那么可以这样来抽取元数据：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -648,11 +664,11 @@
       <footer>
         
           <a class="previous-guide" href="/bilingual_guides/models/connecting-to-an-http-server">
-            ← Connecting to an HTTP Server
+            ← 连接HTTP服务器
           </a>
          
         <a class="next-guide" href="/bilingual_guides/models/frequently-asked-questions">
-          Frequently Asked Questions →
+          常见问题 →
         </a>
       
       </footer>
