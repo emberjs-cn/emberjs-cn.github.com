@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 模板: Input Helpers</title>
+    <title>Ember.js - 模板: 输入助手</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -255,7 +255,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/templates/input-helpers">Input Helpers</a>
+              <a href="/guides/templates/input-helpers">输入助手</a>
             </li>
           
             <li class="level-3">
@@ -347,7 +347,7 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/components/sending-actions-from-components-to-your-application">Sending Actions from Components to Your Application</a>
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -538,27 +538,23 @@
 
   <div class="chapter">
     
-        <h1>Input Helpers 
+        <h1>输入助手 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/templates/input-helpers.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <h2 class='anchorable-toc' id='toc_input-helpers'>Input Helpers</h2>
-<p>The <code>{{input}}</code> and <code>{{textarea}}</code> helpers in Ember.js are the easiest way to
-create common form controls. The <code>{{input}}</code> helper wraps the built-in
-<a href="/api/classes/Ember.TextField.html">Ember.TextField</a> and <a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox</a> views, while <code>{{textarea}}</code> wraps
-<a href="/api/classes/Ember.TextArea.html">Ember.TextArea</a>. Using these helpers, you can create these views with
-declarations almost identical to how you&#39;d create a traditional <code>&lt;input&gt;</code> or
-<code>&lt;textarea&gt;</code> element.</p>
-<h3 class='anchorable-toc' id='toc_text-fields'>Text fields</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+    <p>英文原文：<a href="http://emberjs.com/guides/templates/input-helpers/">http://emberjs.com/guides/templates/input-helpers/</a></p>
+<h2 class='anchorable-toc' id='toc_'>输入助手</h2>
+<p>Ember.js中的<code>{{input}}</code>和<code>{{textarea}}</code>助手是创建通用表单控件最简单的方法。<code>{{input}}</code>包裹了Ember.js内置的<a href="/api/classes/Ember.TextField.html">Ember.TextField</a>和<a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox</a>视图，而<code>{{textarea}}</code>则包裹了<a href="/api/classes/Ember.TextArea.html">Ember.TextArea</a>视图。使用这些助手使得创建这些输入视图跟使用传统的<code>&lt;input&gt;</code>或<code>&lt;textarea&gt;</code>元素完全一样。</p>
+<h3 class='anchorable-toc' id='toc_'>文本输入框</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.facebook.com</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Will become:</p>
+<p>将会变为：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -566,8 +562,7 @@ declarations almost identical to how you&#39;d create a traditional <code>&lt;in
 </pre></td>
 </tr></table>
 </div></div>
-<p>You can pass the following standard <code>&lt;input&gt;</code> attributes within the input
-helper:</p>
+<p>可以将下列标准的<code>&lt;input&gt;</code>属性传给<code>input</code>助手：</p>
 
 <ul>
 <li><code>value</code></li>
@@ -580,10 +575,7 @@ helper:</p>
 <li><code>tabindex</code></li>
 </ul>
 
-<p>If these attributes are set to a quoted string, their values will be set
-directly on the element, as in the previous example. However, when left
-unquoted, these values will be bound to a property on the template&#39;s current
-rendering context. For example:</p>
+<p>如果这些属性被设置为一个引号引起来的字符串，那么它们的值将被直接设置到元素上，如同上面的示例中一样。但是，如果没有使用引号，那么属性的值就会与模板当前渲染的上下文的一个属性进行绑定。例如：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -591,11 +583,9 @@ rendering context. For example:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Will bind the <code>disabled</code> attribute to the value of <code>entryNotAllowed</code> in the
-current context.</p>
-<h3 class='anchorable-toc' id='toc_checkboxes'>Checkboxes</h3>
-<p>You can also use the <code>{{input}}</code> helper to create a checkbox by setting its
-<code>type</code>:</p>
+<p>将绑定<code>disabled</code>属性到当前上下文的<code>entryNotAllowed</code>。</p>
+<h3 class='anchorable-toc' id='toc_'>复选框</h3>
+<p>通过设定<code>{{input}}</code>助手的<code>type</code>，可以创建复选框：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -603,7 +593,7 @@ current context.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Checkboxes support the following properties:</p>
+<p>复选框支持以下属性：</p>
 
 <ul>
 <li><code>checked</code></li>
@@ -613,17 +603,17 @@ current context.</p>
 <li><code>name</code></li>
 </ul>
 
-<p>Which can be bound or set as described in the previous section.</p>
-<h3 class='anchorable-toc' id='toc_text-areas'>Text Areas</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<p>这些属性也可以与之前所说的一样进行设置，或者绑定。</p>
+<h3 class='anchorable-toc' id='toc_'>多行文本输入框</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">textarea</span> <span class="attribute-name">value</span>=<span class="attribute-value">name</span> <span class="attribute-name">cols</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">80</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">6</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Will bind the value of the text area to <code>name</code> on the current context.</p>
+<p>将绑定文本域的值到当前上下文的<code>name</code>属性。</p>
 
-<p><code>{{textarea}}</code> supports binding and/or setting the following properties:</p>
+<p><code>{{textarea}}</code>支持绑定或者设置如下属性：</p>
 
 <ul>
 <li><code>rows</code></li>
@@ -633,9 +623,8 @@ current context.</p>
 <li><code>maxlength</code></li>
 <li><code>tabindex</code></li>
 </ul>
-<h3 class='anchorable-toc' id='toc_extending-built-in-controls'>Extending Built-In Controls</h3>
-<p>See the <a href="/guides/views/built-in-views">Built-in Views</a> section of these guides to learn how to further
-extend these views.</p>
+<h3 class='anchorable-toc' id='toc_'>扩展内置控件</h3>
+<p>查看指南中<a href="/guides/views/built-in-views">内置视图</a>一节来学习如何扩展视图。</p>
 
     
       <footer>
