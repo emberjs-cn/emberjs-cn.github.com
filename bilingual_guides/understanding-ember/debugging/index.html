@@ -254,6 +254,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
@@ -303,6 +307,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -370,19 +378,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/bilingual_guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -390,7 +390,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -744,6 +748,23 @@ console.</p>
   <td class="code"><pre>Ember.RSVP.configure(<span class="string"><span class="delimiter">'</span><span class="content">onerror</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(error) {
   Ember.Logger.assert(<span class="predefined-constant">false</span>, error);
 });
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_errors-within-code-ember-run-later-code-a-href-https-github-com-ebryn-backburner-js-backburner-js-a'>Errors within <code>Ember.run.later</code>(<a href="https://github.com/ebryn/backburner.js">Backburner.js</a>)</h4><h4 class='anchorable-toc' id='toc_code-ember-run-later-code-a-href-https-github-com-ebryn-backburner-js-backburner-js-a'><code>Ember.run.later</code>(<a href="https://github.com/ebryn/backburner.js">Backburner.js</a>)中的错误</h4>
+<p>Backburner has support for stitching the stacktraces together so that you can
+track down where an erroring <code>Ember.run.later</code> is being initiated from. Unfortunately,
+this is quite slow and is not appropriate for production or even normal
+development.</p>
+
+<p>Backburner支持将堆栈记录汇合在一起，以便跟踪<code>Ember.run.later</code>中的错误实在什么地方发生的。不幸的是，这非常的缓慢，并不适用与生产环境，甚至是开发环境。</p>
+
+<p>To enable this mode you can set:</p>
+
+<p>启用该模式需要设置：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.run.backburner.DEBUG = <span class="predefined-constant">true</span>;
 </pre></td>
 </tr></table>
 </div></div>

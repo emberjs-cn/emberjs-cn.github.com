@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Querying the Server for Records</title>
+    <title>Ember.js - Input Helpers</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@
   
   </head>
 
-  <body class="bilingual_guides bilingual_guides_models bilingual_guides_models_querying-the-server-for-records bilingual_guides_models_querying-the-server-for-records_index">
+  <body class="bilingual_guides bilingual_guides_templates bilingual_guides_templates_input-helpers bilingual_guides_templates_input-helpers_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -213,9 +213,9 @@
               <a href="/bilingual_guides/application">介绍</a>
             </li>
           </ol></li>
-          <li class="level-1">
+          <li class="level-1 selected">
             <a href="/bilingual_guides/templates/the-application-template">模板</a>
-            <ol>
+            <ol class='selected'>
         
             <li class="level-3">
               <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
@@ -251,6 +251,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/templates/input-helpers">Input Helpers</a>
             </li>
           
             <li class="level-3">
@@ -303,6 +307,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -361,16 +369,12 @@
               <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
             </li>
           </ol></li>
-          <li class="level-1 selected">
+          <li class="level-1">
             <a href="/bilingual_guides/models">模型</a>
-            <ol class='selected'>
+            <ol>
         
             <li class="level-3">
               <a href="/bilingual_guides/models">介绍</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
             </li>
           
             <li class="level-3">
@@ -378,19 +382,19 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/pushing-records-into-the-store">Pushing Records into the Store</a>
             </li>
           
-            <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -531,44 +535,113 @@
 
   <div class="chapter">
     
-        <h1>Querying the Server for Records 
-          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/querying-the-server-for-records.md" target="_blank" class="edit-page">
+        <h1>Input Helpers 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/templates/input-helpers.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
-    <p>You can query the server by calling the store&#39;s <code>find()</code> method and
-passing a hash of search options. This method returns a promise that
-resolves to an array of the search results.</p>
-
-<p>For example, we could search for all <code>person</code> models who had the name of
-<code>Peter</code>:</p>
-<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+    <h2 class='anchorable-toc' id='toc_input-helpers'>Input Helpers</h2>
+<p>The <code>{{input}}</code> and <code>{{textarea}}</code> helpers in Ember.js are the easiest way to
+create common form controls. The <code>{{input}}</code> helper wraps the built-in
+<a href="/api/classes/Ember.TextField.html">Ember.TextField</a> and <a href="/api/classes/Ember.Checkbox.html">Ember.Checkbox</a> views, while <code>{{textarea}}</code> wraps
+<a href="/api/classes/Ember.TextArea.html">Ember.TextArea</a>. Using these helpers, you can create these views with
+declarations almost identical to how you&#39;d create a traditional <code>&lt;input&gt;</code> or
+<code>&lt;textarea&gt;</code> element.</p>
+<h3 class='anchorable-toc' id='toc_text-fields'>Text fields</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
-2
-3
 </pre></td>
-  <td class="code"><pre>store.find(<span class="string"><span class="delimiter">'</span><span class="content">person</span><span class="delimiter">'</span></span>, { <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Peter</span><span class="delimiter">&quot;</span></span> }).then(<span class="keyword">function</span>(people) {
-  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Found </span><span class="delimiter">&quot;</span></span> + people.get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">&quot;</span><span class="content"> people named Peter.</span><span class="delimiter">&quot;</span></span>);
-});
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.facebook.com</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>The hash of search options that you pass to <code>find()</code> is opaque to Ember
-Data. By default, these options will be sent to your server as the body
-of an HTTP <code>GET</code> request.</p>
+<p>Will become:</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.facebook.com</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>You can pass the following standard <code>&lt;input&gt;</code> attributes within the input
+helper:</p>
 
-<p><strong>Using this feature requires that your server knows how to interpret
-query responses.</strong></p>
+<ul>
+<li><code>value</code></li>
+<li><code>size</code></li>
+<li><code>name</code></li>
+<li><code>pattern</code></li>
+<li><code>placeholder</code></li>
+<li><code>disabled</code></li>
+<li><code>maxlength</code></li>
+<li><code>tabindex</code></li>
+</ul>
+
+<p>If these attributes are set to a quoted string, their values will be set
+directly on the element, as in the previous example. However, when left
+unquoted, these values will be bound to a property on the template&#39;s current
+rendering context. For example:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="attribute-value">firstName</span> <span class="attribute-name">disabled</span>=<span class="attribute-value">entryNotAllowed</span> <span class="attribute-name">size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">50</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Will bind the <code>disabled</code> attribute to the value of <code>entryNotAllowed</code> in the
+current context.</p>
+<h3 class='anchorable-toc' id='toc_checkboxes'>Checkboxes</h3>
+<p>You can also use the <code>{{input}}</code> helper to create a checkbox by setting its
+<code>type</code>:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isAdmin</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">checked</span>=<span class="attribute-value">isAdmin</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Checkboxes support the following properties:</p>
+
+<ul>
+<li><code>checked</code></li>
+<li><code>disabled</code></li>
+<li><code>tabindex</code></li>
+<li><code>indeterminate</code></li>
+<li><code>name</code></li>
+</ul>
+
+<p>Which can be bound or set as described in the previous section.</p>
+<h3 class='anchorable-toc' id='toc_text-areas'>Text Areas</h3><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">textarea</span> <span class="attribute-name">value</span>=<span class="attribute-value">name</span> <span class="attribute-name">cols</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">80</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">6</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Will bind the value of the text area to <code>name</code> on the current context.</p>
+
+<p><code>{{textarea}}</code> supports binding and/or setting the following properties:</p>
+
+<ul>
+<li><code>rows</code></li>
+<li><code>cols</code></li>
+<li><code>placeholder</code></li>
+<li><code>disabled</code></li>
+<li><code>maxlength</code></li>
+<li><code>tabindex</code></li>
+</ul>
+<h3 class='anchorable-toc' id='toc_extending-built-in-controls'>Extending Built-In Controls</h3>
+<p>See the <a href="/guides/views/built-in-views">Built-in Views</a> section of these guides to learn how to further
+extend these views.</p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/models/pushing-records-into-the-store">
-            ← Pushing Records into the Store
+          <a class="previous-guide" href="/bilingual_guides/templates/actions">
+            ← 操作
           </a>
          
-        <a class="next-guide" href="/bilingual_guides/models/working-with-records">
-          Working with Records →
+        <a class="next-guide" href="/bilingual_guides/templates/rendering-with-helpers">
+          用助手来渲染 →
         </a>
       
       </footer>

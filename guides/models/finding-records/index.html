@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 模型: Finding a Record</title>
+    <title>Ember.js - 模型: Finding Records</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
   
   </head>
 
-  <body class="guides guides_models guides_models_finding-a-record guides_models_finding-a-record_index">
+  <body class="guides guides_models guides_models_finding-records guides_models_finding-records_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -255,6 +255,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
@@ -304,6 +308,10 @@
           
             <li class="level-3">
               <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -371,19 +379,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/models/defining-models">定义模型</a>
             </li>
           
-            <li class="level-3 sub-selected">
-              <a href="/guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
             <li class="level-3">
-              <a href="/guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -391,7 +391,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -534,33 +538,57 @@
 
   <div class="chapter">
     
-        <h1>Finding a Record 
-          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/finding-a-record.md" target="_blank" class="edit-page">
+        <h1>Finding Records 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/finding-records.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <p>英文原文：<a href="http://emberjs.com/guides/models/finding-models/">http://emberjs.com/guides/models/finding-models/</a></p>
-<h2 class='anchorable-toc' id='toc_'>查找一个对象</h2>
-<p>通过将记录对应的模型和唯一ID传递给<code>find()</code>方法，可以获取记录。这将返回一个承诺，并解析为请求的记录：</p>
+    <p><code>store.find()</code> allows you to find all records, single records, and query for records.
+The first argument to <code>store.find()</code> is always the type of record in question, e.g. <code>post</code>. The second
+argument is optional and can either be a plain object of search options or an id. Below are some examples:</p>
+<h3 class='anchorable-toc' id='toc_finding-all-records-of-a-type'>Finding All Records of a Type</h3><div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> posts = <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>This will return an instance of <code>DS.RecordArray</code>. As with records, the
+record array will start in a loading state with a <code>length</code> of <code>0</code>.
+When the server responds with results, any references to the record array
+will update automatically.</p>
+
+<p><strong>Note</strong>: <code>DS.RecordArray</code> is not a JavaScript array, it is an object that
+implements <code>Ember.Enumerable</code>. If you want to, for example, retrieve
+records by index, you must use the <code>objectAt(index)</code> method. Since the
+object is not a JavaScript array, using the <code>[]</code> notation will not work.
+For more information, see <a href="http://emberjs.com/api/classes/Ember.Enumerable.html">Ember.Enumerable</a> and <a href="http://emberjs.com/api/classes/Ember.Array.html">Ember.Array</a>.</p>
+
+<p>To get a list of records already loaded into the store, without firing
+another network request, use <code>store.all(&#39;post&#39;)</code> instead.</p>
+<h3 class='anchorable-toc' id='toc_finding-a-single-record'>Finding a Single Record</h3>
+<p>You can retrieve a record by passing its model and unique ID to the <code>find()</code>
+method. The ID can be either a string or a number. This will return a promise that
+fulfills with the requested record:</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
-  <td class="code"><pre>store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, <span class="integer">1</span>).then(<span class="keyword">function</span>(post) {
+  <td class="code"><pre><span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, <span class="integer">1</span>).then(<span class="keyword">function</span>(post) {
   post.set(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My Dark Twisted Fantasy</span><span class="delimiter">&quot;</span></span>);
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_integrating-with-the-route-s-model-hook'>Integrating with the Route&#39;s Model Hook</h3>
+</div></div><h4 class='anchorable-toc' id='toc_integrating-with-the-route-s-model-hook'>Integrating with the Route&#39;s Model Hook</h4>
 <p>As discussed in <a href="/guides/routing/specifying-a-routes-model">Specifying a Route&#39;s
 Model</a>, routes are
 responsible for telling their template which model to render.</p>
 
 <p><code>Ember.Route</code>&#39;s <code>model</code> hook supports asynchronous values
 out-of-the-box. If you return a promise from the <code>model</code> hook, the
-router will wait until the promise has resolved to render the
+router will wait until the promise has fulfilled to render the
 template.</p>
 
 <p>This makes it easy to write apps with asynchronous data using Ember
@@ -583,7 +611,7 @@ Ember deal with figuring out whether a network request is needed or not:</p>
 
 App.PostRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>(params) {
-    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
   }
 });
 </pre></td>
@@ -593,16 +621,40 @@ App.PostRoute = Ember.Route.extend({
 default implementation for routes with a dynamic segment. If you&#39;re
 using Ember Data, you only need to override the <code>model</code> hook if you need
 to return a model different from the record with the provided ID.</p>
+<h3 class='anchorable-toc' id='toc_querying-for-records'>Querying For Records</h3>
+<p>You can query the server by calling the store&#39;s <code>find()</code> method and
+passing a hash of search options. This method returns a promise that
+fulfills with an array of the search results.</p>
+
+<p>For example, we could search for all <code>person</code> models who have the name of
+<code>Peter</code>:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">person</span><span class="delimiter">'</span></span>, { <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Peter</span><span class="delimiter">&quot;</span></span> }).then(<span class="keyword">function</span>(people) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Found </span><span class="delimiter">&quot;</span></span> + people.get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">&quot;</span><span class="content"> people named Peter.</span><span class="delimiter">&quot;</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The hash of search options that you pass to <code>find()</code> is opaque to Ember
+Data. By default, these options will be sent to your server as the body
+of an HTTP <code>GET</code> request.</p>
+
+<p><strong>Using this feature requires that your server knows how to interpret
+query responses.</strong></p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/guides/models/defining-models">
-            ← 定义模型
+          <a class="previous-guide" href="/guides/models/persisting-records">
+            ← Persisting Records
           </a>
          
-        <a class="next-guide" href="/guides/models/finding-all-records-of-a-type">
-          Finding All Records of a Type →
+        <a class="next-guide" href="/guides/models/working-with-records">
+          Working with Records →
         </a>
       
       </footer>

@@ -254,6 +254,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
@@ -303,6 +307,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -370,19 +378,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/bilingual_guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -390,7 +390,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -640,7 +644,7 @@ instances:</p>
 2
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> person = Person.create();
-person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot;Hello&quot;</span>
+person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot; says: Hello&quot;</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -684,7 +688,7 @@ properties, create a new subclass and instantiate that.</p>
 <p>考虑到性能问题，实例的计算属性或方法不能在调用<code>create()</code>方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用<code>create()</code>方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。</p>
 
 <p>By convention, properties or variables that hold classes are
-capitalized, while instances are not. So, for example, the variable
+CamelCased, while instances are not. So, for example, the variable
 <code>Person</code> would contain a class, while <code>person</code> would contain an instance
 (usually of the <code>Person</code> class). You should stick to these naming
 conventions in your Ember applications.</p>

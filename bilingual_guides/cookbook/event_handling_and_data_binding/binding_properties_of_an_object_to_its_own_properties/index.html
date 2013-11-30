@@ -254,6 +254,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
@@ -303,6 +307,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -370,19 +378,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/bilingual_guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -390,7 +390,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -556,7 +560,7 @@
     <span class="key">firstName</span> : <span class="predefined-constant">null</span>,
     <span class="key">lastName</span> : <span class="predefined-constant">null</span>,
     <span class="key">surname</span> : Ember.computed.alias(<span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>),
-    <span class="key">eligibleForRetirement</span>: Ember.computed.gte(<span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span>, <span class="integer">65</span>)
+    <span class="key">eligibleForRetirement</span>: Ember.computed.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span>, <span class="integer">65</span>)
 });
 </pre></td>
 </tr></table>

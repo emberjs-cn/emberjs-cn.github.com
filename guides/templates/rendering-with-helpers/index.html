@@ -254,6 +254,10 @@
               <a href="/guides/templates/actions">操作</a>
             </li>
           
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
             <li class="level-3 sub-selected">
               <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
@@ -304,6 +308,10 @@
           
             <li class="level-3">
               <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -371,19 +379,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -391,7 +391,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -542,7 +546,7 @@
     <hr>
     <p>英文原文： <a href="http://emberjs.com/guides/templates/rendering-with-helpers/">http://emberjs.com/guides/templates/rendering-with-helpers/</a></p>
 <h2 class='anchorable-toc' id='toc_'>用助手来渲染</h2>
-<p>Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
+<p>Ember.js提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
 <h3 class='anchorable-toc' id='toc_code-partial-code'><code>{{partial}}</code> 助手</h3>
 <p><code>{{partial}}</code>接收一个模板作为其参数，然后恰当地渲染这个模板</p>
 
@@ -629,7 +633,7 @@
 <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
 <span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
   <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span> <span class="attribute-name">authorBinding</span>=<span class="attribute-value">author</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
@@ -726,18 +730,12 @@
 
 <p><code>{{render}}</code> 不需要匹配路由。</p>
 
-<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember</code>将这一部分页面用来渲染其他模板。</p>
+<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember.js</code>将这一部分页面用来渲染其他模板。</p>
 
 <p><code>{{outlet}}</code>: 路由器决定路由，并且创建合适的控制器/视图/模型
 <code>{{render}}</code>: 你（直接或间接地）指定合适的控制器/视图/模型</p>
 
-<p>注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
-<h3 class='anchorable-toc' id='toc_code-control-code'><code>{{control}}</code> 助手</h3>
-<p><code>{{control}}</code> 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。</p>
-
-<p>此助手目前仍在开发中，以后极有可能变化很大。</p>
-
-<p>注意：<code>{{control}}</code>助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：<code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code>。</p>
+<p>注意：当没有指定模型时，同一个路由不能重复的调用<code>{{render}}</code>。</p>
 <h3 class='anchorable-toc' id='toc_'>比较表</h3><h4 class='anchorable-toc' id='toc_'>整体概念性比较</h4>
 <table>
   <thead>
@@ -812,8 +810,8 @@
     
       <footer>
         
-          <a class="previous-guide" href="/guides/templates/actions">
-            ← 操作
+          <a class="previous-guide" href="/guides/templates/input-helpers">
+            ← Input Helpers
           </a>
          
         <a class="next-guide" href="/guides/templates/writing-helpers">

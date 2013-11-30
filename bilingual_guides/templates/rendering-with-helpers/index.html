@@ -253,6 +253,10 @@
               <a href="/bilingual_guides/templates/actions">操作</a>
             </li>
           
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
             <li class="level-3 sub-selected">
               <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
@@ -303,6 +307,10 @@
           
             <li class="level-3">
               <a href="/bilingual_guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -370,19 +378,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/bilingual_guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/bilingual_guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/bilingual_guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -390,7 +390,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/bilingual_guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/bilingual_guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -537,9 +541,9 @@
         </h1>
       
     <h2 class='anchorable-toc' id='toc_rendering-with-helpers'>Rendering with Helpers</h2><h2 class='anchorable-toc' id='toc_'>用助手来渲染</h2>
-<p>Ember provides several helpers that allow you to render other views and templates in different ways.</p>
+<p>Ember.js provides several helpers that allow you to render other views and templates in different ways.</p>
 
-<p>Ember 提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
+<p>Ember.js提供了数个助手来协助你以不同的方式来渲染其他视图或模板</p>
 <h3 class='anchorable-toc' id='toc_the-code-partial-code-helper'>The <code>{{partial}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-partial-code'><code>{{partial}}</code> 助手</h3>
 <p><code>{{partial}}</code> takes the template to be rendered as an argument, and renders that template in place.</p>
 
@@ -635,7 +639,7 @@
 <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
 <span class="inline">  &lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
   <span class="tag">&lt;div&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">body</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/div&gt;</span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span> <span class="attribute-name">authorBinding</span>=<span class="attribute-value">author</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.AuthorView</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/script&gt;</span>
 </pre></td>
 </tr></table>
@@ -776,33 +780,21 @@
 
 <p><code>{{render}}</code> does not require the presence of a matching route.  </p>
 
-<p><code>{{render}}</code> is similar to <code>{{outlet}}</code>. Both tell Ember to devote this portion of the page to something.</p>
+<p><code>{{render}}</code> is similar to <code>{{outlet}}</code>. Both tell Ember.js to devote this portion of the page to something.</p>
 
 <p><code>{{outlet}}</code>: The router determines the route and sets up the appropriate controllers/views/models.
 <code>{{render}}</code>: You specify (directly and indirectly) the appropriate controllers/views/models.</p>
 
 <p><code>{{render}}</code> 不需要匹配路由。</p>
 
-<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember</code>将这一部分页面用来渲染其他模板。</p>
+<p><code>{{render}}</code> 与 <code>{{outlet}}</code> 类似。两者均负责通知<code>Ember.js</code>将这一部分页面用来渲染其他模板。</p>
 
 <p><code>{{outlet}}</code>: 路由器决定路由，并且创建合适的控制器/视图/模型
 <code>{{render}}</code>: 你（直接或间接地）指定合适的控制器/视图/模型</p>
 
-<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route when not specifying a model.  For that you&#39;ll need <code>{{control}}</code>.</p>
+<p>Note: <code>{{render}}</code> cannot be called multiple times for the same route when not specifying a model.</p>
 
-<p>注意： 如果在没有指定一个model的时候需要多次调用，就得使用下面的<code>{{control}}</code>助手。</p>
-<h3 class='anchorable-toc' id='toc_the-code-control-code-helper'>The <code>{{control}}</code> Helper</h3><h3 class='anchorable-toc' id='toc_code-control-code'><code>{{control}}</code> 助手</h3>
-<p><code>{{control}}</code> works like render, except it uses a new controller instance for every call, instead of reusing the singleton controller.</p>
-
-<p>This helper is currently under heavy development, and will likely change soon.</p>
-
-<p><code>{{control}}</code> 与 render 类似，不同的是它每次调用均使用一个新的控制器实例，而不是每次都重用单体控制器。</p>
-
-<p>此助手目前仍在开发中，以后极有可能变化很大。</p>
-
-<p>Note: The <code>{{control}}</code> helper is currently disabled by default. To enable it set <code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code> before requiring Ember.</p>
-
-<p>注意：<code>{{control}}</code>助手默认是被禁用的。如果需要启用，那么需要在引入Ember之前设置：<code>ENV.EXPERIMENTAL_CONTROL_HELPER = true</code>。</p>
+<p>注意：当没有指定模型时，同一个路由不能重复的调用<code>{{render}}</code>。</p>
 <h3 class='anchorable-toc' id='toc_comparison-table'>Comparison Table</h3><h3 class='anchorable-toc' id='toc_'>比较表</h3><h4 class='anchorable-toc' id='toc_general'>General</h4><h4 class='anchorable-toc' id='toc_'>整体概念性比较</h4>
 <table>
   <thead>
@@ -912,8 +904,8 @@
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/templates/actions">
-            ← 操作
+          <a class="previous-guide" href="/bilingual_guides/templates/input-helpers">
+            ← Input Helpers
           </a>
          
         <a class="next-guide" href="/bilingual_guides/templates/writing-helpers">

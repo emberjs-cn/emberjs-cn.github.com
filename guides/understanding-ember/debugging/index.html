@@ -255,6 +255,10 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/templates/input-helpers">Input Helpers</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
             </li>
           
@@ -304,6 +308,10 @@
           
             <li class="level-3">
               <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">Loading / Error Substates</a>
             </li>
           
             <li class="level-3">
@@ -371,19 +379,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/using-the-store">Using the Store</a>
-            </li>
-          
-            <li class="level-3">
               <a href="/guides/models/defining-models">定义模型</a>
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/finding-a-record">Finding a Record</a>
-            </li>
-          
-            <li class="level-3">
-              <a href="/guides/models/finding-all-records-of-a-type">Finding All Records of a Type</a>
+              <a href="/guides/models/creating-and-deleting-records">Creating and Deleting Records</a>
             </li>
           
             <li class="level-3">
@@ -391,7 +391,11 @@
             </li>
           
             <li class="level-3">
-              <a href="/guides/models/querying-the-server-for-records">Querying the Server for Records</a>
+              <a href="/guides/models/persisting-records">Persisting Records</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">Finding Records</a>
             </li>
           
             <li class="level-3">
@@ -709,6 +713,16 @@ Ember.LOG_STACKTRACE_ON_DEPRECATION = <span class="predefined-constant">true</sp
   <td class="code"><pre>Ember.RSVP.configure(<span class="string"><span class="delimiter">'</span><span class="content">onerror</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(error) {
   Ember.Logger.assert(<span class="predefined-constant">false</span>, error);
 });
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_code-ember-run-later-code-a-href-https-github-com-ebryn-backburner-js-backburner-js-a'><code>Ember.run.later</code>(<a href="https://github.com/ebryn/backburner.js">Backburner.js</a>)中的错误</h4>
+<p>Backburner支持将堆栈记录汇合在一起，以便跟踪<code>Ember.run.later</code>中的错误实在什么地方发生的。不幸的是，这非常的缓慢，并不适用与生产环境，甚至是开发环境。</p>
+
+<p>启用该模式需要设置：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.run.backburner.DEBUG = <span class="predefined-constant">true</span>;
 </pre></td>
 </tr></table>
 </div></div>
