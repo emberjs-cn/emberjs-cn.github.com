@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Query Parameters</title>
+    <title>Ember.js - 查询参数</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -46,9 +46,12 @@
         <a id="logo" href="/">&nbsp;</a>
         <ul id="nav">
           <li><a href="/guides">指南</a></li>
-          <li><a href="/blog">博客</a></li>
           <li>
             <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
           </li>
           <li><a href="/builds">构建</a></li>
         </ul>
@@ -302,7 +305,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/routing/query-params">Query Parameters</a>
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
             </li>
           
             <li class="level-3">
@@ -535,16 +538,22 @@
 
   <div class="chapter">
     
-        <h1>Query Parameters 
+        <h1>查询参数 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/routing/query-params.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <p>In general, the dynamic segments of a URL are a serialized representation of a model, commonly for example the model&#39;s ID. However, sometimes you need to serialize other application state into the URL. This could be further parameters that affect the loading of the model from the server, e.g. what page of a result set you are viewing, or it could be information about client side state, e.g. sort order when the records are sorted on the client.</p>
 
+<p>通常情况下，URL的动态段是模型的一种序列化表示，最常见的是模型的ID。然后，有时候还需要将应用的其他状态也序列化到URL中。这可能是对从服务器端加载模型有影响的一些参数，比如要查看的是那一页结果；也可能是一些关于客户端状态的信息，比如在客户端实现排序时的记录排序规则。</p>
+
 <p>There can also be more global information that you want to serialize into the url, for example if you want to store an auth token in the URL, or filter all models in your application globally. It&#39;s also possible that there is a lot of parameters that you want to serialize in the url that are inconvenient to store in normal dynamic segments. This might apply when you have a map view and need to store X, Y, and zoom coordinates along with a set of visible layers on the map. Although this is possible to do with dynamic segments, it can be inconvenient. For any of these use case, you can consider using query params instead.</p>
-<h3 class='anchorable-toc' id='toc_specifying-query-parameters'>Specifying Query Parameters</h3>
+
+<p>当然URL中还可以被序列化一些更为全局性的信息，例如包含一个身份令牌到URL中，或者在应用里全局的过滤模型。除此之外，还可以包含任何不适合包含在常规动态段中的一些参数。必须在一个地图视图上，可能需要保存一系列在地图上可见图层的横坐标、纵坐标和缩放比例等参数。虽然这些也可以通过动态段来实现，不过那样就显得不那么自然。对于这样的一些应用场景，就可以考虑使用查询参数来替代了。</p>
+<h3 class='anchorable-toc' id='toc_specifying-query-parameters'>Specifying Query Parameters</h3><h3 class='anchorable-toc' id='toc_'>指定查询参数</h3>
 <p>Query params are baked right into your routes. This is essential so that the router and helpers can know what valid transitions and query parameter states are. Here is an example of defining which query params some routes respond to:</p>
+
+<p>查询参数的设定被放置在路由中，这一点非常重要，因为只有这样路由和助手才能知道哪些是正确的过渡和查询参数状态。下面是一个定义一些路由的查询参数的示例：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -559,9 +568,11 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_route-hooks'>Route Hooks</h3>
+</div></div><h3 class='anchorable-toc' id='toc_route-hooks'>Route Hooks</h3><h3 class='anchorable-toc' id='toc_'>路由钩子</h3>
 <p>Query params are passed into the hooks on your routes when you have defined them. Only query params that have been defined to apply to the route in the router.map call will be passed in. If no query params are active for this route,
 an empty object <code>{}</code> is passed in.</p>
+
+<p>如果定义了查询参数，这些参数都会被传入对应路由的钩子。只有在<code>router.map</code>中定义的查询参数才会被传入。如果没有定义任何查询参数，会传入一个空的对象<code>{}</code>。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -582,6 +593,8 @@ an empty object <code>{}</code> is passed in.</p>
 </tr></table>
 </div></div>
 <p>Only the query parameters that you specify to apply to a route are passed in, even if the parameters apply to parent routes.</p>
+
+<p>只有应用到一个特定的路由上，查询参数才会被传入，即使在父级路由上设定了，在子路由上也不会被传入。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -644,7 +657,9 @@ App.PostRoute = Ember.Route.extend({
 </tr></table>
 </div></div>
 <p><aside>
-  <strong>Note:</strong> If you don&#39;t specify query params for a given route, then the parameters passed in to the route hooks remains unchanged.
+  <strong>Note:</strong> If you don&#39;t specify query params for a given route, then the parameters passed in to the route hooks remains unchanged.</p>
+
+<p><strong>注意：</strong>如果没有给路由指定任何查询参数，路由钩子的参数列表不会发生改变。
 </aside></p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -668,8 +683,10 @@ App.IndexRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_transitioning-query-params'>Transitioning Query Params</h3>
+</div></div><h3 class='anchorable-toc' id='toc_transitioning-query-params'>Transitioning Query Params</h3><h3 class='anchorable-toc' id='toc_'>过渡查询参数</h3>
 <p><code>transitionTo</code> now accepts a final argument, which is an object with the key <code>queryParams</code>.</p>
+
+<p><code>transitionTo</code>函数在最后添加了一个参数，用来接收名为<code>queryParams</code>的对象作为查询参数。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -686,14 +703,18 @@ App.IndexRoute = Ember.Route.extend({
 </tr></table>
 </div></div>
 <p>You can also use add query params to URL transitions:</p>
+
+<p>此外也可以在URL上直接添加查询参数：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre><span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/1?sort=date&amp;showDetails=true</span><span class="delimiter">&quot;</span></span>);
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_link-to-helper'> link-to Helper</h3>
+</div></div><h3 class='anchorable-toc' id='toc_link-to-helper'> link-to Helper</h3><h3 class='anchorable-toc' id='toc_code-link-to-code'><code>{{link-to}}</code>助手</h3>
 <p>The link-to helper supports specifying query params.</p>
+
+<p><code>{{link-to}}</code>助手也支持指定查询参数。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -708,21 +729,35 @@ App.IndexRoute = Ember.Route.extend({
 </tr></table>
 </div></div>
 <p>The link-to helper takes into account query parameters when determining its &quot;active&quot; state, and will set the class appropriately. The active state is determined by working out if you clicked on the link, would the query params end up the same? You don&#39;t have to supply all of the current, active query params for this to be true.</p>
-<h3 class='anchorable-toc' id='toc_stickiness'>&quot;Stickiness&quot;</h3>
+
+<p><code>{{link-to}}</code>助手在确定&#39;active&#39;状态时，会顾及到查询参数，并且会适当的设置样式。当点击链接的时候，激活状态会通过计算得到，那么查询参数是否也是这样呢？其实并不需要提供为此提供所有的当前活动的查询参数。</p>
+<h3 class='anchorable-toc' id='toc_stickiness'>&quot;Stickiness&quot;</h3><h3 class='anchorable-toc' id='toc_'>粘性</h3>
 <p>By default, query params are &quot;sticky&quot;. This means that if you are on a url like <code>/posts?sort=name</code>, and you executed <code>transitionTo({queryParams: {direction: &#39;desc&#39;}})</code> or clicked <code>{{#link-to &#39;posts&#39; direction=desc}}</code>, the resulting url will be <code>/posts?sort=name&amp;direction=desc</code>.</p>
+
+<p>默认情况下，查询参数都具有“粘性的”。这意味着如果在一个如<code>/posts?sort=name</code>这样的URL时，如果执行<code>transitionTo({ queryParams: { direction: &#39;desc&#39; }})</code>或者点击<code>{{#link-to &#39;posts&#39; direction=desc}}&#39;，那么URL会自动变为</code>/posts?sort=name&amp;directions=desc`。</p>
 
 <p>To clear query params, give a falsy value (but <strong>not</strong> <code>undefined</code>), e.g.
 <code>transitionTo({queryParams: {direction: null}})</code> or <code>{{#link-to &#39;posts&#39; direction=false}}</code></p>
 
+<p>如果需要去掉某一个查询参数，那么需要将其设置为假值（而<strong>不是</strong><code>undefined</code>），例如<code>transitionTo({ queryParams: { direction: null }})</code>或者<code>{{#link-to &#39;posts&#39; direction=false }}</code>。</p>
+
 <p>It&#39;s also possible to clear all query params by passing false, e.g. <code>transitionTo({queryParams: false})</code> or <code>{{#link-to &#39;posts&#39; queryParams=false}}</code></p>
-<h3 class='anchorable-toc' id='toc_boolean-query-params'>Boolean Query params</h3>
+
+<p>通过将<code>queryParams</code>设置为<code>false</code>也可以一次清除所有的查询参数，例如，<code>transitionTo({ queryParams: false })</code>或者<code>{{#link-to &#39;posts&#39; queryParams=false }}</code></p>
+<h3 class='anchorable-toc' id='toc_boolean-query-params'>Boolean Query params</h3><h3 class='anchorable-toc' id='toc_'>布尔型查询参数</h3>
 <p>Boolean query params are serialized without the truth value, e.g. <code>transitionTo(&#39;posts&#39;, {queryParams: {sort: true}})</code> would result in the url <code>/posts?sort</code></p>
+
+<p>布尔型不会序列化真值，例如，<code>transitionTo(&#39;posts&#39;, { queryParams: { sort: true }})</code>，URL将会被序列化为<code>/posts?sort</code>。</p>
 
 <p>This is for two reasons:</p>
 
+<p>这有两个原因：</p>
+
 <ol>
 <li>passing false is the way to clear query parameters</li>
-<li>The string &quot;false&quot; is truthy in javascript. i.e. <code>if (&quot;false&quot;) { alert(&#39;oops&#39;); }</code> will show an alert.</li>
+<li><p>The string &quot;false&quot; is truthy in javascript. i.e. <code>if (&quot;false&quot;) { alert(&#39;oops&#39;); }</code> will show an alert.</p></li>
+<li><p>因为传入<code>false</code>是用来清除一个参数的</p></li>
+<li><p>而字符串的<code>&quot;false&quot;</code>在javascript中是一个真值。例如，<code>if (&quot;false&quot;) { alert(&#39;oops&#39;); }</code>将会显示一个告警。</p></li>
 </ol>
 
     
