@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 路由: Asynchronous Routing</title>
+    <title>Ember.js - 路由: 异步路由</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -310,7 +310,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/guides/routing/asynchronous-routing">Asynchronous Routing</a>
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
             </li>
           
             <li class="level-3">
@@ -541,26 +541,17 @@
 
   <div class="chapter">
     
-        <h1>Asynchronous Routing 
+        <h1>异步路由 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/routing/asynchronous-routing.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
       
     <hr>
-    <p>This section covers some more advanced features of the router and its
-capability for handling complex async logic within your app.</p>
-<h3 class='anchorable-toc' id='toc_a-word-on-promises'>A Word on Promises...</h3>
-<p>Ember&#39;s approach to handling asynchronous logic in the router makes
-heavy use of the concept of Promises. In short, promises are objects that
-represent an eventual value. A promise can either <em>fulfill</em>
-(successfully resolve the value) or <em>reject</em> (fail to resolve the
-value). The way to retrieve this eventual value, or handle the cases
-when the promise rejects, is via the promise&#39;s <code>then</code> method, which
-accepts two optional callbacks, one for fulfillment and one for
-rejection. If the promise fulfills, the fulfillment handler gets called
-with the fulfilled value as its sole argument, and if the promise rejects, 
-the rejection handler gets called with a reason for the rejection as its
-sole argument. For example:</p>
+    <p>英文原文: <a href="http://emberjs.com/guides/routing/asynchronous-routing/">http://emberjs.com/guides/routing/asynchronous-routing/</a></p>
+
+<p>本节内容主要介绍一些路由的高级特性，以及路由是如何处理应用中的一些复杂异步逻辑的。</p>
+<h3 class='anchorable-toc' id='toc_'>承诺简介</h3>
+<p>Ember在路由中处理异步逻辑的方案主要依赖于承诺（Promise）。简单地说，承诺就是代表了最后的值的对象。承诺可以被履行（成功的获得了最后的结果）也可以被拒绝（没有获得最后的结果）。处理获取最后的值，或者承诺被拒绝的方法是通过承诺的<code>then</code>方法来实现的。该方法接收两个可选的回调函数，一个用于履行承诺时执行，一个则是在拒绝时执行。如果一个承诺被履行，那么最后的值会作为履行处理函数的参数传入；如果一个承诺被拒绝，拒绝的原因会作为拒绝处理函数的参数传入。例如：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -588,8 +579,7 @@ promise.then(fulfill, reject);
 </pre></td>
 </tr></table>
 </div></div>
-<p>Much of the power of promises comes from the fact that they can be
-chained together to perform sequential asynchronous operations:</p>
+<p>承诺的强大很大程度来源于承诺可以连接在一起，形成一个有序的异步操作链：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -609,41 +599,19 @@ usernamesPromise.then(fetchPhotosOfUsers)
 </pre></td>
 </tr></table>
 </div></div>
-<p>In the above example, if any of the methods
-<code>fetchPhotosOfUsers</code>, <code>applyInstagramFilters</code>, or
-<code>uploadTrendyPhotoAlbum</code> returns a promise that rejects,
-<code>handleErrors</code> will be called with
-the reason for the failure. In this manner, promises approximate an
-asynchronous form of try-catch statements that prevent the rightward
-flow of nested callback after nested callback and facilitate a saner
-approach to managing complex asynchronous logic in your applications.</p>
+<p>在上述的例子中，如果<code>fetchPhotosOfUsers</code>、<code>applyInstagramFilters</code>、或<code>uploadTrendyPhotoAlbum</code>中任意一个方法返回的承诺被拒绝了，<code>handleErrors</code>将会被调用，并且告知拒绝的原因。在这种方式下，承诺将异步行为组织为与<code>try-catch</code>相似的形式，避免了一层层向右嵌套的回调，提供了一种健全有效的管理应用中异步逻辑的方案。</p>
 
-<p>This guide doesn&#39;t intend to fully delve into all the different ways
-promises can be used, but if you&#39;d like a more thorough introduction,
-take a look at the readme for <a href="https://github.com/tildeio/rsvp.js">RSVP</a>, 
-the promise library that Ember uses. </p>
-<h3 class='anchorable-toc' id='toc_the-router-pauses-for-promises'>The Router Pauses for Promises</h3>
-<p>When transitioning between routes, the Ember router collects all of the
-models (via the <code>model</code> hook) that will be passed to the route&#39;s
-controllers at the end of the transition. If the <code>model</code> hook (or the related
-<code>beforeModel</code> or <code>afterModel</code> hooks) return normal (non-promise) objects or 
-arrays, the transition will complete immediately. But if the <code>model</code> hook 
-(or the related <code>beforeModel</code> or <code>afterModel</code> hooks) returns a promise (or 
-if a promise was provided as an argument to <code>transitionTo</code>), the transition 
-will pause until that promise fulfills or rejects.</p>
+<p>本指南中并不涉及承诺工作的各种场景，如果希望知道更多的关于承诺的介绍，可以查看Ember使用的<a href="https://github.com/tildeio/rsvp.js">RSVP</a>的README文件。</p>
+<h3 class='anchorable-toc' id='toc_'>路由会为承诺暂停</h3>
+<p>当在路由间过渡时，Ember的路由通过<code>model</code>钩子获取所有将会在过渡的最后传递给路由控制器的模型。如果<code>model</code>钩子（或相关的<code>beforeModel</code>或<code>afterModel</code>钩子）返回的是普通的对象或数组（非承诺），那么过渡会立即完成。但是如果<code>model</code>钩子（包括<code>beforeModel</code>和<code>afterModel</code>钩子）返回一个承诺（或者将一个承诺作为参数传递给<code>transitionTo</code>方法），那么过渡将暂停直到承诺被履行或者拒绝。</p>
 
 <p><aside>
-<strong>Note:</strong> The router considers any object with a <code>then</code> method
-defined on it to be a promise.
+<strong>注意：</strong>路由认为任何一个定义了<code>then</code>方法的对象都是一个承诺。
 </aside></p>
 
-<p>If the promise fulfills, the transition will pick up where it left off and
-begin resolving the next (child) route&#39;s model, pausing if it too is a
-promise, and so on, until all destination route models have been
-resolved. The values passed to the <code>setupController</code> hook for each route
-will be the fulfilled values from the promises.</p>
+<p>如果承诺得到履行，那么过渡将从其停止的地方开始，并着手处理下一个路由（子路由）的模型，如果这个路由依然返回一个承诺，那么又将暂停进行等待，以此类推，知道所有目标路由的模型都被获取到了。传递给每个路由的<code>setupController</code>钩子的值都是履行完承诺后的值。</p>
 
-<p>A basic example:</p>
+<p>一个基本的示例：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -675,27 +643,15 @@ will be the fulfilled values from the promises.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>When transitioning into <code>TardyRoute</code>, the <code>model</code> hook will be called and
-return a promise that won&#39;t resolve until 3 seconds later, during which time
-the router will be paused in mid-transition. When the promise eventually
-fulfills, the router will continue transitioning and eventually call
-<code>TardyRoute</code>&#39;s <code>setupController</code> hook with the resolved object.</p>
+<p>当过渡到<code>TardyRoute</code>时，路由的<code>model</code>钩子将被调用，并且返回一个要三秒后才会被履行的承诺，在此期间路由会被暂停在一个中间状态。当承诺最后被履行时，路由将继续过渡并最后将获得的对象传递给<code>TardyRoute</code>的<code>setupController</code>钩子。</p>
 
-<p>This pause-on-promise behavior is extremely valuable for when you need
-to guarantee that a route&#39;s data has fully loaded before displaying a
-new template. </p>
-<h3 class='anchorable-toc' id='toc_when-promises-reject'>When Promises Reject...</h3>
-<p>We&#39;ve covered the case when a model promise fulfills, but what if it rejects? </p>
+<p>当在显示一个新模板之前需要确保路由的数据被完全加载成功的情况下，这种暂停在承诺的行为非常有用。</p>
+<h3 class='anchorable-toc' id='toc_'>当承诺被拒绝时</h3>
+<p>之前讲到了一个承诺被履行的情况会是什么样，那么如果承诺被拒绝了又会是怎样呢？</p>
 
-<p>By default, if a model promise rejects during a transition, the transition is
-aborted, no new destination route templates are rendered, and an error
-is logged to the console.</p>
+<p>在默认的情况下，如果一个模型承诺在过渡过程中被拒绝了，那么过渡就会被取消，不会有新目标路由的模板被渲染，控制台也会同时记录一条错误。</p>
 
-<p>You can configure this error-handling logic via the <code>error</code> handler on
-the route&#39;s <code>actions</code> hash. When a promise rejects, an <code>error</code> event
-will be fired on that route and bubble up to <code>ApplicationRoute</code>&#39;s
-default error handler unless it is handled by a custom error handler
-along the way, e.g.:</p>
+<p>通过在路由的<code>actions</code>哈希里，定义一个<code>error</code>处理器，可以用来处理承诺被拒绝的情况。当一个承诺被拒绝时，路由上会被触发一个<code>error</code>事件，如果没有自定义的错误处理，那么该事件会一直冒泡直至<code>ApplicationRoute</code>提供的缺省错误处理器。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -735,14 +691,9 @@ along the way, e.g.:</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>In the above example, the error event would stop right at
-<code>GoodForNothingRoute</code>&#39;s error handler and not continue to bubble. To
-make the event continue bubbling up to <code>ApplicationRoute</code>, you can
-return true from the error handler.</p>
-<h3 class='anchorable-toc' id='toc_recovering-from-rejection'>Recovering from Rejection</h3>
-<p>Rejected model promises halt transitions, but because promises are chainable,
-you can catch promise rejects within the <code>model</code> hook itself and convert 
-them into fulfills that won&#39;t halt the transition.</p>
+<p>在上述例子中，错误事件将停留在<code>GoodForNothingRoute</code>的错误处理器中，而不会往上冒泡。如果需要继续让事件向上冒泡到<code>ApplicationRoute</code>，那么需要在错误处理器里面返回<code>true</code>。</p>
+<h3 class='anchorable-toc' id='toc_'>从拒绝处恢复</h3>
+<p>被拒绝的模型承诺会停止过渡，但是由于承诺是可以链式相连的，那么就可以在<code>model</code>钩子里面捕获到承诺的拒绝，然后将其转换为履行，这样就不会停止过渡了。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -765,38 +716,19 @@ them into fulfills that won&#39;t halt the transition.</p>
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_code-beforemodel-code-and-code-aftermodel-code'><code>beforeModel</code> and <code>afterModel</code></h3>
-<p>The <code>model</code> hook covers many use cases for pause-on-promise transitions,
-but sometimes you&#39;ll need the help of the related hooks <code>beforeModel</code>
-and <code>afterModel</code>. The most common reason for this is that if you&#39;re
-transitioning into a route with a dynamic URL segment via <code>{{link-to}}</code> or
-<code>transitionTo</code> (as opposed to a transition caused by a URL change), 
-the model for the route you&#39;re transitioning into will have already been
-specified (e.g. <code>{{#link-to &#39;article&#39; article}}</code> or
-<code>this.transitionTo(&#39;article&#39;, article)</code>), in which case the <code>model</code> hook
-won&#39;t get called. In these cases, you&#39;ll need to make use of either
-the <code>beforeModel</code> or <code>afterModel</code> hook to house any logic while the
-router is still gathering all of the route&#39;s models to perform a
-transition.</p>
+</div></div><h3 class='anchorable-toc' id='toc_code-beforemodel-code-code-aftermodel-code'><code>beforeModel</code>和<code>afterModel</code></h3>
+<p><code>model</code>钩子包含了基于承诺暂停过渡的许多应用场景，但是有的时候还是需要<code>beforeModel</code>和<code>afterModel</code>这两个钩子来提供帮助。最常见的原因是通过<code>{{link-to}}</code>或者<code>{{transitionTo}}</code>（最为URL改变导致的过渡的对比）过渡到一个具有动态URL端，这时将过渡到的路由的模型早早就被指定了（例如<code>{{#link-to &#39;article&#39; article}}</code>或者<code>this.transitionTo(&#39;article&#39;, article)</code>），这种情况下，<code>model</code>钩子并不会被调用。当路由正在收集所有路由的模型来执行过渡时，就需要使用<code>beforeModel</code>和<code>afterModel</code>钩子来处理所有逻辑。</p>
 <h4 class='anchorable-toc' id='toc_code-beforemodel-code'><code>beforeModel</code></h4>
-<p>Easily the more useful of the two, the <code>beforeModel</code> hook is called
-before the router attempts to resolve the model for the given route. In
-other words, it is called before the <code>model</code> hook gets called, or, if
-<code>model</code> doesn&#39;t get called, it is called before the router attempts to
-resolve any model promises passed in for that route.</p>
+<p><code>beforeModel</code>钩子是这两个中更为常用到的一个，<code>beforeModel</code>在路由器尝试解决给定路由的模型时被调用。或者说，它是在<code>model</code>钩子被调用前调用的。如果<code>model</code>钩子不会被调用，那么<code>beforeModel</code>会在路由器尝试解决传入到路由的模型承诺之前被调用。</p>
 
-<p>Like <code>model</code>, returning a promise from <code>beforeModel</code> will pause the
-transition until it resolves, or will fire an <code>error</code> if it rejects.</p>
+<p>跟<code>model</code>一样，如果<code>beforeModel</code>返回一个承诺，那么路由将会被暂停至承诺被履行时，或者是在承诺被拒绝时触发一个<code>error</code>事件。</p>
 
-<p>The following is a far-from-exhaustive list of use cases in which
-<code>beforeModel</code> is very handy:</p>
+<p>下面详细的列出了<code>beforeModel</code>非常有用的几种用例：</p>
 
 <ul>
-<li>Deciding whether to redirect to another route before performing a
-potentially wasteful server query in <code>model</code></li>
-<li>Ensuring that the user has an authentication token before proceeding
-onward to <code>model</code></li>
-<li>Loading application code required by this route </li>
+<li>决定是否在执行一个潜在的在<code>model</code>中的费时的服务器端查询之前跳转到其他的路由</li>
+<li>确定用户在执行<code>model</code>之前有一个身份令牌</li>
+<li>加载路由所需要的应用代码</li>
 </ul>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -817,13 +749,9 @@ onward to <code>model</code></li>
 </pre></td>
 </tr></table>
 </div></div>
-<p><a href="/api/classes/Ember.Route.html#method_beforeModel">See the API Docs for <code>beforeModel</code></a></p>
+<p><a href="/api/classes/Ember.Route.html#method_afterModel">查看<code>beforeModel</code>API文档</a></p>
 <h4 class='anchorable-toc' id='toc_code-aftermodel-code'><code>afterModel</code></h4>
-<p>The <code>afterModel</code> hook is called after a route&#39;s model (which might be a
-promise) is resolved, and follows the same pause-on-promise semantics as
-<code>model</code> and <code>beforeModel</code>. It is passed the already-resolved model 
-and can therefore perform any additional logic that
-depends on the fully resolved value of a model.</p>
+<p><code>afterModel</code>钩子在路由的模型（可能是一个承诺）被解决之后调用，并与<code>model</code>和<code>beforeModel</code>一样，遵从基于承诺的暂停原则。<code>afterModel</code>将传入被解决的模型，并可以在这个已经完全解决了的模型上添加一些附件的逻辑操作。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -853,17 +781,13 @@ depends on the fully resolved value of a model.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>You might be wondering why we can&#39;t just put the <code>afterModel</code> logic
-into the fulfill handler of the promise returned from <code>model</code>; the
-reason, as mentioned above, is that transitions initiated 
-via <code>{{link-to}}</code> or <code>transitionTo</code> likely already provided the
-model for this route, so <code>model</code> wouldn&#39;t be called in these cases.</p>
+<p>这里也许对为什么不将<code>afterModel</code>的逻辑放入<code>model</code>承诺履行时要执行的处理器而感到好奇；其实原因很简单，而且之前也提到过，就是当过渡是被如<code>{{link-to}}</code>或<code>transitionTo</code>之类的提供了模型给路由的情况时，<code>model</code>钩子并不会被调用。</p>
 
-<p><a href="/api/classes/Ember.Route.html#method_afterModel">See the API Docs for <code>afterModel</code></a></p>
-<h3 class='anchorable-toc' id='toc_more-resources'>More Resources</h3>
+<p><a href="/api/classes/Ember.Route.html#method_afterModel">查看<code>afterModel</code>API文档</a></p>
+<h3 class='anchorable-toc' id='toc_'>更多资源</h3>
 <ul>
-<li><a href="http://www.embercasts.com/episodes/client-side-authentication-part-2">Embercasts: Client-side Authentication Part 2</a></li>
-<li><a href="/blog/2013/06/23/ember-1-0-rc6.html">RC6 Blog Post describing these new features</a></li>
+<li><a href="http://www.embercasts.com/episodes/client-side-authentication-part-2">Embercasts: 客户端身份验证2</a></li>
+<li><a href="/blog/2013/06/23/ember-1-0-rc6.html">RC6发布的文章中的描述</a></li>
 </ul>
 
     
