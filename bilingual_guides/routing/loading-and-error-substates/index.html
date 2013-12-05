@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Loading / Error Substates</title>
+    <title>Ember.js - 加载中/错误子状态</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -313,7 +313,7 @@
             </li>
           
             <li class="level-3 sub-selected">
-              <a href="/bilingual_guides/routing/loading-and-error-substates">Loading / Error Substates</a>
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
             </li>
           
             <li class="level-3">
@@ -538,7 +538,7 @@
 
   <div class="chapter">
     
-        <h1>Loading / Error Substates 
+        <h1>加载中/错误子状态 
           <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/routing/loading-and-error-substates.md" target="_blank" class="edit-page">
             编辑页面</a>
         </h1>
@@ -549,8 +549,12 @@ the Ember Router provides powerful yet overridable
 conventions for customizing asynchronous transitions
 between routes by making use of <code>error</code> and <code>loading</code>
 substates.</p>
-<h2 class='anchorable-toc' id='toc_code-loading-code-substates'><code>loading</code> substates</h2>
+
+<p>除了<a href="/guides/routing/asynchronous-routing/">异步路由指南</a>中描述的技术外，Ember路由还提供了通过使用<code>error</code>和<code>loading</code>子状态，来实现自定义路由间的异步过渡。</p>
+<h2 class='anchorable-toc' id='toc_code-loading-code-substates'><code>loading</code> substates</h2><h2 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>子状态</h2>
 <p>Consider the following:</p>
+
+<p>考虑下面的情形：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -578,10 +582,16 @@ route, you&#39;ll continue to see the templates from the previous route
 until the articles finish loading, and then, boom, suddenly all the
 templates for <code>articles/overview</code> load. </p>
 
+<p>如果导航到<code>articles/overview</code>，并且在<code>ArticlesRoute#model</code>中，返回了一个AJAX查询承诺，来加载需要花费较长时间才能完成加载的文章集合。在这其间，UI并不会有任何关于在做什么的实际性反馈；如果通过页面刷新进入到该页面，UI将会一直是空的，因为这时还没有完成进入路由，也没有显示任何模板；如果是从其他的路由进入<code>articles/overview</code>，那么会一直停留在之前路由渲染的模板，直到所有文章加载完成，这个时候<code>articles/overview</code>的所有模板才会被渲染，才可见。</p>
+
 <p>So, how can we provide some visual feedback during the transition?</p>
-<h3 class='anchorable-toc' id='toc_the-code-loading-code-event'>The <code>loading</code> event</h3>
+
+<p>那么，在这个过渡的过程中该如何添加一些反馈信息呢？</p>
+<h3 class='anchorable-toc' id='toc_the-code-loading-code-event'>The <code>loading</code> event</h3><h3 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>事件</h3>
 <p>Before going into detail about loading substates, it&#39;s important
 to understand the behavior of the <code>loading</code> event.</p>
+
+<p>在深入讨论加载中子状态之前，理解<code>loading</code>事件的行为非常重要。</p>
 
 <p>The Ember Router allows you to return promises from the various
 <code>beforeModel</code>/<code>model</code>/<code>afterModel</code> hooks in the course of a transition
@@ -591,6 +601,8 @@ the transition will resume. If you return a promise from
 one of these hooks, and it doesn&#39;t immediately resolve, a <code>loading</code>
 event will be fired on that route and bubble upward to
 <code>ApplicationRoute</code>. For example:</p>
+
+<p>Ember路由允许通过<code>beforeModel</code>/<code>model</code>/<code>afterModel</code>各种钩子在一个过渡的过程中返回承诺（<a href="/guides/routing/asynchronous-routing">详细介绍</a>）。这些承诺在其被履行前会将过渡暂停。如果在其中一个钩子中返回了承诺，并且这个承诺没有理解解决，那么<code>loading</code>事件就会在该路由被触发，并且一直向上冒泡到<code>ApplicationRoute</code>。例如：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -638,11 +650,15 @@ App.FooSlowModelRoute = Ember.Route.extend({
 </div></div>
 <p>If <code>FooRoute#model</code> had returned the slow promise, the <code>loading</code>
 event would have fired on <code>FooRoute</code> (and not <code>FooSlowModelRoute</code>).</p>
-<h3 class='anchorable-toc' id='toc_the-default-implementation-of-the-code-loading-code-event'>The default implementation of the <code>loading</code> event</h3>
+
+<p>如果<code>FooSlowModelRoute</code>返回了一个较慢的承诺，那么<code>loading</code>事件就会在<code>FooRoute</code>上被触发（而不是<code>FooSlowModelRoute</code>上）。</p>
+<h3 class='anchorable-toc' id='toc_the-default-implementation-of-the-code-loading-code-event'>The default implementation of the <code>loading</code> event</h3><h3 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>事件的缺省实现</h3>
 <p>So already, you have a hook to allow you to configure loading
 behavior in a hierarchical manner. But in addition to this, Ember
 provides a default implementation of the <code>loading</code> handler that implements
 the following loading substate behavior we&#39;ve been alluding to.</p>
+
+<p>之前已经介绍了可以使用一种层次化的结构来配置<code>loading</code>行为。此外，Ember还提供了一种实现了如下所示的缺省的<code>loading</code>处理器。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -667,6 +683,8 @@ resolve, Ember will try to find a <code>loading</code> route in the hierarchy
 above <code>foo.bar.baz</code> that it can transition into, starting with
 <code>foo.bar.baz</code>&#39;s sibling:</p>
 
+<p>如果<code>foo.bar.baz</code>路由返回了一个不会立即履行的承诺，Ember会在<code>foo.bar.baz</code>的层次结构中查找可以过渡的<code>loading</code>路由，查找路径为：</p>
+
 <ol>
 <li><code>foo.bar.loading</code></li>
 <li><code>foo.loading</code></li>
@@ -676,6 +694,8 @@ above <code>foo.bar.baz</code> that it can transition into, starting with
 <p>Ember will find a loading route at the above location if either a) a 
 Route subclass has been defined for such a route, e.g.</p>
 
+<p>Ember会在上述的<code>loading</code>路由地址找一个路由，a) 该路由可能是如下所示定义的一个路由的子类：</p>
+
 <ol>
 <li><code>App.BarLoadingRoute</code></li>
 <li><code>App.FooLoadingRoute</code></li>
@@ -683,6 +703,8 @@ Route subclass has been defined for such a route, e.g.</p>
 </ol>
 
 <p>or b) a properly-named loading template has been found, e.g.</p>
+
+<p>b) 又或者是一个按照一定规则进行命名的<code>loading</code>模板：</p>
 
 <ol>
 <li><code>bar/loading</code></li>
@@ -697,16 +719,22 @@ intermediate transition into the loading substate happens immediately
 that happen while another asynchronous transition is active, the
 currently active async transition won&#39;t be aborted.</p>
 
+<p>在一个较慢的异步过渡过程中，如果存在<code>loading</code>子状态/路由，Ember会先过渡到第一个找到的。这个到<code>loading</code>子状态的中间状态的过渡会立即发生（同步的），URL也不会发生改变。与其他在当另一个异步过渡活动时发生的过渡不同，该情况下的活动异步过渡不会被取消。</p>
+
 <p>After transitioning into a loading substate, the corresponding template
 for that substate, if present, will be rendered into the main outlet of
 the parent route, e.g. <code>foo.bar.loading</code>&#39;s template would render into 
 <code>foo.bar</code>&#39;s outlet. (This isn&#39;t particular to loading routes; all
 routes behave this way by default.)</p>
 
+<p>当进入一个<code>loading</code>子状态过渡后，对应该子状态的模板如果存在的话，会被渲染到父路由的主插口（outlet），例如<code>foo.bar.loading</code>模板会被渲染到<code>foo.bar</code>的插口中。（<code>loading</code>路由并不是特例，所有路由都是按照这种方式工作的。）</p>
+
 <p>Once the main async transition into <code>foo.bar.baz</code> completes, the loading
 substate will be exited, its template torn down, <code>foo.bar.baz</code> will be
 entered, and its templates rendered.</p>
-<h3 class='anchorable-toc' id='toc_eager-vs-lazy-async-transitions'>Eager vs. Lazy Async Transitions</h3>
+
+<p>当<code>foo.bar.baz</code>主异步过渡完成时，会退出<code>loading</code>子状态，渲染的模板也会被移除，并进入<code>foo.bar.baz</code>，渲染其模板。</p>
+<h3 class='anchorable-toc' id='toc_eager-vs-lazy-async-transitions'>Eager vs. Lazy Async Transitions</h3><h3 class='anchorable-toc' id='toc_vs'>渴望型 VS 延迟型异步过渡</h3>
 <p>Loading substates are optional, but if you provide one,
 you are essentially telling Ember that you
 want this async transition to be &quot;eager&quot;; in the absence of destination
@@ -719,13 +747,19 @@ is to say that, unlike the &quot;lazy&quot; default, you will eagerly exit the
 source routes (and tear down their templates, etc) in order to
 transition into this substate. </p>
 
+<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。</p>
+
 <p>This has implications on error handling, i.e. when a transition into
 another route fails, a lazy transition will (by default) just remain on the
 previous route, whereas an eager transition will have already left the
 pre-transition route to enter a loading substate.</p>
-<h2 class='anchorable-toc' id='toc_code-error-code-substates'><code>error</code> substates</h2>
+
+<p>这里也暗含了一个错误处理，例如，当过渡到一个路由失败时，延迟过渡（默认）会依然停留在原路由，而一个渴望过渡早就离开了之前的状态路由进入到<code>loading</code>子状态中了。</p>
+<h2 class='anchorable-toc' id='toc_code-error-code-substates'><code>error</code> substates</h2><h2 class='anchorable-toc' id='toc_code-error-code'><code>error</code>子状态</h2>
 <p>Ember provides an analogous approach to <code>loading</code> events/substates in
 the case of errors encountered during a transition.</p>
+
+<p>Ember为过渡提供了一种与<code>loading</code>事件/子状态类似的错误处理方法。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -750,13 +784,19 @@ event handlers are implemented, the default <code>error</code> handlers
 will look for an appropriate error substate to
 enter, if one can be found.</p>
 
+<p>如果<code>ArticlesOverviewRoute</code>返回一个被拒绝的承诺（可能因为服务器端返回一个错误，又或者时用户没有登录等等），一个<code>error</code>事件将在<code>ArticlesOverviewRoute</code>被触发，并向上冒泡。可以使用这个<code>error</code>事件来处理并显示一个错误消息，例如重定向到登录页面等。与<code>loading</code>事件处理器实现类似，缺省的<code>error</code>事件处理器也会进入一个子状态来完成处理。</p>
+
 <p>For instance, an error thrown or rejecting promise returned from
 <code>ArticlesOverviewRoute#model</code> (or <code>beforeModel</code> or <code>afterModel</code>) 
 will look for:</p>
 
+<p>例如，在<code>ArticlesOverviewRoute#model</code>（或<code>beforeModel</code>、<code>afterModel</code>）中抛出了一个异常或者返回了一个被拒绝的承诺，那么会按照以下方式进行查找错误处理：</p>
+
 <ol>
 <li>Either <code>ArticlesErrorRoute</code> or <code>articles/error</code> template</li>
-<li>Either <code>ErrorRoute</code> or <code>error</code> template</li>
+<li><p>Either <code>ErrorRoute</code> or <code>error</code> template</p></li>
+<li><p><code>ArticlesErrorRoute</code>路由或者<code>articles/error</code>模板</p></li>
+<li><p><code>ErrorRoute</code>路由或者<code>error</code>模板</p></li>
 </ol>
 
 <p>If one of the above is found, the router will immediately transition into
@@ -764,13 +804,19 @@ that substate (without updating the URL). The &quot;reason&quot; for the error
 (i.e. the exception thrown or the promise reject value) will be passed
 to that error state as its <code>model</code>.</p>
 
+<p>如果之上任意一个被找到，路由将立即过渡到该子状态（不更新URL），错误的“原因”（例如抛出的异常或拒绝的承诺）会作为<code>model</code>传递给<code>error</code>子状态。</p>
+
 <p>If no viable error substates can be found, an error message will be
 logged.</p>
+
+<p>如果没有找到可以访问的<code>error</code>子状态，那么一条错误消息会在控制台中输出。</p>
 
 <p>The only way in which <code>loading</code>/<code>error</code> substate resolution differs is
 that <code>error</code> events will continue to bubble above a transition&#39;s pivot
 route.</p>
-<h2 class='anchorable-toc' id='toc_legacy-code-loadingroute-code'>Legacy <code>LoadingRoute</code></h2>
+
+<p><code>loading</code>/<code>error</code>子状态处理的唯一区别是，<code>error</code>从过渡的中心路由开始向上冒泡。</p>
+<h2 class='anchorable-toc' id='toc_legacy-code-loadingroute-code'>Legacy <code>LoadingRoute</code></h2><h2 class='anchorable-toc' id='toc_code-loadingroute-code'>遗留的<code>LoadingRoute</code></h2>
 <p>Previous versions of Ember (somewhat inadvertently) allowed you to define a global <code>LoadingRoute</code>
 which would be activated whenever a slow promise was encountered during
 a transition and exited upon completion of the transition. Because the
@@ -779,6 +825,8 @@ outlet, it could be used for little more than displaying a loading
 spinner during slow transitions. Loading events/substates give you far
 more control, but if you&#39;d like to emulate something similar to legacy
 <code>LoadingRoute</code> behavior, you could do as follows:</p>
+
+<p>之前的Ember版本（有些不慎）支持通过定义一个全局的<code>LoadingRoute</code>，该路由将在过渡遇到一个较慢的承诺或者完全退出一个过渡时被激活。因为<code>loading</code>模板作为顶层的视图来渲染，并没有放入到一个插口中，那么在这里处理可以显示一个加载中的指示器外几乎不能做其他的事情。与此相比较，<code>loading</code>事件/子状态提供了更强的控制力，如果希望模拟与遗留的<code>LoadingRoute</code>类似的行为，可以按照如下的例子来实现：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -815,6 +863,8 @@ more control, but if you&#39;d like to emulate something similar to legacy
 <p>This will, like legacy <code>LoadingRoute</code>, append a top-level view when the
 router goes into a loading state, and tear down the view once the
 transition finishes.</p>
+
+<p>上例实现了一个与<code>LoadingRoute</code>类型的行为，当路由进入一个<code>loading</code>状态时，在顶层添加了一个视图，并在完成过渡时删除加入的视图。</p>
 
     
       <footer>
