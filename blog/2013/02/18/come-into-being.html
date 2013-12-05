@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - EmberJS.CN之诞生</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+  </head>
+
+  <body class="blog blog_2013 blog_2013_02 blog_2013_02_18 blog_2013_02_18_come-into-being">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li class="active"><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          <ol id='toc-list'>
+  
+    <li class='level-1'>
+      <a href="/blog/tags/recent-posts.html">最近文章</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/12/05/finish-translations.html">完成Ember指南中文翻译</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">Windows下Ember应用开发环境搭建</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/31/ember-baby-steps.html">Ember入门实践</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html">Emberjs.cn域名正式启用</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/19/why-discourse-uses-ember.html">为什么Discourse选择Ember.JS</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/18/come-into-being.html">EmberJS.CN之诞生</a></li>
+        
+      </ol>
+    </li>
+  
+  
+    <li class='level-1'>
+      <a href="/blog/tags/weekly.html">Ember.js周报</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/06/14/ember-js-weekly.html">第七期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/30/ember-js-weekly.html">第六期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/24/ember-js-weekly.html">第五期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/17/ember-js-weekly.html">第四期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/09/ember-js-weekly.html">第三期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a></li>
+        
+      </ol>
+    </li>
+  
+</ol>
+
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          <article class="blog-post">
+    <h1>EmberJS.CN之诞生</h1>
+    
+      <h3 class="blog-post-author">作者： Tower He &ndash; <time>Feb 18, 2013</time></h3>
+    
+
+    <hr>
+
+    <p><a href="http://emberjs.com">Ember JS</a> RC
+1在2013-02-15发布了。关注和使用EmberJS已经一年有余了，鉴于其API一直没有稳定，所以一直没有在正式的项目中采用。根据 <a href="http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/">http://emberjs.com/blog/2013/01/18/this-week-in-ember-js-4/</a> 中的描述：</p>
+
+<blockquote>
+<p>When we release the first RC, we will no longer make changes that
+affect any part of the documented API–again–unless such a change is
+necessary to address a critical bug.</p>
+</blockquote>
+
+<p>RC 1的发布标志着Ember
+JS到了一个重要的里程碑，API冻结了，也就是说已经是时候为EmberJS做点什么了。很早以前便注册了emberjs.cn（由于最开始的时候EmberJS定名为AmberJS，所以最开始的时候注册的是amberjs.cn，后来改名为EmberJS，马上就注册了这个域名），现在准备启用该域名，做一个资源分享与学习型网站。</p>
+
+<p>emberjs.cn的构建计划为：</p>
+
+<ol>
+<li>翻译emberjs官方网站的Guides和API；</li>
+<li>收集、编写、提供emberjs相关的文章和资源；</li>
+<li>搭建emberjs中文交流社区。</li>
+</ol>
+
+<p>注：emberjs.cn目前的界面完全基于 <a href="https://github.com/emberjs/website">https://github.com/emberjs/website</a>
+来构建。</p>
+
+
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberjs-cn'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript><a href="http://disqus.com/?ref_noscript">基于Disqus的评论需要启用Javascript</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">博客评论基于<span class="logo-disqus">Disqus</span></a>
+  </article>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 路由: 加载中/错误子状态</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
+  
+  </head>
+
+  <body class="guides guides_routing guides_routing_loading-and-error-substates guides_routing_loading-and-error-substates_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/routing">路由</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+        <h1>加载中/错误子状态 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/routing/loading-and-error-substates.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <hr>
+    <p>英文原文: <a href="http://emberjs.com/guides/routing/loading-and-error-substates/">http://emberjs.com/guides/routing/loading-and-error-substates/</a></p>
+
+<p>除了<a href="/guides/routing/asynchronous-routing/">异步路由指南</a>中描述的技术外，Ember路由还提供了通过使用<code>error</code>和<code>loading</code>子状态，来实现自定义路由间的异步过渡。</p>
+<h2 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>子状态</h2>
+<p>考虑下面的情形：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">articles</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// -&gt; ArticlesRoute</span>
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">overview</span><span class="delimiter">'</span></span>);              <span class="comment">// -&gt; ArticlesOverviewRoute</span>
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果导航到<code>articles/overview</code>，并且在<code>ArticlesRoute#model</code>中，返回了一个AJAX查询承诺，来加载需要花费较长时间才能完成加载的文章集合。在这其间，UI并不会有任何关于在做什么的实际性反馈；如果通过页面刷新进入到该页面，UI将会一直是空的，因为这时还没有完成进入路由，也没有显示任何模板；如果是从其他的路由进入<code>articles/overview</code>，那么会一直停留在之前路由渲染的模板，直到所有文章加载完成，这个时候<code>articles/overview</code>的所有模板才会被渲染，才可见。</p>
+
+<p>那么，在这个过渡的过程中该如何添加一些反馈信息呢？</p>
+<h3 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>事件</h3>
+<p>在深入讨论加载中子状态之前，理解<code>loading</code>事件的行为非常重要。</p>
+
+<p>Ember路由允许通过<code>beforeModel</code>/<code>model</code>/<code>afterModel</code>各种钩子在一个过渡的过程中返回承诺（<a href="/guides/routing/asynchronous-routing">详细介绍</a>）。这些承诺在其被履行前会将过渡暂停。如果在其中一个钩子中返回了承诺，并且这个承诺没有理解解决，那么<code>loading</code>事件就会在该路由被触发，并且一直向上冒泡到<code>ApplicationRoute</code>。例如：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// -&gt; FooRoute</span>
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">slowModel</span><span class="delimiter">'</span></span>);        <span class="comment">// -&gt; FooSlowModelRoute</span>
+  });
+});
+
+App.FooSlowModelRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> somePromiseThatTakesAWhileToResolve();
+  },
+  <span class="key">actions</span>: {
+    <span class="function">loading</span>: <span class="keyword">function</span>(transition, originRoute) {
+      <span class="comment">// displayLoadingSpinner();</span>
+
+      <span class="comment">// Return true to bubble this event to `FooRoute`</span>
+      <span class="comment">// or `ApplicationRoute`.</span>
+      <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果<code>FooSlowModelRoute</code>返回了一个较慢的承诺，那么<code>loading</code>事件就会在<code>FooRoute</code>上被触发（而不是<code>FooSlowModelRoute</code>上）。</p>
+<h3 class='anchorable-toc' id='toc_code-loading-code'><code>loading</code>事件的缺省实现</h3>
+<p>之前已经介绍了可以使用一种层次化的结构来配置<code>loading</code>行为。此外，Ember还提供了一种实现了如下所示的缺省的<code>loading</code>处理器。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {   <span class="comment">// -&gt; FooRoute</span>
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">bar</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// -&gt; BarRoute</span>
+      <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">baz</span><span class="delimiter">'</span></span>);              <span class="comment">// -&gt; BarBazRoute</span>
+    });
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果<code>foo.bar.baz</code>路由返回了一个不会立即履行的承诺，Ember会在<code>foo.bar.baz</code>的层次结构中查找可以过渡的<code>loading</code>路由，查找路径为：</p>
+
+<ol>
+<li><code>foo.bar.loading</code></li>
+<li><code>foo.loading</code></li>
+<li><code>loading</code></li>
+</ol>
+
+<p>Ember会在上述的<code>loading</code>路由地址找一个路由，a) 该路由可能是如下所示定义的一个路由的子类：</p>
+
+<ol>
+<li><code>App.BarLoadingRoute</code></li>
+<li><code>App.FooLoadingRoute</code></li>
+<li><code>App.LoadingRoute</code></li>
+</ol>
+
+<p>b) 又或者是一个按照一定规则进行命名的<code>loading</code>模板：</p>
+
+<ol>
+<li><code>bar/loading</code></li>
+<li><code>foo/loading</code></li>
+<li><code>loading</code></li>
+</ol>
+
+<p>在一个较慢的异步过渡过程中，如果存在<code>loading</code>子状态/路由，Ember会先过渡到第一个找到的。这个到<code>loading</code>子状态的中间状态的过渡会立即发生（同步的），URL也不会发生改变。与其他在当另一个异步过渡活动时发生的过渡不同，该情况下的活动异步过渡不会被取消。</p>
+
+<p>当进入一个<code>loading</code>子状态过渡后，对应该子状态的模板如果存在的话，会被渲染到父路由的主插口（outlet），例如<code>foo.bar.loading</code>模板会被渲染到<code>foo.bar</code>的插口中。（<code>loading</code>路由并不是特例，所有路由都是按照这种方式工作的。）</p>
+
+<p>当<code>foo.bar.baz</code>主异步过渡完成时，会退出<code>loading</code>子状态，渲染的模板也会被移除，并进入<code>foo.bar.baz</code>，渲染其模板。</p>
+<h3 class='anchorable-toc' id='toc_vs'>渴望型 VS 延迟型异步过渡</h3>
+<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。</p>
+
+<p>这里也暗含了一个错误处理，例如，当过渡到一个路由失败时，延迟过渡（默认）会依然停留在原路由，而一个渴望过渡早就离开了之前的状态路由进入到<code>loading</code>子状态中了。</p>
+<h2 class='anchorable-toc' id='toc_code-error-code'><code>error</code>子状态</h2>
+<p>Ember为过渡提供了一种与<code>loading</code>事件/子状态类似的错误处理方法。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">articles</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// -&gt; ArticlesRoute</span>
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">overview</span><span class="delimiter">'</span></span>);              <span class="comment">// -&gt; ArticlesOverviewRoute</span>
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果<code>ArticlesOverviewRoute</code>返回一个被拒绝的承诺（可能因为服务器端返回一个错误，又或者时用户没有登录等等），一个<code>error</code>事件将在<code>ArticlesOverviewRoute</code>被触发，并向上冒泡。可以使用这个<code>error</code>事件来处理并显示一个错误消息，例如重定向到登录页面等。与<code>loading</code>事件处理器实现类似，缺省的<code>error</code>事件处理器也会进入一个子状态来完成处理。</p>
+
+<p>例如，在<code>ArticlesOverviewRoute#model</code>（或<code>beforeModel</code>、<code>afterModel</code>）中抛出了一个异常或者返回了一个被拒绝的承诺，那么会按照以下方式进行查找错误处理：</p>
+
+<ol>
+<li><code>ArticlesErrorRoute</code>路由或者<code>articles/error</code>模板</li>
+<li><code>ErrorRoute</code>路由或者<code>error</code>模板</li>
+</ol>
+
+<p>如果之上任意一个被找到，路由将立即过渡到该子状态（不更新URL），错误的“原因”（例如抛出的异常或拒绝的承诺）会作为<code>model</code>传递给<code>error</code>子状态。</p>
+
+<p>如果没有找到可以访问的<code>error</code>子状态，那么一条错误消息会在控制台中输出。</p>
+
+<p><code>loading</code>/<code>error</code>子状态处理的唯一区别是，<code>error</code>从过渡的中心路由开始向上冒泡。</p>
+<h2 class='anchorable-toc' id='toc_code-loadingroute-code'>遗留的<code>LoadingRoute</code></h2>
+<p>之前的Ember版本（有些不慎）支持通过定义一个全局的<code>LoadingRoute</code>，该路由将在过渡遇到一个较慢的承诺或者完全退出一个过渡时被激活。因为<code>loading</code>模板作为顶层的视图来渲染，并没有放入到一个插口中，那么在这里处理可以显示一个加载中的指示器外几乎不能做其他的事情。与此相比较，<code>loading</code>事件/子状态提供了更强的控制力，如果希望模拟与遗留的<code>LoadingRoute</code>类似的行为，可以按照如下的例子来实现：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>App.ApplicationRoute = Ember.Route.extend({
+  <span class="key">actions</span>: {
+    <span class="function">loading</span>: <span class="keyword">function</span>() {
+      <span class="keyword">var</span> view = Ember.View.create({
+        <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>,
+        <span class="key">elementId</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>
+      }).append();
+
+      <span class="local-variable">this</span>.router.one(<span class="string"><span class="delimiter">'</span><span class="content">didTransition</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+        view.destroy();
+      });
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>上例实现了一个与<code>LoadingRoute</code>类型的行为，当路由进入一个<code>loading</code>状态时，在顶层添加了一个视图，并在完成过渡时删除加入的视图。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/routing/asynchronous-routing">
+            ← 异步路由
+          </a>
+         
+        <a class="next-guide" href="/guides/routing/preventing-and-retrying-transitions">
+          阻止和重试过渡 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

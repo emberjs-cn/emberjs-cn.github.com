@@ -1,0 +1,1629 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 视图层</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_understanding-ember bilingual_guides_understanding-ember_the-view-layer bilingual_guides_understanding-ember_the-view-layer_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol class='selected'>
+        
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  <div class="chapter">
+    
+        <h1>视图层 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/understanding-ember/the-view-layer.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <p>英文原文：<a href="http://emberjs.com/guides/understanding-ember/the-view-layer/">http://emberjs.com/guides/understanding-ember/the-view-layer/</a></p>
+<h2 class='anchorable-toc' id='toc_the-ember-js-view-layer'>The Ember.js View Layer</h2><h2 class='anchorable-toc' id='toc_ember-js'>Ember.js视图层</h2>
+<p>This guide goes into extreme detail about the Ember.js view layer. It is
+intended for an experienced Ember developer, and includes details that
+are unnecessary for getting started with Ember.</p>
+
+<p>本文内容是针对有经验的Ember开发者而写，将深入讲解Ember.js的视图层，其中包括了一些非入门级的细节。</p>
+
+<p>Ember.js has a sophisticated system for creating, managing and rendering a hierarchy of views that connect to the browser&#39;s DOM. Views are responsible for responding to user events, like clicks, drags, and scrolls, as well as updating the contents of the DOM when the data underlying the view changes.</p>
+
+<p>Ember.js拥有一个精心设计的用于创建、管理和渲染与浏览器的DOM连接在一起的具有层级的视图的系统。视图负责对用户输入做出响应，例如点击、拖动和滚动，还包括在视图底层数据发生改变时自动更新DOM的内容。</p>
+
+<p>View hierarchies are usually created by evaluating a Handlebars template. As the template is evaluated, child views are added. As the templates for <em>those</em> child views are evaluated, they may have child views added, and so on, until an entire hierarchy is created.</p>
+
+<p>视图层级通常通过评估Handlebars模板来创建。子视图在评估模板的时候被添加。当这些子视图的模板被评估的时候，它们的子视图又被添加进来，如此反复，直到整个层级被创建出来。</p>
+
+<p>Even if you do not explicitly create child views from your Handlebars templates, Ember.js internally uses the view system to update bound values. For example, every Handlebars expression <code>{{value}}</code> creates a view behind-the-scenes that knows how to update the bound value if it changes.</p>
+
+<p>即使没有显式的在Handlebars模板中创建子视图，Ember.js内部也会使用视图系统来更新绑定的值。例如，每个Handlebars表达式<code>{{value}}</code>会创建一个知道如何在其值改变的时候进行更新的视图。</p>
+
+<p>You can also dynamically make changes to the view hierarchy at application runtime using the <code>Ember.ContainerView</code> class. Rather than being template-driven, a container view exposes an array of child view instances that can be manually managed.</p>
+
+<p>使用<code>Ember.ContainerView</code>，可以在应用的运行期动态的改变视图的层级。与模板驱动不同，一个容器视图暴露了一组可以手动管理的子视图实例。</p>
+
+<p>Views and templates work in tandem to provide a robust system for creating whatever user interface you dream up. End users should be isolated from the complexities of things like timing issues while rendering and event propagation. Application developers should be able to describe their UI once, as a string of Handlebars markup, and then carry on with their application without having to worry about making sure that it remains up-to-date.</p>
+
+<p>视图和模板联合提供了一个健壮的，可以创建任意梦寐以求的用户界面的系统。终端用户应该与诸如渲染和事件传播此类的复杂性隔离开来。应用开发者应该能一次性描述他们的UI，例如一串Handlebars标签，然后继续其应用而无需关心UI是否保持更新。</p>
+<h3 class='anchorable-toc' id='toc_what-problems-does-it-solve'>What problems does it solve?</h3><h3 class='anchorable-toc' id='toc_'>解决了什么问题？</h3><h4 class='anchorable-toc' id='toc_child-views'>Child Views</h4><h4 class='anchorable-toc' id='toc_'>子视图</h4>
+<p>In a typical client-side application, views may represent elements nested inside of each other in the DOM. In the naïve solution to this problem, separate view objects represent each DOM element, and ad-hoc references help the various view object keep track of the views conceptually nested inside of them.</p>
+
+<p>在一个典型的客户端应用中，视图可以表示DOM中互相嵌套的元素。本问题的一个最简单解决方案是分离表示每个DOM元素的视图对象，特定的引用可以帮助视图对象跟踪那些概念上嵌套在其中的视图。</p>
+
+<p>Here is a simple example, representing one main app view, a collection nested inside of it, and individual items nested inside of the collection.</p>
+
+<p>下面是一个简单的示例，代表了一个应用的主视图，一个集合嵌套在其中，并且在集合中嵌套了各自独立的元素。</p>
+
+<figure>
+  <img src="/images/view-guide/view-hierarchy-simple.png">
+</figure>
+
+<p>This system works well at first glance, but imagine that we want to open Joe&#39;s Lamprey Shack at 8am instead of 9am. In this situation, we will want to re-render the App View. Because the developer needed to build up the references to the children on an ad-hoc basis, this re-rendering process has several problems.</p>
+
+<p>乍一看，这个系统似乎工作的非常好，但想像一下如果希望打开乔上午8点的Lamprey Shack取代9点的会发生什么。在这样的情况下，应用的视图需要重新新渲染，因为开发者需要构建基于一个特定基础的指向子视图的引用，而这个重新渲染的过程有许多问题。</p>
+
+<p>In order to re-render the App View, the App View must also manually re-render the child views and re-insert them into App View&#39;s element. If implemented perfectly, this process works well, but it relies upon a perfect, ad hoc implementation of a view hierarchy. If any single view fails to implement this precisely, the entire re-render will fail.</p>
+
+<p>为了重新渲染应用视图，应用视图必须手动的重新渲染子视图，并将子视图插入应用视图元素中去。如果实现的非常完美的话，重现渲染能工作的非常好，但是这个基于一个完美的、特定的视图层级的实现。如果任何一个视图没有实现的那么好，整个重现渲染将失败。</p>
+
+<p>In order to avoid these problems, Ember&#39;s view hierarchy has the concept of child views baked in.</p>
+
+<p>为了避免这些问题，Ember的视图层次一开始就烙下了子视图的概率。</p>
+
+<figure>
+  <img src="/images/view-guide/view-hierarchy-ember.png">
+</figure>
+
+<p>When the App View re-renders, Ember is responsible for re-rendering and inserting the child views, not application code. This also means that Ember can perform any memory management for you, such as cleaning up observers and bindings.</p>
+
+<p>当应用视图重新渲染的时候，Ember复杂重新渲染和插入子视图，而非应用代码。这意味着Ember可以执行内存管理，比如清除观察器和绑定。</p>
+
+<p>Not only does this eliminate quite a bit of boilerplate code, but it eliminates the possibility that an imperfectly implemented view hierarchy will cause unexpected failures.</p>
+
+<p>这不仅消除了很多样板代码，而且也消除了没有实现的那么完美的视图层次在重新渲染时出现意想不到的错误的情况。</p>
+<h4 class='anchorable-toc' id='toc_event-delegation'>Event Delegation</h4><h4 class='anchorable-toc' id='toc_'>事件委派</h4>
+<p>In the past, web developers have added event listeners to individual elements in order to know when the user interacts with them. For example, you might have a <code>&lt;div&gt;</code> element on which you register a function that gets called when the user clicks it.</p>
+
+<p>以前Web开发者为了知道用户与每个元素的交互，会在元素上添加事件监听器。例如，在一个<code>&lt;div&gt;</code>元素上注册一个函数，这个函数可以在用户点击<code>&lt;div&gt;</code>元素的时候被调用。</p>
+
+<p>However, this approach often does not scale when dealing with large numbers of interactive elements. For example, imagine a <code>&lt;ul&gt;</code> with 100 <code>&lt;li&gt;</code>s in it, with a delete button next to each item. Since the behavior is the same for all of these items, it would be inefficient to create 100 event listeners, one for each delete button.</p>
+
+<p>然而，当处理大量的交互元素的时候，这种方案往往不能扩展。例如，假设有一个<code>&lt;ul&gt;</code>元素，其包含了100个<code>&lt;li&gt;</code>在其中，每个元素都有一个删除按钮。由于对于这些元素来说都具有相同的行为，为每个删除按钮添加一个事件监听器这显然效率很低。</p>
+
+<figure>
+  <img src="/images/view-guide/undelegated.png">
+</figure>
+
+<p>To solve this problem, developers discovered a technique called &quot;event delegation&quot;. Instead of registering a listener on each element in question, you can register a single listener for the containing element and use <code>event.target</code> to identify which element the user clicked on.</p>
+
+<p>为了解决这个问题，开发者发现了一个被称为“事件委派”的技术。这种技术只在容器元素上注册一个监听器，然后使用<code>event.target</code>来判断是哪一个具体的元素被用户点击了，而不用为每一个元素添加一个监听器。</p>
+
+<figure>
+  <img src="/images/view-guide/delegated.png">
+</figure>
+
+<p>Implementing this is a bit tricky, because some events (like <code>focus</code>, <code>blur</code> and <code>change</code>) don&#39;t bubble. Fortunately, jQuery has solved this problem thoroughly; using jQuery&#39;s <code>on</code> method reliably works for all native browser events.</p>
+
+<p>这样实现依然存在一些问题，因为有些事件（例如<code>focus</code>、<code>blur</code>和<code>change</code>）并不会冒泡。幸远的是，jQuery完全地解决了这个问题，jQuery的<code>on</code>方法支持所有的本地浏览器事件。</p>
+
+<p>Other JavaScript frameworks tackle this problem in one of two ways. In the first approach, they ask you to implement the naïve solution yourself, creating a separate view for each element. When you create the view, it sets up an event listener on the view&#39;s element. If you had a list of 500 items, you would create 500 views and each would set up a listener on its own element.</p>
+
+<p>其他的Javascript框架处理该问题通常有两种方法。第一种，需要自己实现一个简单的解决方案，即为每个元素创建一个独立的视图。当创建视图时，会给每个视图元素添加一个事件监听器。如果一个列表包含500个元素，那么需要创建500个视图，并且每个视图将在其元素上绑定一个监听器。</p>
+
+<p>In the second approach, the framework builds in event delegation at the view level. When creating a view, you can supply a list of events to delegate and a method to call when the event occurs. This leaves identifying the context of the click (for example, which item in the list) to the method receiving the event.</p>
+
+<p>而第二种方法是，框架在视图层内置了事件委派机制。当创建一个视图时，可以提供一个需要委派的事件列表，及一个在事件发生时会被调用的方法。这样只需要识别接收到点击事件方法的上下文（例如列表中哪个元素被点击）。</p>
+
+<p>You are now faced with an uncomfortable choice: create a new view for each item and lose the benefits of event delegation, or create a single view for all of the items and have to store information about the underlying JavaScript object in the DOM.</p>
+
+<p>现在面临一个让人感觉不爽的选择：是放弃事件委派的好处，为每一个元素创建一个视图，还是为所有元素创建一个视图，但保存一堆DOM中的Javascript对象呢？</p>
+
+<p>In order to solve this problem, Ember delegates all events to the application&#39;s root element (usually the document <code>body</code>) using jQuery. When an event occurs, Ember identifies the nearest view that handles the event and invokes its event handler. This means that you can create views to hold a JavaScript context, but still get the benefit of event delegation.</p>
+
+<p>为了解决这个问题，Ember使用jQuery将所有事件委派给应用的根元素（通常是文档的<code>body</code>）。当一个事件发生时，Ember识别出能够处理该事件的最近的视图，并调用其事件处理方法。这就意味着可以创建视图来保持Javascript上下文，并能享受使用事件委派的好处。</p>
+
+<p>Further, because Ember registers only one event for the entire Ember application, creating new views never requires setting up event listeners, making re-renders efficient and less error-prone. When a view has child views, this also means that there is no need to manually undelegate views that the re-render process replaces.</p>
+
+<p>另外，因为Ember在整个Ember应用中只注册了一个事件，这样创建新视图时不需要设置事件监听器，这样不仅使重新渲染高效，而且不易出错。当一个视图有子视图时，也不需要手动解除重新渲染过程替换的视图的委托。</p>
+<h4 class='anchorable-toc' id='toc_the-rendering-pipeline'>The Rendering Pipeline</h4><h4 class='anchorable-toc' id='toc_'>渲染管道</h4>
+<p>Most web applications specify their user interface using the markup of a particular templating language. For Ember.js, we&#39;ve done the work to make templates written using the Handlebars templating language automatically update when the values used inside of them are changed.</p>
+
+<p>大部分Web应用使用一种特定的模板语言标记来指定其用户界面。对于Ember.js，采用Handlebars模板语言来编写模板，当模板中使用的值发生改变的时候可以自动更新。</p>
+
+<p>While the process of displaying a template is automatic for developers, under the hood there are a series of steps that must be taken to go from the original template to the final, live DOM representation that the user sees.</p>
+
+<p>虽然显示模板的过程对于开发者来说是自动的，但是实际上这个过程包含了从原始模板到最终的、用户见到的DOM表示一系列必备的步骤。</p>
+
+<p>This is the approximate lifecycle of an Ember view:</p>
+
+<p>下面是一个Ember视图近似的生命周期：</p>
+
+<figure>
+  <img src="/images/view-guide/view-lifecycle-ember.png">
+</figure>
+<h5 class='anchorable-toc' id='toc_1-template-compilation'>1. Template Compilation</h5><h5 class='anchorable-toc' id='toc_1'>1. 模板编译</h5>
+<p>The application&#39;s templates are loaded over the network or as part of the application payload in string form. When the application loads, it sends the template string to Handlebars to be compiled into a function. Once compiled, the template function is saved, and can be used by multiple views repeatedly, each time they need to re-render.</p>
+
+<p>应用的模板通常是以字符串形式通过网络加载，或者随着应用加载的过程一同加载。当应用加载时，应用将模板字符串发送给Handlebars，将其编译成一个函数。一旦编译完成，这个模板函数就被保存起来，并且可以被多个视图每次需要重新渲染的时候重复使用。</p>
+
+<p>This step may be omitted in applications where the templates are pre-compiled on the server. In those cases, the template is transferred not as the original, human-readable template string but as the compiled code.</p>
+
+<p>如果模板在服务端进行预编译，那么这个步骤也可以在应用中省略。在这样的情况下，模板不在作为初始的、可读的模板字符串被传输，而是编译后的代码。</p>
+
+<p>Because Ember is responsible for template compilation, you don&#39;t have to do any additional work to ensure that compiled templates are reused.</p>
+
+<p>因为Ember负责了模板编译，因此不需要为确保编译后的模板可重用而做一些附加的工作。</p>
+<h5 class='anchorable-toc' id='toc_2-string-concatenation'>2. String Concatenation</h5><h5 class='anchorable-toc' id='toc_2'>2. 字符串连接</h5>
+<p>A view&#39;s rendering process is kickstarted when the application calls <code>append</code> or <code>appendTo</code> on the view. Calling <code>append</code> or <code>appendTo</code> <strong>schedules</strong> the view to be rendered and inserted later. This allows any deferred logic in your application (such as binding synchronization) to happen before rendering the element.</p>
+
+<p>当应用调用视图的<code>append</code>或者<code>appendTo</code>方法时，启动了视图的渲染过程。调用<code>append</code>或者<code>appendTo</code>相当于将视图渲染和插入操作排入了计划中。这样允许在渲染前处理其他的应用中的延迟逻辑（如绑定同步）。</p>
+
+<p>To begin the rendering process, Ember creates a <code>RenderBuffer</code> and gives it to the view to append its contents to. During this process, a view can create and render child views. When it does so, the parent view creates and assigns a <code>RenderBuffer</code> for the child, and links it to the parent&#39;s <code>RenderBuffer</code>.</p>
+
+<p>在开始渲染过程时，Ember创建了一个<code>RenderBuffer</code>，视图可以将其内容追加到其中。在渲染的过程中，一个视图可以创建和渲染子视图。这时父视图创建一个<code>RenderBuffer</code>并赋给子视图，这个新创建的<code>RenderBuffer</code>与父的<code>RenderBuffer</code>相连。</p>
+
+<p>Ember flushes the binding synchronization queue before rendering each view. By syncing bindings before rendering each view, Ember guarantees that it will not render stale data it needs to replace right away.</p>
+
+<p>Ember在渲染每个视图前进行绑定同步。通过在渲染视图前同步绑定，Ember确保不会渲染那些已经过期需要立刻替换的数据。</p>
+
+<p>Once the main view has finished rendering, the render process has created a tree of views (the &quot;view hierarchy&quot;), linked to a tree of buffers. By walking down the tree of buffers and converting them into Strings, we have a String that we can insert into the DOM.</p>
+
+<p>当主视图完成渲染时，整个渲染过程创建了一个与缓存树关联的视图树（视图层级）。通过遍历缓存树，将其转换为字符串，就得到了可以插入到DOM中的字符串。</p>
+
+<p>Here is a simple example:</p>
+
+<p>下面是一个简单的示例：</p>
+
+<figure>
+  <img src="/images/view-guide/render-buffer.png">
+</figure>
+
+<p>In addition to children (Strings and other <code>RenderBuffer</code>s), a <code>RenderBuffer</code> also encapsulates the element&#39;s tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using <code>bind-attr</code>), this makes the process robust and transparent.</p>
+
+<p>除了子视图之外（字符串或其他<code>RenderBuffer</code>），一个<code>RenderBuffer</code>还封装了元素的标签名、id、类、样式和其他属性。这使得渲染过程中可以修改这些属性（比如样式），哪怕在其子字符串被渲染后。由于这些属性都通过绑定来控制（例如使用<code>bind-attr</code>），因此整个过程非常稳定且透明。</p>
+<h5 class='anchorable-toc' id='toc_3-element-creation-and-insertion'>3. Element Creation and Insertion</h5><h5 class='anchorable-toc' id='toc_3'>3. 元素创建与插入</h5>
+<p>At the end of the rendering process, the root view asks the <code>RenderBuffer</code> for its element. The <code>RenderBuffer</code> takes its completed string and uses jQuery to convert it into an element. The view assigns that element to its <code>element</code> property and places it into the correct place in the DOM (the location specified in <code>appendTo</code> or the application&#39;s root element if the application used <code>append</code>).</p>
+
+<p>在渲染过程的最后阶段，根视图向<code>RenderBuffer</code>请求它的元素。这时<code>RenderBuffer</code>将完整的字符串使用jQuery转换成一个元素。根视图将这个元素赋给它的<code>element</code>属性，将其放置到DOM中正确的位置（<code>appendTo</code>指定的位置，如果应用使用<code>append</code>则是应用的根元素）。</p>
+
+<p>While the parent view assigns its element directly, each child views looks up its element lazily. It does this by looking for an element whose <code>id</code> matches its <code>elementId</code> property. Unless explicitly provided, the rendering process generates an <code>elementId</code> property and assigns its value to the view&#39;s <code>RenderBuffer</code>, which allows the view to find its element as needed.</p>
+
+<p>虽然父视图直接为元素赋值，但是子视图则是延迟查找其元素的。子视图通过查找<code>id</code>与其<code>elementId</code>属性匹配的元素来完成对元素的赋值。除非显示的提供了<code>elementId</code>，否则渲染过程会生成<code>elementId</code>属性，并将该值赋给视图的<code>RenderBuffer</code>，这样视图就可以通过该属性来查找其元素。</p>
+<h5 class='anchorable-toc' id='toc_4-re-rendering'>4. Re-Rendering</h5><h5 class='anchorable-toc' id='toc_4'>4. 重新渲染</h5>
+<p>After the view inserts itself into the DOM, either Ember or the application may want to re-render the view. They can trigger a re-render by calling the <code>rerender</code> method on a view.</p>
+
+<p>在视图加入到DOM中之后，Ember和应用本身都可能想要重新渲染视图。这可以通过调用视图的<code>rerender</code>方法来触发重新渲染。</p>
+
+<p>Rerendering will repeat steps 2 and 3 above, with two exceptions:</p>
+
+<p>重新渲染将重复上述的第二和第三两个步骤，但存在两处不同：</p>
+
+<ul>
+<li>Instead of inserting the element into an explicitly specified location, <code>rerender</code> replaces the existing element with the new element.</li>
+<li><p>In addition to rendering a new element, it also removes the old element and destroys its children. This allows Ember to automatically handle unregistering appropriate bindings and observers when re-rendering a view. This makes observers on a path more viable, because the process of registering and unregistering all of the nested observers is automatic.</p></li>
+<li><p>与将元素插入到一个显式声明的特定地方不同，<code>rerender</code>将用一个新的元素替换已经存在的元素。</p></li>
+<li><p>在渲染一个新的元素之外，将移除老的元素，并销毁其所有的子元素。这样Ember就可以在重新渲染视图时，自动的处理注销适当的绑定和观察器。因为注册和注销所有嵌套的观察器的过程都是自动的，这也使得观察器观察一个路径更为可行。</p></li>
+</ul>
+
+<p>The most common cause of a view re-render is when the value bound to a Handlebars expression (<code>{{foo}}</code>) changes. Internally, Ember creates a simple view for each expression, and registers an observer on the path. When the path changes, Ember updates the area of the DOM with the new value.</p>
+
+<p>最常见的导致视图重新渲染的情况是绑定到Handlebars表达式（<code>{{foo}}</code>）的值发生改变。在内部，Ember为每个表达式创建了一个简单的视图，并在路径上注册了一个观察器。当路径发生改变时，Ember就会用新的值去更新DOM对应的部分。</p>
+
+<p>Another common case is an <code>{{#if}}</code> or <code>{{#with}}</code> block. When rendering a template, Ember creates a virtual view for these block helpers. These virtual views do not appear in the publicly available view hierarchy (when getting <code>parentView</code> and <code>childViews</code> from a view), but they exist to enable consistent re-rendering.</p>
+
+<p>另外一个常见的情形是<code>{{#if}}</code>或<code>{{#with}}</code>块。当渲染一个模板时，Ember为这些块助手创建了一个虚拟的视图。这些虚拟的视图并不会在公共的可见的视图层级部分出现（当从一个视图中获取<code>parentView</code>和<code>childViews</code>时），但是它们的存在可以保证重新渲染的一致性。</p>
+
+<p>When the path passed to an <code>{{#if}}</code> or <code>{{#with}}</code> changes, Ember automatically re-renders the virtual view, which will replace its contents, and importantly, destroy all child views to free up their memory.</p>
+
+<p>当被传递到<code>{{#if}}</code>和<code>{{#with}}</code>的路径发生改变时，Ember自动的重新渲染虚拟视图，这将替换其内容，更为重要的是，这将销毁所有子视图来释放内存。</p>
+
+<p>In addition to these cases, the application may sometimes want to explicitly re-render a view (usually a <code>ContainerView</code>, see below). In this case, the application can call <code>rerender</code> directly, and Ember will queue up a re-rendering job, with the same semantics.</p>
+
+<p>在这些情形之外，应用有时也需要显式的重新渲染视图（通常是<code>ContainerView</code>，如下所示）。本例中，应用可以直接调用<code>rerender</code>，Ember会以相同的语义将重新渲染加入队列。</p>
+
+<p>The process looks something like:</p>
+
+<p>这个过程如下所示：</p>
+
+<figure>
+  <img src="/images/view-guide/re-render.png">
+</figure>
+<h3 class='anchorable-toc' id='toc_the-view-hierarchy'>The View Hierarchy</h3><h3 class='anchorable-toc' id='toc_'>视图层级</h3><h4 class='anchorable-toc' id='toc_parent-and-child-views'>Parent and Child Views</h4><h4 class='anchorable-toc' id='toc_'>父视图与子视图</h4>
+<p>As Ember renders a templated view, it will generate a view hierarchy. Let&#39;s assume we have a template <code>form</code>.</p>
+
+<p>当Ember渲染一个模板化的视图时，将生成一个视图层级。假设有一个<code>form</code>模板。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">App.Search</span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.Button</span><span class="inline-delimiter">}}</span></span>Go!<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>And we insert it into the DOM like this:</p>
+
+<p>并以如下方式加入到DOM中：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> view = Ember.View.create({
+  <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">form</span><span class="delimiter">'</span></span>
+}).append();
+</pre></td>
+</tr></table>
+</div></div>
+<p>This will create a small view hierarchy that looks like this:</p>
+
+<p>这将创建一个很小的视图层级，如下所示：</p>
+
+<figure>
+  <img src="/images/view-guide/simple-view-hierarchy.png">
+</figure>
+
+<p>You can move around in the view hierarchy using the <code>parentView</code> and <code>childViews</code> properties.</p>
+
+<p>通过<code>parentView</code>和<code>childViews</code>属性可以游弋在这个视图层级中。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> children = view.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>) <span class="comment">// [ &lt;App.Search&gt;, &lt;Ember.Button&gt; ]</span>
+children.objectAt(<span class="integer">0</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">parentView</span><span class="delimiter">'</span></span>) <span class="comment">// view</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>One common use of the <code>parentView</code> method is inside of an instance of a child view.</p>
+
+<p><code>parentView</code>的一个常见的使用场景就是在一个子视图的实例中。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Search = Ember.View.extend({
+  <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
+    <span class="comment">// this.get('parentView') in here references `view`</span>
+  }
+})
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_lifecycle-hooks'>Lifecycle Hooks</h4><h4 class='anchorable-toc' id='toc_'>生命周期钩子</h4>
+<p>In order to make it easy to take action at different points during your view&#39;s lifecycle, there are several hooks you can implement.</p>
+
+<p>为了在视图的生命周期中的不同点更加容易的执行操作，Ember提供了许多有用的钩子。</p>
+
+<ul>
+<li><code>willInsertElement</code>: This hook is called after the view has been rendered but before it has been inserted into the DOM. It does not provide access to the view&#39;s <code>element</code>.</li>
+<li><code>didInsertElement</code>: This hook is called immediately after the view has been inserted into the DOM. It provides access to the view&#39;s <code>element</code> and is most useful for integration with an external library. Any explicit DOM setup code should be limited to this hook.</li>
+<li><code>willDestroyElement</code>: This hook is called immediately before the element is removed from the DOM. This is your opportunity to tear down any external state associated with the DOM node. Like <code>didInsertElement</code>, it is most useful for integration with external libraries.</li>
+<li><code>willRerender</code>: This hook is called immediately before a view is re-rendered. This is useful if you want to perform some teardown immediately before a view is re-rendered.</li>
+<li><code>becameVisible</code>: This hook is called after a view&#39;s <code>isVisible</code> property, or one of its ancestor&#39;s <code>isVisible</code> property, changes to true and the associated element becomes visible. Note that this hook is only reliable if all visibility is routed through the <code>isVisible</code> property.</li>
+<li><p><code>becameHidden</code>: This hook is called after a view&#39;s <code>isVisible</code> property, or one of its ancestor&#39;s <code>isVisible</code> property, changes to false and the associated element becomes hidden. Note that this hook is only reliable if all visibility is routed through the <code>isVisible</code> property.</p></li>
+<li><p><code>willInsertElement</code>：本钩子在视图被渲染后，但还未插入到DOM中时被调用。它不访问视图的<code>element</code>。</p></li>
+<li><p><code>didInsertElement</code>：本钩子在视图一插入DOM后立即被调用。它可以访问视图的<code>element</code>，这在集成外部的库的时候尤为有用。任何显式的设置DOM代码都应该被限定在本钩子内。</p></li>
+<li><p><code>willDestroyElement</code>：本钩子在元素从DOM中移除之前调用。在此有机会来清理关联到DOM节点的一些外部状态。就像<code>didInsertElement</code>有助于集成外部库一般。</p></li>
+<li><p><code>willRerender</code>：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。</p></li>
+<li><p><code>becameVisible</code>：本钩子在视图的<code>isVisible</code>属性或者其某个父视图的<code>isVisible</code>属性变为真，且关联的元素变为可见之后调用。注意本钩子只适用于所有可见性都通过<code>isVisible</code>属性来控制的情况。</p></li>
+<li><p><code>becameHidden</code>：本钩子在视图的<code>isVisible</code>属性或者其某个父视图的<code>isVisible</code>属性变为假，且关联的元素变为不可见之后调用。注意本钩子只适用于所有可见性都通过<code>isVisible</code>属性来控制的情况。</p></li>
+</ul>
+
+<p>Apps can implement these hooks by defining a method by the hook&#39;s name on the view. Alternatively, it is possible to register a listener for the hook on a view:</p>
+
+<p>应用可以通过在视图中定义一个与钩子名称相同的方法来实现钩子。另外，也可以在视图上注册一个钩子的监听器：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>view.on(<span class="string"><span class="delimiter">'</span><span class="content">willRerender</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="comment">// do something with view</span>
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_virtual-views'>Virtual Views</h4><h4 class='anchorable-toc' id='toc_'>虚拟视图</h4>
+<p>As described above, Handlebars creates views in the view hierarchy to
+represent bound values. Every time you use a Handlebars expression,
+whether it&#39;s a simple value or a block helper like <code>{{#with}}</code> or
+<code>{{#if}}</code>, Handlebars creates a new view.</p>
+
+<p>如上所述，Handlebars通过创建视图在视图层级中表示绑定的值。每次使用Handlebars表达式时，无论是一个简单的值，还是一个如同<code>{{#with}}</code>或<code>{{#if}}</code>这样的块助手，Handlebars都会创建一个新视图。</p>
+
+<p>Because Ember uses these views for internal bookkeeping only,
+they are hidden from the view&#39;s public <code>parentView</code> and <code>childViews</code>
+API. The public view hierarchy reflects only views created using the
+<code>{{view}}</code> helper or through <code>ContainerView</code> (see below).</p>
+
+<p>由于在Ember中这些视图只用于内部记录，它们对于视图公开的<code>parentView</code>和<code>childViews</code>API都是不可见的。公开的视图层级只反映使用<code>{{view}}</code>助手或通过<code>ContainerView</code>（见下）创建的视图。</p>
+
+<p>For example, consider the following Handlebars template:</p>
+
+<p>例如，考虑如下的Handlebars模板：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;h1&gt;</span>Joe's Lamprey Shack<span class="tag">&lt;/h1&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">controller.restaurantHours</span><span class="inline-delimiter">}}</span></span>
+
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">App.FDAContactForm</span><span class="inline-delimiter">}}</span></span>
+  If you are experiencing discomfort from eating at Joe's Lamprey Shack,
+please use the form below to submit a complaint to the FDA.
+
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">controller.allowComplaints</span><span class="inline-delimiter">}}</span></span>
+    <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextArea</span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.complaint</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+    <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="attribute-name">submitComplaint</span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>Submit<span class="tag">&lt;/button&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Rendering this template would create a hierarchy like this:</p>
+
+<p>渲染这个模板将创建一个如下所示的层级：</p>
+
+<figure>
+  <img src="/images/view-guide/public-view-hierarchy.png">
+</figure>
+
+<p>Behind the scenes, Ember tracks additional virtual views for the
+Handlebars expressions:</p>
+
+<p>在本场景的背后，Ember跟踪Handlebars表达式附加的虚拟视图：</p>
+
+<figure>
+  <img src="/images/view-guide/virtual-view-hierarchy.png">
+</figure>
+
+<p>From inside of the <code>TextArea</code>, the <code>parentView</code> would point to the
+<code>FDAContactForm</code> and the <code>FDAContactForm</code>&#39;s <code>childViews</code> would be an
+array of the single <code>TextArea</code> view.</p>
+
+<p>从<code>TextArea</code>内部，<code>parentView</code>应该指向<code>FDAContactForm</code>，而<code>FDAContactForm</code>的<code>childViews</code>应该包含一个只有这个<code>TextArea</code>视图的数组。</p>
+
+<p>You can see the internal view hierarchy by asking for the <code>_parentView</code>
+or <code>_childViews</code>, which will include virtual views:</p>
+
+<p>通过询问包含虚拟视图的<code>_parentView</code>或<code>_childViews</code>可以查看视图层级的内部结构：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> _childViews = view.get(<span class="string"><span class="delimiter">'</span><span class="content">_childViews</span><span class="delimiter">'</span></span>);
+console.log(_childViews.objectAt(<span class="integer">0</span>).toString());
+<span class="comment">//&gt; &lt;Ember._HandlebarsBoundView:ember1234&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p><strong>Warning!</strong> You may not rely on these internal APIs in application code.
+They may change at any time and have no public contract. The return
+value may not be observable or bindable. It may not be an Ember object.
+If you feel the need to use them, please contact us so we can expose a better 
+public API for your use-case.</p>
+
+<p><strong>警告！</strong>
+不要在应用代码中依赖这些内部的API。这些API可能在不公开知会的情形下发生改变。返回的值也可以观察和绑定，也可以不是一个Ember对象。如果确实需要使用这些API，可以联系Ember.js开发团队，以便提供一个更加友好的针对这些应用场景的公共API。</p>
+
+<p>Bottom line: This API is like XML. If you think you have a use for it,
+you may not yet understand the problem enough. Reconsider!</p>
+
+<p>概要：这些API就如同XML。如果需要使用，那么可能没有正确的理解问题本身。请重新考虑一遍。</p>
+<h4 class='anchorable-toc' id='toc_event-bubbling'>Event Bubbling</h4><h4 class='anchorable-toc' id='toc_'>事件冒泡</h4>
+<p>One responsibility of views is to respond to primitive user events
+and translate them into events that have semantic meaning for your
+application.</p>
+
+<p>视图的一个重要责任是负责将用户的原生事件转换成在应用中代表特定语义的事件。</p>
+
+<p>For example, a delete button translates the primitive <code>click</code> event into
+the application-specific &quot;remove this item from an array.&quot;</p>
+
+<p>例如，一个删除按钮讲一个原生的<code>click</code>事件转换为应用级的特性“从数组中删除这个元素”。</p>
+
+<p>In order to respond to user events, create a new view subclass that
+implements that event as a method:</p>
+
+<p>为了响应用户事件，可以创建一个视图的子类，来将事件实现为一个方法：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.DeleteButton = Ember.View.create({
+  <span class="function">click</span>: <span class="keyword">function</span>(event) {
+    <span class="keyword">var</span> item = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller</span><span class="delimiter">'</span></span>).send(<span class="string"><span class="delimiter">'</span><span class="content">deleteItem</span><span class="delimiter">'</span></span>, item);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>When you create a new <code>Ember.Application</code> instance, it registers an event
+handler for each native browser event using jQuery&#39;s event delegation
+API. When the user triggers an event, the application&#39;s event dispatcher
+will find the view nearest to the event target that implements the
+event.</p>
+
+<p>当创建一个新的<code>Ember.Application</code>实例时，使用jQuery事件委派接口，为每个本地浏览器事件注册了一个事件处理器。当用户触发一个事件时，应用的事件分发器将找寻离事件的目标最近的，处理了该事件的视图。</p>
+
+<p>A view implements an event by defining a method corresponding to the
+event name. When the event name is made up of multiple words (like
+<code>mouseup</code>) the method name should be the camelized form of the event
+name (<code>mouseUp</code>).</p>
+
+<p>视图实现一个事件通过定义一个与事件名对应的方法。如果事件的名称由多个词组成（如<code>mouseup</code>），那么实现的方法应该采用事件名称的驼峰命名格式（<code>mouseUp</code>）。</p>
+
+<p>Events will bubble up the view hierarchy until the event reaches the
+root view. An event handler can stop propagation using the same
+techniques as normal jQuery event handlers:</p>
+
+<p>事件将在视图层级中一直向上冒泡，知道到达根视图。一个事件处理器可以如同使用jQuery事件处理一样的技术来停止传播事件：</p>
+
+<ul>
+<li><code>return false</code> from the method</li>
+<li><p><code>event.stopPropagation</code></p></li>
+<li><p>在方法中<code>返回假</code></p></li>
+<li><p>调用<code>event.stopPropagation</code></p></li>
+</ul>
+
+<p>For example, imagine you defined the following view classes:</p>
+
+<p>例如，假定定义了如下的视图类：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>App.GrandparentView = Ember.View.extend({
+  <span class="function">click</span>: <span class="keyword">function</span>() {
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Grandparent!</span><span class="delimiter">'</span></span>);
+  }
+});
+
+App.ParentView = Ember.View.extend({
+  <span class="function">click</span>: <span class="keyword">function</span>() {
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Parent!</span><span class="delimiter">'</span></span>);
+    <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+  }
+});
+
+App.ChildView = Ember.View.extend({
+  <span class="function">click</span>: <span class="keyword">function</span>() {
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Child!</span><span class="delimiter">'</span></span>);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>And here&#39;s the Handlebars template that uses them:</p>
+
+<p>下面是使用这些视图类的Handlebars模板：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">App.GrandparentView</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">App.ParentView</span><span class="inline-delimiter">}}</span></span>
+    <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">App.ChildView</span><span class="inline-delimiter">}}</span></span>
+      <span class="tag">&lt;h1&gt;</span>Click me!<span class="tag">&lt;/h1&gt;</span>
+    <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you clicked on the <code>&lt;h1&gt;</code>, you&#39;d see the following output in your
+browser&#39;s console:</p>
+
+<p>如果点击了<code>&lt;h1&gt;</code>，那么在浏览器的控制台应该看到如下的输出：</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>Child!
+Parent!
+</pre></td>
+</tr></table>
+</div></div>
+<p>You can see that Ember invokes the handler on the child-most view that
+received the event. The event continues to bubble to the <code>ParentView</code>,
+but does not reach the <code>GrandparentView</code> because <code>ParentView</code> returns
+false from its event handler.</p>
+
+<p>可见Ember调用了最近的接收到事件的子视图的处理器。事件继续冒泡到<code>ParentView</code>，但是没有到达<code>GrandparentView</code>，因为<code>ParentView</code>在其事件处理器中返回了假。</p>
+
+<p>You can use normal event bubbling techniques to implement familiar
+patterns. For example, you could implement a <code>FormView</code> that defines a
+<code>submit</code> method. Because the browser triggers the <code>submit</code> event when
+the user hits enter in a text field, defining a <code>submit</code> method on the
+form view will &quot;just work&quot;.</p>
+
+<p>同样，也可以使用事件冒泡技术来实现类似的模式。例如，可以实现一个定义了<code>submit</code>方法的<code>FormView</code>。因为浏览器会在用户在一个文本输入框中敲回车的时候触发<code>submit</code>事件，因此在表单视图上定义一个<code>submit</code>方法是可以正常工作的。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>App.FormView = Ember.View.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">form</span><span class="delimiter">&quot;</span></span>,
+
+  <span class="function">submit</span>: <span class="keyword">function</span>(event) {
+    <span class="comment">// will be invoked whenever the user triggers</span>
+    <span class="comment">// the browser's `submit` method</span>
+  }
+});
+</pre></td>
+</tr></table>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">view</span> <span class="attribute-name">App.FormView</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.firstName</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view</span> <span class="attribute-name">Ember.TextField</span> <span class="attribute-name">valueBinding</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controller.lastName</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Done<span class="tag">&lt;/button&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">view</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_adding-new-events'>Adding New Events</h4><h4 class='anchorable-toc' id='toc_'>添加新事件</h4>
+<p>Ember comes with built-in support for the following native browser
+events:</p>
+
+<p>Ember内置支持下列本地的浏览器事件：</p>
+
+<table class="figure">
+  <thead>
+    <tr><th>Event Name 事件名</th><th>Method Name 方法名</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>touchstart</td><td>touchStart</td></tr>
+    <tr><td>touchmove</td><td>touchMove</td></tr>
+    <tr><td>touchend</td><td>touchEnd</td></tr>
+    <tr><td>touchcancel</td><td>touchCancel</td></tr>
+    <tr><td>keydown</td><td>keyDown</td></tr>
+    <tr><td>keyup</td><td>keyUp</td></tr>
+    <tr><td>keypress</td><td>keyPress</td></tr>
+    <tr><td>mousedown</td><td>mouseDown</td></tr>
+    <tr><td>mouseup</td><td>mouseUp</td></tr>
+    <tr><td>contextmenu</td><td>contextMenu</td></tr>
+    <tr><td>click</td><td>click</td></tr>
+    <tr><td>dblclick</td><td>doubleClick</td></tr>
+    <tr><td>mousemove</td><td>mouseMove</td></tr>
+    <tr><td>focusin</td><td>focusIn</td></tr>
+    <tr><td>focusout</td><td>focusOut</td></tr>
+    <tr><td>mouseenter</td><td>mouseEnter</td></tr>
+    <tr><td>mouseleave</td><td>mouseLeave</td></tr>
+    <tr><td>submit</td><td>submit</td></tr>
+    <tr><td>change</td><td>change</td></tr>
+    <tr><td>dragstart</td><td>dragStart</td></tr>
+    <tr><td>drag</td><td>drag</td></tr>
+    <tr><td>dragenter</td><td>dragEnter</td></tr>
+    <tr><td>dragleave</td><td>dragLeave</td></tr>
+    <tr><td>dragover</td><td>dragOver</td></tr>
+    <tr><td>drop</td><td>drop</td></tr>
+    <tr><td>dragend</td><td>dragEnd</td></tr>
+  </tbody>
+</table>
+
+<p>You can add additional events to the event dispatcher when you create a
+new application:</p>
+
+<p>在创建新的应用时，可以给事件分发器添加更多的事件：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create({
+  <span class="key">customEvents</span>: {
+    <span class="comment">// add support for the loadedmetadata media</span>
+    <span class="comment">// player event</span>
+    <span class="key"><span class="delimiter">'</span><span class="content">loadedmetadata</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">loadedMetadata</span><span class="delimiter">&quot;</span></span>
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In order for this to work for a custom event, the HTML5 spec must define
+the event as &quot;bubbling&quot;, or jQuery must have provided an event
+delegation shim for the event.</p>
+
+<p>为了使自定义事件可以正常工作，HTML5规范必须定义事件为“冒泡”，或者jQuery必须提供了针对该事件的一个事件委派。</p>
+<h3 class='anchorable-toc' id='toc_templated-views'>Templated Views</h3><h3 class='anchorable-toc' id='toc_'>模板化视图</h3>
+<p>As you&#39;ve seen so far in this guide, the majority of views that you will
+use in your application are backed by a template. When using templates,
+you do not need to programmatically create your view hierarchy because
+the template creates it for you.</p>
+
+<p>截止目前，在本指南中所见的，应用中使用的主要视图都是基于模板的。当使用模板时，不需要通过编程来创建视图层级，因为模板会创建它。</p>
+
+<p>While rendering, the view&#39;s template can append views to its child views
+array. Internally, the template&#39;s <code>{{view}}</code> helper calls the view&#39;s
+<code>appendChild</code> method.</p>
+
+<p>当渲染时，视图模板可以追加视图到它的子视图数组。在内部，模板的<code>{{view}}</code>助手将调用视图的<code>appendChild</code>方法。</p>
+
+<p>Calling <code>appendChild</code> does two things:</p>
+
+<p>调用<code>appendChild</code>完成如下两件事情：</p>
+
+<ol>
+<li>Adds the child view to the <code>childViews</code> array.</li>
+<li><p>Immediately renders the child view and adds it to the parent&#39;s render
+buffer.</p></li>
+<li><p>将子视图添加到<code>childViews</code>数组。</p></li>
+<li><p>立即渲染子视图，并将其添加到父视图的渲染缓冲中去。</p></li>
+</ol>
+
+<figure>
+  <img src="/images/view-guide/template-appendChild-interaction.png">
+</figure>
+
+<p>You may not call <code>appendChild</code> on a view after it has left the rendering
+state. A template renders &quot;mixed content&quot; (both views and plain text) so
+the parent view does not know exactly where to insert the new child view
+once the rendering process has completed.</p>
+
+<p>在一个视图不在渲染中这个状态之后，不能调用其<code>appendChild</code>方法。一个模板渲染“混合的内容”（包括视图和纯文本），因此父视图在完成了渲染过程之后不知道在什么地方添加新的子视图。</p>
+
+<p>In the example above, imagine trying to insert a new view inside of
+the parent view&#39;s <code>childViews</code> array. Should it go immediately
+after the closing <code>&lt;/div&gt;</code> of <code>App.MyView</code>? Or should it go after the
+closing <code>&lt;/div&gt;</code> of the entire view? There is no good answer that will
+always be correct.</p>
+
+<p>在上例中，假定尝试在父视图的<code>childViews</code>数组中添加一个新的视图。是否应该将其添加到<code>App.MyView</code>的<code>&lt;/div&gt;</code>之后呢？或者是添加到整个视图的<code>&lt;/div&gt;</code>之后呢？这里通常都无法得到一个正确的答案。</p>
+
+<p>Because of this ambiguity, the only way to create a view hierarchy using
+templates is via the <code>{{view}}</code> helper, which always inserts views
+in the right place relative to any plain text.</p>
+
+<p>由于存在不明确的地方，所以创建视图层级的唯一方法便是使用模板的<code>{{view}}</code>助手，它将永远可以将视图插入到与任何纯文本关联的正确位置。</p>
+
+<p>While this works for most situations, occasionally you may want to have
+direct, programmatic control of a view&#39;s children. In that case, you can
+use <code>Ember.ContainerView</code>, which explicitly exposes a public API for
+doing so.</p>
+
+<p>虽然模板可以处理大部分情形，但是偶尔也会需要直接通过编程来控制视图的子。在这种情况下，可以使用<code>Ember.ContainerView</code>，它显式的暴露了一个公有API来完成这项任务。</p>
+<h3 class='anchorable-toc' id='toc_container-views'>Container Views</h3><h3 class='anchorable-toc' id='toc_'>容器视图</h3>
+<p>Container views contain no plain text. They are composed entirely of
+their child views (which may themselves be template-backed).</p>
+
+<p>容器视图不包含纯文本，完全由其子视图构成（子视图可以基于模板）。</p>
+
+<p><code>ContainerView</code> exposes two public APIs for changing its contents:</p>
+
+<p><code>ContainerView</code>暴露了两个公有API来改变其内容：</p>
+
+<ol>
+<li>A writable <code>childViews</code> array into which you can insert <code>Ember.View</code>
+instances.</li>
+<li><p>A <code>currentView</code> property that, when set, inserts the new value into
+the child views array. If there was a previous value of
+<code>currentView</code>, it is removed from the <code>childViews</code> array.</p></li>
+<li><p>一个可写的<code>childViews</code>数组，可以在其中插入<code>Ember.View</code>的实例。</p></li>
+<li><p>一个<code>currentView</code>属性，当其被设置时，将新的值添加到子视图数组中。如果<code>currentView</code>之前有值，那么这个值将被从<code>childViews</code>数组中移除。</p></li>
+</ol>
+
+<p>Here is an example of using the <code>childViews</code> API to create a view that
+starts with a hypothetical <code>DescriptionView</code> and can add a new button at
+any time by calling the <code>addButton</code> method:</p>
+
+<p>下面是一个使用<code>childViews</code>API来创建视图的例子。有一个假设的<code>DescriptionView</code>开始，并可以通过调用<code>addButton</code>方法在任何时刻添加一个按钮：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>App.ToolbarView = Ember.ContainerView.create({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> childViews = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>);
+    <span class="keyword">var</span> descriptionView = App.DescriptionView.create();
+
+    childViews.pushObject(descriptionView);
+    <span class="local-variable">this</span>.addButton();
+
+    <span class="keyword">return</span> <span class="local-variable">this</span>._super();
+  },
+
+  <span class="function">addButton</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> childViews = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>);
+    <span class="keyword">var</span> button = Ember.ButtonView.create();
+
+    childViews.pushObject(button);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>As you can see in the example above, we initialize the <code>ContainerView</code>
+with two views, and can add additional views during runtime. There is a
+convenient shorthand for doing this view setup without having to
+override the <code>init</code> method:</p>
+
+<p>如上例中所述，使用了两个视图来对<code>ContainerView</code>进行初始化，而且还可以在运行期添加附加的视图。按照惯例，与通过重写<code>init</code>方法不同，还有另外一种更为简便的初始化方法：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.ToolbarView = Ember.ContainerView.create({
+  <span class="key">childViews</span>: [<span class="string"><span class="delimiter">'</span><span class="content">descriptionView</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">buttonView</span><span class="delimiter">'</span></span>],
+
+  <span class="key">descriptionView</span>: App.DescriptionView,
+  <span class="key">buttonView</span>: Ember.ButtonView,
+
+  <span class="function">addButton</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> childViews = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">childViews</span><span class="delimiter">'</span></span>);
+    <span class="keyword">var</span> button = Ember.ButtonView.create();
+
+    childViews.pushObject(button);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>As you can see above, when using this shorthand, you specify the
+<code>childViews</code> as an array of strings. At initialization time, each of the
+strings is used as a key to look up a view instance or class. That view
+is automatically instantiated, if necessary, and added to the
+<code>childViews</code> array.</p>
+
+<p>如上所述，当使用这种便捷的方法时，<code>childViews</code>通过一个字符串数组来指定。在初始化的时候，每一个字符串都用作查找视图实例或者类的关键字。对应的视图如果需要的话，会自动初始化，并被添加到<code>childViews</code>数组中去。</p>
+
+<figure>
+  <img src="/images/view-guide/container-view-shorthand.png">
+</figure>
+<h3 class='anchorable-toc' id='toc_template-scopes'>Template Scopes</h3><h3 class='anchorable-toc' id='toc_'>模板作用域</h3>
+<p>Standard Handlebars templates have the concept of a <em>context</em>--the
+object from which expressions will be looked up.</p>
+
+<p>标准的Handlebars模板巨涌上下文的概念，即表达式将从哪个对象中查找。</p>
+
+<p>Some helpers, like <code>{{#with}}</code>, change the context inside their block.
+Others, like <code>{{#if}}</code>, preserve the context. These are called
+&quot;context-preserving helpers.&quot;</p>
+
+<p>一些如同<code>{{#with}}</code>一样的助手，可以改变其块内的上下文。其他的如同<code>{{#if}}</code>之类的，则保留了上下文，它们被称为“保留上下文助手”。</p>
+
+<p>When a Handlebars template in an Ember app uses an expression
+(<code>{{#if foo.bar}}</code>), Ember will automatically set up an
+observer for that path on the current context.</p>
+
+<p>当Ember应用中的Handlebars模板使用了表达式时（<code>{{#if
+foo.bar}}</code>），Ember在当前的上下文中自动针对路径设置一个观察器。</p>
+
+<p>If the object referenced by the path changes, Ember will automatically
+re-render the block with the appropriate context. In the case of a
+context-preserving helper, Ember will re-use the original context when
+re-rendering the block. Otherwise, Ember will use the new value of the
+path as the context.</p>
+
+<p>如果被路径引用的对象发生改变，那么Ember将自动使用适当的上下文重新渲染该块。在一个保留上下文的助手情况下，Ember在重新渲染块的时候使用初始的上下文。否则，Ember将使用路径对应的新值作为上下文。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">controller.isAuthenticated</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;h1&gt;</span>Welcome <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">controller.name</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">if</span><span class="inline-delimiter">}}</span></span>
+
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">with</span> <span class="attribute-name">controller.user</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;p&gt;</span>You have <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">notificationCount</span><span class="inline-delimiter">}}</span></span> notifications.<span class="tag">&lt;/p&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>In the above template, when the <code>isAuthenticated</code> property changes from
+false to true, Ember will render the block, using the original outer
+scope as its context.</p>
+
+<p>在上述的模板中，当<code>isAuthenticated</code>属性由假变真时，Ember将使用初始的外部作用域作为它的上下文来渲染块。</p>
+
+<p>The <code>{{#with}}</code> helper changes the context of its block to the <code>user</code>
+property on the current controller. When the <code>user</code> property changes,
+Ember re-renders the block, using the new value of <code>controller.user</code> as
+its context.</p>
+
+<p>而<code>{{#with}}</code>助手则将其块的上下文变为当前控制器的<code>user</code>属性。当<code>user</code>属性改变时，Ember使用<code>controller.user</code>的新值作为其上下文来重新渲染该块。</p>
+<h4 class='anchorable-toc' id='toc_view-scope'>View Scope</h4><h4 class='anchorable-toc' id='toc_'>视图作用域</h4>
+<p>In addition to the Handlebars context, templates in Ember also have the
+notion of the current view. No matter what the current context is, the
+<code>view</code> property always references the closest view.</p>
+
+<p>在Handlebars上下文之外，Ember中的模板还有当前视图的概念。无论当前的上下文是什么，<code>view</code>属性总是引用了最近的视图。</p>
+
+<p>Note that the <code>view</code> property never references the internal views
+created for block expressions like <code>{{#if}}</code>. This allows you to
+differentiate between Handlebars contexts, which always work the way
+they do in vanilla Handlebars, and the view hierarchy.</p>
+
+<p>注意<code>view</code>属性从来都不会引用为像<code>{{#if}}</code>这样的块表达式创建的内部视图。这就可以用来区分Handlebars上下文了，它永远如工作在Vanilla Handlebars和视图层级中一般。</p>
+
+<p>Because <code>view</code> points to an <code>Ember.View</code> instance, you can access any
+properties on the view by using an expression like <code>view.propertyName</code>.
+You can get access to a view&#39;s parent using <code>view.parentView</code>.</p>
+
+<p>因为<code>view</code>指向一个<code>Ember.View</code>实例，所以可以使用如同<code>view.propertyName</code>这样的表达式来访问任何属性。也可以通过<code>view.parentView</code>来访问父视图。</p>
+
+<p>For example, imagine you had a view with the following properties:</p>
+
+<p>例如，假定有一个视图包含如下的属性：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.MenuItemView = Ember.View.create({
+  <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu_item_view</span><span class="delimiter">'</span></span>,
+  <span class="key">bulletText</span>: <span class="string"><span class="delimiter">'</span><span class="content">*</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>…and the following template:</p>
+
+<p>及如下的模板：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">with</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">view.bulletText</span><span class="inline-delimiter">}}</span></span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Even though the Handlebars context has changed to the current
+controller, you can still access the view&#39;s <code>bulletText</code> by referencing
+<code>view.bulletText</code>.</p>
+
+<p>即使Handlebars上下文改变为当前的控制器，依然可以通过引用<code>view.bulletText</code>来访问视图的<code>bulletText</code>。</p>
+<h3 class='anchorable-toc' id='toc_template-variables'>Template Variables</h3><h3 class='anchorable-toc' id='toc_'>模板变量</h3>
+<p>So far in this guide, we&#39;ve been handwaving around the use of the
+<code>controller</code> property in our Handlebars templates. Where does it come
+from?</p>
+
+<p>本指南到目前为止，在Handlebars模板中都在围绕着使用<code>controller</code>属性捣鼓。那么它是从何而来的呢？</p>
+
+<p>Handlebars contexts in Ember can inherit variables from their parent
+contexts. Before Ember looks up a variable in the current context, it
+first checks in its template variables. As a template creates new
+Handlebars scope, they automatically inherit the variables from their
+parent scope.</p>
+
+<p>Ember中Handlebars上下文可以从其父上下文中继承变量。在Ember在当前上下文中查找变量之前，首先在模板变量中进行查找。由于一个模板创建新的Handlebars作用域，这将自动从其父作用域中继承变量。</p>
+
+<p>Ember defines these <code>view</code> and <code>controller</code> variables, so they are
+always found first when an expression uses the <code>view</code> or <code>controller</code>
+names.</p>
+
+<p>Ember定义这些<code>view</code>和<code>controller</code>变量，因此当一个表达式使用<code>view</code>或<code>controller</code>名称时，都是最先被找到的。</p>
+
+<p>As described above, Ember sets the <code>view</code> variable on the Handlebars
+context whenever a template uses the <code>{{#view}}</code> helper. Initially,
+Ember sets the <code>view</code> variable to the view rendering the template.</p>
+
+<p>如上所述，Ember在Handlebars上下文中设置<code>view</code>变量，无论模板中什么时候使用<code>{{#view}}</code>助手。一开始，Ember将<code>view</code>变量设置为渲染模板的视图。</p>
+
+<p>Ember sets the <code>controller</code> variable on the Handlebars context whenever
+a rendered view has a <code>controller</code> property. If a view has no
+<code>controller</code> property, it inherits the <code>controller</code> variable from the
+most recent view with one.</p>
+
+<p>Ember在Handlebars上下文中设置<code>controller</code>变量，无论一个被渲染的视图什么时候有<code>controller</code>属性。如果一个视图没有<code>controller</code>属性，它将从最近的拥有<code>controller</code>变量的视图中继承过来。</p>
+<h4 class='anchorable-toc' id='toc_other-variables'>Other Variables</h4><h4 class='anchorable-toc' id='toc_'>其他变量</h4>
+<p>Handlebars helpers in Ember may also specify variables. For example, the
+<code>{{#with controller.person as tom}}</code> form specifies a <code>tom</code> variable
+that descendent scopes can access. Even if a child context has a <code>tom</code>
+property, the <code>tom</code> variable will supersede it.</p>
+
+<p>Ember中的Handlebars助手可以指定变量。例如，<code>{{#with controller.person as tom}}</code>指定了一个能在派生的作用域中访问的变量<code>tom</code>。即使子上下文也有一个<code>tom</code>属性，这个<code>tom</code>变量也将替代它。</p>
+
+<p>This form has one major benefit: it allows you to shorten long paths
+without losing access to the parent scope.</p>
+
+<p>这种形式能获得的一个主要好处是：在能访问父作用域的同时，缩短路径的长度。</p>
+
+<p>It is especially important in the <code>{{#each}}</code> helper, which provides
+the <code>{{#each person in people}}</code> form.
+In this form, descendent context have access to the <code>person</code> variable,
+but remain in the same scope as where the template invoked the <code>each</code>.</p>
+
+<p>这在提供<code>{{#each person in
+people}}</code>形式的<code>{{#each}}</code>助手中尤为重要。这种形式派生的上下文能够访问<code>person</code>变量，且同时保持了模板中调用<code>each</code>处相同的作用域。</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">with</span> <span class="attribute-name">controller.preferences</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;h1&gt;</span>Title<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;ul&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">person</span> <span class="attribute-name">in</span> <span class="attribute-name">controller.people</span><span class="inline-delimiter">}}</span></span>
+    <span class="comment">{{! prefix here is controller.preferences.prefix }}</span>
+    <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">prefix</span><span class="inline-delimiter">}}</span></span>: <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">person.fullName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">with</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that these variables inherit through <code>ContainerView</code>s, even though
+they are not part of the Handlebars context hierarchy.</p>
+
+<p>注意这些变量继承自<code>ContainerView</code>，即使它不属于Handlebars上下文层级。</p>
+<h4 class='anchorable-toc' id='toc_accessing-template-variables-from-views'>Accessing Template Variables from Views</h4><h4 class='anchorable-toc' id='toc_'>在视图中访问模板变量</h4>
+<p>In most cases, you will need to access these template variables from
+inside your templates. In some unusual cases, you may want to access the
+variables in-scope from your view&#39;s JavaScript code.</p>
+
+<p>在大多数情况下，需要在模板内部访问模板变量。而在一些特殊的情况下，可能希望在视图的Javascript代码中访问在作用域中的模板变量。</p>
+
+<p>You can do this by accessing the view&#39;s <code>templateVariables</code> property,
+which will return a JavaScript object containing the variables that were
+in scope when the view was rendered. <code>ContainerView</code>s also have access
+to this property, which references the template variables in the most
+recent template-backed view.</p>
+
+<p>通过访问视图的<code>templateVariables</code>属性可以实现。这个属性返回在视图被渲染时的一个包含了在作用域中的变量的Javascript对象。<code>ContainerView</code>同样可以访问该属性，这个属性引用了最近的一个基于模板的视图的模板变量。</p>
+
+<p>At present, you may not observe or bind a path containing
+<code>templateVariables</code>.</p>
+
+<p>目前，还不可以观察或者绑定一个包含<code>templateVariables</code>的路径。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/cookbook/working_with_objects/setting_multiple_properties_at_once">
+             ← Cookbook: 一次设置多个属性值
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/understanding-ember/managing-asynchrony">
+          管理异步 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

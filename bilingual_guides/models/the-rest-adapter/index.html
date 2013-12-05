@@ -1,0 +1,969 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 指南</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_models bilingual_guides_models_the-rest-adapter bilingual_guides_models_the-rest-adapter_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  <div class="chapter">
+    
+    <h2 class='anchorable-toc' id='toc_the-rest-adapter'>The REST Adapter</h2><h2 class='anchorable-toc' id='toc_rest'>REST适配器</h2>
+<p>By default, your store will use <code>DS.RESTAdapter</code> to load and save
+records. The REST adapter assumes that the URLs and JSON associated with
+each model are conventional; this means that, if you follow the rules,
+you will not need to configure the adapter or write any code in order to
+get started.</p>
+
+<p>默认情况下，<code>store</code>使用<code>DS.RESTAdapter</code>来加载和保存记录。REST适配器假定URLs和每个对象对应的JSON都符合惯例。也就是说，只要遵从规则，就可以在不对适配器进行任何配置和编写任何代码的情况下使用适配器。</p>
+<h3 class='anchorable-toc' id='toc_url-conventions'>URL Conventions</h3><h3 class='anchorable-toc' id='toc_url'>URL惯例</h3>
+<p>The REST adapter is smart enough to determine the URLs it communicates
+with based on the name of the model. For example, if you ask for a
+<code>Post</code> by ID:</p>
+
+<p>REST适配器通过模型的名称来生成需要进行通信的URLs。例如，如下代码展示了如何通过ID来获取对应的<code>Post</code>：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> post = App.Post.find(<span class="integer">1</span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>The REST adapter will automatically send a <code>GET</code> request to <code>/posts/1</code>.</p>
+
+<p>REST适配器会自动发送一个<code>GET</code>请求到<code>/posts/1</code>。</p>
+
+<p>The actions you can take on a record map onto the following URLs in the
+REST adapter:</p>
+
+<p>针对记录的操作在REST适配器里被映射为如下的URLs：</p>
+
+<table>
+  <thead>
+    <tr><th>Action</th><th>HTTP Verb</th><th>URL</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Find</th><td>GET</td><td>/people/123</td></tr>
+    <tr><th>Find All</th><td>GET</td><td>/people</td></tr>
+    <tr><th>Update</th><td>PUT</td><td>/people/123</td></tr>
+    <tr><th>Create</th><td>POST</td><td>/people</td></tr>
+    <tr><th>Delete</th><td>DELETE</td><td>/people/123</td></tr>
+  </tbody>
+</table>
+<h4 class='anchorable-toc' id='toc_pluralization-customization'>Pluralization Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义复数形态</h4>
+<p>Irregular or uncountable pluralizations can be specified via <code>Ember.Inflector.inflector</code>:</p>
+
+<p>不规则或不可数名词复数可以通过<code>Ember.Inflector.inflector</code>来指定：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>Ember.Inflector.inflector.irregular(<span class="string"><span class="delimiter">'</span><span class="content">formula</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">formulae</span><span class="delimiter">'</span></span>);
+Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimiter">'</span><span class="content">advice</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>This will tell the REST adapter that requests for <code>App.Formula</code> requests
+should go to <code>/formulae/1</code> instead of <code>/formulae/1</code>.</p>
+
+<p>如上的配置下，REST适配器会采用<code>/formulae/1</code>来获取<code>App.Formula</code>，而不是使用<code>/formulae/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义端点路径</h4>
+<p>Endpoint paths can be prefixed with a namespace by setting the <code>namespace</code>
+property on the adapter:</p>
+
+<p>端点路径可以有一个命名空间前缀，该前缀通过适配器的<code>namespace</code>属性来进行配置：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.reopen({
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">api/1</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Requests for <code>App.Person</code> would now target <code>/api/1/people/1</code>.</p>
+
+<p>现在<code>App.Person</code>的请求就会变为<code>/api/1/people/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义宿主</h4>
+<p>An adapter can target other hosts by setting the <code>host</code> property.</p>
+
+<p>适配器可以通过设置<code>host</code>属性来指向其他的宿主。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>DS.RESTAdapter.reopen({
+  <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.example.com</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Requests for <code>App.Person</code> would now target <code>https://api.example.com/people/1</code>.</p>
+
+<p>现在<code>App.Person</code>的请求就会变为<code>https://api.example.com/people/1</code>。</p>
+<h3 class='anchorable-toc' id='toc_json-conventions'>JSON Conventions</h3><h3 class='anchorable-toc' id='toc_json'>JSON惯例</h3>
+<p>When requesting a record, the REST adapter expects your server to return
+a JSON representation of the record that conforms to the following
+conventions.</p>
+
+<p>当请求一个记录时，REST适配器期望服务器返回的记录的JSON表示遵从如下惯例。</p>
+<h4 class='anchorable-toc' id='toc_json-root'>JSON Root</h4><h4 class='anchorable-toc' id='toc_json'>JSON根</h4>
+<p>The primary record being returned should be in a named root. For
+example, if you request a record from <code>/people/123</code>, the response should
+be nested inside a property called <code>person</code>:</p>
+
+<p>返回的主记录必须拥有一个命名的根。例如，如果从<code>/people/123</code>请求一个记录，那么响应就应该被嵌套在<code>person</code>属性下。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">person</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Jeff</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Atwood</span><span class="delimiter">&quot;</span></span>
+  }
+}
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_underscored-attribute-names'>Underscored Attribute Names</h4><h4 class='anchorable-toc' id='toc_'>以下划线分割额属性名称</h4>
+<p>Attribute names should be the underscored version of the attribute name
+in your Ember Data models. For example, if you have a model like this:</p>
+
+<p>属性名称在<code>Ember Data</code>模型中应该是以下划线分割的形式。例如，有一个如下的模型：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.Person = DS.Model.extend({
+  <span class="key">firstName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+  <span class="key">lastName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+
+  <span class="key">isPersonOfTheYear</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">boolean</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The JSON returned from your server should look like this:</p>
+
+<p>那么从服务器返回的JSON格式应该为：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">person</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Obama</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">is_person_of_the_year</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
+  }
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p>Irregular keys can be mapped on the adapter. If the JSON
+has a key of <code>lastNameOfPerson</code>, and the desired attribute
+name is simply <code>lastName</code>, inform the adapter:</p>
+
+<p>不规则的<code>keys</code>可以在适配器中进行映射。如果返回的JSON包含一个名为<code>lastNameOfPerson</code>的<code>key</code>，而期望的属性名称为<code>lastName</code>，在适配器里配置即可：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.Person = DS.Model.extend({
+  <span class="key">lastName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>)
+});
+DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span class="content">App.Person</span><span class="delimiter">'</span></span>, {
+  <span class="key">lastName</span>: { <span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">lastNameOfPerson</span><span class="delimiter">'</span></span> }
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_relationships'>Relationships</h4><h4 class='anchorable-toc' id='toc_'>关联</h4>
+<p>References to other records should be done by ID. For example, if you
+have a model with a <code>hasMany</code> relationship:</p>
+
+<p>对其他对象的引用应该通过ID来进行关联。例如，如果有一个模型拥有一个<code>hasMany</code>的关联：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Post = DS.Model.extend({
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The JSON should encode the relationship as an array of IDs:</p>
+
+<p>JSON应该将该关联编码成一个ID的数组：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+  }
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p><code>Comments</code> for a <code>post</code> can be loaded by <code>post.get(&#39;comments&#39;)</code>. The REST adapter
+will send a <code>GET</code> request to <code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code></p>
+
+<p>一篇文章的评论可以通过<code>post.get(&#39;comments&#39;)</code>来进行获取。REST适配器将发送一个<code>GET</code>请求至<code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code>。</p>
+
+<p>Any <code>belongsTo</code> relationships in the JSON representation should be the
+underscored version of the Ember Data model&#39;s name, with the string
+<code>_id</code> appended. For example, if you have a model:</p>
+
+<p>而JSON表示中的任何<code>belongsTo</code>关联，应该为以下划线分割的<code>Ember
+Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Comment = DS.Model.extend({
+  <span class="key">post</span>: DS.belongsTo(<span class="string"><span class="delimiter">'</span><span class="content">App.Post</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The JSON should encode the relationship as an ID to another record:</p>
+
+<p>JSON应该将关联编码为另外一个记录的ID：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">post_id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
+  }
+}
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_sideloaded-relationships'>Sideloaded Relationships</h4><h4 class='anchorable-toc' id='toc_'>旁路加载关联</h4>
+<p>To reduce the number of HTTP requests necessary, you can sideload
+additional records in your JSON response. Sideloaded records live
+outside the JSON root, and are represented as an array of hashes:</p>
+
+<p>为了减少HTTP请求的次数，可以从把JSON响应中的附加对象进行旁路加载。旁路加载的记录在JSON根之外，并作为一个哈希数组存在：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Rails is omakase</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+  },
+
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">But is it _lightweight_ omakase?</span><span class="delimiter">&quot;</span></span>
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">2</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">I for one welcome our new omakase overlords</span><span class="delimiter">&quot;</span></span>
+  },
+  {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">3</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Put me on the fast track to a delicious dinner</span><span class="delimiter">&quot;</span></span>
+  }]
+}
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_creating-custom-transformations'>Creating Custom Transformations</h3><h3 class='anchorable-toc' id='toc_'>创建自定义变换</h3>
+<p>In some circumstances, the built in attribute types of <code>string</code>,
+<code>number</code>, <code>boolean</code>, and <code>date</code> may be inadequate. For example, a
+server may return a non-standard date format.</p>
+
+<p>在一些环境中，内建的属性类型<code>string</code>、<code>number</code>、<code>boolean</code>和<code>date</code>可能不够准确。例如，服务可能返回一个非标准的日期格式。</p>
+
+<p>The <code>RESTAdapter</code>, like any Ember adapter, can have new transforms
+registered for use as attributes:</p>
+
+<p><code>RESTAdapter</code>可以注册像属性一样使用的新的转换，就如同其他Ember适配器。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>App.CoordinatePointTransform = DS.Transform.extend({
+  <span class="function">serialize</span>: <span class="keyword">function</span>(value) {
+    <span class="keyword">return</span> [value.get(<span class="string"><span class="delimiter">'</span><span class="content">x</span><span class="delimiter">'</span></span>), value.get(<span class="string"><span class="delimiter">'</span><span class="content">y</span><span class="delimiter">'</span></span>)];
+  },
+  <span class="function">deserialize</span>: <span class="keyword">function</span>(value) {
+    <span class="keyword">return</span> Ember.create({ <span class="key">x</span>: value[<span class="integer">0</span>], <span class="key">y</span>: value[<span class="integer">1</span>] });
+  }
+});
+App.Cursor = DS.Model.extend({
+  <span class="key">position</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">coordinatePoint</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>When <code>coordinatePoint</code> is received from the API, it is
+expected to be an array:</p>
+
+<p>当从API接收到<code>coordinatePoint</code>时，<code>coordinatePoint</code>应该是一个数组：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key">cursor</span>: {
+    <span class="key">position</span>: [<span class="integer">4</span>,<span class="integer">9</span>]
+  }
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p>But once loaded on a model instance, it will behave as an object:</p>
+
+<p>但是当一个对象实例一旦被加载，<code>coordinatePoint</code>则变成了一个对象：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> cursor = App.Cursor.find(<span class="integer">1</span>);
+cursor.get(<span class="string"><span class="delimiter">'</span><span class="content">position.x</span><span class="delimiter">'</span></span>); <span class="comment">//=&gt; 4</span>
+cursor.get(<span class="string"><span class="delimiter">'</span><span class="content">position.y</span><span class="delimiter">'</span></span>); <span class="comment">//=&gt; 9</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>If <code>position</code> is modified and saved, it will pass through the
+<code>serialize</code> function in the transform and again be presented as
+an array in JSON.</p>
+
+<p>如果<code>position</code>被修改和保存，那么它会被传递给<code>serialize</code>，将其转换为JSON中的数组。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/controllers/dependencies-between-controllers">
+             ← 控制器: 管理控制器间的依赖
+          </a>
+         
+            <a class="next-guide" href="/guides/views">
+              本章模型完毕。下一章： 视图 - 介绍 →
+            </a>
+          
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>
