@@ -543,18 +543,13 @@
             编辑页面</a>
         </h1>
       
-    <h2 class='anchorable-toc' id='toc_observers'>观察器（Observers）</h2>
-<p>原文：[http://emberjs.com/guides/object-model/observers/][source_link]</p>
-
-<blockquote>
-<p>译者按：Observer 通常都被译为“观察者模式”，它是一种软件设计模式，有时也叫做“发布/订阅（Pub/Sub）模式”，可参看 [Wikipedia 里的“观察者模式”词条][wiki_observer]。在本指南中之所以译为“观察器”，是因为在这里 Observers 的意思是“Ember.js 框架用来实现观察者设计模式所使用的机制”，因此与惯用译法略有差别。</p>
-</blockquote>
+    <p>英文原文：<a href="http://emberjs.com/guides/object-model/observers/">http://emberjs.com/guides/object-model/observers/</a></p>
 
 <p>Ember supports observing any property, including computed properties.
 You can set up an observer on an object by using the <code>observes</code>
 method on a function.</p>
 
-<p>Ember 为包括计算后属性在内的任意一种属性提供了观察器。你可以通过使用 <code>addObserver</code> 方法来为一个对象设置一个观察器。</p>
+<p>Ember 为包括计算后属性在内的任意一种属性提供了观察器。可以通过使用 <code>addObserver</code> 方法来为一个对象设置一个观察器。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -610,10 +605,12 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 updating <code>firstName</code> will fire observers on <code>fullName</code> as well.</p>
 
 <p>由于 <code>fullName</code> 这个计算后属性依赖于 <code>firstName</code> 的变化，所以在更新 <code>firstName</code> 时也将触发 <code>fullName</code> 上的观察器。</p>
-<h3 class='anchorable-toc' id='toc_observers-and-asynchrony'>Observers and asynchrony</h3>
+<h3 class='anchorable-toc' id='toc_observers-and-asynchrony'>Observers and asynchrony</h3><h3 class='anchorable-toc' id='toc_'>观察器与异步</h3>
 <p>Observers in Ember are currently synchronous. This means that they will fire
 as soon as one of the properties they observe changes. Because of this, it
 is easy to introduce bugs where properties are not yet synchronized:</p>
+
+<p>Ember中的观察器目前都是同步的。这就意味着一旦其观察的属性发生改变就立刻会被触发。因为这样，找到属性没有被及时同步就变得容易了：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -637,6 +634,8 @@ is easy to introduce bugs where properties are not yet synchronized:</p>
 </div></div>
 <p>This synchronous behaviour can also lead to observers being fired multiple
 times when observing multiple properties:</p>
+
+<p>如果观察了多个属性，那么同步行为也会导致观察器被多次触发：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -661,6 +660,8 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 <p>To get around these problems, you should make use of <code>Ember.run.once</code>. This will
 ensure that any processing you need to do only happens once, and happens in the
 next run loop once all bindings are synchronized:</p>
+
+<p>为了处理这些问题，就需要使用<code>Ember.run.once</code>。这样可以确保所有需要处理的过程都只会发生一次，并且在下一个运行循环里面所有绑定都会同步：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -693,12 +694,16 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 person.set(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Smith</span><span class="delimiter">'</span></span>);
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_observers-and-object-initialization'>Observers and object initialization</h3>
+</div></div><h3 class='anchorable-toc' id='toc_observers-and-object-initialization'>Observers and object initialization</h3><h3 class='anchorable-toc' id='toc_'>观察器与对象初始化</h3>
 <p>Observers never fire until after the initialization of an object is complete.</p>
+
+<p>观察器只有直到对象完成了初始化过程才会被触发。</p>
 
 <p>If you need an observer to fire as part of the initialization process, you
 cannot rely on the side effect of set. Instead, specify that the observer
 should also run after init by using <code>.on(&#39;init&#39;)</code>:</p>
+
+<p>如果需要在初始化过程中就触发一个观察器，那么不能依赖于<code>set</code>的负效应。而应该在观察器上,通过使用<code>.on(&#39;init&#39;)</code>指定观察器应该在初始化后执行：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -721,23 +726,29 @@ should also run after init by using <code>.on(&#39;init&#39;)</code>:</p>
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_unconsumed-computed-properties-do-not-trigger-observers'>Unconsumed Computed Properties Do Not Trigger Observers</h3>
+</div></div><h3 class='anchorable-toc' id='toc_unconsumed-computed-properties-do-not-trigger-observers'>Unconsumed Computed Properties Do Not Trigger Observers</h3><h3 class='anchorable-toc' id='toc_'>未使用的计算属性不触发观察器</h3>
 <p>If you never <code>get</code> a computed property, its observers will not fire even if
 its dependent keys change. You can think of the value changing from one unknown
 value to another.</p>
+
+<p>如果从未<code>get</code>一个计算属性，那么即使它依赖的键发生改变了，观察器也不会被触发。可以认为这时是计算属性值从一个未知值转换为另一个。</p>
 
 <p>This doesn&#39;t usually affect application code because computed properties are
 almost always observed at the same time as they are fetched. For example, you get
 the value of a computed property, put it in DOM (or draw it with D3), and then
 observe it so you can update the DOM once the property changes.</p>
 
+<p>这通常都不会影响到应用代码，因为计算属性几乎总是在被观察到的同时被取用。例如，取得一个计算属性的值，然后将其放入DOM中（或者用D3画出），然后观察它，以便在属性发生改变的时候自动更新DOM。</p>
+
 <p>If you need to observe a computed property but aren&#39;t currently retrieving it,
 just get it in your init method.</p>
-<h3 class='anchorable-toc' id='toc_without-prototype-extensions'>Without prototype extensions</h3>
+
+<p>如果需要观察一个计算属性，当前并不获取它，只需要将其放入到<code>init</code>方法中。</p>
+<h3 class='anchorable-toc' id='toc_without-prototype-extensions'>Without prototype extensions</h3><h3 class='anchorable-toc' id='toc_'>不用原型扩展</h3>
 <p>You can define inline observers by using the <code>Ember.observer</code> method if you
 are using Ember without prototype extensions:</p>
 
-<p>在没有原型扩展的前提下使用 Ember 的时候，你可以用 <code>Ember.observer</code> 方法来定义内联式观察器</p>
+<p>在没有原型扩展的前提下使用 Ember 的时候，可以用 <code>Ember.observer</code> 方法来定义内联式观察器：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -752,9 +763,11 @@ are using Ember without prototype extensions:</p>
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_outside-of-class-definitions'>Outside of class definitions</h3>
+</div></div><h3 class='anchorable-toc' id='toc_outside-of-class-definitions'>Outside of class definitions</h3><h3 class='anchorable-toc' id='toc_'>类定义之外</h3>
 <p>You can also add observers to an object outside of a class definition
 using addObserver:</p>
+
+<p>同样也可以在一个类的定义之外，使用<code>addObserver</code>为一个对象添加一个观察器：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
