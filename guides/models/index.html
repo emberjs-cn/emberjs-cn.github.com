@@ -589,12 +589,10 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 3
 4
 5
-6
 </pre></td>
   <td class="code"><pre>App.IndexRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>() {
-    <span class="keyword">var</span> store = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>);
-    <span class="keyword">return</span> store.find(<span class="string"><span class="delimiter">'</span><span class="content">person</span><span class="delimiter">'</span></span>, <span class="integer">1</span>)
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">person</span><span class="delimiter">'</span></span>, <span class="integer">1</span>);
   }
 });
 </pre></td>
@@ -636,12 +634,12 @@ Data同样适用于使用基于流的API，例如socket.io、Firebase或WebSocke
 6
 7
 </pre></td>
-  <td class="code"><pre>App.LineItem = DS.Model.extend({
-       <span class="key">orders</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">order</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre>App.Order = DS.Model.extend({
+  <span class="key">lineItems</span>: DS.belongsTo(<span class="string"><span class="delimiter">'</span><span class="content">lineItem</span><span class="delimiter">'</span></span>)
 });
 
-App.Order = DS.Model.extend({
-  <span class="key">lineItems</span>: DS.belongsTo(<span class="string"><span class="delimiter">'</span><span class="content">lineItem</span><span class="delimiter">'</span></span>)
+App.LineItem = DS.Model.extend({
+  <span class="key">orders</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">order</span><span class="delimiter">'</span></span>)
 });
 </pre></td>
 </tr></table>

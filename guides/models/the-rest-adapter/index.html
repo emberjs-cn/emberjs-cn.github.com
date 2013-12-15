@@ -624,14 +624,14 @@ Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimite
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">person</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Jeff</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Atwood</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Jeff</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Atwood</span><span class="delimiter">&quot;</span></span>
   }
 }
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_'>以下划线分割额属性名称</h4>
-<p>属性名称在<code>Ember Data</code>模型中应该是以下划线分割的形式。例如，有一个如下的模型：</p>
+</div></div><h4 class='anchorable-toc' id='toc_'>属性名称</h4>
+<p>属性命名应该采用驼峰命名法。例如，假如有如下的模型：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -661,9 +661,9 @@ Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimite
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">person</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Obama</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">is_person_of_the_year</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Barack</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Obama</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">isPersonOfTheYear</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
   }
 }
 </pre></td>
@@ -694,7 +694,7 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 3
 </pre></td>
   <td class="code"><pre>App.Post = DS.Model.extend({
-  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>)
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>, { <span class="key">async</span>: <span class="predefined-constant">true</span> })
 });
 </pre></td>
 </tr></table>
@@ -709,7 +709,7 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">commentIds</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   }
 }
 </pre></td>
@@ -717,8 +717,7 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 </div></div>
 <p>一篇文章的评论可以通过<code>post.get(&#39;comments&#39;)</code>来进行获取。REST适配器将发送一个<code>GET</code>请求至<code>/comments?ids[]=1&amp;ids[]=2&amp;ids[]=3</code>。</p>
 
-<p>而JSON表示中的任何<code>belongsTo</code>关联，应该为以下划线分割的<code>Ember
-Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型：</p>
+<p>而JSON表示中的任何<code>belongsTo</code>关联，应该为以驼峰命名的<code>Ember Data</code>模型名称加上<code>Id</code>后缀，例如，有如下模型：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -740,7 +739,7 @@ Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型�
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">post_id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">postId</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
   }
 }
 </pre></td>
@@ -772,8 +771,8 @@ Data</code>模型名称加上<code>_id</code>后缀，例如，有如下模型�
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Rails is omakase</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">comment_ids</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Node is not omakase</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">commentIds</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   },
 
   <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [{

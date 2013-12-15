@@ -556,16 +556,16 @@
 3
 4
 </pre></td>
-  <td class="code"><pre><span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">store</span><span class="delimiter">&quot;</span></span>).findQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>, {
+  <td class="code"><pre><span class="local-variable">this</span>.store.findQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>, {
   <span class="key">limit</span>: <span class="integer">10</span>,
   <span class="key">offset</span>: <span class="integer">0</span>
 });
 </pre></td>
 </tr></table>
 </div></div>
-<p>To get different <em>pages</em> of data, you&#39;d simply change your offset in increments of 100. So far, so good. But how do you know how many pages of data you have? Your server would need to return the total number of records as a piece of metadata.</p>
+<p>To get different <em>pages</em> of data, you&#39;d simply change your offset in increments of 10. So far, so good. But how do you know how many pages of data you have? Your server would need to return the total number of records as a piece of metadata.</p>
 
-<p>为了获取不同页面的数据，只需要以100为增量来修改<code>offset</code>。到目前为止，一切都正常。现在有一个问题，就是如何知道拥有多少页数据呢？服务器需要以元数据的形式返回所有的记录数。</p>
+<p>为了获取不同页面的数据，只需要以10为增量来修改<code>offset</code>。到目前为止，一切都正常。现在有一个问题，就是如何知道拥有多少页数据呢？服务器需要以元数据的形式返回所有的记录数。</p>
 
 <p>By default, Ember Data&#39;s JSON deserializer looks for a <code>meta</code> key:</p>
 
@@ -611,7 +611,7 @@
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> meta = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">store</span><span class="delimiter">&quot;</span></span>).metadataFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>);
+  <td class="code"><pre><span class="keyword">var</span> meta = <span class="local-variable">this</span>.store.metadataFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>);
 </pre></td>
 </tr></table>
 </div></div>
@@ -634,7 +634,7 @@
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: [
     <span class="comment">// ...</span>
   ],
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">total</span><span class="delimiter">&quot;</span></span>: <span class="integer">10</span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">total</span><span class="delimiter">&quot;</span></span>: <span class="integer">100</span>
 }
 </pre></td>
 </tr></table>

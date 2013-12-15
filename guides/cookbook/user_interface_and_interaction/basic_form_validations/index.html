@@ -41,7 +41,7 @@
   
   </head>
 
-  <body class="guides guides_models guides_models_the-fixture-adapter guides_models_the-fixture-adapter_index">
+  <body class="guides guides_cookbook guides_cookbook_user_interface_and_interaction guides_cookbook_user_interface_and_interaction_basic_form_validations guides_cookbook_user_interface_and_interaction_basic_form_validations_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -373,9 +373,9 @@
               <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
             </li>
           </ol></li>
-          <li class="level-1 selected">
+          <li class="level-1">
             <a href="/guides/models">模型</a>
-            <ol class='selected'>
+            <ol>
         
             <li class="level-3">
               <a href="/guides/models">介绍</a>
@@ -485,15 +485,15 @@
               <a href="/guides/configuring-ember/feature-flags">特性标识</a>
             </li>
           </ol></li>
-          <li class="level-1">
+          <li class="level-1 selected">
             <a href="/guides/cookbook">Cookbook</a>
-            <ol>
+            <ol class='selected'>
         
             <li class="level-3">
               <a href="/guides/cookbook">简介</a>
             </li>
           
-            <li class="level-3">
+            <li class="level-3 sub-selected">
               <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
             </li>
           
@@ -542,69 +542,16 @@
   <div class="chapter">
     
     <hr>
-    <h2 class='anchorable-toc' id='toc_the-fixture-adapter'>The Fixture Adapter</h2>
-<p>When developing client-side applications, your server may not have an API ready
-to develop against. The FixtureAdapter allows you to begin developing Ember.js
-apps now, and switch to another adapter when your API is ready to consume
-without any changes to your application code.</p>
-<h3 class='anchorable-toc' id='toc_getting-started'>Getting Started</h3>
-<p>Using the fixture adapter entails three very simple setup steps:</p>
-
-<ol>
-<li>Create a new store using the fixture adapter and attach it to your app.</li>
-<li>Define your model using <code>DS.Model.extend</code>.</li>
-<li>Attach fixtures(also known as sample data) to the model&#39;s class.</li>
-</ol>
-<h4 class='anchorable-toc' id='toc_creating-a-fixture-adapter'>Creating a Fixture Adapter</h4>
-<p>Simply attach it to your instance of <code>Ember.Store</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> App = Ember.Application.create();
-App.Store = DS.Store.extend({
-  <span class="key">revision</span>: <span class="integer">13</span>,
-  <span class="key">adapter</span>: DS.FixtureAdapter
-});
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_define-your-model'>Define Your Model</h4>
-<p>You should refer to <a href="/guides/models/defining-models">Defining a Model</a> for a more in-depth guide on using
-Ember Data Models, but for the purposes of demonstration we&#39;ll use an example
-modeling people who document Ember.js.</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre>App.Documenter = DS.Model.extend({
-  <span class="key">firstName</span>: DS.attr( <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span> ),
-  <span class="key">lastName</span>: DS.attr( <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span> )
-});
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_attach-fixtures-to-the-model-class'>Attach Fixtures to the Model Class</h4>
-<p>Attaching fixtures couldn&#39;t be simpler. Just attach a collection of plain
-JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> property:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre>App.Documenter.FIXTURES = [
-  { <span class="key">id</span>: <span class="integer">1</span>, <span class="key">firstName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Trek</span><span class="delimiter">'</span></span>, <span class="key">lastName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Glowacki</span><span class="delimiter">'</span></span> },
-  { <span class="key">id</span>: <span class="integer">2</span>, <span class="key">firstName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Tom</span><span class="delimiter">'</span></span> , <span class="key">lastName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Dale</span><span class="delimiter">'</span></span>     }
-];
-</pre></td>
-</tr></table>
-</div></div>
-<p>That&#39;s it! You can now use all of methods for <a href="/guides/models/finding-models">Finding Models</a> in your
-application. For example:</p>
+    <h2 class='anchorable-toc' id='toc_problem'>Problem</h2>
+<p>You want to validate your form text fields. The validation should only
+apply when the user focused out of the input (so that a blank form won&#39;t
+be all-red until user focuses each field).</p>
+<h2 class='anchorable-toc' id='toc_solution'>Solution</h2>
+<p>Create a new component and define a <code>focusOut</code> hook, which will record
+that the field has been focused, and add a computed property named
+<code>hasError</code>, which will return validation result only if the field has
+been focused. The component expects to get the validation result as the
+<code>valid</code> property.</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -612,35 +559,80 @@ application. For example:</p>
 4
 5
 6
+7
+8
+9
+<strong>10</strong>
+11
+12
 </pre></td>
-  <td class="code"><pre>App.DocumenterRoute = Ember.Route.extend({
- <span class="function">model</span>: <span class="keyword">function</span>() {
-   <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">documenter</span><span class="delimiter">'</span></span>, <span class="integer">1</span>); <span class="comment">// returns a promise that will resolve</span>
-                                       <span class="comment">// with the record representing Trek Glowacki</span>
- }
+  <td class="code"><pre>App.ValidatedInputComponent = Ember.Component.extend({
+  <span class="key">beenFocused</span>: <span class="predefined-constant">false</span>,
+  <span class="key">valid</span>: <span class="predefined-constant">null</span>,
+  <span class="function">hasError</span>: <span class="keyword">function</span>() {
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">beenFocused</span><span class="delimiter">'</span></span>)) {
+      <span class="keyword">return</span> !<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">valid</span><span class="delimiter">'</span></span>);
+    }
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">valid</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">beenFocused</span><span class="delimiter">'</span></span>),
+  <span class="function">focusOut</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">beenFocused</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+  }
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h4>
-<p>Unlike the <a href="/guides/models/the-rest-adapter">REST Adapter</a>, the Fixture Adapter does not make any assumptions
-about the naming conventions of your model. As you saw in the example above,
-if you declare the attribute as <code>firstName</code> during <code>DS.Model.extend</code>, you use
-<code>firstName</code> to represent the same field in your fixture data.</p>
+</div></div>
+<p>And in the template of the component, put an <code>{{input}}</code> and wrap it
+into a div, which would have the class of <code>has-error</code> bound to
+<code>hasError</code>. </p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">components/validated-input</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">  <span class="tag">&lt;div</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">bindAttr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hasError :form-group</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>
+    {{input type=type value=value size=size pattern=pattern name=name placeholder=placeholder disaled=disabled maxlength=maxlength tabindex=tabindex class=input-class}}
+  <span class="tag">&lt;/div&gt;</span></span>
+<span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>The use like this:</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">validated-input</span> <span class="attribute-name">value</span>=<span class="attribute-value">name</span> <span class="attribute-name">valid</span>=<span class="attribute-value">nameValid</span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Name</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">input-class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-control</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><h2 class='anchorable-toc' id='toc_discussion'>Discussion</h2>
+<p>Essentially, what we need to achieve is to have a component which wraps
+the input field with a div that has the <code>has-error</code> class if the
+validation fails (after the field has been focused). The validation
+result is passed to the component through the <code>valid</code> property.</p>
 
-<p>Importantly, you should make sure that each record in your fixture data has
-a uniquely identifiable field. By default, Ember Data assumes this key
-is called <code>id</code>. Should you not provide an <code>id</code> field in your fixtures, or
-not override the primary key, the Fixture Adapter will throw an error.</p>
+<p>As there is no way to take existing <code>Ember.TextField</code> component and wrap
+it with a layout (because <code>&lt;input&gt;</code> is a self-closing element, so it has
+no content, and so there is nothing to wrap; and Ember can&#39;t wrap the
+element itself this way), we are creating a new component,
+<code>ValidatedInputComponent</code>.</p>
+
+<p>It renders a wrapped input field. The wrapper has the <code>has-error</code> class
+if <code>hasError</code> property of the component is true. It&#39;s true only when
+the validation fails and the field has been focused at.</p>
+<h4 class='anchorable-toc' id='toc_example'>Example</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/UpaXeta/3/embed?live">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/guides/controllers/dependencies-between-controllers">
-             ← 控制器: 管理控制器间的依赖
+          <a class="previous-guide" href="/guides/configuring-ember/feature-flags">
+             ← 配置Ember.js: 特性标识
           </a>
          
-            <a class="next-guide" href="/guides/views">
-              本章模型完毕。下一章： 视图 - 介绍 →
+            <a class="next-guide" href="/guides/understanding-ember/the-view-layer">
+              本章Cookbook完毕。下一章： 理解Ember.js - 视图层 →
             </a>
           
       </footer>

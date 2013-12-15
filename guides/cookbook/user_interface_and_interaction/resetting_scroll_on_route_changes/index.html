@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 指南</title>
+    <title>Ember.js - Cookbook: Resetting scroll on route changes</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
   
   </head>
 
-  <body class="guides guides_models guides_models_the-fixture-adapter guides_models_the-fixture-adapter_index">
+  <body class="guides guides_cookbook guides_cookbook_user_interface_and_interaction guides_cookbook_user_interface_and_interaction_resetting_scroll_on_route_changes guides_cookbook_user_interface_and_interaction_resetting_scroll_on_route_changes_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -373,9 +373,9 @@
               <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
             </li>
           </ol></li>
-          <li class="level-1 selected">
+          <li class="level-1">
             <a href="/guides/models">模型</a>
-            <ol class='selected'>
+            <ol>
         
             <li class="level-3">
               <a href="/guides/models">介绍</a>
@@ -485,15 +485,15 @@
               <a href="/guides/configuring-ember/feature-flags">特性标识</a>
             </li>
           </ol></li>
-          <li class="level-1">
+          <li class="level-1 selected">
             <a href="/guides/cookbook">Cookbook</a>
-            <ol>
+            <ol class='selected'>
         
             <li class="level-3">
               <a href="/guides/cookbook">简介</a>
             </li>
           
-            <li class="level-3">
+            <li class="level-3 sub-selected">
               <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
             </li>
           
@@ -541,71 +541,17 @@
 
   <div class="chapter">
     
+        <h1>Resetting scroll on route changes 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/cookbook/user_interface_and_interaction/resetting_scroll_on_route_changes.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <hr>
-    <h2 class='anchorable-toc' id='toc_the-fixture-adapter'>The Fixture Adapter</h2>
-<p>When developing client-side applications, your server may not have an API ready
-to develop against. The FixtureAdapter allows you to begin developing Ember.js
-apps now, and switch to another adapter when your API is ready to consume
-without any changes to your application code.</p>
-<h3 class='anchorable-toc' id='toc_getting-started'>Getting Started</h3>
-<p>Using the fixture adapter entails three very simple setup steps:</p>
-
-<ol>
-<li>Create a new store using the fixture adapter and attach it to your app.</li>
-<li>Define your model using <code>DS.Model.extend</code>.</li>
-<li>Attach fixtures(also known as sample data) to the model&#39;s class.</li>
-</ol>
-<h4 class='anchorable-toc' id='toc_creating-a-fixture-adapter'>Creating a Fixture Adapter</h4>
-<p>Simply attach it to your instance of <code>Ember.Store</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-</pre></td>
-  <td class="code"><pre><span class="keyword">var</span> App = Ember.Application.create();
-App.Store = DS.Store.extend({
-  <span class="key">revision</span>: <span class="integer">13</span>,
-  <span class="key">adapter</span>: DS.FixtureAdapter
-});
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_define-your-model'>Define Your Model</h4>
-<p>You should refer to <a href="/guides/models/defining-models">Defining a Model</a> for a more in-depth guide on using
-Ember Data Models, but for the purposes of demonstration we&#39;ll use an example
-modeling people who document Ember.js.</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre>App.Documenter = DS.Model.extend({
-  <span class="key">firstName</span>: DS.attr( <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span> ),
-  <span class="key">lastName</span>: DS.attr( <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span> )
-});
-</pre></td>
-</tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_attach-fixtures-to-the-model-class'>Attach Fixtures to the Model Class</h4>
-<p>Attaching fixtures couldn&#39;t be simpler. Just attach a collection of plain
-JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> property:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-</pre></td>
-  <td class="code"><pre>App.Documenter.FIXTURES = [
-  { <span class="key">id</span>: <span class="integer">1</span>, <span class="key">firstName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Trek</span><span class="delimiter">'</span></span>, <span class="key">lastName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Glowacki</span><span class="delimiter">'</span></span> },
-  { <span class="key">id</span>: <span class="integer">2</span>, <span class="key">firstName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Tom</span><span class="delimiter">'</span></span> , <span class="key">lastName</span>: <span class="string"><span class="delimiter">'</span><span class="content">Dale</span><span class="delimiter">'</span></span>     }
-];
-</pre></td>
-</tr></table>
-</div></div>
-<p>That&#39;s it! You can now use all of methods for <a href="/guides/models/finding-models">Finding Models</a> in your
-application. For example:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3>
+<p>The page scroller keeps in the same position when you go from one page to another. For instance, if you scroll down a long list of displayed elements on a page and then you navigate to another page with another long list of elements, you should be able to notice that scroll position is not being reset.</p>
+<h3 class='anchorable-toc' id='toc_solution'>Solution</h3>
+<p>Add the following mixin to the affected Routes:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -613,36 +559,48 @@ application. For example:</p>
 5
 6
 </pre></td>
-  <td class="code"><pre>App.DocumenterRoute = Ember.Route.extend({
- <span class="function">model</span>: <span class="keyword">function</span>() {
-   <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">documenter</span><span class="delimiter">'</span></span>, <span class="integer">1</span>); <span class="comment">// returns a promise that will resolve</span>
-                                       <span class="comment">// with the record representing Trek Glowacki</span>
- }
+  <td class="code"><pre>App.ResetScroll = Ember.Mixin.create({
+  <span class="function">enter</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>._super();
+    window.scrollTo(<span class="integer">0</span>,<span class="integer">0</span>);
+  }
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h4>
-<p>Unlike the <a href="/guides/models/the-rest-adapter">REST Adapter</a>, the Fixture Adapter does not make any assumptions
-about the naming conventions of your model. As you saw in the example above,
-if you declare the attribute as <code>firstName</code> during <code>DS.Model.extend</code>, you use
-<code>firstName</code> to represent the same field in your fixture data.</p>
-
-<p>Importantly, you should make sure that each record in your fixture data has
-a uniquely identifiable field. By default, Ember Data assumes this key
-is called <code>id</code>. Should you not provide an <code>id</code> field in your fixtures, or
-not override the primary key, the Fixture Adapter will throw an error.</p>
+</div></div>
+<p>Only if you need do something on the <code>enter</code> method you must call <code>this._super()</code> at the beginning:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.IndexRoute = Ember.Route.extend(App.ResetScroll, {
+  <span class="comment">//I need to do other things with enter</span>
+  <span class="function">enter</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>._super.apply(<span class="local-variable">this</span>, <span class="local-variable">arguments</span>); <span class="comment">// Call super at the beginning</span>
+    <span class="comment">// Your stuff</span>
+  }
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_example'>Example</h4>
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/IxERoxoy/4/embed?html,css,js,output">Ember Starter Kit</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/guides/controllers/dependencies-between-controllers">
-             ← 控制器: 管理控制器间的依赖
+          <a class="previous-guide" href="/guides/cookbook/user_interface_and_interaction/using_modal_dialogs">
+            ← 使用模态对话框
           </a>
          
-            <a class="next-guide" href="/guides/views">
-              本章模型完毕。下一章： 视图 - 介绍 →
-            </a>
-          
+        <a class="next-guide" href="/guides/cookbook/working_with_objects/continuous_redrawing_of_views">
+          Continuous Redrawing of Views →
+        </a>
+      
       </footer>
       
   </div>

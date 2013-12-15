@@ -768,7 +768,7 @@
 <h3 class='anchorable-toc' id='toc_'>动态段</h3>
 <p>在路由处理器的众多职责里，其中有一个就是转换URL并将其传入模型（<code>model</code>）中。</p>
 
-<p>例如，如果我们有一个资源<code>this.resource(&#39;/blog_posts&#39;)</code>，那么我们的路由处理器看起来
+<p>例如，如果我们有一个资源<code>this.resource(&#39;posts&#39;)</code>，那么我们的路由处理器看起来
 可能像这样：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -777,17 +777,17 @@
 4
 5
 </pre></td>
-  <td class="code"><pre>App.BlogPostsRoute = Ember.Route.extend({
+  <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>() {
-    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">blogPost</span><span class="delimiter">'</span></span>);
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>);
   }
 });
 </pre></td>
 </tr></table>
 </div></div>
-<p><code>blog_posts</code>模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。</p>
+<p><code>posts</code>模板将会接收到一张所有可用的posts清单并将它们当做是上下文环境。</p>
 
-<p>由于<code>/blog_posts</code>映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
+<p>由于<code>/posts</code>映射到一个特定的模型上，所以我们不需要其他额外的信息就可以
 运行。然而，如果我们想要路由映射到某个post上，我们可不想通过在路由器中
 写死每一个可能的post来实现。</p>
 
@@ -813,7 +813,7 @@
 
 App.PostRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>(params) {
-    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
   }
 });
 </pre></td>
@@ -822,7 +822,7 @@ App.PostRoute = Ember.Route.extend({
 <p>由于这种模式很常用，所以上面的模型（<code>model</code>）钩子函数就是默认的行为。</p>
 
 <p>例如，如果动态段是<code>:post_id</code>，<code>ember.js</code>会智能地使用<code>App.post</code>（加上<code>URL</code>提供的<code>ID</code>)。
-特别地，如果你没有重写了模型（<code>model</code>），路由将会自动地返回<code>this.get(&#39;store&#39;).find(&#39;post&#39;, params.post_id)</code>。</p>
+特别地，如果你没有重写了模型（<code>model</code>），路由将会自动地返回<code>this.store.find(&#39;post&#39;, params.post_id)</code>。</p>
 
 <p>这不是巧合，而是<code>Ember Data</code>所想要的。所以如果你使用<code>Ember</code>路由和<code>Ember Data</code>，
 你的动态段将会以默认的方式工作。</p>

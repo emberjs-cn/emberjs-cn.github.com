@@ -581,7 +581,7 @@
     <td><code>App.Photo</code></td>
   </tr>
   <tr>
-    <td><code>admin-user-profile</code></td>
+    <td><code>adminUserProfile</code></td>
     <td><code>App.AdminUserProfile</code></td>
   </tr>
 </table>
@@ -651,7 +651,39 @@ App.Person = DS.Model.extend({
 <p>默认情况下，REST 适配器支持的属性类型有<code>string</code>, <code>number</code>, <code>boolean</code>和<code>date</code>。
 传统的适配器会提供额外的属性类型，并支持你注册自定义的属性类型。
 详情请查看<a href="/guides/models/the-rest-adapter">documentation section on the REST Adapter</a>。</p>
-<h3 class='anchorable-toc' id='toc_'>定义关联模型</h3>
+<h4 class='anchorable-toc' id='toc_'>选项</h4>
+<p><code>DS.attr</code>第二个参数是一个可选的哈希对象，当前支持的选项是：</p>
+
+<ul>
+<li><code>defaultValue</code>：传入一个字符串或者将被调用来设置属性的初始值的函数。</li>
+</ul>
+
+<p>示例</p>
+<div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>  <span class="keyword">var</span> attr = DS.attr;
+
+  App.User = DS.Model.extend({
+      <span class="key">username</span>: attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+      <span class="key">email</span>: attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>),
+      <span class="key">verified</span>: attr(<span class="string"><span class="delimiter">'</span><span class="content">boolean</span><span class="delimiter">'</span></span>, {<span class="key">defaultValue</span>: <span class="predefined-constant">false</span>}),
+      <span class="key">createdAt</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>, {
+          <span class="function">defaultValue</span>: <span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> Date(); }
+      }
+  });
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>定义关联模型</h3>
 <p>Ember Data 包括了几个内置的关联类型，以帮助你确定你的模型如何相互关联的。</p>
 <h4 class='anchorable-toc' id='toc_'>一对一</h4>
 <p>使用<code>DS.belongsTo</code>在两个模型间声明一对一的关系。</p>
@@ -754,33 +786,7 @@ App.Post = DS.Model.extend({
 </tr></table>
 </div></div>
 <p>当然也可以在<code>belongsTo</code>一侧指定，它将按照预期那样工作。</p>
-<h4 class='anchorable-toc' id='toc_'>嵌套对象</h4>
-<p>当有数据结构的嵌套数据不使用或者需要IDS，必须指定<code>hasMany</code>包含的<code>belongsTo</code>。</p>
 
-<p>为了这样，需要扩展应用使用的适配器来加载包含嵌套结构的数据。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td>
-  <td class="code"><pre>App.Comment = DS.Model.extend({});
-
-App.Post = DS.Model.extend({
-  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">comment</span><span class="delimiter">'</span></span>)
-});
-
-App.Adapter.map(<span class="string"><span class="delimiter">'</span><span class="content">App.Post</span><span class="delimiter">'</span></span>, {
-  <span class="key">comments</span>: { <span class="key">embedded</span>: <span class="string"><span class="delimiter">'</span><span class="content">always</span><span class="delimiter">'</span></span> }
-});
-</pre></td>
-</tr></table>
-</div></div>
     
       <footer>
         
