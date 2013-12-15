@@ -543,9 +543,11 @@
             编辑页面</a>
         </h1>
       
-    <h3 class='anchorable-toc' id='toc_before-the-model-is-known'>Before the model is known</h3>
+    <h3 class='anchorable-toc' id='toc_before-the-model-is-known'>Before the model is known</h3><h3 class='anchorable-toc' id='toc_'>在获取模型之前</h3>
 <p>If you want to redirect from one route to another, you can do the transition in
 the <code>beforeModel</code> hook of your route handler.</p>
+
+<p>如果希望从一个路由重定向到另一个路由，可以在<code>beforeModel</code>钩子中进行过渡。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -568,11 +570,13 @@ App.IndexRoute = Ember.Route.extend({
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_after-the-model-is-known'>After the model is known</h3>
+</div></div><h3 class='anchorable-toc' id='toc_after-the-model-is-known'>After the model is known</h3><h3 class='anchorable-toc' id='toc_'>在获取模型之后</h3>
 <p>If you need some information about the current model in order to decide about
 the redirection, you should either use the <code>afterModel</code> or the <code>redirect</code> hook. They
 receive the resolved model as the first parameter and the transition as the second one,
 and thus function as aliases. (In fact, the default implementation of <code>afterModel</code> just calls <code>redirect</code>.)</p>
+
+<p>如果需要从当前模型中获取重定向的信息来决定跳转到哪里，可以使用<code>afterModel</code>和<code>redirect</code>这两个钩子来实现。<code>afterModel</code>和<code>redirect</code>的第一个参数都是路由的模型，过渡对象作为第二个参数，两个钩子本质是一样的。（<code>afterModel</code>钩子的缺省实现只是对<code>redirect</code>钩子的调用。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -607,8 +611,12 @@ App.PostsRoute = Ember.Route.extend({
 <p>When transitioning to the <code>PostsRoute</code> it turns out that there is only one post,
 the current transition is aborted in favor of redirecting to the <code>PostRoute</code>
 with the single post object being its model.</p>
-<h3 class='anchorable-toc' id='toc_based-on-other-application-state'>Based on other application state</h3>
+
+<p>当过渡到<code>PostsRoute</code>路由时，如果发现只有一篇文章，那么当前的过渡会被取消，并重定向到<code>PostRoute</code>路由，来显示这一篇文章。</p>
+<h3 class='anchorable-toc' id='toc_based-on-other-application-state'>Based on other application state</h3><h3 class='anchorable-toc' id='toc_'>基于应用的其他状态</h3>
 <p>You can conditionally transition based on some other application state.</p>
+
+<p>条件过渡可以基于应用的一些其他的状态。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -683,7 +691,7 @@ to the <code>/songs</code> URL.</p>
 hooks (<code>model</code>, <code>afterModel</code>, <code>setupController</code>, <code>renderTemplate</code>) will execute
 as usual.</p>
 
-<p>你的路由还可以选择在特定的情况下才跳转。如果<code>beforeModel</code>钩子没有跳转到新的路由，剩下的钩子们(<code>model</code>, <code>afterModel</code>,<code>setupController</code>, <code>renderTemplate</code>)还会照常执行。</p>
+<p>路由还可以选择在特定的情况下才跳转。如果<code>beforeModel</code>钩子没有跳转到新的路由，剩下的钩子(<code>model</code>, <code>afterModel</code>,<code>setupController</code>, <code>renderTemplate</code>)还会照常执行。</p>
 
     
       <footer>
