@@ -166,6 +166,14 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/getting-ember">Getting Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">Getting Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
@@ -550,7 +558,7 @@
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> post = App.Post.find(<span class="integer">1</span>);
+  <td class="code"><pre><span class="keyword">var</span> post = store.find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, <span class="integer">1</span>);
 </pre></td>
 </tr></table>
 </div></div>
@@ -669,7 +677,7 @@ Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimite
 </pre></td>
 </tr></table>
 </div></div>
-<p>不规则的<code>keys</code>可以在适配器中进行映射。如果返回的JSON包含一个名为<code>lastNameOfPerson</code>的<code>key</code>，而期望的属性名称为<code>lastName</code>，在适配器里配置即可：</p>
+<p>不规则的<code>keys</code>可以通过自定义序列化来完成映射。如果返回的JSON包含一个名为<code>lastNameOfPerson</code>的<code>key</code>，而期望的属性名称为<code>lastName</code>，那么创建一个自定义的序列化类并重写<code>normalizeHash</code>属性。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -677,12 +685,24 @@ Ember.Inflector.inflector.uncountable(<span class="string"><span class="delimite
 4
 5
 6
+7
+8
+9
+<strong>10</strong>
+11
+12
 </pre></td>
   <td class="code"><pre>App.Person = DS.Model.extend({
   <span class="key">lastName</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>)
 });
-DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span class="content">App.Person</span><span class="delimiter">'</span></span>, {
-  <span class="key">lastName</span>: { <span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">lastNameOfPerson</span><span class="delimiter">'</span></span> }
+App.PersonSerializer = DS.RESTSerializer.extend({
+  <span class="key">normalizeHash</span>: {
+    <span class="function">lastNameOfPerson</span>: <span class="keyword">function</span>(hash) {
+      hash.lastName = hash.lastNameOfPerson;
+      <span class="keyword">delete</span> hash.lastNameOfPerson;
+      <span class="keyword">return</span> hash;
+    }
+  }
 });
 </pre></td>
 </tr></table>
@@ -709,7 +729,7 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">commentIds</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   }
 }
 </pre></td>
@@ -739,9 +759,25 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">comment</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">postId</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
   }
 }
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果需要遵从这样的命名惯例，可以通过重写<code>keyForRelationship</code>方法来实现。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre> App.ApplicationSerializer = DS.RESTSerializer.extend({
+   <span class="function">keyForRelationship</span>: <span class="keyword">function</span>(key, relationship) {
+      <span class="keyword">return</span> key + <span class="string"><span class="delimiter">'</span><span class="content">Ids</span><span class="delimiter">'</span></span>;
+   }
+ });
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_'>旁路加载关联</h4>
@@ -772,7 +808,7 @@ DS.RESTAdapter.map(<span class="string"><span class="delimiter">'</span><span cl
   <span class="key"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Node is not omakase</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">commentIds</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>]
   },
 
   <span class="key"><span class="delimiter">&quot;</span><span class="content">comments</span><span class="delimiter">&quot;</span></span>: [{
@@ -871,7 +907,7 @@ cursor.get(<span class="string"><span class="delimiter">'</span><span class="con
 
     <div id="footer">
       <div id="footer-wrapper">
-        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
         <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
         <div class="links">
           <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>

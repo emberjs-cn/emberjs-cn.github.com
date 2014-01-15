@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 指南</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
+  
+  </head>
+
+  <body class="guides guides_contributing guides_contributing_adding-new-features guides_contributing_adding-new-features_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/getting-ember">Getting Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">Getting Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+    <hr>
+    <p>In general, new feature development should be done on master.</p>
+
+<p>Bugfixes should not introduce new APIs or break existing APIs, and do
+not need feature flags.</p>
+
+<p>Features can introduce new APIs, and need feature flags. They should not
+be applied to the release or beta branches, since SemVer requires
+bumping the minor version to introduce new features.</p>
+
+<p>Security fixes should not introduce new APIs, but may, if strictly
+necessary, break existing APIs. Such breakages should be as limited as
+possible.</p>
+<h3 class='anchorable-toc' id='toc_bug-fixes'>Bug Fixes</h3><h4 class='anchorable-toc' id='toc_urgent-bug-fixes'>Urgent Bug Fixes</h4>
+<p>Urgent bugfixes are bugfixes that need to be applied to the existing
+release branch. If possible, they should be made on master and prefixed
+with [BUGFIX release].</p>
+<h4 class='anchorable-toc' id='toc_beta-bug-fixes'>Beta Bug Fixes</h4>
+<p>Beta bugfixes are bugfixes that need to be applied to the beta branch.
+If possible, they should be made on master and tagged with [BUGFIX
+beta].</p>
+<h4 class='anchorable-toc' id='toc_security-fixes'>Security Fixes</h4>
+<p>Security fixes need to be applied to the beta branch, the current
+release branch, and the previous tag. If possible, they should be made
+on master and tagged with [SECURITY].</p>
+<h3 class='anchorable-toc' id='toc_features'>Features</h3>
+<p>Features must always be wrapped in a feature flag. Tests for the feature
+must also be wrapped in a feature flag.</p>
+
+<p>Because the build-tools will process feature-flags, flags must use
+precisely this format. We are choosing conditionals rather than a block
+form because functions change the surrounding scope and may introduce
+problems with early return.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">if</span> (Ember.FEATURES.isEnabled(<span class="string"><span class="delimiter">&quot;</span><span class="content">feature</span><span class="delimiter">&quot;</span></span>)) {
+  <span class="comment">// implementation</span>
+} 
+</pre></td>
+</tr></table>
+</div></div>
+<p>Tests will always run with all features on, so make sure that any tests
+for the feature are passing against the current state of the feature.</p>
+<h4 class='anchorable-toc' id='toc_commits'>Commits</h4>
+<p>Commits related to a specific feature should include  a prefix like
+[FEATURE htmlbars]. This will allow us to quickly identify all commits
+for a specific feature in the future. Features will never be applied to
+beta or release branches. Once a beta or release branch has been cut, it
+contains all of the new features it will ever have.</p>
+
+<p>If a feature has made it into beta or release, and you make a commit to
+master that fixes a bug in the feature, treat it like a bugfix as
+described above.</p>
+<h4 class='anchorable-toc' id='toc_feature-naming-conventions'>Feature Naming Conventions</h4><div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>Ember.FEATURES[<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;packageName&gt;-&lt;feature&gt;</span><span class="delimiter">&quot;</span></span>] <span class="comment">// if package specific</span>
+Ember.FEATURES[<span class="string"><span class="delimiter">&quot;</span><span class="content">container-factory-injections</span><span class="delimiter">&quot;</span></span>]
+Ember.FEATURES[<span class="string"><span class="delimiter">&quot;</span><span class="content">htmlbars</span><span class="delimiter">&quot;</span></span>]
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_builds'>Builds</h3>
+<p>The Canary build, which is based off master, will include all features,
+guarded by the conditionals in the original source. This means that
+users of the canary build can enable whatever features they want by
+enabling them before creating their Ember.Application.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>Ember.FEATURES[<span class="string"><span class="delimiter">&quot;</span><span class="content">htmlbars</span><span class="delimiter">&quot;</span></span>] = <span class="predefined-constant">true</span>;
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_code-features-json-code'><code>features.json</code></h3>
+<p>The root of the repository will contain a features.json file, which will
+contain a list of features that should be enabled for beta or release
+builds.</p>
+
+<p>This file is populated when branching, and may not gain additional
+features after the original branch. It may remove features.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">htmlbars</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">true</span>
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p>The build process will remove any features not included in the list, and
+remove the conditionals for features in the list.</p>
+<h3 class='anchorable-toc' id='toc_travis-testing'>Travis Testing</h3>
+<p>For a new PR:</p>
+
+<ol>
+<li>Travis will test against master with all feature flags on.</li>
+<li>If a commit is tagged with [BUGFIX beta], Travis will also
+cherry-pick the commit into beta, and run the tests on that
+branch. If the commit doesn&#39;t apply cleanly or the tests fail, the
+tests will fail.</li>
+<li>If a commit is tagged with [BUGFIX release], Travis will also cherry-pick
+the commit into release, and run the test on that branch. If the commit
+doesn&#39;t apply cleanly or the tests fail, the tests will fail.</li>
+</ol>
+
+<p>For a new commit to master:</p>
+
+<ol>
+<li>Travis will run the tests as described above.</li>
+<li>If the build passes, Travis will cherry-pick the commits into the
+appropriate branches.</li>
+</ol>
+
+<p>The idea is that new commits should be submitted as PRs to ensure they
+apply cleanly, and once the merge button is pressed, Travis will apply
+them to the right branches.</p>
+<h3 class='anchorable-toc' id='toc_go-no-go-process'>Go/No-Go Process</h3>
+<p>Every six weeks, the core team goes through the following process.</p>
+<h4 class='anchorable-toc' id='toc_beta-branch'>Beta Branch</h4>
+<p>All remaining features on the beta branch are vetted for readiness. If
+any feature isn&#39;t ready, it is removed from features.json.</p>
+
+<p>Once this is done, the beta branch is tagged and merged into release.</p>
+<h4 class='anchorable-toc' id='toc_master-branch'>Master Branch</h4>
+<p>All features on the master branch are vetted for readiness. In order for
+a feature to be considered &quot;ready&quot; at this stage, it must be ready as-is
+with no blockers. Features are a no-go even if they are close and
+additional work on the beta branch would make it ready.</p>
+
+<p>Because this process happens every six weeks, there will be another
+opportunity for a feature to make it soon enough.</p>
+
+<p>Once this is done, the master branch is merged into beta. A
+<code>features.json</code> file is added with the features that are ready.</p>
+<h3 class='anchorable-toc' id='toc_beta-releases'>Beta Releases</h3>
+<p>Every week, we repeat the Go/No-Go process for the features that remain
+on the beta branch. Any feature that has become unready is removed from
+the features.json.</p>
+
+<p>Once this is done, a Beta release is tagged and pushed.</p>
+
+    
+      <footer>
+         
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

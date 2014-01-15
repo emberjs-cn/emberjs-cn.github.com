@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 指南</title>
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
+  
+  </head>
+
+  <body class="guides guides_wip guides_wip_basic-ajax guides_wip_basic-ajax_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/getting-ember">Getting Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">Getting Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+    <hr>
+    <h1 class='anchorable-toc' id='toc_loading-and-saving-data-with-jquery-s-ajax'>Loading and Saving Data With jQuery&#39;s Ajax</h1>
+<p>The easiest way to get started with data hosted on an external service
+is to fetch that data directly in the <code>model</code> hook of a route and to
+save it in an action of your route.</p>
+<h2 class='anchorable-toc' id='toc_when-to-use-this-technique'>When to Use This Technique</h2>
+<p>You should use jQuery Ajax to communicate with your server if:</p>
+
+<ul>
+<li>You are getting started with Ember, and already understand basic Ajax
+and want to get some data into your app quickly and easily.</li>
+<li>You are working with simple models, with few relationships between
+them (or relationships that you load and save all at once).</li>
+<li>You don&#39;t have the same models represented in many places, or are
+willing to roll your own identity map when the situation arises.</li>
+<li>You are willing to make frequent Ajax requests as your user navigates
+around the page, or are willing to roll your own in-memory cache.</li>
+</ul>
+
+<p>See the bottom of this guide for a brief description of other, more
+advanced ways you can work with data, and links to guides about </p>
+<h2 class='anchorable-toc' id='toc_getting-data-into-your-app'>Getting Data Into Your App</h2>
+<p>When your user enters a route, Ember will ask the associated
+<code>Ember.Route</code> object to convert the current URL into a model.</p>
+
+<p>For example, if you have a <code>posts</code> resource:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>When the user goes to <code>/posts</code>, Ember will ask <code>App.PostsRoute</code> which
+model to use. This method, called the &quot;model hook&quot;, can return an Array,
+which will then become the model for the <code>posts</code> template. </p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> [...];
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>That&#39;s all well and good, but it assumes that you have all of the data
+already available. In practice, you will usually need to get it from the
+server before proceeding.</p>
+
+<p>The good news is that Ember allows you to return a <em>Promise</em>, a
+JavaScript object that represents a value that will eventually arrive
+(sometimes called an &quot;eventual value&quot;).</p>
+
+<p>You may be asking: that sounds cool, but how do I make an &quot;eventual
+value&quot;? jQuery&#39;s Ajax methods all return Promises by default!</p>
+
+<p>If you want to tell Ember that the model for a route is the result of
+making an Ajax request instead of a value that you have locally, just
+return a jQuery Ajax request.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_munging-data'>Munging Data</h3>
+<p>If you want to do some data munging before setting the model, just do it
+in the success handler of the Ajax request. Whatever value you return
+from the success handler will become the model.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts</span><span class="delimiter">&quot;</span></span>).then(<span class="keyword">function</span>(json) {
+      <span class="keyword">return</span> json.map(<span class="keyword">function</span>(post) {
+        <span class="keyword">return</span> { <span class="key">title</span>: post.TTL, <span class="key">body</span>: post.BDY };
+      });
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_parameter-based-models'>Parameter-Based Models</h3>
+<p>All of that works great for routes that only have a single model
+associated with them. But what about routes that use <code>:post_id</code> to allow
+a single route to represent many different models?</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>);
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span> });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In this case, the model for URLs like <code>/posts/1</code> will be different based
+on the actual value of <code>post_id</code>.</p>
+
+<p>In this situation, the <code>model</code> method will receive the parameters
+extracted from the URL, and should use it to return the specific model
+in question.</p>
+
+<p>First, if you already have the data locally:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> posts = [{
+  <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">title</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Rails is omakase</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">body</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">...</span><span class="delimiter">&quot;</span></span>
+}, {
+  <span class="key">id</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">title</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The Parley Letter</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">body</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">...</span><span class="delimiter">&quot;</span></span>
+}];
+
+App.PostsRoute = Ember.Route.extend({
+  <span class="comment">// as before, just return the local list of posts</span>
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> posts;
+  }
+});
+
+App.PostRoute = Ember.Route.extend({
+  <span class="comment">// we'll need to use the :post_id param to figure out which model to</span>
+  <span class="comment">// use, and it's available in `params`</span>
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> posts.findBy(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>, params.post_id);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Again, this case isn&#39;t very interesting. You&#39;ll normally get your data
+from the server. As before, we can replace our code with an Ajax lookup.
+Because jQuery provides promises by default, we can return the result of
+a call to <code>$.getJSON</code>.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>App.PostsRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/</span><span class="delimiter">&quot;</span></span> + params.post_id);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Ember will automatically wait for these Ajax calls to complete before
+rendering your templates, so the Ajax-based routes behave exactly the
+same as the synchronous versions.</p>
+
+<p>As a result, you can often start by prototyping with synchronous <code>model</code>
+hooks, and upgrade to Ajax once your app is further along.</p>
+<h2 class='anchorable-toc' id='toc_drilling-in-to-collections'>Drilling in to Collections</h2>
+<p>In the Ajax examples below, drilling in to an individual post triggered
+a second Ajax call. We will need to do that if the user enters the app
+from an individual post&#39;s page, but if she entered from the index, we&#39;d
+prefer to use the post we already downloaded.</p>
+
+<p>In order to achieve this, you can build a simple cache that will first
+try to use loaded data before fetching.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+<strong>30</strong>
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td>
+  <td class="code"><pre><span class="comment">// A simple cache class</span>
+App.Cache = Ember.Object.extend({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>._models = {};
+  },
+
+  <span class="comment">/**
+    Fetch a model by ID and URL. If the model is already in the cache,
+    return it. Otherwise, return an Ajax request for the URL. When the
+    Ajax response comes back, put the model in the cache so we don't
+    make another Ajax request later.
+  */</span>
+  <span class="function">fetch</span>: <span class="keyword">function</span>(id, url) {
+    <span class="keyword">var</span> models = <span class="local-variable">this</span>._models;
+
+    <span class="keyword">if</span> (id <span class="keyword">in</span> models) {
+      <span class="keyword">return</span> models[id];
+    }
+
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(url).then(<span class="keyword">function</span>(json) {
+      models[id] = json;
+      <span class="keyword">return</span> json;
+    });
+  },
+
+  <span class="comment">/**
+    Fetch an Array of models by URL. Return an Ajax request for the URL.
+    When the Ajax response comes back, but the models in the cache by
+    their individual `id` property.
+  */</span>
+  <span class="function">fetchAll</span>: <span class="keyword">function</span>(url) {
+    <span class="keyword">return</span> <span class="predefined">$</span>.getJSON(url).then(<span class="keyword">function</span>(json) {
+      json.forEach(<span class="keyword">function</span>(model) {
+        models[model.id] = model;
+      });
+      <span class="keyword">return</span> json;
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Then, we can use the cache in our model hooks:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>App.CacheController = Ember.Controller.extend({
+  <span class="function">init</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.posts = App.Cache.create();
+  }
+});
+
+App.PostsRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">cache</span><span class="delimiter">'</span></span>)
+      .posts.fetchAll(<span class="string"><span class="delimiter">'</span><span class="content">/posts</span><span class="delimiter">'</span></span>);
+  }
+});
+
+App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.controllerFor(<span class="string"><span class="delimiter">'</span><span class="content">cache</span><span class="delimiter">'</span></span>)
+      .posts.fetch(params.post_id, <span class="string"><span class="delimiter">'</span><span class="content">/posts/</span><span class="delimiter">'</span></span> + params.post_id);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>By putting the cache in a controller, we make sure that using
+<code>App.reset()</code> to reset the application (in tests, or when the user logs
+out) will also clear the cache.</p>
+
+<p>This is just a very simple caching implementation. If you have more
+complex caching needs, or if you need relationships between models, you
+probably will want to use Ember Data, which handles much more
+sophisticated scenarios.</p>
+<h2 class='anchorable-toc' id='toc_partial-models'>Partial Models</h2><h2 class='anchorable-toc' id='toc_more-advanced-techniques'>More Advanced Techniques</h2>
+<p>There are several more advanced techniques, which provide more power,
+but which require more up-front learning. You might want to consider
+using one of these techniques if you have complex relationships or a
+need for in-memory caching of models.</p>
+
+<p>You can learn more about how to use Ember Data in these guides.</p>
+
+<ul>
+<li>[Using Ember Data as an in-memory cache][1]. You can still write all
+your own Ajax code, and use Ember Data as an in-memory cache with
+relationship support and a structured Adapter API for organizing your
+Ajax code better.</li>
+<li>[Using the Ember Data REST Adapter][2]. If your server uses relatively
+conventional REST semantics, you can take advantage of the built-in
+REST Adapter, which will build your URLs, make Ajax requests with the
+appropriate headers and body, and deserialize the return value. It
+also provides a pattern for receiving multiple records at once, known
+as &quot;sideloading&quot;.</li>
+<li>[Using the Ember Data ActiveModel Adapter][3]. If your server uses
+Rails-like semantics, such as underscored keys, you can take advantage
+of the ActiveModel Adapter, which will convert Rails conventions into
+Ember conventions.</li>
+</ul>
+
+    
+      <footer>
+         
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

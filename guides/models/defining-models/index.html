@@ -166,6 +166,14 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/getting-ember">Getting Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">Getting Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
@@ -679,7 +687,7 @@ App.Person = DS.Model.extend({
       <span class="key">verified</span>: attr(<span class="string"><span class="delimiter">'</span><span class="content">boolean</span><span class="delimiter">'</span></span>, {<span class="key">defaultValue</span>: <span class="predefined-constant">false</span>}),
       <span class="key">createdAt</span>: DS.attr(<span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>, {
           <span class="function">defaultValue</span>: <span class="keyword">function</span>() { <span class="keyword">return</span> <span class="keyword">new</span> Date(); }
-      }
+      })
   });
 </pre></td>
 </tr></table>
@@ -749,7 +757,7 @@ App.Tag = DS.Model.extend({
 <p>Ember
 Data会尽最大努力去自动发现关联关系的映射关系。在上例的一对多的情况下，修改了<code>comments</code>会自动更新<code>post</code>，应为这是唯一的一个关联模型。</p>
 
-<p>但是，有时候对同一个类型有多个<code>belongsTo</code>/<code>hasMany</code>关联关系。这时可以通过指定在反向端使用<code>DS.attr</code>的<code>inverse</code>选项来指定其关联的模型：</p>
+<p>但是，有时候对同一个类型有多个<code>belongsTo</code>/<code>hasMany</code>关联关系。这时可以通过指定在反向端使用<code>DS.hasMany</code>的<code>inverse</code>选项来指定其关联的模型：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -807,7 +815,7 @@ App.Post = DS.Model.extend({
 
     <div id="footer">
       <div id="footer-wrapper">
-        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
         <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
         <div class="links">
           <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>

@@ -166,6 +166,14 @@
             </li>
           </ol></li>
           <li class="level-1">
+            <a href="/guides/getting-ember">Getting Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">Getting Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
             <a href="/guides/concepts/core-concepts">概念</a>
             <ol>
         
@@ -605,11 +613,10 @@
 
 <ul>
 <li>路由名称。在上面例子中，可以是<code>index</code>, <code>photos</code>或者 <code>photos.edit</code>。</li>
-<li>每个<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>最多对应一个模型。默认情况下，Ember.js将使用对应对象的<code>id</code>属性来替换动态段。</li>
+<li>每个<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>最多对应一个模型。默认情况下，Ember.js将使用对应对象的<code>id</code>属性来替换动态段。
+如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>，并确保<code>model</code>钩子被触发。</li>
 <li>此外，我们也可以提供一个链接名称绑定到<code>a</code>标签的<code>title</code>属性。</li>
 </ul>
-
-<p>如果没有模型可以传给助手，也可以用一个ID值来取代。这个值被用来替换路由的<a href="/guides/routing/defining-your-routes/#toc_dynamic-segments">动态段</a>，并确保<code>model</code>钩子被触发。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -625,7 +632,7 @@
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>多动态段示例</h3>
-<p>如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型，如下所示：</p>
+<p>如果多个路由是互相嵌套的，那么你可以为每个动态段提供一个模型或者模型标识符，如下所示：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -683,7 +690,21 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>在上述情况下，指定的模型将用来表示<code>:photo_id</code>和<code>:comment_id</code>。</p>
+<p>在上述示例中，<code>PhotoRoute</code>的模型钩子的参数会包含<code>params.photo_id = 5</code>。<code>CommentRoute</code>的<code>model</code>钩子不会执行，因为传入了一个<code>comment</code>段的模型对象。评论的ID会根据<code>CommentRoute</code>的<code>serialize</code>钩子来填写URL。</p>
+<h3 class='anchorable-toc' id='toc_'>给链接添加附加属性</h3>
+<p>当生成一个链接时，有时候还需要为其添加附加属性。通过<code>link-to</code>助手的附加参数，可以完成该功能：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;p&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">link-to</span> <span class="error">'</span><span class="attribute-name">photo.edit</span><span class="error">'</span> <span class="attribute-name">photo</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-primary</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/p&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>大部分HTML属性如<code>class</code>和<code>rel</code>都可以这样来添加。当添加样式类名时，Ember还会添加<code>ember-view</code>和可能的<code>active</code>样式类。</p>
 
     
       <footer>
@@ -705,7 +726,7 @@
 
     <div id="footer">
       <div id="footer-wrapper">
-        <div class="info">&copy; 2013 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
         <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
         <div class="links">
           <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
