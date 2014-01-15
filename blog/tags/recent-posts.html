@@ -68,6 +68,8 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2014/01/14/ember-security-releases.html">安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</a></li>
+        
           <li class='level-3'><a href="/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html">Ember 1.3.0 and 1.4 Beta Released</a></li>
         
           <li class='level-3'><a href="/blog/2013/12/05/finish-translations.html">完成Ember指南中文翻译</a></li>
@@ -84,9 +86,9 @@
         
           <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
         
-          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
-        
           <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
         
@@ -141,6 +143,16 @@
 
 <h1>Recent Posts</h1>
 
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2014/01/14/ember-security-releases.html">安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</a> &ndash; <time>Jan 14, 2014</time></span></h2>
+    
+    <p>因为开发者信任Ember.js在生产环境下来处理敏感的用户数据，因此Ember团队非常关注项目的安全问题。实际上，Ember是少数具有<a href="http://emberjs.com/security/">清晰的安全策略</a>和一个<a href="https://groups.google.com/forum/#!forum/ember-security">为安全问题专设的邮件列表</a>的Javascript项目之一。</p>
+
+<p>今天发布的Ember.js
+1.0.1，1.1.3，1.2.1，1.3.1和1.4.0-beta.2包含下面的重要的安全修复：</p>
+
+    <a href="/blog/2014/01/14/ember-security-releases.html">更多内容...</a>
+  </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html">Ember 1.3.0 and 1.4 Beta Released</a> &ndash; <time>Jan 06, 2014</time></span></h2>
     
@@ -296,6 +308,29 @@ UI控件的组件时，可能需要使用观察器来监视组件上的改变，
     <a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">
+    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： pudgecon
+      </h5>
+    
+    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
+
+<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
+
+<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
+<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
+<p>首先是相同的创建应用：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>App = Ember.Application.create();
+</pre></td>
+</tr></table>
+</div></div>
+    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
     
       <h5 class="blog-post-summary-author">
@@ -329,29 +364,6 @@ App.Store = DS.Store.extend({
     <a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">
-    <h2><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a> &ndash; <time>Apr 25, 2013</time></span></h2>
-    
-      <h5 class="blog-post-summary-author">
-        撰写人： pudgecon
-      </h5>
-    
-    <p>本文通过两种常见的方式实现了一个简单的用户管理。</p>
-
-<p>一种是采用跳转至一个新页面进行用户信息查看与修改；另一种是采用在同一个页面进行用户信息查看与修改。</p>
-
-<p><a href="http://emberjs.cn/blog/2013/04/25/two-different-ways-for-users-management-1.html">上一篇</a>讲述使用第一种方案实现的过程。</p>
-<h3 class='anchorable-toc' id='toc_'>这一篇讲述使用第二种方案实现的过程。</h3>
-<p>首先是相同的创建应用：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>App = Ember.Application.create();
-</pre></td>
-</tr></table>
-</div></div>
-    <a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
     <h2><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a> &ndash; <time>Apr 23, 2013</time></span></h2>
     
       <h5 class="blog-post-summary-author">
@@ -372,19 +384,6 @@ App.Store = DS.Store.extend({
 <p>为<code>App#reset</code>做了大量的修复以及改善工作，现在，当它被调用的时候，应该会正确的清理应用程序状态。通常情况下，这只用于集成测试。</p>
 
     <a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a> &ndash; <time>Apr 18, 2013</time></span></h2>
-    
-      <h5 class="blog-post-summary-author">
-        撰写人： TowerHe
-      </h5>
-    
-    <p><a href="http://discuss.emberjs.cn/t/topic/19">论坛</a>中发起了一个关于如何获取应用当前登录用户信息的最佳实践的讨论。在这里尝试采用讨论中给出的方案二来实现获取登录用户。其他的方案请查看http://discuss.emberjs.cn/t/topic/19。</p>
-
-<p>在写应用的时候，几乎所有应用都有一个不变的需求，就是获取当前登录的用户的相关信息。比如用户的ID、用户名、头像、角色等等。那么在.js中应该如何解决这个需求呢？下面将尝试找出一个比较通用的方法，来获取应用当前登录的用户信息。</p>
-
-    <a href="/blog/2013/04/18/how-to-load-the-current-user.html">更多内容...</a>
   </article>
 
       </div>
