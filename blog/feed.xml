@@ -75,7 +75,7 @@
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;目录与文件用途&lt;/h4&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;Assetfile&lt;/code&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Assetfile&lt;/code&gt;：rake-pipeline配置文件。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Gemfile&lt;/code&gt;：定义项目依赖的RubyGems。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;README.md&lt;/code&gt;：项目说明文件，通常包括项目的简介、使用说明、开发指南等等。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Rakefile&lt;/code&gt;：项目开发过程中常使用的构建任务，通过&lt;code&gt;rake -T&lt;/code&gt;可以查看任务清单。&lt;/li&gt;
