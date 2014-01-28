@@ -37,7 +37,7 @@
     
   </head>
 
-  <body class="blog blog_2014 blog_2014_01 blog_2014_01_16 blog_2014_01_16_how-to-use-ember-dev-to-develop-ember-packages">
+  <body class="blog blog_2014 blog_2014_01 blog_2014_01_28 blog_2014_01_28_how-to-use-ember-dev-to-develop-ember-packages">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -69,7 +69,7 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
-          <li class='level-3'><a href="/blog/2014/01/16/how-to-use-ember-dev-to-develop-ember-packages.html">如何使用ember-dev来开发Ember包</a></li>
+          <li class='level-3'><a href="/blog/2014/01/28/how-to-use-ember-dev-to-develop-ember-packages.html">如何使用ember-dev来开发Ember包</a></li>
         
           <li class='level-3'><a href="/blog/2014/01/14/ember-security-releases.html">安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</a></li>
         
@@ -187,8 +187,66 @@
 
 <p>“目前Ember Dev还不推荐公众使用，因为还缺少一些重要的特性，比如缺少生成器。”</p>
 
-<p>尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。下面将一步步介绍如何使用Ember Dev来搭建一个Ember包的构建环境。</p>
-<h3 class='anchorable-toc' id='toc_'>创建基本目录结构</h3>
+<p>尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。</p>
+<h3 class='anchorable-toc' id='toc_'>基本目录结构</h3><div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>├── Assetfile
+├── Gemfile
+├── README.md
+├── Rakefile
+├── VERSION
+├── config.ru
+├── ember-dev.yml
+├── generators
+│   └── license.js
+├── packages
+│   └── ember-pkg-example
+│       ├── lib
+│       │   ├── core.js
+│       │   └── main.js
+│       ├── package.json
+│       └── tests
+├── project.json
+└── tests
+    └── ember_configuration.js
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>目录与文件用途</h4>
+<ol>
+<li><code>Assetfile</code>：</li>
+<li><code>Gemfile</code>：定义项目依赖的RubyGems。</li>
+<li><code>README.md</code>：项目说明文件，通常包括项目的简介、使用说明、开发指南等等。</li>
+<li><code>Rakefile</code>：项目开发过程中常使用的构建任务，通过<code>rake -T</code>可以查看任务清单。</li>
+<li><code>VERSION</code>：项目版本申明文件。</li>
+<li><code>config.ru</code>：Rack配置文件。</li>
+<li><code>ember-dev</code>：ember-dev配置文件。</li>
+<li><code>generators/license.js</code>：版权声明文件，该文件中的内容会被自动添加到生成的js文件的头部，用作版权声明。</li>
+<li><code>packages</code>：项目源代码目录，代码就是从这里开始的走向成功的。</li>
+<li><code>project.json</code>：bpm配置文件。</li>
+<li><code>tests/ember_configuration.js</code>：测试环境配置文件。</li>
+</ol>
+<h4 class='anchorable-toc' id='toc_'>实例代码</h4>
+<p>如果需要一个感性、直面的认识，那么赶紧去签出<a href="https://github.com/emberjs-cn/ember-pkg-example">ember-pkg-example</a>的源代码，然后按照<a href="https://github.com/emberjs-cn/ember-pkg-example/blob/master/README.md">README</a>一步步迈进吧。</p>
+
 
     <hr>
 

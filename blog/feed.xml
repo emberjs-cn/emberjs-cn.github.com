@@ -5,16 +5,16 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2014-01-16T00:00:00Z</updated>
+  <updated>2014-01-28T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
   <entry>
     <title>如何使用ember-dev来开发Ember包</title>
-    <link rel="alternate" href="http://emberjs.cn/blog/2014/01/16/how-to-use-ember-dev-to-develop-ember-packages.html"/>
-    <id>http://emberjs.cn/blog/2014/01/16/how-to-use-ember-dev-to-develop-ember-packages.html</id>
-    <published>2014-01-16T00:00:00Z</published>
-    <updated>2014-01-16T00:00:00Z</updated>
+    <link rel="alternate" href="http://emberjs.cn/blog/2014/01/28/how-to-use-ember-dev-to-develop-ember-packages.html"/>
+    <id>http://emberjs.cn/blog/2014/01/28/how-to-use-ember-dev-to-develop-ember-packages.html</id>
+    <published>2014-01-28T00:00:00Z</published>
+    <updated>2014-01-28T00:00:00Z</updated>
     <author>
       <name>EmberJS.CN</name>
     </author>
@@ -23,15 +23,73 @@
 
 &lt;p&gt;“目前Ember Dev还不推荐公众使用，因为还缺少一些重要的特性，比如缺少生成器。”&lt;/p&gt;
 
-&lt;p&gt;尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。下面将一步步介绍如何使用Ember Dev来搭建一个Ember包的构建环境。&lt;/p&gt;
+&lt;p&gt;尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。&lt;/p&gt;
 </summary>
     <content type="html">&lt;h3 class='anchorable-toc' id='toc_ember-dev'&gt;Ember Dev是什么？&lt;/h3&gt;
 &lt;p&gt;Ember Dev是由Ember核心团队开发的一个用来辅助开发Ember包的工具。目前还处于“社会主义初级阶段”，可谓是“万里长征”迈出了好几步。目前Ember Dev已经包含了一些基本的工具，可以帮助我们提高Ember包开发的速度。其为我们搭建了开发、测试、发布等基本操作环境。用官方的语言来表达一下Ember Dev现在的状态：&lt;/p&gt;
 
 &lt;p&gt;“目前Ember Dev还不推荐公众使用，因为还缺少一些重要的特性，比如缺少生成器。”&lt;/p&gt;
 
-&lt;p&gt;尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。下面将一步步介绍如何使用Ember Dev来搭建一个Ember包的构建环境。&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_'&gt;创建基本目录结构&lt;/h3&gt;</content>
+&lt;p&gt;尽管如此，我们还是可以放心的使用Ember Dev来搭建Ember包项目的构建环境的。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;基本目录结构&lt;/h3&gt;&lt;div class="highlight  "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;strong&gt;10&lt;/strong&gt;
+11
+12
+13
+14
+15
+16
+17
+18
+19
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;├── Assetfile
+├── Gemfile
+├── README.md
+├── Rakefile
+├── VERSION
+├── config.ru
+├── ember-dev.yml
+├── generators
+│   └── license.js
+├── packages
+│   └── ember-pkg-example
+│       ├── lib
+│       │   ├── core.js
+│       │   └── main.js
+│       ├── package.json
+│       └── tests
+├── project.json
+└── tests
+    └── ember_configuration.js
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;目录与文件用途&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Assetfile&lt;/code&gt;：&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Gemfile&lt;/code&gt;：定义项目依赖的RubyGems。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;README.md&lt;/code&gt;：项目说明文件，通常包括项目的简介、使用说明、开发指南等等。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Rakefile&lt;/code&gt;：项目开发过程中常使用的构建任务，通过&lt;code&gt;rake -T&lt;/code&gt;可以查看任务清单。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VERSION&lt;/code&gt;：项目版本申明文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config.ru&lt;/code&gt;：Rack配置文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ember-dev&lt;/code&gt;：ember-dev配置文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generators/license.js&lt;/code&gt;：版权声明文件，该文件中的内容会被自动添加到生成的js文件的头部，用作版权声明。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;packages&lt;/code&gt;：项目源代码目录，代码就是从这里开始的走向成功的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;project.json&lt;/code&gt;：bpm配置文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tests/ember_configuration.js&lt;/code&gt;：测试环境配置文件。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 class='anchorable-toc' id='toc_'&gt;实例代码&lt;/h4&gt;
+&lt;p&gt;如果需要一个感性、直面的认识，那么赶紧去签出&lt;a href="https://github.com/emberjs-cn/ember-pkg-example"&gt;ember-pkg-example&lt;/a&gt;的源代码，然后按照&lt;a href="https://github.com/emberjs-cn/ember-pkg-example/blob/master/README.md"&gt;README&lt;/a&gt;一步步迈进吧。&lt;/p&gt;
+</content>
   </entry>
   <entry>
     <title>安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</title>
