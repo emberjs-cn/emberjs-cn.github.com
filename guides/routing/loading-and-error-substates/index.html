@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -729,25 +733,25 @@ App.FooSlowModelRoute = Ember.Route.extend({
 11
 12
 13
-14
 </pre></td>
-  <td class="code"><pre>App.ApplicationRoute = Ember.Route.extend({
+  <td class="code"><pre>App.LoadingView = Ember.View.extend({
+  <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>,
+  <span class="key">elementId</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>
+});
+
+App.ApplicationRoute = Ember.Route.extend({
   <span class="key">actions</span>: {
     <span class="function">loading</span>: <span class="keyword">function</span>() {
-      <span class="keyword">var</span> view = Ember.View.create({
-        <span class="key">templateName</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>,
-        <span class="key">elementId</span>: <span class="string"><span class="delimiter">'</span><span class="content">global-loading</span><span class="delimiter">'</span></span>
-      }).append();
-
-      <span class="local-variable">this</span>.router.one(<span class="string"><span class="delimiter">'</span><span class="content">didTransition</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
-        view.destroy();
-      });
+      <span class="keyword">var</span> view = <span class="local-variable">this</span>.container.lookup(<span class="string"><span class="delimiter">'</span><span class="content">view:loading</span><span class="delimiter">'</span></span>).append();
+      <span class="local-variable">this</span>.router.one(<span class="string"><span class="delimiter">'</span><span class="content">didTransition</span><span class="delimiter">'</span></span>, view, <span class="string"><span class="delimiter">'</span><span class="content">destroy</span><span class="delimiter">'</span></span>);
     }
   }
 });
 </pre></td>
 </tr></table>
 </div></div>
+<p><a href="http://emberjs.jsbin.com/ucanam/3307">JSBin示例</a></p>
+
 <p>上例实现了一个与<code>LoadingRoute</code>类型的行为，当路由进入一个<code>loading</code>状态时，在顶层添加了一个视图，并在完成过渡时删除加入的视图。</p>
 
     

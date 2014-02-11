@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -590,10 +594,14 @@
 9
 <strong>10</strong>
 11
+12
+13
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 actions: {
+  <span class="comment">// ... additional lines truncated for brevity ...</span>
+  <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
     <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
       <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
       todo.deleteRecord();
@@ -613,7 +621,7 @@ actions: {
 
 <p>因为删除的待办事项不再是所有待办事项集合的一部分，因此其对应的<code>&lt;li&gt;</code>元素将自动的从页面上移除。如果被删除的待办事项是未完成的，那么对应的未完成待办事项的数量将减一，显示该数字的部分也将自动重新渲染。如果数量的变化导致<code>item</code>和<code>items</code>间的变形，那么对应的页面部分也将自动重新渲染。</p>
 
-<p>Reload your web browser to ensure that there are no errors and the behaviors described above occurs. </p>
+<p>Reload your web browser to ensure that there are no errors and the behaviors described above occurs.</p>
 
 <p>重新载入Web浏览器以确保没有任何错误发生，并且之前描述的行为均工作正常。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>

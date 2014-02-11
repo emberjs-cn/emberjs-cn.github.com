@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -625,7 +629,7 @@ Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><sp
   <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
 <span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isEditing</span><span class="inline-delimiter">}}</span></span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">edit-todo</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="attribute-value">title</span> <span class="attribute-name">focus-out</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span> 
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">edit-todo</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="attribute-value">title</span> <span class="attribute-name">focus-out</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span>
                            <span class="attribute-name">insert-newline</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
 <span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
@@ -637,7 +641,7 @@ Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><sp
 
 <p>点击<code>&lt;enter&gt;</code>键会触发<code>TodoController</code>实例的<code>acceptChanges</code>事件。焦点离开<code>&lt;input&gt;</code>时会出发<code>focus-out</code>事件，并调用视图的<code>TodoController</code>实例的<code>acceptChanges</code>方法。</p>
 
-<p>Additionally, we connect the <code>value</code> property of this <code>&lt;input&gt;</code> to the <code>title</code> property of this instance of <code>TodoController</code>. We will not implement a <code>title</code> property on the controller so it will retain the default behavior of proxying all requests to its <code>model</code>. </p>
+<p>Additionally, we connect the <code>value</code> property of this <code>&lt;input&gt;</code> to the <code>title</code> property of this instance of <code>TodoController</code>. We will not implement a <code>title</code> property on the controller so it will retain the default behavior of proxying all requests to its <code>model</code>.</p>
 
 <p>此外，<code>TodoController</code>实例的<code>title</code>属性与<code>&lt;input&gt;</code>的<code>value</code>属性进行了绑定。控制器中并没有定义<code>title</code>属性，这样控制就保持默认的行为，将所有请求代理到其<code>model</code>之上。</p>
 

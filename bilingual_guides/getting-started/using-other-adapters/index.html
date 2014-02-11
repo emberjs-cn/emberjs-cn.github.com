@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -575,10 +579,10 @@ Todos.ApplicationAdapter = DS.LSAdapter.extend({
 </pre></td>
 </tr></table>
 </div></div>
-<p>The local storage adapter, written by Ryan Florence, can be downloaded <a href="https://github.com/rpflorence/ember-localstorage-adapter">from its source</a>. Add it to your project as <code>js/libs/localstorage_adapter.js</code>. You may place this file anywhere you like (even just putting all code into the same file), but this guide will assume you have created the file and named it as indicated.</p>
+<p>The local storage adapter, written by Ryan Florence, can be downloaded <a href="https://raw.github.com/rpflorence/ember-localstorage-adapter/master/localstorage_adapter.js">from its source</a>. Add it to your project as <code>js/libs/localstorage_adapter.js</code>. You may place this file anywhere you like (even just putting all code into the same file), but this guide will assume you have created the file and named it as indicated.</p>
 
 <p><code>localstorage</code>适配器由Ryan
-Florence编写，可以从<a href="https://github.com/rpflorence/ember-localstorage-adapter">其源</a>下载。将其添加至项目的<code>js/libs/localstorage_adapter.js</code>。当然你也可以将其放置到任何你喜欢的位置（或者将所有代码放置到一个文件中），不过本指南假设你按照指定的路径保存文件和对其命名。</p>
+Florence编写，可以从<a href="https://raw.github.com/rpflorence/ember-localstorage-adapter/master/localstorage_adapter.js">其源</a>下载。将其添加至项目的<code>js/libs/localstorage_adapter.js</code>。当然你也可以将其放置到任何你喜欢的位置（或者将所有代码放置到一个文件中），不过本指南假设你按照指定的路径保存文件和对其命名。</p>
 
 <p>In <code>index.html</code> include <code>js/libs/localstorage_adapter.js</code> as a dependency:</p>
 

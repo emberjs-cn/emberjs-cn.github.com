@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -621,12 +625,12 @@
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 
 Todos.TodosCompletedRoute = Ember.Route.extend({
-  <span class="function">model</span>: <span class="keyword">function</span>(){
+  <span class="function">model</span>: <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="local-variable">this</span>.store.filter(<span class="string"><span class="delimiter">'</span><span class="content">todo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (todo) {
       <span class="keyword">return</span> todo.get(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>);
     });
   },
-  <span class="function">renderTemplate</span>: <span class="keyword">function</span>(controller){
+  <span class="function">renderTemplate</span>: <span class="keyword">function</span>(controller) {
     <span class="local-variable">this</span>.render(<span class="string"><span class="delimiter">'</span><span class="content">todos/index</span><span class="delimiter">'</span></span>, {<span class="key">controller</span>: controller});
   }
 });

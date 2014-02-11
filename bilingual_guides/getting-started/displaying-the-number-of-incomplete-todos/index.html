@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -593,9 +597,15 @@
 12
 13
 14
+15
+16
+17
 </pre></td>
-  <td class="code"><pre><span class="comment">// Hint: these lines MUST NOT go into the 'actions' object.</span>
-<span class="comment">// 提示：下面的代码不能放入'actions'</span>
+  <td class="code"><pre>actions: {
+  <span class="comment">// ... additional lines truncated for brevity ...</span>
+  <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
+},
+
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 <span class="function">remaining</span>: <span class="keyword">function</span> () {
@@ -627,7 +637,7 @@
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/b418407ed9666714c82d894d6b70f785674f7a45">Changes in this step in <code>diff</code> format</a></li>
-<li><p><a href="/guides/object-model/computed-properties/">Computed Properties Guide</a> </p></li>
+<li><p><a href="/guides/object-model/computed-properties/">Computed Properties Guide</a></p></li>
 <li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/b418407ed9666714c82d894d6b70f785674f7a45">用<code>diff</code>格式呈现本次修改</a></p></li>
 <li><p><a href="/guides/object-model/computed-properties/">计算属性指南</a> </p></li>
 </ul>

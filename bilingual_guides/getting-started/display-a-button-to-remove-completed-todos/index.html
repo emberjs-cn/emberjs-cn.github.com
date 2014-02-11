@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -600,6 +604,7 @@
 15
 16
 17
+18
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 actions: {
@@ -608,7 +613,8 @@ actions: {
     completed.invoke(<span class="string"><span class="delimiter">'</span><span class="content">deleteRecord</span><span class="delimiter">'</span></span>);
 
     <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).commit();
-  }
+  },
+  <span class="comment">// ... additional lines truncated for brevity ...</span>
 },
 <span class="function">hasCompleted</span>: <span class="keyword">function</span> () {
   <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">completed</span><span class="delimiter">'</span></span>) &gt; <span class="integer">0</span>;
@@ -616,12 +622,12 @@ actions: {
 
 <span class="function">completed</span>: <span class="keyword">function</span> () {
   <span class="keyword">return</span> <span class="local-variable">this</span>.filterBy(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>);
-}.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>)
+}.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>),
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>Reload your web browser to ensure that there are no errors and the behavior described above occurs. </p>
+<p>Reload your web browser to ensure that there are no errors and the behavior described above occurs.</p>
 
 <p>重载浏览器确保没有任何错误，并且上面描述的功能正常。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>

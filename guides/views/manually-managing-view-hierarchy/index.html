@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -610,7 +614,7 @@ container.pushObject(secondView);
     <span class="local-variable">this</span>.pushObject(App.FirstView.create());
     <span class="local-variable">this</span>.pushObject(App.SecondView.create());
   }
-};
+});
 
 container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
 container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>
@@ -628,7 +632,7 @@ container.objectAt(<span class="integer">1</span>).toString(); <span class="comm
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.extend({
   <span class="key">childViews</span>: [App.FirstView, App.SecondView]
-};
+});
 
 container.objectAt(<span class="integer">0</span>).toString(); <span class="comment">//=&gt; '&lt;App.FirstView:ember123&gt;'</span>
 container.objectAt(<span class="integer">1</span>).toString(); <span class="comment">//=&gt; '&lt;App.SecondView:ember124&gt;'</span>

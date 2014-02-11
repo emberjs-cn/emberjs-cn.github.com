@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -582,9 +586,11 @@
 7
 8
 9
+<strong>10</strong>
 </pre></td>
   <td class="code"><pre><span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 actions: {
+  <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
     <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
       <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
       todo.deleteRecord();

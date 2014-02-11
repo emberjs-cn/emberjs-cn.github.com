@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -598,6 +602,7 @@
 15
 16
 17
+18
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 actions: {
@@ -606,7 +611,8 @@ actions: {
     completed.invoke(<span class="string"><span class="delimiter">'</span><span class="content">deleteRecord</span><span class="delimiter">'</span></span>);
 
     completed.invoke(<span class="string"><span class="delimiter">'</span><span class="content">save</span><span class="delimiter">'</span></span>);
-  }
+  },
+  <span class="comment">// ... additional lines truncated for brevity ...</span>
 },
 <span class="function">hasCompleted</span>: <span class="keyword">function</span> () {
   <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">completed</span><span class="delimiter">'</span></span>) &gt; <span class="integer">0</span>;
@@ -614,7 +620,7 @@ actions: {
 
 <span class="function">completed</span>: <span class="keyword">function</span> () {
   <span class="keyword">return</span> <span class="local-variable">this</span>.filterBy(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>).get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>);
-}.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>)
+}.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>),
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 </pre></td>
 </tr></table>

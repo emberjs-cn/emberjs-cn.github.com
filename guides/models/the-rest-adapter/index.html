@@ -536,6 +536,10 @@
             <li class="level-3">
               <a href="/guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -714,7 +718,7 @@ App.PersonSerializer = DS.RESTSerializer.extend({
 3
 </pre></td>
   <td class="code"><pre>App.Post = DS.Model.extend({
-  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">App.Comment</span><span class="delimiter">'</span></span>, { <span class="key">async</span>: <span class="predefined-constant">true</span> })
+  <span class="key">comments</span>: DS.hasMany(<span class="string"><span class="delimiter">'</span><span class="content">comment</span><span class="delimiter">'</span></span>, { <span class="key">async</span>: <span class="predefined-constant">true</span> })
 });
 </pre></td>
 </tr></table>
@@ -744,7 +748,7 @@ App.PersonSerializer = DS.RESTSerializer.extend({
 3
 </pre></td>
   <td class="code"><pre>App.Comment = DS.Model.extend({
-  <span class="key">post</span>: DS.belongsTo(<span class="string"><span class="delimiter">'</span><span class="content">App.Post</span><span class="delimiter">'</span></span>)
+  <span class="key">post</span>: DS.belongsTo(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>)
 });
 </pre></td>
 </tr></table>

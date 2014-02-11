@@ -535,6 +535,10 @@
             <li class="level-3">
               <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
             </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">The Run Loop</a>
+            </li>
           </ol></li></ol>
   
           <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
@@ -618,13 +622,10 @@ method:</p>
 16
 17
 18
-19
-<strong>20</strong>
 </pre></td>
   <td class="code"><pre>App.Person = Ember.Object.extend({
   <span class="function">say</span>: <span class="keyword">function</span>(thing) {
     <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
-
     alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content"> says: </span><span class="delimiter">&quot;</span></span> + thing);
   }
 });
@@ -639,8 +640,7 @@ App.Soldier = App.Person.extend({
   <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Yehuda Katz</span><span class="delimiter">&quot;</span></span>
 });
 
-yehuda.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Yes</span><span class="delimiter">&quot;</span></span>);
-<span class="comment">// alerts &quot;Yehuda Katz says: Yes, sir!&quot;</span>
+yehuda.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Yes</span><span class="delimiter">&quot;</span></span>); <span class="comment">// alerts &quot;Yehuda Katz says: Yes, sir!&quot;</span>
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_creating-instances'>创建实例（Creating Instances）</h3>
@@ -654,8 +654,8 @@ instances:</p>
   <td class="line-numbers"><pre>1
 2
 </pre></td>
-  <td class="code"><pre><span class="keyword">var</span> person = Person.create();
-person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>) <span class="comment">// alerts &quot; says: Hello&quot;</span>
+  <td class="code"><pre><span class="keyword">var</span> person = App.Person.create();
+person.say(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>); <span class="comment">// alerts &quot; says: Hello&quot;</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -676,17 +676,17 @@ by passing an optional hash to the <code>create()</code> method:</p>
 <strong>10</strong>
 11
 </pre></td>
-  <td class="code"><pre>Person = Ember.Object.extend({
+  <td class="code"><pre>App.Person = Ember.Object.extend({
   <span class="function">helloWorld</span>: <span class="keyword">function</span>() {
     alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hi, my name is </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>));
   }
 });
 
-<span class="keyword">var</span> tom = Person.create({
+<span class="keyword">var</span> tom = App.Person.create({
   <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tom Dale</span><span class="delimiter">&quot;</span></span>
 });
 
-tom.helloWorld() <span class="comment">// alerts &quot;Hi my name is Tom Dale&quot;</span>
+tom.helloWorld(); <span class="comment">// alerts &quot;Hi my name is Tom Dale&quot;</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -699,12 +699,12 @@ properties, create a new subclass and instantiate that.</p>
 <p>考虑到性能问题，实例的计算属性或方法不能在调用<code>create()</code>方法的时候进行重定义。同样也不可以在此时定义新的计算属性或方法。因此，在调用<code>create()</code>方法时，只能设置基本属性。如果需要定义或者重新定义计算属性或方法，可以通过定义一个新的子类来实现。</p>
 
 <p>By convention, properties or variables that hold classes are
-CamelCased, while instances are not. So, for example, the variable
-<code>Person</code> would contain a class, while <code>person</code> would contain an instance
-(usually of the <code>Person</code> class). You should stick to these naming
+PascalCased, while instances are not. So, for example, the variable
+<code>App.Person</code> would contain a class, while <code>person</code> would contain an instance
+(usually of the <code>App.Person</code> class). You should stick to these naming
 conventions in your Ember applications.</p>
 
-<p>按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量<code>Person</code>代表一个类，而<code>person</code>则代表一个实例（通常是类<code>Person</code>的实例）。在<code>Ember</code>应用中，应该采用这样的命名惯例。</p>
+<p>按照惯例，用来保存类名的属性和变量名需首字母大写，而实例名首字母不大写。例如：变量<code>App.Person</code>代表一个类，而<code>person</code>则代表一个实例（通常是类<code>App.Person</code>的实例）。在<code>Ember</code>应用中，应该采用这样的命名惯例。</p>
 <h3 class='anchorable-toc' id='toc_initializing-instances'>初始化实例（Initializing Instances）</h3>
 <p>When a new instance is created, its <code>init</code> method is invoked
 automatically. This is the ideal place to do setup required on new
@@ -725,14 +725,14 @@ instances:</p>
 11
 12
 </pre></td>
-  <td class="code"><pre>Person = Ember.Object.extend({
+  <td class="code"><pre>App.Person = Ember.Object.extend({
   <span class="function">init</span>: <span class="keyword">function</span>() {
     <span class="keyword">var</span> name = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>);
     alert(name + <span class="string"><span class="delimiter">&quot;</span><span class="content">, reporting for duty!</span><span class="delimiter">&quot;</span></span>);
   }
 });
 
-Person.create({
+App.Person.create({
   <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Stefan Penner</span><span class="delimiter">&quot;</span></span>
 });
 
