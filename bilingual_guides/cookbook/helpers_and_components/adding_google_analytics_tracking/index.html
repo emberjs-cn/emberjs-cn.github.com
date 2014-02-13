@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 助手与组件</title>
+    <title>Ember.js - 指南</title>
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@
   
   </head>
 
-  <body class="bilingual_guides bilingual_guides_cookbook bilingual_guides_cookbook_helpers_and_components bilingual_guides_cookbook_helpers_and_components_index">
+  <body class="bilingual_guides bilingual_guides_cookbook bilingual_guides_cookbook_helpers_and_components bilingual_guides_cookbook_helpers_and_components_adding_google_analytics_tracking bilingual_guides_cookbook_helpers_and_components_adding_google_analytics_tracking_index">
     <div id="header">
       <div id="wrapper">
         <a id="logo" href="/">&nbsp;</a>
@@ -550,35 +550,110 @@
 
   <div class="chapter">
     
-        <h1>助手与组件 
-          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/cookbook/helpers_and_components.md" target="_blank" class="edit-page">
-            编辑页面</a>
-        </h1>
-      
-    <p>Here are some recipes to help you encapsulate your code into Components and build Helpers.</p>
+    <h3 class='anchorable-toc' id='toc_problem'>Problem</h3><h3 class='anchorable-toc' id='toc_'>问题</h3>
+<p>You want to add analytics to your Ember application.</p>
 
-<p>下面是一些可以用于封装代码到组件和构建助手的技巧：</p>
+<p>希望可以分析Ember应用的使用情况。</p>
+<h3 class='anchorable-toc' id='toc_solution'>Solution</h3><h3 class='anchorable-toc' id='toc_'>解决方案</h3>
+<p>Subscribe to the <code>didTransition</code> event inside your application router.</p>
 
-<ol>
-<li><p><a href="/guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons">Creating Reusable Social Share Buttons</a></p></li>
-<li><p><a href="/guides/cookbook/helpers_and_components/spin_button_for_asynchronous_actions">A Spinning Button for Asynchronous Actions</a></p></li>
-<li><p><a href="/guides/cookbook/helpers_and_components/adding_google_analytics_tracking">Adding Google Analytics Tracking</a></p></li>
-<li><p><a href="/guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons">创建可以重用的社交分享按钮</a></p></li>
-<li><p><a href="/guides/cookbook/helpers_and_components/spin_button_for_asynchronous_actions">异步操作的旋转按钮</a></p></li>
-<li><p><a href="/guides/cookbook/helpers_and_components/adding_google_analytics_tracking">添加Google Analytics跟踪</a></p></li>
-</ol>
+<p>通过在应用的路由中订阅<code>didTransition</code>事件来实现。</p>
+
+<p>In the following examples we&#39;re using Google Analytics but it could be any other analytics product.
+Add google analytic&#39;s base code to the html file that renders your ember app.</p>
+
+<p>系列中使用Google
+Analytics来展示如何实现对应用的分析，当然也可以使用其他的分析产品。将Google
+Analytics的基础代码添加到渲染Ember应用的HTML文件中。</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;title&gt;</span>My Ember Site<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="inline">
+    <span class="keyword">var</span> _gaq = _gaq || [];
+    _gaq.push([<span class="string"><span class="delimiter">'</span><span class="content">_setAccount</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">UA-XXXXX-Y</span><span class="delimiter">'</span></span>]);
+
+    (<span class="keyword">function</span>() {
+      <span class="keyword">var</span> ga = document.createElement(<span class="string"><span class="delimiter">'</span><span class="content">script</span><span class="delimiter">'</span></span>); ga.type = <span class="string"><span class="delimiter">'</span><span class="content">text/javascript</span><span class="delimiter">'</span></span>; ga.async = <span class="predefined-constant">true</span>;
+      ga.src = (<span class="string"><span class="delimiter">'</span><span class="content">https:</span><span class="delimiter">'</span></span> == document.location.protocol ? <span class="string"><span class="delimiter">'</span><span class="content">https://ssl</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">http://www</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">.google-analytics.com/ga.js</span><span class="delimiter">'</span></span>;
+      <span class="keyword">var</span> s = document.getElementsByTagName(<span class="string"><span class="delimiter">'</span><span class="content">script</span><span class="delimiter">'</span></span>)[<span class="integer">0</span>]; s.parentNode.insertBefore(ga, s);
+    })();</span>
+
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Then reopen the application router and add this function. It will be called when
+<code>didTransition</code> is fired by the router.</p>
+
+<p>然后重新打开应用的路由并添加下面的函数。该函数在路由触发<code>didTransition</code>时会被调用。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>App.Router.reopen({
+  <span class="function">notifyGoogleAnalytics</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> ga(<span class="string"><span class="delimiter">'</span><span class="content">send</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">pageview</span><span class="delimiter">'</span></span>, {
+        <span class="key"><span class="delimiter">'</span><span class="content">page</span><span class="delimiter">'</span></span>: <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">url</span><span class="delimiter">'</span></span>),
+        <span class="key"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>: <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">url</span><span class="delimiter">'</span></span>)
+      });
+  }.on(<span class="string"><span class="delimiter">'</span><span class="content">didTransition</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_discussion'>Discussion</h3><h3 class='anchorable-toc' id='toc_'>讨论</h3>
+<p>The <code>didTransition</code> event is responsible for notifying listeners of any URL
+changes, in this example we are getting the path after the hash in the url so we
+can notify Google Analytics about moving between areas of the site.</p>
+
+<p><code>didTransition</code>事件负责将URL改变的事件通知监听器，在本例中，通过获得URL<code>#</code>之后的路径，来将应用状态改变通知Google Analytics。</p>
+<h3 class='anchorable-toc' id='toc_example'>Example</h3><h3 class='anchorable-toc' id='toc_'>示例</h3>
+<p><a class="jsbin-embed" href="http://jsbin.com/AjeDehO/2/embed?js,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/cookbook/event_handling_and_data_binding/binding_properties_of_an_object_to_its_own_properties">
-            ← 绑定对象属性到自有其他属性
+          <a class="previous-guide" href="/bilingual_guides/configuring-ember/feature-flags">
+             ← 配置Ember.js: 特性标识
           </a>
          
-        <a class="next-guide" href="/bilingual_guides/cookbook/helpers_and_components/creating_reusable_social_share_buttons">
-          创建可以重用的社交分享按钮 →
-        </a>
-      
+            <a class="next-guide" href="/guides/understanding-ember/the-view-layer">
+              本章Cookbook完毕。下一章： 理解Ember.js - 视图层 →
+            </a>
+          
       </footer>
       
   </div>
