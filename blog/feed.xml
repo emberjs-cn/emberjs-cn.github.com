@@ -5,10 +5,58 @@
   <id>http://emberjs.cn/blog</id>
   <link href="http://emberjs.cn/blog"/>
   <link href="http://emberjs.cn/blog/feed.xml" rel="self"/>
-  <updated>2014-02-07T00:00:00Z</updated>
+  <updated>2014-02-17T00:00:00Z</updated>
   <author>
     <name>EmberJS.CN</name>
   </author>
+  <entry>
+    <title>EmberJS.CN一周岁</title>
+    <link rel="alternate" href="http://emberjs.cn/blog/2014/02/17/ember-js-cn-one-year-old.html"/>
+    <id>http://emberjs.cn/blog/2014/02/17/ember-js-cn-one-year-old.html</id>
+    <published>2014-02-17T00:00:00Z</published>
+    <updated>2014-02-17T00:00:00Z</updated>
+    <author>
+      <name>EmberJS.CN</name>
+    </author>
+    <summary type="html">&lt;p&gt;时间飞逝，日月如梭。从上线EmberJS.CN到今日，整整一周年过去了。一年里Ember社区改变了许多，特别是在Ember1.0正式版发布之后，更是发展迅速。不论是代码结构、新特性、运行的稳定性，还是文档、教程等等方面都有了很大的改进。时至今日，Ember.js已经发布了1.4.0版本，Ember Data也推出了1.0.0-beta.6版本，相信不久就会迎来ED的1.0正式版，届时肯定又会掀起整个社区的一次大骚动。&lt;/p&gt;
+
+&lt;p&gt;在过去的一年里，Ember.js的里程碑：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2013-02-15 Ember.js发布1.0.0.rc.1&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+    <content type="html">&lt;p&gt;时间飞逝，日月如梭。从上线EmberJS.CN到今日，整整一周年过去了。一年里Ember社区改变了许多，特别是在Ember1.0正式版发布之后，更是发展迅速。不论是代码结构、新特性、运行的稳定性，还是文档、教程等等方面都有了很大的改进。时至今日，Ember.js已经发布了1.4.0版本，Ember Data也推出了1.0.0-beta.6版本，相信不久就会迎来ED的1.0正式版，届时肯定又会掀起整个社区的一次大骚动。&lt;/p&gt;
+
+&lt;p&gt;在过去的一年里，Ember.js的里程碑：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2013-02-15 Ember.js发布1.0.0.rc.1&lt;/li&gt;
+&lt;li&gt;2013-08-31 Ember.js发布1.0.0正式版&lt;/li&gt;
+&lt;li&gt;2013-09-04 Ember Data发布1.0.0-beta.2&lt;/li&gt;
+&lt;li&gt;2013-09-06 制定了Ember 1.0后发布策略&lt;/li&gt;
+&lt;li&gt;2013-12-17 定义了2014年的开发计划 &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;伴随着Ember.js的成长，EmberJS.CN也不断的在长大，不断的为我们中文社区的Ember开发作着贡献。下面简单的回顾一下这一年中EmberJS.CN都做了些什么。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2013-02-18 EmberJS.CN诞生&lt;/li&gt;
+&lt;li&gt;2013-03-06 EmberJS.CN&lt;a href="http://weibo.com/embercn"&gt;开博&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2013-03-11 创建第一个QQ群（298026365）&lt;/li&gt;
+&lt;li&gt;2013-04-06 &lt;a href="http://discuss.emberjs.cn"&gt;EmberJS.CN中文论坛&lt;/a&gt;上线&lt;/li&gt;
+&lt;li&gt;2013-07-23 EmberJS.CN第一个开源项目&lt;a href="https://github.com/emberjs-cn/intimi"&gt;Intimi&lt;/a&gt;启动&lt;/li&gt;
+&lt;li&gt;2013-09-10 Intimi 0.1.0发布&lt;/li&gt;
+&lt;li&gt;2013-11-19 Intimi 0.2.0发布&lt;/li&gt;
+&lt;li&gt;2013-12-15 完成与官方指南的同步&lt;a href="http://emberjs.cn/guides"&gt;翻译&lt;/a&gt;工作，并持续保持更新&lt;/li&gt;
+&lt;li&gt;2014-02-15 EmberJS.CN第二个开源项目&lt;a href="https://github.com/emberjs-cn/ember-menglifang"&gt;Ember Menglifang&lt;/a&gt; 0.2.3发布&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;现在已经走在了2014年的日子里，EmberJS.CN将在未来的一年里持续的为大家服务，为Ember.JS在中文开发社区的推广努力。在这里也特别感谢一年以来大家对本网站的包容、谅解与支持。&lt;/p&gt;
+
+&lt;p&gt;谢谢大家！&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>安全性发布 - Ember 1.2.2, and 1.3.2</title>
     <link rel="alternate" href="http://emberjs.cn/blog/2014/02/07/ember-security-releases.html"/>
@@ -295,182 +343,6 @@
 &lt;li&gt;处理单个对象的&lt;code&gt;pushPayload&lt;/code&gt;；&lt;/li&gt;
 &lt;li&gt;在&lt;code&gt;recordArrayManager&lt;/code&gt;中创建&lt;code&gt;RecordArrays&lt;/code&gt;；&lt;/li&gt;
 &lt;li&gt;添加更多文档说明。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Ember 1.3.0 and 1.4 Beta Released</title>
-    <link rel="alternate" href="http://emberjs.cn/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html"/>
-    <id>http://emberjs.cn/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html</id>
-    <published>2014-01-06T00:00:00Z</published>
-    <updated>2014-01-06T00:00:00Z</updated>
-    <author>
-      <name>EmberJS.CN</name>
-    </author>
-    <summary type="html">&lt;p&gt;We are pleased to announce that both Ember.js 1.3.0 and the first beta in the 1.4 series
-have just been released. This comes as the third cycle of our six-week release
-process that began just after 1.0 was released.&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_new-in-1-3'&gt;New in 1.3&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_non-array-dependencies-for-reducecomputed'&gt;Non-array Dependencies for ReduceComputed&lt;/h4&gt;</summary>
-    <content type="html">&lt;p&gt;We are pleased to announce that both Ember.js 1.3.0 and the first beta in the 1.4 series
-have just been released. This comes as the third cycle of our six-week release
-process that began just after 1.0 was released.&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_new-in-1-3'&gt;New in 1.3&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_non-array-dependencies-for-reducecomputed'&gt;Non-array Dependencies for ReduceComputed&lt;/h4&gt;
-&lt;p&gt;Generally, using &lt;code&gt;reduceComputed&lt;/code&gt; is all about efficiently computing the resulting value, but
-occasionally you might need to recompute every time. It is now possible to instruct
-&lt;code&gt;reduceComputed&lt;/code&gt; to completely recompute when an item is added/removed (instead of calling
-the &lt;code&gt;addedItem&lt;/code&gt; and &lt;code&gt;removedItem&lt;/code&gt; callbacks).&lt;/p&gt;
-
-&lt;p&gt;This is done by using either non-array dependent keys or adding &lt;code&gt;.[]&lt;/code&gt; to an array dependency.&lt;/p&gt;
-
-&lt;p&gt;Take a look at the following example:&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-13
-14
-15
-16
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;Ember.Object.extend({
-  &lt;span class="comment"&gt;// When `string` is changed, `computed` is completely recomputed.&lt;/span&gt;
-  &lt;span class="key"&gt;string&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;a string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
-
-  &lt;span class="comment"&gt;// When an item is added to `array`, `addedItem` is called.&lt;/span&gt;
-  &lt;span class="key"&gt;array&lt;/span&gt;: [],
-
-  &lt;span class="comment"&gt;// When an item is added to `anotherArray`, `computed` is completely&lt;/span&gt;
-  &lt;span class="comment"&gt;// recomputed.&lt;/span&gt;
-  &lt;span class="key"&gt;anotherArray&lt;/span&gt;: [],
-
-  &lt;span class="key"&gt;computed&lt;/span&gt;: Ember.reduceComputed(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;string&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;array&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;anotherArray.[]&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;, {
-    &lt;span class="key"&gt;addedItem&lt;/span&gt;: addedItemCallback,
-    &lt;span class="key"&gt;removedItem&lt;/span&gt;: removedItemCallback
-  })
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_testing'&gt;Testing&lt;/h4&gt;
-&lt;p&gt;Testability of Ember applications is an ongoing priority, and the 1.3 release
-contains a number of updates that result in a dramatic improvement.&lt;/p&gt;
-&lt;h5 class='anchorable-toc' id='toc_custom-code-wait-code-hooks'&gt;Custom &lt;code&gt;wait()&lt;/code&gt; Hooks&lt;/h5&gt;
-&lt;p&gt;You can now specify custom hooks to notify the asynchronous test helpers when all
-async actions have completed. Under Ember 1.2 if you need to wait for an IndexDB
-action, the default &lt;code&gt;wait&lt;/code&gt; implementation would not wait until that
-action finished. Now you can simply register your own hook that will instruct wait
-that it is truly time to continue.&lt;/p&gt;
-
-&lt;p&gt;For example:&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;Ember.Test.registerWaiter(&lt;span class="keyword"&gt;function&lt;/span&gt;() {
-  &lt;span class="keyword"&gt;return&lt;/span&gt; hasPendingTransactions() == &lt;span class="integer"&gt;0&lt;/span&gt;;
-});
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;This instructs the &lt;code&gt;wait&lt;/code&gt; helper that the async actions are not finished until
-&lt;code&gt;hasPendingTransactions&lt;/code&gt; is zero.&lt;/p&gt;
-
-&lt;p&gt;You can find more details &lt;a href="https://github.com/emberjs/ember.js/pull/3433"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h5 class='anchorable-toc' id='toc_lazy-routing'&gt;Lazy Routing&lt;/h5&gt;
-&lt;p&gt;Under Ember.js 1.2 routing is started as soon as you boot your application and &lt;em&gt;before&lt;/em&gt;
-you call &lt;code&gt;visit&lt;/code&gt;. This results in duplicate routing which slows down your tests and also
-potentially causes your tests to be less isolated.&lt;/p&gt;
-
-&lt;p&gt;Under Ember.js 1.3 routing isn&amp;#39;t started until you call &lt;code&gt;visit&lt;/code&gt; for the first time. This
-provides a couple of improvements to the way you test:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You do not need to call &lt;code&gt;App.advanceReadiness()&lt;/code&gt; in your test setup since the application
-is automatically in a deferred state until calling &lt;code&gt;visit&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;App.reset()&lt;/code&gt; now leaves the application in the same state as &lt;code&gt;App.setupForTesting()&lt;/code&gt; (a
-deferred state).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can find more details &lt;a href="https://github.com/emberjs/ember.js/pull/3695"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h5 class='anchorable-toc' id='toc_stubbable-code-controllers-code-property'&gt;Stubbable &lt;code&gt;controllers&lt;/code&gt; Property&lt;/h5&gt;
-&lt;p&gt;Prior to Ember 1.3 you could not easily stub out any dependencies specified with &lt;code&gt;needs&lt;/code&gt;.
-Now you can unit test controllers and stub their dependencies all within
-&lt;code&gt;TheControllerClass.create()&lt;/code&gt; instead of having to use a container, register stubbed
-dependencies, and instantiate the controller via &lt;code&gt;container.lookup()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Simplified example:&lt;/p&gt;
-&lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
-  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;strong&gt;10&lt;/strong&gt;
-11
-12
-&lt;/pre&gt;&lt;/td&gt;
-  &lt;td class="code"&gt;&lt;pre&gt;&lt;span class="keyword"&gt;var&lt;/span&gt; BrotherController = Ember.Controller.extend({
-  &lt;span class="key"&gt;needs&lt;/span&gt;: &lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;sister&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;,
-  &lt;span class="key"&gt;foo&lt;/span&gt;: Ember.computed.alias(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;controllers.sister.foo&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;)
-});
-
-&lt;span class="keyword"&gt;var&lt;/span&gt; broController = BrotherController.create({
-  &lt;span class="key"&gt;controllers&lt;/span&gt;: {
-    &lt;span class="key"&gt;sister&lt;/span&gt;: { &lt;span class="key"&gt;foo&lt;/span&gt;: &lt;span class="integer"&gt;5&lt;/span&gt; }
-  }
-});
-
-equal(broController.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;span class="content"&gt;foo&lt;/span&gt;&lt;span class="delimiter"&gt;'&lt;/span&gt;&lt;/span&gt;), &lt;span class="integer"&gt;5&lt;/span&gt;, &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;`needs` dependencies can be stubbed&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-&lt;/pre&gt;&lt;/td&gt;
-&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Previously, specifying &lt;code&gt;controllers&lt;/code&gt; to &lt;code&gt;BrotherController&lt;/code&gt; would have resulted in an error,
-and now under Ember.js 1.3 this works as expected.&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_promise-improvements'&gt;Promise Improvements&lt;/h4&gt;
-&lt;p&gt;Ember.js 1.3 has updated to &lt;code&gt;RSVP&lt;/code&gt; 3.0.3 which brings considerable performance improvements, a number
-of new features, and significantly improved documentation coverage.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;RSVP&lt;/code&gt; has added a number of features that allow external tooling to be able to inspect and track the labels, states, and
-values of promises. These improvements will be extremely useful when used with the next major
-version of the &lt;a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi"&gt;Ember Inspector&lt;/a&gt;.
-Which will allow you to see a tree of promises and inspect their names, state, and fulfilled/rejected values.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;RSVP&lt;/code&gt; added a number of additional methods to &lt;code&gt;Promise&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Promise.cast&lt;/code&gt; - Coerces the given argument into a promise, or returns the argument if it is
-already a promise.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Promise.catch&lt;/code&gt; - &lt;code&gt;catch&lt;/code&gt; is essentially syntactic sugar for &lt;code&gt;then(undefined, onRejection)&lt;/code&gt; which
-makes it the same as the &lt;code&gt;catch&lt;/code&gt; block of a &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt; statement.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Promise.finally&lt;/code&gt; - The callback provided to &lt;code&gt;Promise.finally&lt;/code&gt; will be invoked regardless of the
-promises fate (both fulfilled and rejected promises). This is essentially similar to native
-&lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt;/&lt;code&gt;finally&lt;/code&gt; statements.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Promise.race&lt;/code&gt; - Will return a new promise which will be settled with the value of
-the first promise that settles. In other words: given an array of promises &lt;code&gt;Promise.race&lt;/code&gt;
-will return the value from the first argument that settles (like the winner in a &amp;quot;race&amp;quot;).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Please review &lt;a href="/api/modules/RSVP.html"&gt;the documentation&lt;/a&gt; for more information.&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_other-improvements'&gt;Other Improvements&lt;/h4&gt;
-&lt;p&gt;As usual, there are a ton of bug fixes and small improvements in this
-release. You can see a list of all the changes in the CHANGELOG:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/emberjs/ember.js/blob/v1.3.0/CHANGELOG.md"&gt;Ember.js 1.3.0 CHANGELOG&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/emberjs/ember.js/blob/v1.4.0-beta.1/CHANGELOG.md"&gt;Ember.js 1.4.0 beta 1 CHANGELOG&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>

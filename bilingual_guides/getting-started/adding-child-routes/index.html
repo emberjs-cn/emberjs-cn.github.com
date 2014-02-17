@@ -631,9 +631,9 @@
 
 <p><code>{{outlet}}</code>Handlebars助手指定了模板中的一部分，将根据我们在不同的路由间切换而动态更新。我们第一个子路由将在此列出所有的待办事项。</p>
 
-<p>In <code>js/router.js</code> update the router to change the <code>todos</code> mapping so it can accept child routes and add this first <code>index</code> route:</p>
+<p>In <code>js/router.js</code> update the router to change the <code>todos</code> mapping, with an additional empty function parameter so it can accept child routes, and add this first <code>index</code> route:</p>
 
-<p>在<code>js/router.js</code>中，更新路由中<code>todos</code>的映射，使其可以接受子路由，并为其添加<code>index</code>路由：</p>
+<p>在<code>js/router.js</code>中，使用一个额外的空函数作为参数，来更新路由中<code>todos</code>的映射，使其可以接受子路由，并为其添加<code>index</code>路由：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
