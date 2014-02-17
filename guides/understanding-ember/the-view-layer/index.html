@@ -744,7 +744,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 <li><code>willInsertElement</code>：本钩子在视图被渲染后，但还未插入到DOM中时被调用。它不访问视图的<code>element</code>。</li>
 <li><code>didInsertElement</code>：本钩子在视图一插入DOM后立即被调用。它可以访问视图的<code>element</code>，这在集成外部的库的时候尤为有用。任何显式的设置DOM代码都应该被限定在本钩子内。</li>
 <li><code>willDestroyElement</code>：本钩子在元素从DOM中移除之前调用。在此有机会来清理关联到DOM节点的一些外部状态。就像<code>didInsertElement</code>有助于集成外部库一般。</li>
-<li><code>willRerender</code>：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。</li>
+<li><code>willClearRender</code>：本钩子在视图被重新渲染之前调用。它可以在视图重新渲染之前做一些清理工作。</li>
 <li><p><code>becameVisible</code>：本钩子在视图的<code>isVisible</code>属性或者其某个父视图的<code>isVisible</code>属性变为真，且关联的元素变为可见之后调用。注意本钩子只适用于所有可见性都通过<code>isVisible</code>属性来控制的情况。</p></li>
 <li><p><code>becameHidden</code>：本钩子在视图的<code>isVisible</code>属性或者其某个父视图的<code>isVisible</code>属性变为假，且关联的元素变为不可见之后调用。注意本钩子只适用于所有可见性都通过<code>isVisible</code>属性来控制的情况。</p></li>
 </ul>
@@ -755,7 +755,7 @@ children.objectAt(<span class="integer">0</span>).get(<span class="string"><span
 2
 3
 </pre></td>
-  <td class="code"><pre>view.on(<span class="string"><span class="delimiter">'</span><span class="content">willRerender</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <td class="code"><pre>view.on(<span class="string"><span class="delimiter">'</span><span class="content">willClearRender</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
   <span class="comment">// do something with view</span>
 });
 </pre></td>
