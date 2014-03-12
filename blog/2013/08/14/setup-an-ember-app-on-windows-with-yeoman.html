@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - Windows下Ember应用开发环境搭建</title>
+    <meta property="st:title" content="Windows下Ember应用开发环境搭建" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="blog blog_2013 blog_2013_08 blog_2013_08_14 blog_2013_08_14_setup-an-ember-app-on-windows-with-yeoman">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li class="active"><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          <ol id='toc-list'>
+  
+    <li class='level-1'>
+      <a href="/blog/tags/recent-posts.html">最近文章</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2014/02/17/ember-js-cn-one-year-old.html">EmberJS.CN一周岁</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/02/07/ember-security-releases.html">安全性发布 - Ember 1.2.2, and 1.3.2</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/29/using-ember-simple-auth.html">使用Ember.SimpleAuth实现用户登录逻辑</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/28/how-to-use-ember-dev-to-develop-ember-packages.html">如何使用ember-dev来开发Ember包</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/14/ember-security-releases.html">安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/11/ember-data-1-0-0-beta-5.html">Ember Data 1.0.0.beta.5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html">Ember 1.3.0 and 1.4 Beta Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/12/05/finish-translations.html">完成Ember指南中文翻译</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/14/setup-an-ember-app-on-windows-with-yeoman.html">Windows下Ember应用开发环境搭建</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/18/how-to-load-the-current-user.html">如何获取应用当前登录的用户信息</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/31/ember-baby-steps.html">Ember入门实践</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/06/domain-name-emberjs-cn-enabled.html">Emberjs.cn域名正式启用</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/19/why-discourse-uses-ember.html">为什么Discourse选择Ember.JS</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/02/18/come-into-being.html">EmberJS.CN之诞生</a></li>
+        
+      </ol>
+    </li>
+  
+  
+    <li class='level-1'>
+      <a href="/blog/tags/releases.html">发布说明</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/02/07/ember-security-releases.html">安全性发布 - Ember 1.2.2, and 1.3.2</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/14/ember-security-releases.html">安全性发布 - Ember 1.0.1, 1.1.3, 1.2.1, and 1.3.1</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/11/ember-data-1-0-0-beta-5.html">Ember Data 1.0.0.beta.5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/01/06/ember-1-3-0-and-ember-1-4-0-beta-released.html">Ember 1.3.0 and 1.4 Beta Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/31/ember-1-0-released.html">Ember 1.0 Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/07/06/ember-js-1-0-0-rc6.html">Ember.js 1.0.0-rc6发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/29/ember-js-1-0-rc2-released.html">Ember.js 1.0.0-rc2发布</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/27/changed-the-directories-of-guides.html">指南目录结构调整</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/03/11/ember-js-1-0-rc2.html">Ember.js准备发布RC2了</a></li>
+        
+      </ol>
+    </li>
+  
+  
+    <li class='level-1'>
+      <a href="/blog/tags/weekly.html">Ember.js周报</a>
+      <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2013/06/14/ember-js-weekly.html">第七期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/30/ember-js-weekly.html">第六期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/24/ember-js-weekly.html">第五期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/17/ember-js-weekly.html">第四期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/09/ember-js-weekly.html">第三期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/05/02/ember-js-weekly.html">第二期周报</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/ember-js-weekly.html">第一期周报</a></li>
+        
+      </ol>
+    </li>
+  
+</ol>
+
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          <article class="blog-post">
+    <h1>Windows下Ember应用开发环境搭建</h1>
+    
+      <h3 class="blog-post-author">作者： Jun Yang &ndash; <time>Aug 14, 2013</time></h3>
+    
+
+    <hr>
+
+    <p>环境：windows 7</p>
+<h3 class='anchorable-toc' id='toc_nodejs'>安装nodejs</h3><h3 class='anchorable-toc' id='toc_grunt'>安装grunt</h3><h4 class='anchorable-toc' id='toc_grunt-grunt-cli'>安装grunt命令行工具grunt-cli</h4>
+<p>执行全局安装</p>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>  # grunt 必须依赖
+  npm install -g grunt-cli
+  # 生成项目脚手架 grunt-init --help
+  npm install -g grunt-init
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_yeoman'>安装Yeoman</h3>
+<p>Yeoman 是 yo + bower + grunt</p>
+
+<ul>
+<li>yo:   生成 项目脚手架</li>
+<li>bower: 包管理工具</li>
+</ul>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  npm install -g yo
+</pre></td>
+</tr></table>
+</div></div>
+<p>自动安装grunt 和 bower</p>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>  # 生成项目脚手架
+  npm install -g generator-webapp
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>准备项目文件夹</h3><h4 class='anchorable-toc' id='toc_'>创建项目文件夹</h4><h4 class='anchorable-toc' id='toc_grunt'>安装grunt及插件，安装在项目根目录</h4>
+<p>进入项目根目录</p>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>  npm install grunt --save-dev
+  npm install grunt-contrib-qunit --save-dev
+</pre></td>
+</tr></table>
+</div></div>
+<p>验证版本 <code>grunt -version</code></p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>  grunt-cli v0.1.9
+  grunt v0.4.1
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>创建一个项目脚手架代码</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  yo wabapp
+</pre></td>
+</tr></table>
+</div></div>
+<p>查看目录下的文件，自动生成 package.json 和 Gruntfile</p>
+<h4 class='anchorable-toc' id='toc_'>安装依赖的模块</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  npm install
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>运行</h3><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  grunt server --force
+</pre></td>
+</tr></table>
+</div></div>
+<p>http://localhost:9000 出现欢迎页面</p>
+<h3 class='anchorable-toc' id='toc_ember'>与ember集成</h3><h4 class='anchorable-toc' id='toc_ember'>下载ember相关包</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  bower install ember
+</pre></td>
+</tr></table>
+</div></div>
+<p>app 目录下自动生成 bower_components</p>
+<h4 class='anchorable-toc' id='toc_'>安装模版编译插件</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  npm install grunt-ember-templates --save-dev
+</pre></td>
+</tr></table>
+</div></div>
+<p>建立模版文件夹 templates</p>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  mkdir app/templates
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_gruntfile-js'>修改Gruntfile.js 自动编译模版</h4>
+<p>在Gruntfile.js文件添加</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  grunt.loadNpmTasks(<span class="string"><span class="delimiter">'</span><span class="content">grunt-ember-templates</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>在grunt.initConfig内添加</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>emberTemplates: {
+  <span class="key">compile</span>: {
+    <span class="key">options</span>: {
+      <span class="function">templateName</span>: <span class="keyword">function</span>(sourceFile) {
+        <span class="keyword">return</span> sourceFile.replace(<span class="regexp"><span class="delimiter">/</span><span class="content">app</span><span class="content">\/</span><span class="content">templates</span><span class="content">\/</span><span class="delimiter">/</span></span>, <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+      }
+    },
+    <span class="key">files</span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">&lt;%= yeoman.app %&gt;/scripts/templates.js</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;%= yeoman.app%&gt;/templates/**/*.handlebars</span><span class="delimiter">&quot;</span></span>]
+    }
+  }
+},
+</pre></td>
+</tr></table>
+</div></div>
+<p>在 watch处添加如下内容：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>emberTemplates: {
+    <span class="key">files</span>: <span class="string"><span class="delimiter">'</span><span class="content">&lt;%= yeoman.app %&gt;/templates/**/*.handlebars</span><span class="delimiter">'</span></span>,
+    <span class="key">tasks</span>: [<span class="string"><span class="delimiter">'</span><span class="content">emberTemplates</span><span class="delimiter">'</span></span>]
+},
+</pre></td>
+</tr></table>
+</div></div>
+<p>最后添加emberTemplates到server任务</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>grunt.registerTask(<span class="string"><span class="delimiter">'</span><span class="content">server</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (target) {
+    ...
+    grunt.task.run([
+        ...
+        <span class="string"><span class="delimiter">'</span><span class="content">compass:server</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content"> emberTemplates</span><span class="delimiter">'</span></span>, <span class="comment">// Add this line.</span>
+        <span class="string"><span class="delimiter">'</span><span class="content">livereload-start</span><span class="delimiter">'</span></span>,
+        ...
+    ]);
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>开发一个简单应用</h3><h4 class='anchorable-toc' id='toc_app-scripts-main-js'>在app/scripts/main.js 中 添加如下代码</h4><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App = Em.Application.create({
+  <span class="key">rootElement</span>: <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#app</span><span class="delimiter">'</span></span>),
+});
+
+App.Router.map(<span class="keyword">function</span>(){
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">about</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_index-html'>在 index.html</h4><div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre> <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">app</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   
+ <span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>添加js文件</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bower_components/jquery/jquery.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>       
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bower_components/handlebars/handlebars.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bower_components/ember/ember.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/main.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/templates.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>建立模版</h4>
+<p>在 app/templates目录下建立模版文件</p>
+
+<ul>
+<li>application.handlebars</li>
+</ul>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>  <span class="tag">&lt;h1&gt;</span>My App<span class="tag">&lt;/h1&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<ul>
+<li>index.handlebars</li>
+</ul>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>  <span class="tag">&lt;h1&gt;</span>My App<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>index<span class="tag">&lt;/h1&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">&quot;</span><span class="attribute-name">about</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>About<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<ul>
+<li>about.handlebars</li>
+</ul>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>  <span class="tag">&lt;h1&gt;</span>About<span class="tag">&lt;/h1&gt;</span>
+  <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">linkTo</span> <span class="error">&quot;</span><span class="attribute-name">index</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span>index<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">linkTo</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>运行</h4><div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  grunt server --force
+</pre></td>
+</tr></table>
+</div></div>
+<p>http://localhost:9000 出现欢迎页面，内容如下：</p>
+
+<p>My App
+  index
+  About</p>
+<h3 class='anchorable-toc' id='toc_grunt-gruntfile-js'>下一步，修改 grunt Gruntfile.js</h3>
+<p>对components、controllers、models、routes、views等js文件进行合并和压缩。</p>
+
+
+    <hr>
+
+    <div id="disqus_thread"></div> 
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'emberjs-cn'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript><a href="http://disqus.com/?ref_noscript">基于Disqus的评论需要启用Javascript</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">博客评论基于<span class="logo-disqus">Disqus</span></a>
+  </article>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

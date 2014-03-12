@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 概念: 命名惯例</title>
+    <meta property="st:title" content="概念: 命名惯例" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="guides guides_concepts guides_concepts_naming-conventions guides_concepts_naming-conventions_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/getting-ember">获取Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">获取Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/development-helpers">开发助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">运行循环</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+        <h1>命名惯例 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/concepts/naming-conventions.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <hr>
+    <p>英文原文：<a href="http://emberjs.com/guides/concepts/naming-conventions/">http://emberjs.com/guides/concepts/naming-conventions/</a></p>
+
+<p><code>Ember.js</code>使用命名惯例来连接各个对象，而不是通过大量的引用。对于路由，控制器以及模板，你都应该使用此命名惯例。</p>
+
+<p>有些时候，或许你可以猜到某些正确的命名，但是，这篇指南在此概述了所有的命名惯例。在下面的例子中&#39;App&#39;是被选来作为命名空间的名字，或者说用来代表Ember应用，当然也可以选择任何你喜欢的名字。后面我们将具体介绍如何创建一个Ember应用，不过现在我们将关注惯例。</p>
+<h2 class='anchorable-toc' id='toc_'>应用程序</h2>
+<p>当你的应用程序启动时，<code>Ember</code>会查找下面几个对象:</p>
+
+<ul>
+<li><code>App.ApplicationRoute</code></li>
+<li><code>App.ApplicationController</code></li>
+<li><code>application</code>模板</li>
+</ul>
+
+<p><code>Ember.js</code>会将<code>application</code>模板作为主模板来渲染。如果存在<code>App.ApplicationController</code>,
+<code>Ember.js</code>将使用<code>App.ApplicationController</code>的一个实例作为此模板的控制器。这意味着此模板将从这个控制器获得属性。</p>
+
+<p>如果你的应用提供了<code>App.ApplicationRoute</code>,<code>Ember.js</code>将在渲染<code>application</code>模板前先调用<a href="/guides/routing/specifying-a-routes-model">此</a><a href="/guides/routing/setting-up-a-controller">路由</a>的<a href="/guides/routing/rendering-a-template">钩子程序</a>。钩子都作为方法来实现，提供了对Ember对象生命周期的访问点，可以拦截和执行代码来改变这些点的缺省行为，以符合实际需求。Ember为各种需求提供了一系列钩子（例如：<code>model</code>，<code>setupController</code>等等）。在下面的实例中，<code>App.ApplicationRoute</code>是一个实现了<code>setupController</code>钩子的<code>Ember.Route</code>对象。</p>
+
+<p>下面这个例子中同时包含了路由，控制器和模板:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>App.ApplicationRoute = Ember.Route.extend({
+  <span class="function">setupController</span>: <span class="keyword">function</span>(controller) {
+    <span class="comment">// `controller` is the instance of ApplicationController</span>
+    controller.set(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello world!</span><span class="delimiter">&quot;</span></span>);
+  }
+});
+
+App.ApplicationController = Ember.Controller.extend({
+  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">My First Example</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div><div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- application template --&gt;</span>
+<span class="tag">&lt;h1&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">appName</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h1&gt;</span>
+
+<span class="tag">&lt;h2&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/h2&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>在<code>Ember.js</code>应用中，你可以总是将控制器看作是一个个的<strong>类</strong>，应用程序框架负责实例化类并且将他们提供给模板。</p>
+
+<p>这将使测试控制器的工作变得轻而易举，并且确保每个控制器在整个应用中只有唯一的一个实例。</p>
+<h2 class='anchorable-toc' id='toc_'>简单的路由</h2>
+<p>对于应用中的每一个路由，都会有以路由名称命名的控制器和模板。</p>
+
+<p>以下面这个简单的路由为例：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果用户要访问<code>/favorites</code>，<code>Ember.js</code>会查找下面几个对象：</p>
+
+<ul>
+<li><code>App.FavoritesRoute</code></li>
+<li><code>App.FavoritesController</code></li>
+<li><code>favorites</code>模板 </li>
+</ul>
+
+<p><code>Ember.js</code>会将<code>favorites</code>模板渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去，
+还将会把<code>App.FavoritesController</code>的一个实例作为此模板的控制器。</p>
+
+<p>如果你的应用程序提供了<code>App.FavoritesRoute</code>，应用程序框架会在渲染模板前先调用它。当然，这里会有点重复过程。</p>
+
+<p>对于一个路由，例如<code>App.FavoritesRoute</code>,你可能需要实现<code>model</code>钩子去指定你的控制器要呈现给模板的模型。</p>
+
+<p>下面是一个例子：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.FavoritesRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="comment">// the model is an Array of all of the posts</span>
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>在这个例子中，我们并没有提供<code>FavoritesController</code>。因为该模型是一个数组，<code>Ember.js</code>会自动提供一个<code>Ember.ArrayController</code>，它将会把返回的数组视为模型。</p>
+
+<p>你可以将<code>ArrayController</code>本身就看做是一个模型。这主要有两个优点：</p>
+
+<ul>
+<li><p>你可以在任何时候变更控制器的模型而无需直接考虑视图的变化。</p></li>
+<li><p>控制器可以提供额外的不属于模型层的可计算属性或特定视图的状态。这使视图，控制器和模型之间的分层结构更清晰。</p></li>
+</ul>
+
+<p>模板可以迭代控制器中的元素：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">controller</span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div></div><h2 class='anchorable-toc' id='toc_'>动态字段</h2>
+<p>如果一个路由中使用了一个动态字段，它对应的模型将基于用户提供的那个字段的值。</p>
+
+<p>考虑下面这个路由的定义：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/posts/:post_id</span><span class="delimiter">'</span></span> });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>在这个例子中，路由的名称是<code>post</code>, 所以<code>Ember.js</code>将查找以下几个对象:</p>
+
+<ul>
+<li><code>App.PostRoute</code></li>
+<li><code>App.PostController</code></li>
+<li><code>post</code>模板 </li>
+</ul>
+
+<p>路由处理程序的<code>model</code>钩子将把动态参数<code>:post_id</code>转换到模型中去。而<code>serialize</code>钩子将会为这个路由把一个模型对象转化回URL参数(例如，在为一个模型对象生成链接的情况下)。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.PostRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).find(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>, params.post_id);
+  },
+
+  <span class="function">serialize</span>: <span class="keyword">function</span>(post) {
+    <span class="keyword">return</span> { <span class="key">post_id</span>: post.get(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>) };
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>由于这个模式太常见，现在它是默认的路由处理程序。</p>
+
+<ul>
+<li><p>如果你的动态字段以<code>_id</code>结束，默认的<code>model</code>钩子会将第一部分转化为在应用程序命名空间中的一个模型类(<code>post</code>变成<code>App.Post</code>).
+然后，钩子将在这个模型类中调用<code>find</code>函数，函数的参数即是动态字段的值。</p></li>
+<li><p>默认的<code>serialize</code>钩子将会使用模型对象的<code>id</code>属性代替动态字段。</p></li>
+</ul>
+<h2 class='anchorable-toc' id='toc_'>路由，控制器和默认模板</h2>
+<p>如果你没有为<code>post</code>路由(<code>App.PostRoute</code>)指定一个路由处理程序，<code>Ember.js</code>仍然会使用<code>App.PostController</code>的一个实例来渲染<code>post</code>模板。</p>
+
+<p>如果你没有指定控制器(<code>App.PostController</code>)，<code>Ember</code>将会根据路由的<code>model</code>钩子的返回值自动创建一个。如果模型是一个数组，那么就会创建<code>ArrayController</code>。
+否则，将创建<code>ObjectController</code>。</p>
+
+<p>如果你没有指定一个<code>post</code>模板，那么，<code>Ember.js</code>什么也不会渲染。</p>
+<h2 class='anchorable-toc' id='toc_'>嵌套</h2>
+<p>你可以在一个<code>resource</code>内嵌套路由。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() { <span class="comment">// the `posts` route</span>
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);          <span class="comment">// the `posts.favorites` route</span>
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>);            <span class="comment">// the `post` route</span>
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><strong>资源</strong>的名称与路由，控制器或模板的起始名称一致。即使<code>post</code>资源被嵌套了，它的路由的名称
+仍是<code>App.PostRoute</code>, 控制器名称是<code>App.PostController</code>,模板名称是<code>post</code>。</p>
+
+<p>如果你在一个资源内嵌套了一个<strong>路由</strong>,此路由的名称将变为<code>资源名称.路由名称</code>。</p>
+
+<p>下面定义了上面例子中各个路由的命名惯例：</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>路由名</th>
+    <th>控制器</th>
+    <th>路由</th>
+    <th>模板</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>posts</code></td>
+    <td><code>PostsController</code></td>
+    <td><code>PostsRoute</code></td>
+    <td><code>posts</code></td>
+  </tr>
+  <tr>
+    <td><code>posts.favorites</code></td>
+    <td><code>PostsFavoritesController</code></td>
+    <td><code>PostsFavoritesRoute</code></td>
+    <td><code>posts/favorites</code></td>
+  </tr>
+  <tr>
+    <td><code>post</code></td>
+    <td><code>PostController</code></td>
+    <td><code>PostRoute</code></td>
+    <td><code>post</code></td>
+  </tr>
+</table>
+
+<p>命名的经验就是：资源名称为名词,路由名称应为形容词(<code>favorites</code>)或动词(<code>edit</code>).
+这不仅确保了在嵌套的时候不会产生冗长的名称，而且可以避免常见形容词和动词之间的冲突。</p>
+<h2 class='anchorable-toc' id='toc_'>索引路由</h2>
+<p>在嵌套的每一个层次(包括最上层),<code>Ember.js</code>自动为<code>/</code>路径提供了一个名称为<code>index</code>的路由。</p>
+
+<p>例如，假如你写了如下这样一个简单的路由：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div><div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果你的用户访问<code>/</code>路径，<code>Ember.js</code>会首先查找以下几个对象：</p>
+
+<ul>
+<li><code>App.IndexRoute</code></li>
+<li><code>App.IndexController</code></li>
+<li><code>index</code>模板 </li>
+</ul>
+
+<p><code>index</code>模板将被渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去。如果用户访问<code>/favorites</code>,
+<code>Ember.js</code>将用<code>favorites</code>模板取代<code>index</code>模板。</p>
+
+<p>例如，下面这个嵌套的路由：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>等价于：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">posts</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">favorites</span><span class="delimiter">'</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果用户访问<code>/posts</code>，当前路由就是<code>posts.index</code>。<code>Ember.js</code>将查找以下几个对象：</p>
+
+<ul>
+<li><code>App.PostsIndexRoute</code></li>
+<li><code>App.PostsIndexController</code></li>
+<li><code>posts/index</code>模板 </li>
+</ul>
+
+<p>首先，<code>posts</code>模板将被渲染到<code>application</code>模板中的<code>{{outlet}}</code>中去。然后，<code>posts/index</code>模板
+将被渲染到<code>posts</code>模板的<code>{{outlet}}</code>中去。</p>
+
+<p>如果用户又访问了<code>/posts/favorites</code>，<code>Ember.js</code>会使用<code>posts/favorites</code>模板来替换<code>posts</code>模板中的<code>{{outlet}}</code>。</p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/concepts/core-concepts">
+            ← 核心概念
+          </a>
+         
+            <a class="next-guide" href="/guides/object-model/classes-and-instances">
+              本章概念完毕。下一章： 对象模型 - 类与实例 →
+            </a>
+          
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
+  
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>
