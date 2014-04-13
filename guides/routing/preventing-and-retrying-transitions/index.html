@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -580,7 +588,9 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_code-model-code-code-beforemodel-code-code-aftermodel-code'>在<code>model</code>，<code>beforeModel</code>或<code>afterModel</code>中取消过渡</h3>
+</div></div>
+<p>当用户点击<code>{{link-to}}</code>助手时，或者应用使用<code>transitionTo</code>初始化一个过渡时，过渡将被取消并且URL也将保持不变。但是如果使用浏览器的后退按钮来退出<code>FormRoute</code>，或者如果用户手动的修改URL，那么在<code>willTransition</code>操作被调用之前，将被导航到新的URL。这样浏览器就会显示新的URl，即便在<code>willTransition</code>中调用了<code>transition.abort()</code>。</p>
+<h3 class='anchorable-toc' id='toc_code-model-code-code-beforemodel-code-code-aftermodel-code'>在<code>model</code>，<code>beforeModel</code>或<code>afterModel</code>中取消过渡</h3>
 <p>在<a href="/guides/routing/asynchronous-routing">异步路由</a>中描述的<code>model</code>，<code>beforeModel</code>和<code>afterModel</code>钩子，每一个被调用时都传入了一个过渡对象。这让目标路由可以取消尝试进行的过渡。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1

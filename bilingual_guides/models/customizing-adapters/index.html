@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 自定义适配器</title>
+    <meta property="st:title" content="自定义适配器" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_models bilingual_guides_models_customizing-adapters bilingual_guides_models_customizing-adapters_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/development-helpers">开发助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/testing/integration">测试</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">运行循环</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  <div class="chapter">
+    
+        <h1>自定义适配器 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/customizing-adapters.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <p>In Ember Data, the logic for communicating with a backend data store
+lives in the <code>Adapter</code>. Ember Data&#39;s Adapter has some built-in
+assumptions of how a <a href="http://jsonapi.org/">REST API</a> should look. If
+your backend conventions differ from these assumptions Ember Data
+makes it easy to change its functionality by swapping out or extending
+the default Adapter.</p>
+
+<p>在Ember Data中，处理与后台数据仓库通信的逻辑是通过<code>Adapter</code>来完成的。Ember Data适配器内置了一些关于<a href="http://jsonapi.org">REST API</a>的假定。如果后台的实现与Ember Data假定的惯例不同，那么通过扩展缺省的适配器可能很容易的实现。</p>
+
+<p>Some reasons for customizing an Adapter include using
+<code>underscores_case</code> in your urls, using a medium other than REST to
+communicate with your backend API or even using a
+<a href="https://github.com/rpflorence/ember-localstorage-adapter">local backend</a>.</p>
+
+<p>有时因为一些原因需要自定义适配器，例如需要使用下划线风格的URL，使用REST外的其他媒介来与后台通信，或者是使用<a href="https://github.com/rpflorence/ember-localstorage-adapter">本地后台</a>.</p>
+
+<p>Extending Adapters is a natural process in Ember Data. Ember takes the
+position that you should extend an adapter to add different
+functionality instead of adding a flag. This results in code that is
+more testable, easier to understand and reduces bloat for people who
+may want to subclass your adapter.</p>
+
+<p>扩展适配器在Ember Data中是一个常见的过程。Ember的立场是应该通过扩展适配器来添加不同的功能，而非添加标识。这样可以使得代码更加容易测试，更加易于理解，同时也降低了可能需要扩展适配器的用户的代码。</p>
+
+<p>If your backend has some consistent rules you can define an
+<code>ApplicationAdapter</code>. The <code>ApplicationAdapter</code> will get priority over
+the default Adapter, however it will still be superseded by model
+specific Adapters.</p>
+
+<p>如果后台具有一定的一致性规则，那么可以定义一个<code>ApplicationAdapter</code>。<code>ApplicationAdapter</code>的优先级比缺省的适配器高，但是又会被模型特定的适配器取代。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.ApplicationAdapter = DS.RESTAdapter.extend({
+    <span class="comment">// Application specific overrides go here</span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you have one model that has exceptional rules for communicating
+with its backend than the others you can create a Model specific
+Adapter by naming an adapter &quot;ModelName&quot; + &quot;Adapter&quot;.</p>
+
+<p>如果一个模型的后台有一些特殊的规则，那么可以定义一个模型特定的适配器，并将适配器命名为：&quot;ModelName&quot; + &quot;Adapter&quot;。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.PostAdapter = DS.RESTAdapter.extend({
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">api/v1</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>By default Ember Data comes with several builtin adapters. Feel free
+to use these adapters as a starting point for creating your own custom
+adapter.</p>
+
+<p>缺省情况下，Ember Data内置了一些非常有用的适配器。可以根据自己的实际情况，选择其中之一作为起点来自定义适配器。</p>
+
+<ul>
+<li><p><a href="/api/data/classes/DS.Adapter.html">DS.Adapter</a> is the basic adapter
+with no functionality. It is generally a good starting point if you
+want to create an adapter that is radically different from the other
+Ember adapters.</p></li>
+<li><p><a href="/api/data/classes/DS.Adapter.html">DS.Adapter</a>是最基础的适配器，其自身不包含任何功能。如果需要创建一个与Ember适配器有根本性区别的适配器，那么可以这里入手。</p></li>
+<li><p><a href="/api/data/classes/DS.FixtureAdapter.html">DS.FixtureAdapter</a> is an
+adapter that loads records from memory. Its primarily used for
+development and testing.</p></li>
+<li><p><a href="/api/data/classes/DS.FixtureAdapter.html">DS.FixtureAdapter</a>是一个用来从内存中加载记录的适配器，常用于开发和测试阶段。</p></li>
+<li><p><a href="/api/data/classes/DS.RESTAdapter.html">DS.RESTAdapter</a> is the most
+commonly extended adapter. The <code>RESTAdapter</code> allows your store to
+communicate with an HTTP server by transmitting JSON via XHR. Most
+Ember.js apps that consume a JSON API should use the REST adapter.</p></li>
+<li><p><a href="/api/data/classes/DS.RESTAdapter.html">DS.RESTAdapter</a>是最通用的扩展适配器。<code>RESTAdapter</code>可以实现<code>store</code>与HTTP服务器之间通过XHR交互JSON数据。大部分使用JSON
+API的Ember应用都应该使用<code>RESTAdapter</code>。</p></li>
+<li><p><a href="/api/data/classes/DS.ActiveModelAdapter.html">DS.ActiveModelAdapter</a>
+is a specialized version of the <code>RESTAdapter</code> that is set up to work
+out of the box with Rails-style REST APIs.</p></li>
+<li><p><a href="/api/data/classes/DS.ActiveModelAdapter.html">DS.ActiveModelAdapter</a>是一个<code>RESTAdapter</code>的特列，用于与Rails风格的REST API协同工作。</p></li>
+</ul>
+<h2 class='anchorable-toc' id='toc_customizing-the-restadapter'>Customizing the RESTAdapter</h2><h2 class='anchorable-toc' id='toc_restadapter'>自定义RESTAdapter</h2>
+<p>The <a href="/api/data/classes/DS.RESTAdapter.html">DS.RESTAdapter</a> is the
+most commonly extended adapter that ships with Ember Data. It has a
+handful of hooks that are commonly used to extend it to work with
+non-standard backends.</p>
+
+<p><a href="/api/data/classes/DS.RESTAdapter.html">DS.RESTAdapter</a>是Ember
+Data提供的一个最通用的扩展适配器。它提供了一些非常有用的，可以扩展来与非标准化的后台接口通信的钩子。</p>
+<h4 class='anchorable-toc' id='toc_endpoint-path-customization'>Endpoint Path Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义端点路径</h4>
+<p>The <code>namespace</code> property can be used to prefix requests with a
+specific url namespace.</p>
+
+<p><code>namespace</code>属性用来指定一个特定的url前缀。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.ApplicationAdapter = DS.RESTAdapter.extend({
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">api/1</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Requests for <code>App.Person</code> would now target <code>/api/1/people/1</code>.</p>
+
+<p><code>App.Person</code>的请求将会发至<code>/api/1/people/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_host-customization'>Host Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义主机</h4>
+<p>By default the adapter will target the current domain. If you would
+like to specify a new domain you can do so by setting the <code>host</code>
+property on the adapter.</p>
+
+<p>缺省情况下，适配器认为主机是当前域。如果希望指定一个新的域，那么可以通过设置适配器的<code>host</code>属性来指定。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.ApplicationAdapter = DS.RESTAdapter.extend({
+  <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.example.com</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Requests for <code>App.Person</code> would now target <code>https://api.example.com/people/1</code>.</p>
+
+<p><code>App.Person</code>的请求将会发至<code>https://api.example.com/people/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_path-customization'>Path Customization</h4><h4 class='anchorable-toc' id='toc_'>自定义路径</h4>
+<p>By default the <code>RESTAdapter</code> will attempt to pluralize and camelCase
+the model name to generate the path name. If this convention does not
+conform to your backend you can override the <code>pathForType</code> method.</p>
+
+<p>缺省情况下，<code>RESTAdapter</code>尝试将模型名进行驼峰化和复数化来作为路径名。如果这种惯例并不符合使用的后台接口，可以通过重载<code>pathForType</code>方法来实现。</p>
+
+<p>For example, if you did not want to pluralize model names and needed
+underscore_case instead of camelCase you could override the
+<code>pathForType</code> method like this:</p>
+
+<p>例如，并不需要将模型名称复数化，需要采用下划线分割的模式替代驼峰命名，那么可以这样来重载<code>pathForType</code>方法：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>App.ApplicationAdapter = DS.RESTAdapter.extend({
+  <span class="function">pathForType</span>: <span class="keyword">function</span>(type) {
+    <span class="keyword">return</span> Ember.String.underscore(type);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Requests for <code>App.Person</code> would now target <code>/person/1</code>.
+Requests for <code>App.UserProfile</code> would now target <code>/user_profile/1</code>.</p>
+
+<p><code>App.Person</code>的请求将会发至<code>/person/1</code>。
+<code>App.UserProfile</code>的请求将会发至<code>/user_profile/1</code>。</p>
+<h4 class='anchorable-toc' id='toc_authoring-adapters'>Authoring Adapters</h4><h4 class='anchorable-toc' id='toc_'>创作适配器</h4>
+<p>The <code>defaultSerializer</code> property can be used to specify the serializer
+that will be used by this adapter. This is only used when an model
+specific serializer or ApplicationSerializer are not defined.</p>
+
+<p><code>defaultSerializer</code>属性可以用来指定适配器使用的序列化对象。这只在没有模型特定的序列化对象，也没有<code>ApplicationSerializer</code>的情况下。</p>
+
+<p>In an application, it is often easier to specify an
+<code>ApplicationSerializer</code>. However, if you are the author of a community
+adapter it is important to remember to set this property to ensure
+Ember does the right thing in the case a user of your adapter
+does not specify an <code>ApplicationSerializer</code>.</p>
+
+<p>在一个应用中，指定一个<code>ApplicationSerializer</code>比较容易。但是如果自定了一个通信的适配器，并且没有指定一个<code>ApplicationSerializer</code>，那么设定<code>defaultSerializer</code>属性，来确保Ember的行为正确性比较重要。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>MyCustomAdapterAdapter = DS.RESTAdapter.extend({
+  <span class="key">defaultSerializer</span>: <span class="string"><span class="delimiter">'</span><span class="content">-default</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div><h2 class='anchorable-toc' id='toc_community-adapters'>Community Adapters</h2><h2 class='anchorable-toc' id='toc_'>社区适配器</h2>
+<p>If none of the builtin Ember Data Adapters work for your backend,
+be sure to check out some of the community maintained Ember Data
+Adapters. Some good places to look for Ember Data Adapters include:</p>
+
+<p>如果Ember Data内置的适配器并不能很好的与使用的后台工作，可以查看社区维护的Ember Data适配器，看有不有合适的选择。可以去一下地方去查找：</p>
+
+<ul>
+<li><a href="https://github.com/search?q=ember+data+adapter&amp;ref=cmdform">GitHub</a></li>
+<li><a href="http://bower.io/search/?q=ember-data-">Bower</a></li>
+</ul>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/models/handling-metadata">
+            ← 处理元数据
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/models/frequently-asked-questions">
+          常见问题 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

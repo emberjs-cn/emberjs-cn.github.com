@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -596,6 +604,21 @@ controller as its first argument. In this case, the <code>PostRoute</code>&#39;s
 
 <p><code>setupController</code>钩子将路由处理器关联的控制器作为第一个参数。上例中<code>PostRoute</code>的<code>setupController</code>的第一个参数是应用中<code>App.PostController</code>的实例。</p>
 
+<p>To specify a controller other than the default, set the route&#39;s
+<code>controllerName</code> property:</p>
+
+<p>如果需要指定一个非缺省名称的控制器给路由，那么设置<code>controllerName</code>属性即可：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.SpecialPostRoute = Ember.Route.extend({
+  <span class="key">controllerName</span>: <span class="string"><span class="delimiter">'</span><span class="content">post</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
 <p>As a second argument, it receives the route handler&#39;s model. For more
 information, see <a href="/guides/routing/specifying-a-routes-model">Specifying a Route&#39;s Model</a>.</p>
 

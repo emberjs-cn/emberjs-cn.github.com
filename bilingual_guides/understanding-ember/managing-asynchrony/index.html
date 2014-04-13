@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -899,13 +907,13 @@ have to worry about deferred insertion.</p>
 
 <p>生命周期回调的方法能带来很多好处，即使并非需要担心延迟添加。</p>
 
-<p>First, relying on synchronous insertion means leaving it up to the
+<p><em>First</em>, relying on synchronous insertion means leaving it up to the
 caller of <code>appendTo</code> to trigger any behavior that needs to run
 immediately after appending. As your application grows, you may find
 that you create the same view in many places, and now need to worry
 about that concern everywhere.</p>
 
-<p>首先，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了<code>appendTo</code>的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。</p>
+<p><em>首先</em>，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了<code>appendTo</code>的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。</p>
 
 <p>The lifecycle callback eliminates the coupling between the code that
 instantiates the view and its post-append behavior. In general, we find
@@ -914,11 +922,11 @@ better design in general.</p>
 
 <p>生命周期回调将实例化视图和在视图被追加后的行为的代码解耦。一般来说，不依赖同步附带效应会导向更好的设计。</p>
 
-<p>Second, because everything about the lifecycle of a view is inside the
+<p><em>Second</em>, because everything about the lifecycle of a view is inside the
 view itself, it is very easy for Ember to re-render parts of the DOM
 on-demand.</p>
 
-<p>接着，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。</p>
+<p><em>接着</em>，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。</p>
 
 <p>For example, if this button was inside of an <code>{{#if}}</code> block, and Ember
 needed to switch from the main branch to the <code>else</code> section, Ember can
@@ -1022,7 +1030,7 @@ definition:</p>
   <span class="key">template</span>: Ember.Handlebars.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{author}}&lt;/h2&gt;&lt;div&gt;{{body}}&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>),
 
   <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">New author name: </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>));
     });
   }
@@ -1065,13 +1073,13 @@ callback in <code>willDestroyElement</code>.</p>
   <span class="key">template</span>: Ember.Handlebars.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{author}}&lt;/h2&gt;&lt;div&gt;{{body}}&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>),
 
   <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">New author name: </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>));
     });
   },
 
   <span class="function">willDestroyElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.removeObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.removeObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>);
   }
 });
 </pre></td>

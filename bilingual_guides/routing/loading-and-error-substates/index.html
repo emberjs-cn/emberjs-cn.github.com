@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -738,9 +746,10 @@ once the transition is complete. But once you provide a destination
 route loading substate, you are opting into an &quot;eager&quot; transition, which
 is to say that, unlike the &quot;lazy&quot; default, you will eagerly exit the
 source routes (and tear down their templates, etc) in order to
-transition into this substate. </p>
+transition into this substate. URLs always update immediately unless the
+transition was aborted or redirected within the same run loop.</p>
 
-<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。</p>
+<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。除非过渡被取消或者在同一运行循环中被重定向，否则URL都会理解更新。</p>
 
 <p>This has implications on error handling, i.e. when a transition into
 another route fails, a lazy transition will (by default) just remain on the
@@ -809,6 +818,71 @@ that <code>error</code> events will continue to bubble above a transition&#39;s 
 route.</p>
 
 <p><code>loading</code>/<code>error</code>子状态处理的唯一区别是，<code>error</code>从过渡的中心路由开始向上冒泡。</p>
+<h3 class='anchorable-toc' id='toc_code-error-code-substates-with-dynamic-segments'><code>error</code> substates with dynamic segments</h3><h3 class='anchorable-toc' id='toc_code-error-code'>带动态段的<code>error</code>子状态</h3>
+<p>Routes with dynamic segments are often mapped to a mental model of &quot;two
+separate levels.&quot; Take for example:</p>
+
+<p>带动态段的路由通常映射到一个模型的两个不同的层面。例如：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/foo/:id</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">baz</span><span class="delimiter">'</span></span>);
+  });
+});
+
+App.FooRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Ember.RSVP.Promise(<span class="keyword">function</span>(resolve, reject) {
+       reject(<span class="string"><span class="delimiter">&quot;</span><span class="content">Error</span><span class="delimiter">&quot;</span></span>);
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In the URL hierarchy you would visit <code>/foo/12</code> which would result in rendering
+the <code>foo</code> template into the <code>application</code> template&#39;s <code>outlet</code>. In the event of
+an error while attempting to load the <code>foo</code> route you would also render the
+top-level <code>error</code> template into the <code>application</code> template&#39;s <code>outlet</code>. This is
+intentionally parallel behavior as the <code>foo</code> route is never successfully
+entered. In order to create a <code>foo</code> scope for errors and render <code>foo/error</code>
+into <code>foo</code>&#39;s <code>outlet</code> you would need to split the dynamic segment:</p>
+
+<p>在URL层次中，访问<code>/foo/12</code>将会导致将<code>foo</code>模板渲染到<code>application</code>模板的<code>outlet</code>处。当尝试加载一个<code>foo</code>路由发生一个错误事件，会将顶层的<code>error</code>模板渲染到<code>application</code>模板的<code>outlet</code>。这感觉就好像<code>foo</code>路由就从未正确进入过一般。为了创建一个<code>foo</code>范围的错误信息，并渲染<code>foo/error</code>到<code>foo</code>的<code>outlet</code>中，那么需要将动态段分离：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/foo</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">elem</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">:id</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">baz</span><span class="delimiter">'</span></span>);
+    });
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a href="http://emberjs.jsbin.com/ucanam/4279">Example JSBin</a></p>
 <h2 class='anchorable-toc' id='toc_legacy-code-loadingroute-code'>Legacy <code>LoadingRoute</code></h2><h2 class='anchorable-toc' id='toc_code-loadingroute-code'>遗留的<code>LoadingRoute</code></h2>
 <p>Previous versions of Ember (somewhat inadvertently) allowed you to define a global <code>LoadingRoute</code>
 which would be activated whenever a slow promise was encountered during

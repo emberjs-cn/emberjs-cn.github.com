@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - 指南</title>
-    <meta property="st:title" content="指南" />
+    <title>Ember.js - 模型: 使用Fixture</title>
+    <meta property="st:title" content="模型: 使用Fixture" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -393,12 +393,20 @@
               <a href="/guides/models/working-with-records">使用记录</a>
             </li>
           
+            <li class="level-3 sub-selected">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
             <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -533,41 +541,36 @@
 
   <div class="chapter">
     
+        <h1>使用Fixture 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/models/the-fixture-adapter.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
     <hr>
-    <h2 class='anchorable-toc' id='toc_the-fixture-adapter'>The Fixture Adapter</h2>
-<p>When developing client-side applications, your server may not have an API ready
-to develop against. The FixtureAdapter allows you to begin developing Ember.js
-apps now, and switch to another adapter when your API is ready to consume
-without any changes to your application code.</p>
-<h3 class='anchorable-toc' id='toc_getting-started'>Getting Started</h3>
-<p>Using the fixture adapter entails three very simple setup steps:</p>
+    <p>英文原文：<a href="http://emberjs.com/guides/models/the-fixture-adapter/">http://emberjs.com/guides/models/the-fixture-adapter/</a></p>
+
+<p>当开发客户端应用时，服务端可能还没有完成对应API的开发。使用<code>FixtureAdapter</code>可以先进行Ember应用开发，然后切换到其他的适配器来使用API，并且这个切换并不需要改变应用的代码。</p>
+<h3 class='anchorable-toc' id='toc_'>开始学习</h3>
+<p>使用夹具适配器需要完成三步简单的配置：</p>
 
 <ol>
-<li>Create a new store using the fixture adapter and attach it to your app.</li>
-<li>Define your model using <code>DS.Model.extend</code>.</li>
-<li>Attach fixtures(also known as sample data) to the model&#39;s class.</li>
+<li>创建一个新的、使用夹具适配器的<code>store</code>并将其关联到应用。</li>
+<li>使用<code>DS.Model.extend</code>来定义模型。</li>
+<li>将夹具（样本数据）关联到对应的模型类。</li>
 </ol>
-<h4 class='anchorable-toc' id='toc_creating-a-fixture-adapter'>Creating a Fixture Adapter</h4>
-<p>Simply attach it to your instance of <code>Ember.Store</code>:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<h4 class='anchorable-toc' id='toc_'>创建夹具适配器</h4>
+<p>只需将其定义为<code>Ember.Application</code>应用的<code>ApplicationAdapter</code>属性即可。</p>
+<div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
-3
-4
-5
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> App = Ember.Application.create();
-App.Store = DS.Store.extend({
-  <span class="key">revision</span>: <span class="integer">13</span>,
-  <span class="key">adapter</span>: DS.FixtureAdapter
-});
+App.ApplicationAdapter = DS.FixtureAdapter;
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_define-your-model'>Define Your Model</h4>
-<p>You should refer to <a href="/guides/models/defining-models">Defining a Model</a> for a more in-depth guide on using
-Ember Data Models, but for the purposes of demonstration we&#39;ll use an example
-modeling people who document Ember.js.</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h4 class='anchorable-toc' id='toc_'>定义模型</h4>
+<p>查看<a href="/guides/models/defining-models">定义模型</a>一章可以获取更多详细的关于定义模型的介绍，作为简单的示例，这里定义一个编写Ember文档的人员的模型。</p>
+<div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -579,10 +582,9 @@ modeling people who document Ember.js.</p>
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_attach-fixtures-to-the-model-class'>Attach Fixtures to the Model Class</h4>
-<p>Attaching fixtures couldn&#39;t be simpler. Just attach a collection of plain
-JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> property:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+</div></div><h4 class='anchorable-toc' id='toc_'>关联夹具到模型类</h4>
+<p>关联夹具非常之简单。只需要将一个Javascript对象集合赋值给模型的<code>FIXTURES</code>属性即可：</p>
+<div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -595,9 +597,8 @@ JavaScript objects to your Model&#39;s class under the <code>FIXTURES</code> pro
 </pre></td>
 </tr></table>
 </div></div>
-<p>That&#39;s it! You can now use all of methods for <a href="/guides/models/finding-records">Finding Records</a> in your
-application. For example:</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+<p>这就是所有的配置过程了，现在便可以施工用<a href="/guides/models/finding-records">查找记录</a>一章中得方法了。例如：</p>
+<div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -606,35 +607,30 @@ application. For example:</p>
 6
 </pre></td>
   <td class="code"><pre>App.DocumenterRoute = Ember.Route.extend({
- <span class="function">model</span>: <span class="keyword">function</span>() {
-   <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">documenter</span><span class="delimiter">'</span></span>, <span class="integer">1</span>); <span class="comment">// returns a promise that will resolve</span>
-                                       <span class="comment">// with the record representing Trek Glowacki</span>
- }
+  <span class="function">model</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.find(<span class="string"><span class="delimiter">'</span><span class="content">documenter</span><span class="delimiter">'</span></span>, <span class="integer">1</span>); <span class="comment">// returns a promise that will resolve</span>
+                                             <span class="comment">// with the record representing Trek Glowacki</span>
+  }
 });
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_naming-conventions'>Naming Conventions</h4>
-<p>Unlike the <a href="/guides/models/the-rest-adapter">REST Adapter</a>, the Fixture Adapter does not make any assumptions
-about the naming conventions of your model. As you saw in the example above,
-if you declare the attribute as <code>firstName</code> during <code>DS.Model.extend</code>, you use
-<code>firstName</code> to represent the same field in your fixture data.</p>
+</div></div><h4 class='anchorable-toc' id='toc_'>命名惯例</h4>
+<p>与<a href="/guides/models/the-rest-adapter">REST Adapter</a>不同，夹具适配器并不做任何命名惯例的猜测。如同上例中所示，如果在<code>DS.Model.extend</code>中定义了一个<code>firstName</code>属性，那么需要在夹具样本数据中使用<code>firstName</code>来表示该属性。</p>
 
-<p>Importantly, you should make sure that each record in your fixture data has
-a uniquely identifiable field. By default, Ember Data assumes this key
-is called <code>id</code>. Should you not provide an <code>id</code> field in your fixtures, or
-not override the primary key, the Fixture Adapter will throw an error.</p>
+<p>更重要地是，需要确保夹具样本数据中得每一条记录都有一个唯一的标识。缺省情况下，Ember
+Data假定该标识为<code>id</code>。如果没有重定义主键标识名，又未在记录中提供一个<code>id</code>，那么夹具适配器会抛出一个错误。</p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/guides/controllers/dependencies-between-controllers">
-             ← 控制器: 管理控制器间的依赖
+          <a class="previous-guide" href="/guides/models/working-with-records">
+            ← 使用记录
           </a>
          
-            <a class="next-guide" href="/guides/views">
-              本章模型完毕。下一章： 视图 - 介绍 →
-            </a>
-          
+        <a class="next-guide" href="/guides/models/connecting-to-an-http-server">
+          连接HTTP服务器 →
+        </a>
+      
       </footer>
       
   </div>

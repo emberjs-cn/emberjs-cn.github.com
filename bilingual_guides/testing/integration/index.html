@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -595,12 +603,14 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_helpers'>Helpers</h3><h3 class='anchorable-toc' id='toc_'>助手</h3>
+</div></div><h3 class='anchorable-toc' id='toc_asynchronous-helpers'>Asynchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>异步助手</h3>
+<p>Asynchronous helpers will wait for other asynchronous helpers triggered prior to complete before starting.</p>
+
+<p>异步助手将等待之前的其他异步助手被触发并完成才开始执行。</p>
+
 <ul>
 <li><p><code>visit(url)</code> - Visits the given route and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
 <li><p><code>visit(url)</code> - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。</p></li>
-<li><p><code>find(selector, context)</code> - Finds an element within the app&#39;s root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework&#39;s reporter.</p></li>
-<li><p><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。</p></li>
 <li><p><code>fillIn(input_selector, text)</code> - Fills in the selected input with the given text and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
 <li><p><code>fillIn(input_selector, text)</code> - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
 <li><p><code>click(selector)</code> - Clicks an element and triggers any actions triggered by the element&#39;s <code>click</code> event and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
@@ -609,7 +619,65 @@
 <li><p><code>keyEvent(selector, type, keyCode)</code> - Simulates a key event type, e.g. <code>keypress</code>, <code>keydown</code>, <code>keyup</code> with the desired keyCode on element found by the selector.</p></li>
 <li><p><code>keyEvent(selector, type, keyCode)</code> -
 模拟一个键盘事件，例如：在选定元素上的带有<code>keyCode</code>的<code>keypress</code>，<code>keydown</code>，<code>keyup</code>事件。</p></li>
+<li><p><code>triggerEvent(selector, type, options)</code></p>
+
+<ul>
+<li>Triggers the given event, e.g. <code>blur</code>, <code>dblclick</code> on the element identified by the provided selector.</li>
+</ul></li>
+<li><p><code>triggerEvent(selector, type, options)</code> -
+触发指定事件，如指定选择器的元素上的<code>blur</code>，<code>dblclick</code>事件。</p></li>
 </ul>
+<h3 class='anchorable-toc' id='toc_synchronous-helpers'>Synchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>同步助手</h3>
+<p>Synchronous helpers are performed immediately when triggered.</p>
+
+<p>同步助手在触发时立即执行。</p>
+
+<ul>
+<li><p><code>find(selector, context)</code> - Finds an element within the app&#39;s root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework&#39;s reporter.</p></li>
+<li><p><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。</p></li>
+<li><p><code>currentPath()</code> - Returns the current path.</p></li>
+<li><p><code>currentPath()</code> - 返回当前路径。</p></li>
+<li><p><code>currentRouteName()</code> - Returns the currently active route name.</p></li>
+<li><p><code>currentRouteName()</code> - 返回当前活动路由名。</p></li>
+<li><p><code>currentURL()</code> - Returns the current URL.</p></li>
+<li><p><code>currentURL()</code> - 返回当前URL。</p></li>
+</ul>
+<h3 class='anchorable-toc' id='toc_wait-helpers'>Wait Helpers</h3><h3 class='anchorable-toc' id='toc_'>等待助手</h3>
+<p>The <code>andThen</code> helper will wait for all preceding asynchronous helpers to complete prior to progressing forward. Let&#39;s take a look at the following example.</p>
+
+<p><code>andThen</code>助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple test</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+  expect(<span class="integer">1</span>); <span class="comment">// Ensure that we will perform one assertion</span>
+
+  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/new</span><span class="delimiter">&quot;</span></span>);
+  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">input.title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  click(<span class="string"><span class="delimiter">&quot;</span><span class="content">button.submit</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="comment">// Wait for asynchronous helpers above to complete</span>
+  andThen(<span class="keyword">function</span>() {
+    equal(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">ul.posts li:last</span><span class="delimiter">&quot;</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that in the example above we are using the <code>andThen</code> helper. This will wait for the preceding asynchronous test helpers to complete and then calls the function which was passed to it as an argument.</p>
+
+<p>注意上例中使用了<code>andThen</code>助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给<code>andThen</code>的函数中得代码。</p>
 <h3 class='anchorable-toc' id='toc_writing-tests'>Writing tests</h3><h3 class='anchorable-toc' id='toc_'>编写测试</h3>
 <p>Almost every test has a pattern of visiting a route, interacting with the page (using the helpers), and checking for expected changes in the DOM.</p>
 

@@ -47,6 +47,10 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
+        
+          <li class='level-3'><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">The Road to Ember Data 1.0</a></li>
+        
           <li class='level-3'><a href="/blog/2014/02/17/ember-js-cn-one-year-old.html">EmberJS.CN一周岁</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
@@ -77,9 +81,9 @@
         
           <li class='level-3'><a href="/blog/2013/06/01/ember-js-1-0-0-rc5.html">Ember.js 1.0.0-rc5发布</a></li>
         
-          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
-        
           <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-2.html">两种方式实现用户管理(二)</a></li>
+        
+          <li class='level-3'><a href="/blog/2013/04/25/two-different-ways-for-users-management-1.html">两种方式实现用户管理(一)</a></li>
         
           <li class='level-3'><a href="/blog/2013/04/23/ember-js-1-0-0-rc3.html">Ember.js 1.0.0-rc3发布</a></li>
         
@@ -106,6 +110,8 @@
     <li class='level-1'>
       <a href="/blog/tags/releases.html">发布说明</a>
       <ol style="display:block">
+        
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
         
@@ -170,6 +176,35 @@
 
 <h1>Recent Posts</h1>
 
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a> &ndash; <time>Mar 30, 2014</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Robert Jackson
+      </h5>
+    
+    <p>We are pleased to announce that both Ember.js 1.5.0 and the first beta in the 1.6 series
+have just been released. This comes as the fifth cycle of our six-week release
+process that began just after 1.0 was released.</p>
+<h3 class="anchorable-toc" id="toc_new-features-in-1-5">New features in 1.5</h3><h4 class="anchorable-toc" id="toc_handlebars-logging-of-primitive-values">Handlebars Logging...</h4>
+    <a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">更多内容...</a>
+  </article>
+  <article class="blog-post-summary">
+    <h2><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">The Road to Ember Data 1.0</a> &ndash; <time>Mar 18, 2014</time></span></h2>
+    
+      <h5 class="blog-post-summary-author">
+        撰写人： Tom Dale & Yehuda Katz
+      </h5>
+    
+    <p><strong>TL;DR</strong> Ember Data 1.0 is coming soon. We have a few last features to land before we
+can confidently make guarantees around not breaking the API. Specifically:</p>
+
+<ol>
+<li><p>A guarantee that if one side of a two-way relationship changes, the other
+side will remain...</p></li>
+</ol>
+    <a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">更多内容...</a>
+  </article>
   <article class="blog-post-summary">
     <h2><a href="/blog/2014/02/17/ember-js-cn-one-year-old.html">EmberJS.CN一周岁</a> &ndash; <time>Feb 17, 2014</time></span></h2>
     
@@ -396,29 +431,6 @@ process that began just after 1.0 was released.</p>
 
 <p>At the time, Backbone.js was rocketing to popularity...</p>
     <a href="/blog/2013/08/31/ember-1-0-released.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/08/28/ember-1-0-rc8.html">Ember 1.0 RC8发布</a> &ndash; <time>Aug 28, 2013</time></span></h2>
-    
-    <p>Ember 1.0 RC8是1.0正式版前的最后一次发布，如果一切顺利本周末将发布Ember
-1.0正式版。</p>
-
-<p>在RC8中做了一些1.0正式版之前的重大更改，这些更改对应用代码只有很少的影响，不过带来了很大的性能提升。</p>
-
-<p>这些更改都与观察器有关。如果编码的时候使用了大量的观察器，那么可能意味着代码不符合语言习惯。通常只在与其他不支持绑定机制的库桥接的时候需要使用观察器。</p>
-
-<p>例如，如果编写一个包裹jQuery
-UI控件的组件时，可能需要使用观察器来监视组件上的改变，并将这些改变反映到控件上。</p>
-    <a href="/blog/2013/08/28/ember-1-0-rc8.html">更多内容...</a>
-  </article>
-  <article class="blog-post-summary">
-    <h2><a href="/blog/2013/08/14/ember-1-0-rc7.html">Ember.js 1.0 RC7发布</a> &ndash; <time>Aug 14, 2013</time></span></h2>
-    
-    <p>今天Ember.js 1.0 RC7发布了！如果一切顺利，这将是Ember 1.0的倒数第二个RC版本。RC7中修复了许多Bug，同时也包括了一些小的改进。另外还有一些Bug还在修正中，由于RC7已经逾期了，因此不等修正所有的Bug。下周将发布RC8，下面内容包含了本次发布做的一些修改。</p>
-<h3 class="anchorable-toc" id="toc_">重要改变</h3><h4 class="anchorable-toc" id="toc_code-route-controllerfor-code">
-<code>Route#controllerFor</code>不再自动生成控制器</h4>
-<p>有的时候，人们依赖<code>controllerFor</code>来访问没有进入过的路由的控制器，依赖其自动生成的功能。然而不幸地是这样经常会导致一些小问题。当...</p>
-    <a href="/blog/2013/08/14/ember-1-0-rc7.html">更多内容...</a>
   </article>
 
       </div>

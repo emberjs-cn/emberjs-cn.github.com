@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -563,7 +571,23 @@ tyrion.set(<span class="string"><span class="delimiter">'</span><span class="con
 </pre></td>
 </tr></table>
 </div></div>
-<p>你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。</p>
+<p>你可以通过isDirty属性来判断一条记录是否被更改，且尚未保存。此外使用<code>changedAttributes</code>函数还可以查看记录哪些部分被修改了，以及这些部分被修改前的值是什么。<code>changedAttributes</code>返回一个对象，其键值是被改变的属性，而值是一个数组<code>[oldValue, newValue]</code>。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>person.get(<span class="string"><span class="delimiter">'</span><span class="content">isAdmin</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; false</span>
+person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; false</span>
+person.set(<span class="string"><span class="delimiter">'</span><span class="content">isAdmin</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; true</span>
+person.changedAttributes(); <span class="comment">//=&gt; { isAdmin: [false, true] }</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>此时，可以通过<code>save()</code>将改变持久化，也可以回滚做的改变。调用<code>rollback()</code>会将所有<code>changedAttributes</code>设置回其原来的值。</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -572,14 +596,16 @@ tyrion.set(<span class="string"><span class="delimiter">'</span><span class="con
 5
 6
 7
+8
 </pre></td>
-  <td class="code"><pre>person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; false</span>
+  <td class="code"><pre>person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; true</span>
+person.changedAttributes(); <span class="comment">//=&gt; { isAdmin: [false, true] }</span>
 
-person.set(<span class="string"><span class="delimiter">'</span><span class="content">isAdmin</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+person.rollback();
 
-person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; true</span>
+person.get(<span class="string"><span class="delimiter">'</span><span class="content">isDirty</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; false</span>
+person.get(<span class="string"><span class="delimiter">'</span><span class="content">isAdmin</span><span class="delimiter">'</span></span>);      <span class="comment">//=&gt; false</span>
+person.changedAttributes(); <span class="comment">//=&gt; {}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -590,8 +616,8 @@ person.get(<span class="string"><span class="delimiter">'</span><span class="con
             ← 查询记录
           </a>
          
-        <a class="next-guide" href="/guides/models/connecting-to-an-http-server">
-          连接HTTP服务器 →
+        <a class="next-guide" href="/guides/models/the-fixture-adapter">
+          使用Fixture →
         </a>
       
       </footer>

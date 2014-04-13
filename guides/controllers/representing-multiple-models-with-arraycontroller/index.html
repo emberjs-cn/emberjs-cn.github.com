@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -541,7 +549,7 @@
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/">http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/</a></p>
 
-<p><code>Ember.ArrayController</code>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>model</code>属性，来指定其代表的模型。</p>
+<p><a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>model</code>属性，来指定其代表的模型。</p>
 
 <p>可以将<code>ArrayController</code>作为一个数组来对待。例如，音乐播放器希望显示当前播放列表。在路由中，通过设置<code>SongsController</code>来代表播放列表中的歌曲。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -621,7 +629,7 @@
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>排序</h3>
-<p><code>Ember.ArrayController</code>使用<code>Ember.SortableMixin</code>来支持排序。为了支持排序，需要设置两个属性：</p>
+<p><a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a>使用<code>Ember.SortableMixin</code>来支持排序。为了支持排序，需要设置两个属性：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -632,6 +640,30 @@
   <span class="key">sortProperties</span>: [<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">artist</span><span class="delimiter">'</span></span>],
   <span class="key">sortAscending</span>: <span class="predefined-constant">true</span> <span class="comment">// false for descending</span>
 });
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>条目控制器</h3>
+<p>在遍历<code>ArrayController</code>的条目时，指定一个控制器来装饰单个条目非常有用。这可以在<code>ArrayController</code>中进行定义：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.SongsController = Ember.ArrayController.extend({
+  <span class="key">itemController</span>: <span class="string"><span class="delimiter">'</span><span class="content">song</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>或者在模板中指定：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">song</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span> by <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">artist</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>

@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -626,8 +634,8 @@ App.ApplicationController = Ember.Controller.extend({
 App.SpinButtonComponent = Ember.Component.extend({
     <span class="key">classNames</span>: [<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>],
     <span class="key">buttonText</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">Save</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">isLoading</span>:<span class="predefined-constant">false</span>,
     <span class="key">actions</span>:{
-        <span class="key">isLoading</span>:<span class="predefined-constant">false</span>,
         <span class="function">showLoading</span>:<span class="keyword">function</span>(){
             <span class="keyword">if</span>(!<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">isLoading</span><span class="delimiter">'</span></span>)){
                 <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isLoading</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
@@ -657,7 +665,7 @@ true</code>，而执行异步操作的控制器负责将<code>isLoading</code>�
 
 <p>需要注意的是组件一旦进入加载中状态后，就不支持重复点击了。</p>
 <h4 class='anchorable-toc' id='toc_example'>Example</h4><h4 class='anchorable-toc' id='toc_'>示例</h4>
-<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/8">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/EXaxEfE/14">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 
     
       <footer>

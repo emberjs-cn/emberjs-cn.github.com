@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -651,7 +659,7 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 <h3 class='anchorable-toc' id='toc_'>保存应用属性</h3>
 <p>不是所有在应用中的属性都需要保存到服务器端。当需要只为本次运行的应用保存一些信息的时候，可以将其保存到控制器中。</p>
 
-<p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>query</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
+<p>例如，应用中有一个一直存在的搜索框，那么就可以在<code>ApplicationController</code>中存储一个<code>search</code>属性，并将在<code>application</code>模板中的搜索框绑定到该属性。</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -697,7 +705,7 @@ controller}}</code>来直接遍历控制器。这样模板不需要知道控制�
 </pre></td>
 </tr></table>
 </div></div>
-<p><code>application</code>模板保存搜索框的属性，并将其操作发送给<code>ApplicationController</code>。在此情形下，当用户敲回车时，应用将转换至<code>search</code>路由，并将<code>query</code>作为参数传递。</p>
+<p><code>application</code>模板保存搜索框的属性，并将其操作发送给<code>ApplicationController</code>。在此情形下，当用户敲回车时，应用将转换至<code>search</code>路由，并将查询作为参数传递。</p>
 
     
       <footer>

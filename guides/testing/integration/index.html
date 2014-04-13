@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -586,16 +594,60 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_'>助手</h3>
+</div></div><h3 class='anchorable-toc' id='toc_'>异步助手</h3>
+<p>异步助手将等待之前的其他异步助手被触发并完成才开始执行。</p>
+
 <ul>
-<li><p><code>visit(url)</code> - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。</p></li>
-<li><p><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。</p></li>
-<li><p><code>fillIn(input_selector, text)</code> - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
-<li><p><code>click(selector)</code> -
-点击选定的元素，触发元素<code>click</code>事件会触发的所有操作，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
-<li><p><code>keyEvent(selector, type, keyCode)</code> -
-模拟一个键盘事件，例如：在选定元素上的带有<code>keyCode</code>的<code>keypress</code>，<code>keydown</code>，<code>keyup</code>事件。</p></li>
+<li><code>visit(url)</code> - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。</li>
+<li><code>fillIn(input_selector, text)</code> - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。</li>
+<li><code>click(selector)</code> -
+点击选定的元素，触发元素<code>click</code>事件会触发的所有操作，并返回一个在所有异步行为完成后会履行的承诺。</li>
+<li><code>keyEvent(selector, type, keyCode)</code> -
+模拟一个键盘事件，例如：在选定元素上的带有<code>keyCode</code>的<code>keypress</code>，<code>keydown</code>，<code>keyup</code>事件。</li>
+<li><code>triggerEvent(selector, type, options)</code> -
+触发指定事件，如指定选择器的元素上的<code>blur</code>，<code>dblclick</code>事件。</li>
 </ul>
+<h3 class='anchorable-toc' id='toc_'>同步助手</h3>
+<p>同步助手在触发时立即执行。</p>
+
+<ul>
+<li><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。</li>
+<li><code>currentPath()</code> - 返回当前路径。</li>
+<li><code>currentRouteName()</code> - 返回当前活动路由名。</li>
+<li><code>currentURL()</code> - 返回当前URL。</li>
+</ul>
+<h3 class='anchorable-toc' id='toc_'>等待助手</h3>
+<p><code>andThen</code>助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple test</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+  expect(<span class="integer">1</span>); <span class="comment">// Ensure that we will perform one assertion</span>
+
+  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/new</span><span class="delimiter">&quot;</span></span>);
+  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">input.title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  click(<span class="string"><span class="delimiter">&quot;</span><span class="content">button.submit</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="comment">// Wait for asynchronous helpers above to complete</span>
+  andThen(<span class="keyword">function</span>() {
+    equal(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">ul.posts li:last</span><span class="delimiter">&quot;</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>注意上例中使用了<code>andThen</code>助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给<code>andThen</code>的函数中得代码。</p>
 <h3 class='anchorable-toc' id='toc_'>编写测试</h3>
 <p>几乎每个测试都遵循一个固定的模式，访问一个路由，与打开的页面进行交互（通过测试助手），最后检验期望的DOM改变是否发生。</p>
 

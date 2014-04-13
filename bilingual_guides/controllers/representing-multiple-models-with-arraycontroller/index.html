@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -538,11 +546,11 @@
       
     <p>英文原文：<a href="http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/">http://emberjs.com/guides/controllers/representing-multiple-models-with-arraycontroller/</a></p>
 <h2 class='anchorable-toc' id='toc_representing-multiple-models'>代表多模型（Representing Multiple Models）</h2>
-<p>You can use <code>Ember.ArrayController</code> to represent an array of models. To tell an
+<p>You can use <a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a> to represent an array of models. To tell an
 <code>ArrayController</code> which model to represent, set its <code>model</code> property
 in your route&#39;s <code>setupController</code> method.</p>
 
-<p><code>Ember.ArrayController</code>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>model</code>属性，来指定其代表的模型。</p>
+<p><a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a>用于代表一组模型。通过在路由的<code>setupController</code>方法中设置<code>ArrayController</code>的<code>model</code>属性，来指定其代表的模型。</p>
 
 <p>You can treat an <code>ArrayController</code> just like its underlying array. For
 example, imagine we want to display the current playlist. In our router,
@@ -636,11 +644,11 @@ property called <code>longSongCount</code> to the controller:</p>
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_sorting'>Sorting</h3><h3 class='anchorable-toc' id='toc_'>排序</h3>
-<p>The <code>Ember.ArrayController</code> uses the <code>Ember.SortableMixin</code> to allow
+<p>The <a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a> uses the <code>Ember.SortableMixin</code> to allow
 sorting of content. There are two properties that can be set in order to set up
 sorting:</p>
 
-<p><code>Ember.ArrayController</code>使用<code>Ember.SortableMixin</code>来支持排序。为了支持排序，需要设置两个属性：</p>
+<p><a href="/api/classes/Ember.ArrayController.html">Ember.ArrayController</a>使用<code>Ember.SortableMixin</code>来支持排序。为了支持排序，需要设置两个属性：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -651,6 +659,36 @@ sorting:</p>
   <span class="key">sortProperties</span>: [<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">artist</span><span class="delimiter">'</span></span>],
   <span class="key">sortAscending</span>: <span class="predefined-constant">true</span> <span class="comment">// false for descending</span>
 });
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_item-controller'>Item Controller</h3><h3 class='anchorable-toc' id='toc_'>条目控制器</h3>
+<p>It is often useful to specify a controller to decorate individual items in
+the <code>ArrayController</code> while iterating over them. This can be done in the
+<code>ArrayController</code> definition:</p>
+
+<p>在遍历<code>ArrayController</code>的条目时，指定一个控制器来装饰单个条目非常有用。这可以在<code>ArrayController</code>中进行定义：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.SongsController = Ember.ArrayController.extend({
+  <span class="key">itemController</span>: <span class="string"><span class="delimiter">'</span><span class="content">song</span><span class="delimiter">'</span></span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>or directly in the template:</p>
+
+<p>或者在模板中指定：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">song</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span> by <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">artist</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/li&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
 </pre></td>
 </tr></table>
 </div></div>

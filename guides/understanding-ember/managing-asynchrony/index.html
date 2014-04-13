@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -787,11 +795,11 @@ UI来设计这个按钮。由于视图的<code>append</code>方法，与其他�
 
 <p>生命周期回调的方法能带来很多好处，即使并非需要担心延迟添加。</p>
 
-<p>首先，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了<code>appendTo</code>的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。</p>
+<p><em>首先</em>，如果依赖同步插入，就意味着把触发需要在追加后需要立刻执行的操作交给了<code>appendTo</code>的调用者。当应用不断的膨胀，就会发现在很多地方使用了相同的视图，这时就需要很多地方担心同步的问题了。</p>
 
 <p>生命周期回调将实例化视图和在视图被追加后的行为的代码解耦。一般来说，不依赖同步附带效应会导向更好的设计。</p>
 
-<p>接着，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。</p>
+<p><em>接着</em>，由于所有关于视图的生命周期都在视图自身里面，这使得Ember可以在需要的是否非常容易重新渲染DOM的一部分。</p>
 
 <p>例如，如果按钮在一个<code>{{#if}}</code>块中，且Ember需要从主分支切换到<code>else</code>，那么Ember可以更容易初始化视图并调用生命周期回调。</p>
 
@@ -861,7 +869,7 @@ UI来设计这个按钮。由于视图的<code>append</code>方法，与其他�
   <span class="key">template</span>: Ember.Handlebars.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{author}}&lt;/h2&gt;&lt;div&gt;{{body}}&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>),
 
   <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">New author name: </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>));
     });
   }
@@ -893,13 +901,13 @@ UI来设计这个按钮。由于视图的<code>append</code>方法，与其他�
   <span class="key">template</span>: Ember.Handlebars.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;h1&gt;{{title}}&lt;/h1&gt;&lt;h2&gt;{{author}}&lt;/h2&gt;&lt;div&gt;{{body}}&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>),
 
   <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.addObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
       alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">New author name: </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>));
     });
   },
 
   <span class="function">willDestroyElement</span>: <span class="keyword">function</span>() {
-    <span class="local-variable">this</span>.removeObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.name</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.removeObserver(<span class="string"><span class="delimiter">'</span><span class="content">controller.author</span><span class="delimiter">'</span></span>);
   }
 });
 </pre></td>

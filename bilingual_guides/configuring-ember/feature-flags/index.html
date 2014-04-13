@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -576,15 +584,15 @@ status.</p>
 <p>一个特性可以有如下的状态：</p>
 
 <ul>
-<li><code>true</code> - The feature is enabled: the code behind the flag is always enabled in
+<li><code>true</code> - The feature is <strong>enabled</strong>: the code behind the flag is always enabled in
 the generated build.</li>
-<li><code>false</code> - The feature is disabled the code behind the flag is not present in
+<li><code>false</code> - The feature is <strong>disabled</strong>: the code behind the flag is not present in
 the generated build at all.</li>
-<li><p><code>null</code> - The feature is present in the build output, but must be enabled at
+<li><p><code>null</code> - The feature is <strong>present</strong> in the build output, but must be enabled at
 runtime (it is still behind feature flags).</p></li>
-<li><p><code>true</code> - 特性被启用：标识背后的代码将在之后的构建中被启用。</p></li>
-<li><p><code>false</code> - 特性被启用：标识背后的代码完全不会被包含在构建中。</p></li>
-<li><p><code>null</code> - 特性会包含在构建中，但是必须在运行期启用才生效（依然处于标识之后）。</p></li>
+<li><p><code>true</code> - 特性被<strong>启用</strong>：标识背后的代码将在之后的构建中被启用。</p></li>
+<li><p><code>false</code> - 特性被<strong>禁用</strong>：标识背后的代码完全不会被包含在构建中。</p></li>
+<li><p><code>null</code> - 特性会<strong>包含</strong>在构建中，但是必须在运行期启用才生效（依然处于标识之后）。</p></li>
 </ul>
 
 <p>The process of removing the feature flags from the resulting build output is
@@ -606,14 +614,14 @@ than <code>true</code> or <code>false</code> will do, but <code>null</code> is t
 
 <p>只有当<code>features.json</code>文件中指定一个特性的状态为<code>null</code>时，该特性才能在运行期被启用。（从技术上说，任何<code>true</code>或<code>false</code>之外的值都可以，不过这里使用<code>null</code>来表示）。</p>
 
-<p>A global <code>ENV</code> object will be used to initialize the <code>Ember.ENV</code>
+<p>A global <code>EmberENV</code> object will be used to initialize the <code>Ember.ENV</code>
 object, and any feature flags that are enabled/disabled under
-<code>ENV.FEATURES</code> will be migrated to <code>Ember.FEATURES</code>, those features
+<code>EmberENV.FEATURES</code> will be migrated to <code>Ember.FEATURES</code>, those features
 will be enabled based on the flag value. <strong>Ember only reads</strong> the
-<code>ENV</code> value upon initial load so setting this value after Ember has
+<code>EmberENV</code> value upon initial load so setting this value after Ember has
 been loaded will have no affect.</p>
 
-<p>Ember使用一个全局变量<code>ENV</code>对象来初始化<code>Ember.ENV</code>，所有<code>ENV.FEATURES</code>中的特性标识都会被移植到<code>Ember.FEATURES</code>中，这些特性将根据标识的值来启用。Ember紧在初始加载时读取<code>ENV</code>的值，因此在Ember加载后再设置这些标识不会起任何作用。</p>
+<p>Ember使用一个全局变量<code>EmberENV</code>对象来初始化<code>Ember.ENV</code>，所有<code>EmberENV.FEATURES</code>中的特性标识都会被移植到<code>Ember.FEATURES</code>中，这些特性将根据标识的值来启用。Ember紧在初始加载时读取<code>EmberENV</code>的值，因此在Ember加载后再设置这些标识不会起任何作用。</p>
 
 <p>Example:</p>
 
@@ -621,14 +629,14 @@ been loaded will have no affect.</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>ENV = {<span class="key">FEATURES</span>: {<span class="key"><span class="delimiter">'</span><span class="content">link-to</span><span class="delimiter">'</span></span>: <span class="predefined-constant">true</span>}};
+  <td class="code"><pre>EmberENV = {<span class="key">FEATURES</span>: {<span class="key"><span class="delimiter">'</span><span class="content">link-to</span><span class="delimiter">'</span></span>: <span class="predefined-constant">true</span>}};
 </pre></td>
 </tr></table>
 </div></div>
-<p>Additionally you can define <code>ENV.ENABLE_ALL_FEATURES</code> to force all
+<p>Additionally you can define <code>EmberENV.ENABLE_ALL_FEATURES</code> to force all
 features to be enabled.</p>
 
-<p>此外，也可以通过定义<code>ENV.ENABLE_ALL_FEATURES</code>来启用所有的特性。</p>
+<p>此外，也可以通过定义<code>EmberENV.ENABLE_ALL_FEATURES</code>来启用所有的特性。</p>
 
     
       <footer>

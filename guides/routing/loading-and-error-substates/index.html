@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3">
@@ -663,7 +671,7 @@ App.FooSlowModelRoute = Ember.Route.extend({
 
 <p>当<code>foo.bar.baz</code>主异步过渡完成时，会退出<code>loading</code>子状态，渲染的模板也会被移除，并进入<code>foo.bar.baz</code>，渲染其模板。</p>
 <h3 class='anchorable-toc' id='toc_vs'>渴望型 VS 延迟型异步过渡</h3>
-<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。</p>
+<p><code>loading</code>子状态都是可选的，如果提供了<code>loading</code>子状态，那么就表示强调了希望异步过渡为“渴望型”的。在缺少目标路由的<code>loading</code>子状态时，路由将依然停留在之前的过渡路由，知道所有目标路由的承诺得到履行，知会在过渡完全完成是一次性过渡到目标路由（渲染模板等）。但是如果提供了一个目标路由的<code>loading</code>子状态，那么就选择了“渴望型”过渡，这就表明与默认的“延迟型”不同，会首先退出当前路由（清除其模板等），并过渡到<code>loading</code>子状态。除非过渡被取消或者在同一运行循环中被重定向，否则URL都会理解更新。</p>
 
 <p>这里也暗含了一个错误处理，例如，当过渡到一个路由失败时，延迟过渡（默认）会依然停留在原路由，而一个渴望过渡早就离开了之前的状态路由进入到<code>loading</code>子状态中了。</p>
 <h2 class='anchorable-toc' id='toc_code-error-code'><code>error</code>子状态</h2>
@@ -697,6 +705,60 @@ App.FooSlowModelRoute = Ember.Route.extend({
 <p>如果没有找到可以访问的<code>error</code>子状态，那么一条错误消息会在控制台中输出。</p>
 
 <p><code>loading</code>/<code>error</code>子状态处理的唯一区别是，<code>error</code>从过渡的中心路由开始向上冒泡。</p>
+<h3 class='anchorable-toc' id='toc_code-error-code'>带动态段的<code>error</code>子状态</h3>
+<p>带动态段的路由通常映射到一个模型的两个不同的层面。例如：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/foo/:id</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">baz</span><span class="delimiter">'</span></span>);
+  });
+});
+
+App.FooRoute = Ember.Route.extend({
+  <span class="function">model</span>: <span class="keyword">function</span>(params) {
+    <span class="keyword">return</span> <span class="keyword">new</span> Ember.RSVP.Promise(<span class="keyword">function</span>(resolve, reject) {
+       reject(<span class="string"><span class="delimiter">&quot;</span><span class="content">Error</span><span class="delimiter">&quot;</span></span>);
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>在URL层次中，访问<code>/foo/12</code>将会导致将<code>foo</code>模板渲染到<code>application</code>模板的<code>outlet</code>处。当尝试加载一个<code>foo</code>路由发生一个错误事件，会将顶层的<code>error</code>模板渲染到<code>application</code>模板的<code>outlet</code>。这感觉就好像<code>foo</code>路由就从未正确进入过一般。为了创建一个<code>foo</code>范围的错误信息，并渲染<code>foo/error</code>到<code>foo</code>的<code>outlet</code>中，那么需要将动态段分离：</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/foo</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">elem</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">:id</span><span class="delimiter">'</span></span>}, <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">baz</span><span class="delimiter">'</span></span>);
+    });
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a href="http://emberjs.jsbin.com/ucanam/4279">Example JSBin</a></p>
 <h2 class='anchorable-toc' id='toc_code-loadingroute-code'>遗留的<code>LoadingRoute</code></h2>
 <p>之前的Ember版本（有些不慎）支持通过定义一个全局的<code>LoadingRoute</code>，该路由将在过渡遇到一个较慢的承诺或者完全退出一个过渡时被激活。因为<code>loading</code>模板作为顶层的视图来渲染，并没有放入到一个插口中，那么在这里处理可以显示一个加载中的指示器外几乎不能做其他的事情。与此相比较，<code>loading</code>事件/子状态提供了更强的控制力，如果希望模拟与遗留的<code>LoadingRoute</code>类似的行为，可以按照如下的例子来实现：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>

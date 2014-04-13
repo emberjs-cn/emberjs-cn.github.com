@@ -394,11 +394,19 @@
             </li>
           
             <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
             </li>
           
             <li class="level-3">
               <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
             </li>
           
             <li class="level-3 sub-selected">
@@ -660,12 +668,118 @@ and modified on the client.</p>
 });
 </pre></td>
 </tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_how-do-i-inform-ember-data-about-new-records-created-on-the-backend'>How do I inform Ember Data about new records created on the backend?</h4><h4 class='anchorable-toc' id='toc_ember-data'>如何将后台创建的记录通知Ember Data</h4>
+<p>When you request a record using Ember Data&#39;s <code>store.find</code> method, Ember
+will automatically load the data into the store. This allows Ember to
+avoid the latency of making a round trip to the backend next time
+that record is requested. Additionally, loading a record into the
+store will update any <code>RecordArray</code>s (e.g. the result of
+<code>store.filter</code> or <code>store.all</code>) that should include that record. This
+means any data bindings or computed properties that depend on the
+<code>RecordArray</code> will automatically be synced to include the new or
+updated record values.</p>
+
+<p>当通过Ember
+Data的<code>store.find</code>方法来请求一条记录时，Ember会自动将数据加载到<code>store</code>中。这样Ember就避免了在之后在发起一个请求来获取已经获取到的记录。此外，加载一条记录到<code>store</code>时，所有的包含该条记录的<code>RecordArray</code>都会被更新（例如<code>store.filter</code>或者<code>store.all</code>构造的）。这就意味着所有依赖与<code>RecordArray</code>的数据绑定或者计算属性都会在添加新的或者更新记录值的时候自动进行同步。</p>
+
+<p>Some applications may want to add or update records in the store
+without requesting the record via <code>store.find</code>. To accomplish this you
+can use the <code>DS.Store</code>&#39;s <code>push</code>, <code>pushPayload</code>, or <code>update</code>
+methods. This is useful for web applications that have a channel
+(such as <a href="http://dev.w3.org/html5/eventsource/">SSE</a> or
+<a href="http://www.w3.org/TR/2009/WD-websockets-20091222/">Web Sockets</a>) to
+notify it of new or updated records on the backend.</p>
+
+<p>而一些应用可能希望能不通过<code>store.find</code>请求记录来添加或者更新<code>store</code>中得记录。为了实现这种需求，可以通过使用<code>DS.Store</code>的<code>push</code>，<code>pushPayload</code>，或者<code>update</code>方法。这对于那些有一个通道（例如<a href="http://dev.w3.org/html5/eventsource/">SSE</a>或者<a href="http://www.w3.org/TR/2009/WD-websockets-20091222/">Web Socket</a>）通知应用后台有新记录创建或者更新非常有用。</p>
+
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_push">push</a>
+is the simplest way to load records to Ember Data&#39;s store. When using
+<code>push</code> it is important to remember to deserialize the JSON object
+before pushing it into the store. <code>push</code> only accepts one record at a
+time. If you would like to load an array of records to the store you
+can call
+<a href="http://emberjs.com/api/data/classes/DS.Store.html#method_pushMany">pushMany</a>.</p>
+
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_push">push</a>是加载记录到Ember
+Data的<code>store</code>的最简单方法。当使用<code>push</code>时，一定要记住将JSON对象推入<code>store</code>之前将其反序列化。<code>push</code>一次只接受一条记录。如果希望一次加载一组记录到<code>store</code>那么可以调用<a href="http://emberjs.com/api/data/classes/DS.Store.html#method_pushMany">pushMany</a>.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>socket.on(<span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (message) {
+  <span class="keyword">var</span> type = store.modelFor(message.model);
+  <span class="keyword">var</span> serializer = store.serializerFor(type.typeKey);
+  <span class="keyword">var</span> record = serializer.extractSingle(store, type, message.data);
+  store.push(message.model, record);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_pushPayload">pushPayload</a>
+is a convenience wrapper for <code>store#push</code> that will deserialize
+payloads if the model&#39;s Serializer implements a <code>pushPayload</code>
+method. It is important to note this method will not work with the
+<code>JSONSerializer</code> because it does not implement a <code>pushPayload</code>
+method.</p>
+
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_pushPayload">pushPayload</a>是一个<code>store#push</code>方法的便利封装，它将使用模型实现了<code>pushPayload</code>方法的序列化对象来反序列化有效载荷。需要注意的是这个方法并不能与<code>JSONSerializer</code>一同使用，因为其并没有实现<code>pushPayload</code>方法。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>socket.on(<span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (message) {
+  store.pushPayload(message.model, message.data);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_update">update</a>
+works likea <code>push</code> except it can handle partial attributes without
+overwriting the existing record properties. This method is useful if
+your web application only receives notifications of the changed
+attributes on a model. Like <code>push</code> it is important to remember to
+deserialize the JSON object before calling <code>update</code>.</p>
+
+<p><a href="http://emberjs.com/api/data/classes/DS.Store.html#method_update">update</a>与<code>push</code>方法类似，不同的是其可以处理部分属性，而不需要覆盖整个记录的属性。这个方法对于只接收到记录改变的属性的通知的应用尤为有用。与<code>push</code>方法一样，<code>update</code>需要在调用之前将JSON对象反序列化。</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>socket.on(<span class="string"><span class="delimiter">'</span><span class="content">message</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (message) {
+  <span class="keyword">var</span> hash = message.data;
+  <span class="keyword">var</span> type = store.modelFor(message.model);
+  <span class="keyword">var</span> fields = Ember.get(type, <span class="string"><span class="delimiter">'</span><span class="content">fields</span><span class="delimiter">'</span></span>);
+  fields.forEach(<span class="keyword">function</span>(field) {
+    <span class="keyword">var</span> payloadField = Ember.String.underscore(field);
+    <span class="keyword">if</span> (field === payloadField) { <span class="keyword">return</span>; }
+      hash[field] = hash[payloadField];
+      <span class="keyword">delete</span> hash[payloadField];
+  });
+  store.push(message.model, hash);
+});
+</pre></td>
+</tr></table>
 </div></div>
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/models/handling-metadata">
-            ← 处理元数据
+          <a class="previous-guide" href="/bilingual_guides/models/customizing-adapters">
+            ← 自定义适配器
           </a>
          
             <a class="next-guide" href="/guides/views">
