@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
     <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
-    <title>Ember.js - Ember 1.5.0 and 1.6 Beta Released</title>
-    <meta property="st:title" content="Ember 1.5.0 and 1.6 Beta Released" />
+    <title>Ember.js - Ember 1.5.0和1.6 Beta发布</title>
+    <meta property="st:title" content="Ember 1.5.0和1.6 Beta发布" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
@@ -48,9 +48,9 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
-          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0和1.6 Beta发布</a></li>
         
-          <li class='level-3'><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">The Road to Ember Data 1.0</a></li>
+          <li class='level-3'><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">Ember Data 1.0 之路</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/17/ember-js-cn-one-year-old.html">EmberJS.CN一周岁</a></li>
         
@@ -112,7 +112,7 @@
       <a href="/blog/tags/releases.html">发布说明</a>
       <ol style="display:block">
         
-          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0和1.6 Beta发布</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
         
@@ -174,33 +174,27 @@
       
       <div id="content" class="has-sidebar">
           <article class="blog-post">
-    <h1>Ember 1.5.0 and 1.6 Beta Released</h1>
+    <h1>Ember 1.5.0和1.6 Beta发布</h1>
     
       <h3 class="blog-post-author">作者： Robert Jackson &ndash; <time>Mar 30, 2014</time></h3>
     
 
     <hr>
 
-    <p>We are pleased to announce that both Ember.js 1.5.0 and the first beta in the 1.6 series
-have just been released. This comes as the fifth cycle of our six-week release
-process that began just after 1.0 was released.</p>
-<h3 class='anchorable-toc' id='toc_new-features-in-1-5'>New features in 1.5</h3><h4 class='anchorable-toc' id='toc_handlebars-logging-of-primitive-values'>Handlebars Logging of Primitive Values</h4>
-<p>This feature allows you to log primitive values (strings, numbers, etc) from within your
-templates. Previously, the <code>{{log}}</code> helper only allowed usage of bound property lookup.</p>
+    <h3 class='anchorable-toc' id='toc_1-5'>1.5中得新特性</h3><h4 class='anchorable-toc' id='toc_handlebars'>Handlebars记录原生值</h4>
+<p>本特性允许在模板中<code>log</code>原生数据类型的值（字符串、数字等）</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
   <td class="code"><pre>{{log <span class="string"><span class="delimiter">&quot;</span><span class="content">**LOOKEY HERE**</span><span class="delimiter">&quot;</span></span>}}
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_new-testing-helpers'>New Testing Helpers</h4><h5 class='anchorable-toc' id='toc_routing-helpers'>Routing Helpers</h5>
-<p>A few new testing helpers have been added to make it easier to make assertions on the state
-of routing in your application (for example to confirm clicking a given link results in a
-redirect to a specific route).</p>
+</div></div><h4 class='anchorable-toc' id='toc_'>新测试助手</h4><h5 class='anchorable-toc' id='toc_'>路由助手</h5>
+<p>添加了一些新的测试助手，以便可以方便的断言应用的路由所处的状态（例如点击一个链接后重定向到一个指定的路由）。</p>
 
-<p>New routing test helpers: <code>currentRouteName</code>, <code>currentPath</code>, and <code>currentURL</code>.</p>
-<h5 class='anchorable-toc' id='toc_trigger-event-helper'>Trigger Event Helper</h5>
-<p>A new <code>triggerEvent</code> helper has been created to allow triggering of arbitrary events on an element.</p>
+<p>新测试助手包括：<code>currentRouteName</code>，<code>currentPath</code>和<code>currentURL</code>。</p>
+<h5 class='anchorable-toc' id='toc_'>触发事件助手</h5>
+<p><code>triggerEvent</code>助手可以用于在一个元素上触发任意的事件。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
@@ -208,8 +202,7 @@ redirect to a specific route).</p>
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_ember-computed-readonly'>Ember.computed.readOnly</h4>
-<p>Generally, when you use <code>Ember.computed.oneWay</code> you would also need to call <code>readOnly</code> to ensure no data
-propagates back up.</p>
+<p>通常当使用<code>Ember.computed.oneWay</code>时，需要使用<code>readOnly</code>来确保数据存在备份。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -225,7 +218,7 @@ Ember.computed.readOnly(<span class="string"><span class="delimiter">'</span><sp
 </pre></td>
 </tr></table>
 </div></div><h4 class='anchorable-toc' id='toc_ember-isblank'>Ember.isBlank</h4>
-<p>A new shortcut for checking if a particular object is empty or an empty string:</p>
+<p>用于检查一个特定的对象为空，或者为一个空的字符串：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -252,13 +245,10 @@ Ember.isBlank(<span class="string"><span class="delimiter">'</span><span class="
 Ember.isBlank([<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>]);         <span class="comment">// false</span>
 </pre></td>
 </tr></table>
-</div></div><h4 class='anchorable-toc' id='toc_eager-updating-url'>Eager Updating URL</h4>
-<p>Previously, the URL in the address bar would only update at the very end of
-the transition. This change causes the URL update to happen immediately unless
-the transition was aborted/redirected within the same run loop, which provides
-for a better UX 99% of the time.</p>
-<h4 class='anchorable-toc' id='toc_auto-location'>Auto Location</h4>
-<p>Adds <code>auto</code> as a <code>location</code> option for the app&#39;s <code>Router</code>.</p>
+</div></div><h4 class='anchorable-toc' id='toc_url'>渴望型更新URL</h4>
+<p>之前，地址栏中的URL只会在过渡的最后才会被更新。目前只要过渡没有在同一个运行循环中被取消/重定向，那么URL会被立即更新，这样99%的用户体验问题得到改善。</p>
+<h4 class='anchorable-toc' id='toc_'>自动定位</h4>
+<p>为应用的<code>Router</code>的<code>location</code>属性添加一个<code>auto</code>选项。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -270,19 +260,15 @@ for a better UX 99% of the time.</p>
 </pre></td>
 </tr></table>
 </div></div>
-<p>When used, Ember will select the best location option based off browser
-support with the priority order: history, hash, none.</p>
+<p>如果使用了改选项，那么Ember会更具浏览器的支持按照：history，hash和none的顺序来选择最合适的定位方法。</p>
 
-<p>Clean pushState paths accessed by hashchange-only browsers will be redirected
-to the hash-equivalent and vice versa so future transitions look consistent.</p>
-<h4 class='anchorable-toc' id='toc_bound-action-lookup'>Bound Action Lookup</h4>
-<p>The <code>{{action}}</code> helper will now use a non-quoted parameter and perform a bound property
-lookup against the action&#39;s target at the time the event is triggered. This allows usage
-of a dynamic action name (determined by looking up the property).</p>
-<h4 class='anchorable-toc' id='toc_routes-inherit-model'>Routes Inherit Model</h4>
-<p>Ember routes and leaf resources (without nested routes) will inherit the parent route&#39;s model.</p>
+<p>对于被只支持hash改变的浏览器的清理<code>pushState</code>路径，会被重定向到与hash等价的方式，反之亦然。因此过渡保持了一致性。</p>
+<h4 class='anchorable-toc' id='toc_'>绑定操作查找</h4>
+<p><code>{{action}}</code>助手可以使用无引号的参数，并在事件被触发时，在对应的操作目标对象的属性中区找这个参数绑定的属性。这样可以使用动态的操作名（通过属性获取操作的名称）。</p>
+<h4 class='anchorable-toc' id='toc_routes'>Routes继承模型</h4>
+<p>Ember路由及叶子节点资源（没有嵌套的路由）将继承父路由的模型。</p>
 
-<p>Take the following example:</p>
+<p>如下下例所示：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -322,16 +308,11 @@ App.PostEditRoute = Ember.Route.extend({
 </pre></td>
 </tr></table>
 </div></div>
-<p>Now in 1.5, you do not have to define the <code>model</code> hook for <code>PostEditRoute</code> as the default implementation
-is to use the parent routes model.</p>
-<h3 class='anchorable-toc' id='toc_other-notable-changes'>Other Notable Changes</h3><h4 class='anchorable-toc' id='toc_ever-present-_super-breaking-bugfix'>Ever-present _super (Breaking Bugfix)</h4>
-<p>Prior versions of Ember.js used a super mechanism that was un-safe for mixins. If more than
-one <code>_super</code> was called for a given function name and there was no terminating function, an
-infinite loop would occur. See <a href="https://github.com/emberjs/ember.js/issues/3523">#3523</a> for
-further discussion.</p>
+<p>在1.5版本中，不在需要为<code>PostEditRoute</code>定义<code>model</code>钩子，默认会使用父路由的<code>model</code>。</p>
+<h3 class='anchorable-toc' id='toc_'>其他值得注意的更新</h3><h4 class='anchorable-toc' id='toc__super-bug'>当下的_super（破坏性Bug修复）</h4>
+<p>之前版本的Ember.js使用了对于织入不是那么安全的<code>super</code>机制。如果一个指定函数名被多次调用<code>_super</code>，并且没有终止函数，那么就会遇到死循环。<a href="https://github.com/emberjs/ember.js/issues/3523">#3523</a>有深入的讨论。</p>
 
-<p>The solution released in 1.5 fixes this behavior (see <a href="https://github.com/emberjs/ember.js/pull/3683">#3683</a>),
-but also breaks the edge-case of using <code>_super</code> out of line. For instance:</p>
+<p>1.5中得解决方案修复了这个问题（<a href="https://github.com/emberjs/ember.js/pull/3683">#3683</a>），这也破坏了使用<code>_super</code>不一致。例如：</p>
 <div class="highlight JavaScript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -343,17 +324,14 @@ but also breaks the edge-case of using <code>_super</code> out of line. For inst
 </pre></td>
 </tr></table>
 </div></div>
-<p>Is no longer a supported use of <code>_super</code>. See <a href="http://emberjs.jsbin.com/xuroy/1/edit?html,js,output">this jsbin</a>
-for a live example. If this change impacts you, please comment on <a href="https://github.com/emberjs/ember.js/pull/4301">#4632</a>.</p>
-<h4 class='anchorable-toc' id='toc_handlebars-each-helper-checks-markup'>Handlebars {{each}} Helper Checks Markup</h4>
-<p>In some cases, the browser may add or fix tags, which change the parentage of metamorph tags. This problem happens frequently when the
-developer doesn&#39;t include the TBODY tag inside a table for example.  This prevents the framework from updating or cleaning the underlying DOM
-elements.</p>
+<p>不在支持使用<code>_super</code>，查看实例<a href="http://emberjs.jsbin.com/xuroy/1/edit?html,js,output">jsbin</a>。
+如果个造成了影响，那么可以去<a href="https://github.com/emberjs/ember.js/pull/4301">#4632</a>参与讨论。</p>
+<h4 class='anchorable-toc' id='toc_handlebars-each'>Handlebars {{each}} 助手检查标签</h4>
+<p>有些情况，浏览器会添加固定的标签，可能改变<code>Metamorph</code>标签的递属关系。这个问题将成在开发人员忘记在一个表格中添加<code>TBODY</code>的情况。这使得框架无法更新和清理底层DOM元素。</p>
 
-<p>An assertion has been added in non-production builds that indicates that the metamorph start and end tags have different parents.
-This is most commonly caused by using an <code>{{each}}</code> inside of a <code>&lt;table&gt;</code> tag without specifying a <code>&lt;tbody&gt;</code>.</p>
+<p>非生产环境构建中添加了一个断言，用于指出<code>Metamorph</code>的开始和结尾标签父元素不同的情况。这通常是在<code>&lt;table&gt;</code>中使用<code>{{each}}</code>时没有指定<code>&lt;tbody&gt;</code>导致的。</p>
 
-<p>Example demonstrating the assertion (<a href="http://emberjs.jsbin.com/fotin/3/edit">JSBin here</a>):</p>
+<p><a href="http://emberjs.jsbin.com/fotin/3/edit">JSBin</a>展示了这个断言：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -369,7 +347,7 @@ This is most commonly caused by using an <code>{{each}}</code> inside of a <code
 </pre></td>
 </tr></table>
 </div></div>
-<p>And the resolution is to include a <code>&lt;tbody&gt;</code> (<a href="http://emberjs.jsbin.com/fotin/2/edit">JSBin here</a>):</p>
+<p>解决办法就是添加<code>&lt;tbody&gt;</code>（<a href="http://emberjs.jsbin.com/fotin/2/edit">JSBin</a>）</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -388,9 +366,8 @@ This is most commonly caused by using an <code>{{each}}</code> inside of a <code
 <span class="tag">&lt;/table&gt;</span>
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_other-improvements'>Other Improvements</h3>
-<p>As usual, there are a ton of bug fixes and small improvements in this
-release. You can see a list of all the changes in the CHANGELOG:</p>
+</div></div><h3 class='anchorable-toc' id='toc_'>其他改进</h3>
+<p>一如既往，本次发布还修改了许多之前版本存在的Bugs，对一部分功能也作出了一些改进。详细的内容可以查看CHANGELOG：</p>
 
 <ul>
 <li><a href="https://github.com/emberjs/ember.js/blob/v1.5.0/CHANGELOG.md">Ember.js 1.5.0 CHANGELOG</a></li>

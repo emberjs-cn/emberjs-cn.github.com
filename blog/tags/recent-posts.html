@@ -47,9 +47,9 @@
       <a href="/blog/tags/recent-posts.html">最近文章</a>
       <ol style="display:block">
         
-          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0和1.6 Beta发布</a></li>
         
-          <li class='level-3'><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">The Road to Ember Data 1.0</a></li>
+          <li class='level-3'><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">Ember Data 1.0 之路</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/17/ember-js-cn-one-year-old.html">EmberJS.CN一周岁</a></li>
         
@@ -111,7 +111,7 @@
       <a href="/blog/tags/releases.html">发布说明</a>
       <ol style="display:block">
         
-          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a></li>
+          <li class='level-3'><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0和1.6 Beta发布</a></li>
         
           <li class='level-3'><a href="/blog/2014/02/12/ember-1-4-0-and-ember-1-5-0-beta-released.html">Ember 1.4.0和1.5 Beta发布</a></li>
         
@@ -177,32 +177,54 @@
 <h1>Recent Posts</h1>
 
   <article class="blog-post-summary">
-    <h2><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0 and 1.6 Beta Released</a> &ndash; <time>Mar 30, 2014</time></span></h2>
+    <h2><a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember 1.5.0和1.6 Beta发布</a> &ndash; <time>Mar 30, 2014</time></span></h2>
     
       <h5 class="blog-post-summary-author">
         撰写人： Robert Jackson
       </h5>
     
-    <p>We are pleased to announce that both Ember.js 1.5.0 and the first beta in the 1.6 series
-have just been released. This comes as the fifth cycle of our six-week release
-process that began just after 1.0 was released.</p>
-<h3 class="anchorable-toc" id="toc_new-features-in-1-5">New features in 1.5</h3><h4 class="anchorable-toc" id="toc_handlebars-logging-of-primitive-values">Handlebars Logging...</h4>
+    <h3 class="anchorable-toc" id="toc_1-5">1.5中得新特性</h3><h4 class="anchorable-toc" id="toc_handlebars">Handlebars记录原生值</h4>
+<p>本特性允许在模板中<code>log</code>原生数据类型的值（字符串、数字等）</p>
+<div class="highlight javascript ">
+<div class="ribbon"></div>
+<div class="scroller">
+<table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>{{log <span class="string"><span class="delimiter">"</span><span class="content">**LOOKEY HERE**</span><span class="delimiter">"</span></span>}}
+</pre></td>
+</tr></table>
+</div>
+</div><h4 class="anchorable-toc" id="toc_">新测试助手</h4><h5 class="anchorable-toc" id="toc_">路由助手</h5>
+<p>添加了一些新的测试助手，以便可以方便的断言应用的路由所处的状态（例如点击一个链接后重定向到一个指定的路由）。</p>
+
+<p>新测试助手包括：<code>currentRouteName</code>，<code>currentPath</code>和<code>currentURL</code>。</p>
+<h5 class="anchorable-toc" id="toc_">触发事件助手</h5>
+<p><code>triggerEvent</code>助手可以用于在一个元素上触发任意的事件。</p>
+<div class="highlight javascript ">
+<div class="ribbon"></div>
+<div class="scroller"><table class="CodeRay"><tr>
+ ...</tr></table></div>
+</div>
     <a href="/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">
-    <h2><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">The Road to Ember Data 1.0</a> &ndash; <time>Mar 18, 2014</time></span></h2>
+    <h2><a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">Ember Data 1.0 之路</a> &ndash; <time>Mar 18, 2014</time></span></h2>
     
       <h5 class="blog-post-summary-author">
         撰写人： Tom Dale & Yehuda Katz
       </h5>
     
-    <p><strong>TL;DR</strong> Ember Data 1.0 is coming soon. We have a few last features to land before we
-can confidently make guarantees around not breaking the API. Specifically:</p>
+    <p><strong>TL;DR</strong> Ember Data即将迎来1.0时代。在能自信的保证不再破坏API之前，还需要实现最后几个特性。特别是：</p>
 
 <ol>
-<li><p>A guarantee that if one side of a two-way relationship changes, the other
-side will remain...</p></li>
+<li><p>保证在一个双向的关联中得一端发生改变时，另一端保持同步，即使其并未加载。</p></li>
+<li><p>所有关联将使用异步模式，<code>DataBoundPromises</code>将确保其能再观察器、计算属性和模板中都能正常工作。</p></li>
 </ol>
+
+<p>就像之前路由设计的尝试一样（已被证明是Javascript中得最好的实现），为了让Ember
+Data更好的工作，花费了比设想要多很多的事件，不过现在其已经非常接近1.0正式版了。</p>
+...
     <a href="/blog/2014/03/18/the-road-to-ember-data-1-0.html">更多内容...</a>
   </article>
   <article class="blog-post-summary">

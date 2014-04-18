@@ -10,7 +10,7 @@
     <name>EmberJS.CN</name>
   </author>
   <entry>
-    <title>Ember 1.5.0 and 1.6 Beta Released</title>
+    <title>Ember 1.5.0和1.6 Beta发布</title>
     <link rel="alternate" href="http://emberjs.cn/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html"/>
     <id>http://emberjs.cn/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html</id>
     <published>2014-03-30T00:00:00Z</published>
@@ -18,30 +18,43 @@
     <author>
       <name>EmberJS.CN</name>
     </author>
-    <summary type="html">&lt;p&gt;We are pleased to announce that both Ember.js 1.5.0 and the first beta in the 1.6 series
-have just been released. This comes as the fifth cycle of our six-week release
-process that began just after 1.0 was released.&lt;/p&gt;
-&lt;h3 class="anchorable-toc" id="toc_new-features-in-1-5"&gt;New features in 1.5&lt;/h3&gt;&lt;h4 class="anchorable-toc" id="toc_handlebars-logging-of-primitive-values"&gt;Handlebars Logging...&lt;/h4&gt;</summary>
-    <content type="html">&lt;p&gt;We are pleased to announce that both Ember.js 1.5.0 and the first beta in the 1.6 series
-have just been released. This comes as the fifth cycle of our six-week release
-process that began just after 1.0 was released.&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_new-features-in-1-5'&gt;New features in 1.5&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_handlebars-logging-of-primitive-values'&gt;Handlebars Logging of Primitive Values&lt;/h4&gt;
-&lt;p&gt;This feature allows you to log primitive values (strings, numbers, etc) from within your
-templates. Previously, the &lt;code&gt;{{log}}&lt;/code&gt; helper only allowed usage of bound property lookup.&lt;/p&gt;
+    <summary type="html">&lt;h3 class="anchorable-toc" id="toc_1-5"&gt;1.5中得新特性&lt;/h3&gt;&lt;h4 class="anchorable-toc" id="toc_handlebars"&gt;Handlebars记录原生值&lt;/h4&gt;
+&lt;p&gt;本特性允许在模板中&lt;code&gt;log&lt;/code&gt;原生数据类型的值（字符串、数字等）&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;
+&lt;div class="ribbon"&gt;&lt;/div&gt;
+&lt;div class="scroller"&gt;
+&lt;table class="CodeRay"&gt;&lt;tr&gt;
+  &lt;td class="line-numbers"&gt;&lt;pre&gt;1
+&lt;/pre&gt;&lt;/td&gt;
+  &lt;td class="code"&gt;&lt;pre&gt;{{log &lt;span class="string"&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;span class="content"&gt;**LOOKEY HERE**&lt;/span&gt;&lt;span class="delimiter"&gt;"&lt;/span&gt;&lt;/span&gt;}}
+&lt;/pre&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 class="anchorable-toc" id="toc_"&gt;新测试助手&lt;/h4&gt;&lt;h5 class="anchorable-toc" id="toc_"&gt;路由助手&lt;/h5&gt;
+&lt;p&gt;添加了一些新的测试助手，以便可以方便的断言应用的路由所处的状态（例如点击一个链接后重定向到一个指定的路由）。&lt;/p&gt;
+
+&lt;p&gt;新测试助手包括：&lt;code&gt;currentRouteName&lt;/code&gt;，&lt;code&gt;currentPath&lt;/code&gt;和&lt;code&gt;currentURL&lt;/code&gt;。&lt;/p&gt;
+&lt;h5 class="anchorable-toc" id="toc_"&gt;触发事件助手&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;triggerEvent&lt;/code&gt;助手可以用于在一个元素上触发任意的事件。&lt;/p&gt;
+&lt;div class="highlight javascript "&gt;
+&lt;div class="ribbon"&gt;&lt;/div&gt;
+&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
+ ...&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;</summary>
+    <content type="html">&lt;h3 class='anchorable-toc' id='toc_1-5'&gt;1.5中得新特性&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_handlebars'&gt;Handlebars记录原生值&lt;/h4&gt;
+&lt;p&gt;本特性允许在模板中&lt;code&gt;log&lt;/code&gt;原生数据类型的值（字符串、数字等）&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 &lt;/pre&gt;&lt;/td&gt;
   &lt;td class="code"&gt;&lt;pre&gt;{{log &lt;span class="string"&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;span class="content"&gt;**LOOKEY HERE**&lt;/span&gt;&lt;span class="delimiter"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;}}
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_new-testing-helpers'&gt;New Testing Helpers&lt;/h4&gt;&lt;h5 class='anchorable-toc' id='toc_routing-helpers'&gt;Routing Helpers&lt;/h5&gt;
-&lt;p&gt;A few new testing helpers have been added to make it easier to make assertions on the state
-of routing in your application (for example to confirm clicking a given link results in a
-redirect to a specific route).&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_'&gt;新测试助手&lt;/h4&gt;&lt;h5 class='anchorable-toc' id='toc_'&gt;路由助手&lt;/h5&gt;
+&lt;p&gt;添加了一些新的测试助手，以便可以方便的断言应用的路由所处的状态（例如点击一个链接后重定向到一个指定的路由）。&lt;/p&gt;
 
-&lt;p&gt;New routing test helpers: &lt;code&gt;currentRouteName&lt;/code&gt;, &lt;code&gt;currentPath&lt;/code&gt;, and &lt;code&gt;currentURL&lt;/code&gt;.&lt;/p&gt;
-&lt;h5 class='anchorable-toc' id='toc_trigger-event-helper'&gt;Trigger Event Helper&lt;/h5&gt;
-&lt;p&gt;A new &lt;code&gt;triggerEvent&lt;/code&gt; helper has been created to allow triggering of arbitrary events on an element.&lt;/p&gt;
+&lt;p&gt;新测试助手包括：&lt;code&gt;currentRouteName&lt;/code&gt;，&lt;code&gt;currentPath&lt;/code&gt;和&lt;code&gt;currentURL&lt;/code&gt;。&lt;/p&gt;
+&lt;h5 class='anchorable-toc' id='toc_'&gt;触发事件助手&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;triggerEvent&lt;/code&gt;助手可以用于在一个元素上触发任意的事件。&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 &lt;/pre&gt;&lt;/td&gt;
@@ -49,8 +62,7 @@ redirect to a specific route).&lt;/p&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_ember-computed-readonly'&gt;Ember.computed.readOnly&lt;/h4&gt;
-&lt;p&gt;Generally, when you use &lt;code&gt;Ember.computed.oneWay&lt;/code&gt; you would also need to call &lt;code&gt;readOnly&lt;/code&gt; to ensure no data
-propagates back up.&lt;/p&gt;
+&lt;p&gt;通常当使用&lt;code&gt;Ember.computed.oneWay&lt;/code&gt;时，需要使用&lt;code&gt;readOnly&lt;/code&gt;来确保数据存在备份。&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -66,7 +78,7 @@ Ember.computed.readOnly(&lt;span class="string"&gt;&lt;span class="delimiter"&gt
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_ember-isblank'&gt;Ember.isBlank&lt;/h4&gt;
-&lt;p&gt;A new shortcut for checking if a particular object is empty or an empty string:&lt;/p&gt;
+&lt;p&gt;用于检查一个特定的对象为空，或者为一个空的字符串：&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -93,13 +105,10 @@ Ember.isBlank(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/spa
 Ember.isBlank([&lt;span class="integer"&gt;1&lt;/span&gt;,&lt;span class="integer"&gt;2&lt;/span&gt;,&lt;span class="integer"&gt;3&lt;/span&gt;]);         &lt;span class="comment"&gt;// false&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_eager-updating-url'&gt;Eager Updating URL&lt;/h4&gt;
-&lt;p&gt;Previously, the URL in the address bar would only update at the very end of
-the transition. This change causes the URL update to happen immediately unless
-the transition was aborted/redirected within the same run loop, which provides
-for a better UX 99% of the time.&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_auto-location'&gt;Auto Location&lt;/h4&gt;
-&lt;p&gt;Adds &lt;code&gt;auto&lt;/code&gt; as a &lt;code&gt;location&lt;/code&gt; option for the app&amp;#39;s &lt;code&gt;Router&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h4 class='anchorable-toc' id='toc_url'&gt;渴望型更新URL&lt;/h4&gt;
+&lt;p&gt;之前，地址栏中的URL只会在过渡的最后才会被更新。目前只要过渡没有在同一个运行循环中被取消/重定向，那么URL会被立即更新，这样99%的用户体验问题得到改善。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_'&gt;自动定位&lt;/h4&gt;
+&lt;p&gt;为应用的&lt;code&gt;Router&lt;/code&gt;的&lt;code&gt;location&lt;/code&gt;属性添加一个&lt;code&gt;auto&lt;/code&gt;选项。&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -111,19 +120,15 @@ for a better UX 99% of the time.&lt;/p&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;When used, Ember will select the best location option based off browser
-support with the priority order: history, hash, none.&lt;/p&gt;
+&lt;p&gt;如果使用了改选项，那么Ember会更具浏览器的支持按照：history，hash和none的顺序来选择最合适的定位方法。&lt;/p&gt;
 
-&lt;p&gt;Clean pushState paths accessed by hashchange-only browsers will be redirected
-to the hash-equivalent and vice versa so future transitions look consistent.&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_bound-action-lookup'&gt;Bound Action Lookup&lt;/h4&gt;
-&lt;p&gt;The &lt;code&gt;{{action}}&lt;/code&gt; helper will now use a non-quoted parameter and perform a bound property
-lookup against the action&amp;#39;s target at the time the event is triggered. This allows usage
-of a dynamic action name (determined by looking up the property).&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_routes-inherit-model'&gt;Routes Inherit Model&lt;/h4&gt;
-&lt;p&gt;Ember routes and leaf resources (without nested routes) will inherit the parent route&amp;#39;s model.&lt;/p&gt;
+&lt;p&gt;对于被只支持hash改变的浏览器的清理&lt;code&gt;pushState&lt;/code&gt;路径，会被重定向到与hash等价的方式，反之亦然。因此过渡保持了一致性。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_'&gt;绑定操作查找&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{{action}}&lt;/code&gt;助手可以使用无引号的参数，并在事件被触发时，在对应的操作目标对象的属性中区找这个参数绑定的属性。这样可以使用动态的操作名（通过属性获取操作的名称）。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_routes'&gt;Routes继承模型&lt;/h4&gt;
+&lt;p&gt;Ember路由及叶子节点资源（没有嵌套的路由）将继承父路由的模型。&lt;/p&gt;
 
-&lt;p&gt;Take the following example:&lt;/p&gt;
+&lt;p&gt;如下下例所示：&lt;/p&gt;
 &lt;div class="highlight javascript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -163,16 +168,11 @@ App.PostEditRoute = Ember.Route.extend({
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now in 1.5, you do not have to define the &lt;code&gt;model&lt;/code&gt; hook for &lt;code&gt;PostEditRoute&lt;/code&gt; as the default implementation
-is to use the parent routes model.&lt;/p&gt;
-&lt;h3 class='anchorable-toc' id='toc_other-notable-changes'&gt;Other Notable Changes&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc_ever-present-_super-breaking-bugfix'&gt;Ever-present _super (Breaking Bugfix)&lt;/h4&gt;
-&lt;p&gt;Prior versions of Ember.js used a super mechanism that was un-safe for mixins. If more than
-one &lt;code&gt;_super&lt;/code&gt; was called for a given function name and there was no terminating function, an
-infinite loop would occur. See &lt;a href="https://github.com/emberjs/ember.js/issues/3523"&gt;#3523&lt;/a&gt; for
-further discussion.&lt;/p&gt;
+&lt;p&gt;在1.5版本中，不在需要为&lt;code&gt;PostEditRoute&lt;/code&gt;定义&lt;code&gt;model&lt;/code&gt;钩子，默认会使用父路由的&lt;code&gt;model&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 class='anchorable-toc' id='toc_'&gt;其他值得注意的更新&lt;/h3&gt;&lt;h4 class='anchorable-toc' id='toc__super-bug'&gt;当下的_super（破坏性Bug修复）&lt;/h4&gt;
+&lt;p&gt;之前版本的Ember.js使用了对于织入不是那么安全的&lt;code&gt;super&lt;/code&gt;机制。如果一个指定函数名被多次调用&lt;code&gt;_super&lt;/code&gt;，并且没有终止函数，那么就会遇到死循环。&lt;a href="https://github.com/emberjs/ember.js/issues/3523"&gt;#3523&lt;/a&gt;有深入的讨论。&lt;/p&gt;
 
-&lt;p&gt;The solution released in 1.5 fixes this behavior (see &lt;a href="https://github.com/emberjs/ember.js/pull/3683"&gt;#3683&lt;/a&gt;),
-but also breaks the edge-case of using &lt;code&gt;_super&lt;/code&gt; out of line. For instance:&lt;/p&gt;
+&lt;p&gt;1.5中得解决方案修复了这个问题（&lt;a href="https://github.com/emberjs/ember.js/pull/3683"&gt;#3683&lt;/a&gt;），这也破坏了使用&lt;code&gt;_super&lt;/code&gt;不一致。例如：&lt;/p&gt;
 &lt;div class="highlight JavaScript "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -184,17 +184,14 @@ but also breaks the edge-case of using &lt;code&gt;_super&lt;/code&gt; out of li
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Is no longer a supported use of &lt;code&gt;_super&lt;/code&gt;. See &lt;a href="http://emberjs.jsbin.com/xuroy/1/edit?html,js,output"&gt;this jsbin&lt;/a&gt;
-for a live example. If this change impacts you, please comment on &lt;a href="https://github.com/emberjs/ember.js/pull/4301"&gt;#4632&lt;/a&gt;.&lt;/p&gt;
-&lt;h4 class='anchorable-toc' id='toc_handlebars-each-helper-checks-markup'&gt;Handlebars {{each}} Helper Checks Markup&lt;/h4&gt;
-&lt;p&gt;In some cases, the browser may add or fix tags, which change the parentage of metamorph tags. This problem happens frequently when the
-developer doesn&amp;#39;t include the TBODY tag inside a table for example.  This prevents the framework from updating or cleaning the underlying DOM
-elements.&lt;/p&gt;
+&lt;p&gt;不在支持使用&lt;code&gt;_super&lt;/code&gt;，查看实例&lt;a href="http://emberjs.jsbin.com/xuroy/1/edit?html,js,output"&gt;jsbin&lt;/a&gt;。
+如果个造成了影响，那么可以去&lt;a href="https://github.com/emberjs/ember.js/pull/4301"&gt;#4632&lt;/a&gt;参与讨论。&lt;/p&gt;
+&lt;h4 class='anchorable-toc' id='toc_handlebars-each'&gt;Handlebars {{each}} 助手检查标签&lt;/h4&gt;
+&lt;p&gt;有些情况，浏览器会添加固定的标签，可能改变&lt;code&gt;Metamorph&lt;/code&gt;标签的递属关系。这个问题将成在开发人员忘记在一个表格中添加&lt;code&gt;TBODY&lt;/code&gt;的情况。这使得框架无法更新和清理底层DOM元素。&lt;/p&gt;
 
-&lt;p&gt;An assertion has been added in non-production builds that indicates that the metamorph start and end tags have different parents.
-This is most commonly caused by using an &lt;code&gt;{{each}}&lt;/code&gt; inside of a &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; tag without specifying a &lt;code&gt;&amp;lt;tbody&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;非生产环境构建中添加了一个断言，用于指出&lt;code&gt;Metamorph&lt;/code&gt;的开始和结尾标签父元素不同的情况。这通常是在&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;中使用&lt;code&gt;{{each}}&lt;/code&gt;时没有指定&lt;code&gt;&amp;lt;tbody&amp;gt;&lt;/code&gt;导致的。&lt;/p&gt;
 
-&lt;p&gt;Example demonstrating the assertion (&lt;a href="http://emberjs.jsbin.com/fotin/3/edit"&gt;JSBin here&lt;/a&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://emberjs.jsbin.com/fotin/3/edit"&gt;JSBin&lt;/a&gt;展示了这个断言：&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -210,7 +207,7 @@ This is most commonly caused by using an &lt;code&gt;{{each}}&lt;/code&gt; insid
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;And the resolution is to include a &lt;code&gt;&amp;lt;tbody&amp;gt;&lt;/code&gt; (&lt;a href="http://emberjs.jsbin.com/fotin/2/edit"&gt;JSBin here&lt;/a&gt;):&lt;/p&gt;
+&lt;p&gt;解决办法就是添加&lt;code&gt;&amp;lt;tbody&amp;gt;&lt;/code&gt;（&lt;a href="http://emberjs.jsbin.com/fotin/2/edit"&gt;JSBin&lt;/a&gt;）&lt;/p&gt;
 &lt;div class="highlight handlebars "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -229,9 +226,8 @@ This is most commonly caused by using an &lt;code&gt;{{each}}&lt;/code&gt; insid
 &lt;span class="tag"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_other-improvements'&gt;Other Improvements&lt;/h3&gt;
-&lt;p&gt;As usual, there are a ton of bug fixes and small improvements in this
-release. You can see a list of all the changes in the CHANGELOG:&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h3 class='anchorable-toc' id='toc_'&gt;其他改进&lt;/h3&gt;
+&lt;p&gt;一如既往，本次发布还修改了许多之前版本存在的Bugs，对一部分功能也作出了一些改进。详细的内容可以查看CHANGELOG：&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/emberjs/ember.js/blob/v1.5.0/CHANGELOG.md"&gt;Ember.js 1.5.0 CHANGELOG&lt;/a&gt;&lt;/li&gt;
@@ -240,7 +236,7 @@ release. You can see a list of all the changes in the CHANGELOG:&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>The Road to Ember Data 1.0</title>
+    <title>Ember Data 1.0 之路</title>
     <link rel="alternate" href="http://emberjs.cn/blog/2014/03/18/the-road-to-ember-data-1-0.html"/>
     <id>http://emberjs.cn/blog/2014/03/18/the-road-to-ember-data-1-0.html</id>
     <published>2014-03-18T00:00:00Z</published>
@@ -248,70 +244,47 @@ release. You can see a list of all the changes in the CHANGELOG:&lt;/p&gt;
     <author>
       <name>EmberJS.CN</name>
     </author>
-    <summary type="html">&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Ember Data 1.0 is coming soon. We have a few last features to land before we
-can confidently make guarantees around not breaking the API. Specifically:&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Ember Data即将迎来1.0时代。在能自信的保证不再破坏API之前，还需要实现最后几个特性。特别是：&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;A guarantee that if one side of a two-way relationship changes, the other
-side will remain...&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary>
-    <content type="html">&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Ember Data 1.0 is coming soon. We have a few last features to land before we
-can confidently make guarantees around not breaking the API. Specifically:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;A guarantee that if one side of a two-way relationship changes, the other
-side will remain in sync, even if it hasn&amp;#39;t loaded yet.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;All relationships will become async, but DataBoundPromises will make them
-work well in observers, computed properties and in templates.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保证在一个双向的关联中得一端发生改变时，另一端保持同步，即使其并未加载。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;所有关联将使用异步模式，&lt;code&gt;DataBoundPromises&lt;/code&gt;将确保其能再观察器、计算属性和模板中都能正常工作。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Just like how it took us a few attempts to get the router right—but now we&amp;#39;ve
-got the best one in JavaScript—getting Ember Data right has taken longer than
-we thought, but it&amp;#39;s here and it&amp;#39;s almost ready for a 1.0.&lt;/p&gt;
+&lt;p&gt;就像之前路由设计的尝试一样（已被证明是Javascript中得最好的实现），为了让Ember
+Data更好的工作，花费了比设想要多很多的事件，不过现在其已经非常接近1.0正式版了。&lt;/p&gt;
+...</summary>
+    <content type="html">&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Ember Data即将迎来1.0时代。在能自信的保证不再破坏API之前，还需要实现最后几个特性。特别是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;保证在一个双向的关联中得一端发生改变时，另一端保持同步，即使其并未加载。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;所有关联将使用异步模式，&lt;code&gt;DataBoundPromises&lt;/code&gt;将确保其能再观察器、计算属性和模板中都能正常工作。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;就像之前路由设计的尝试一样（已被证明是Javascript中得最好的实现），为了让Ember
+Data更好的工作，花费了比设想要多很多的事件，不过现在其已经非常接近1.0正式版了。&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;Ever since the 1.0 release, developers building apps on top of Ember.js have
-appreciated the stability and forward-momentum that our commitment to &lt;a href="http://semver.org/"&gt;Semantic
-Versioning&lt;/a&gt; allows.&lt;/p&gt;
+&lt;p&gt;在Ember 1.0发布后，基于Ember.js开发应用的开发者，非常感激在&lt;a href="http://semver.org"&gt;语义版本&lt;/a&gt;的保证下，获得升级的动力及升级后的稳定性。&lt;/p&gt;
 
-&lt;p&gt;We frequently get asked, &amp;quot;Ember.js is great, but what about Ember Data?&amp;quot; Today,
-we&amp;#39;d like to give you an update on where Ember Data is and where it&amp;#39;s headed
-soon.&lt;/p&gt;
+&lt;p&gt;常常被问及“Ember.js非常棒，那么Ember Data怎么样呢？”现在，将告知Ember Data目前处于一个什么状态，还有就是不久的将来会变成什么样。&lt;/p&gt;
 
-&lt;p&gt;First, the good news: there is only one major breaking change planned before
-releasing Ember Data 1.0, and we are doing our best to minimize the impact that
-that change will have on existing apps.&lt;/p&gt;
+&lt;p&gt;首先，好消息是：在Ember Data 1.0发布之前只会做一个主要的破坏性改变，目前正在尽最大的努力希望做到本次修改尽可能少的影响到现有应用。&lt;/p&gt;
 
-&lt;p&gt;Other than that, we anticipate that the current feature set and API will serve
-as a stable base for the foreseeable future. In other words, we don&amp;#39;t
-anticipate needing any more user-facing breaking changes in order to
-accommodate future changes to the architecture.&lt;/p&gt;
+&lt;p&gt;在此之外，期望当前的特性集和API将会成为可见未来的稳定的基础。换而言之，不在希望为了容纳未来架构的改变，进行面向用户的破坏性修改。&lt;/p&gt;
 
-&lt;p&gt;So why haven&amp;#39;t we released a 1.0 yet? There are two more features that we&amp;#39;re
-working on: an improved relationship architecture, and more consistent API when
-dealing with relationships.&lt;/p&gt;
-&lt;h2 class='anchorable-toc' id='toc_a-single-source-of-truth'&gt;A Single Source of Truth&lt;/h2&gt;
-&lt;p&gt;Modeling relationships between records is easily the most difficult feature
-we&amp;#39;ve added to Ember Data. Finding a common solution is complicated because of
-how much JSON servers differ from one another. Things get even more interesting
-when you introduce streaming changes over WebSockets.&lt;/p&gt;
+&lt;p&gt;那么为什么还不发布1.0呢？主要是因为正在完成两个特性：一个是改进关联架构，另一个是使处理关联关系的API更加一致。&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_'&gt;唯一真理&lt;/h2&gt;
+&lt;p&gt;记录间关联关系建模无疑是Ember Data中最难的特性。找到一个通用的方案非常的复杂，因此每个JSON服务器可能返回一种格式。当引入通过Websocket实现的流式改变就变得更加有意思了。&lt;/p&gt;
 
-&lt;p&gt;The naïve approach is to declare that the problem is too domain-specific and
-that each developer should hand-roll relationships via a simplistic abstraction
-(like sugar around computed properties).&lt;/p&gt;
+&lt;p&gt;最简单的办法就是宣告这个问题与领域相关度太高，每个开发人员应该自己选择一个简单的抽象方法手动的实现关联关系（例如使用计算属性）。&lt;/p&gt;
 
-&lt;p&gt;However, we have observed that everyone who tries to implement their own
-domain-specific relationships quickly ends up with their own ad hoc
-mini-framework. As we did with Ember, we wanted to look at the problems shared
-across all of these applications, and tease out the core abstractions.&lt;/p&gt;
+&lt;p&gt;然而却发现自己尝试为自己的领域模型关系构建最小化框架的开发者，不久都会放弃。就如在Ember中一样，都希望能梳理出一种抽象，能解决应用中得这些问题。&lt;/p&gt;
 
-&lt;p&gt;We wanted to build something that was powerful, to help save time for advanced
-developers, while also being accessible to developers just getting started with
-client-side web applications.&lt;/p&gt;
+&lt;p&gt;因此希望能构建一种强大的可以为高级开发者节约开发时间，并且也能让Web客户端应用初学者能快速上手的方案。&lt;/p&gt;
 
-&lt;p&gt;To take a simple example, sometimes a has-many relationship is stored in the
-parent record&amp;#39;s JSON representation:&lt;/p&gt;
+&lt;p&gt;例如，有时一个&lt;code&gt;has-many&lt;/code&gt;关联关系可能保存在父记录的JSON中：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -327,7 +300,7 @@ parent record&amp;#39;s JSON representation:&lt;/p&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Other times, the same relationship may be saved as a foreign key on the children:&lt;/p&gt;
+&lt;p&gt;但是也可能被保存在子的一个外键：&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -343,95 +316,41 @@ parent record&amp;#39;s JSON representation:&lt;/p&gt;
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Often, the same application will represent the same relationship in both forms,
-depending on whether the records are being loaded or saved.&lt;/p&gt;
+&lt;p&gt;同一个应用根据记录是否被加载或者保存，而同时提供两种格式的关联关系。&lt;/p&gt;
 
-&lt;p&gt;I&amp;#39;ll spare you the details, but the permutations get even more complex when you
-introduce things like streaming changes from the server over a socket.&lt;/p&gt;
+&lt;p&gt;当引入通过与服务器端的一个&lt;code&gt;socket&lt;/code&gt;链接来进行流式改变时，问题变得更加复杂，这里不进行详细的描述。&lt;/p&gt;
 
-&lt;p&gt;The point of highlighting the essential complexity here is to demonstrate that
-we couldn&amp;#39;t just hardcode support for each one; each representation will likely
-co-exist and interoperate with multiple other representations.&lt;/p&gt;
+&lt;p&gt;强调这个复杂性德关键原因是表示不可以通过硬编码的方式来支持每种方式；每种表示都会与其他多种表示同时存在并相互协作。&lt;/p&gt;
 
-&lt;p&gt;One-way relationships aren&amp;#39;t too bad--you can get pretty far with hand-rolled
-solutions before inevitably hitting a wall. The real problem comes up when you
-have two-way relationships: an article has many comments, but each comment also
-belongs to the article.&lt;/p&gt;
+&lt;p&gt;单向的关联关系问题并不大，在碰壁之前可以通过手动的方案很好的解决问题。真实的问题来源于双向的关联关系，例如：一篇文章有很多评论，而每一条评论又都属于这篇文章。&lt;/p&gt;
 
-&lt;p&gt;Because both sides of the relationship aren&amp;#39;t always loaded together, and
-because each side may represent the relationship differently (a foreign key on
-the comment and an array on the article), maintaining this link has
-historically been very difficult for us.&lt;/p&gt;
+&lt;p&gt;由于关联关系的两端并不是总是同时加载的，而且每边都可能使用不同的方式表示关联关系（一个在评论中得主键，或者在文章中的一个数组），维护这个关系一直以来都非常的困难。&lt;/p&gt;
 
-&lt;p&gt;It&amp;#39;s especially complicated when you want to support updated data coming in
-from the server. Imagine that refreshing the article provides a new set of
-comments, but you also know that the user is in the middle of creating her own
-comment. How do you make sure that the &lt;code&gt;comments&lt;/code&gt; array takes both of those
-facts into consideration?&lt;/p&gt;
+&lt;p&gt;特别在需要维护从服务端更新过来的数据的时候，这个问题变得尤为复杂。假设刷新文章时，提供了一个新的评论集合，而这时用户又正在创建新的评论。那么此时如何确保&lt;code&gt;comments&lt;/code&gt;数组能够考虑这些所有的因素？&lt;/p&gt;
 
-&lt;p&gt;At a high-level, the solution is this: instead of internally storing the
-relationships as state on each record that needs to be synchronized, we
-maintain a single entity in memory that represents the logical relationship
-&lt;strong&gt;between&lt;/strong&gt; the records. That entity exists regardless of which side of the
-relationship the application has loaded.&lt;/p&gt;
+&lt;p&gt;在上层，解决方法是这样的：作为在每条需要被同步的记录中保存关联关系的状态的一种替代方案，在内存中维护了一个实例，用来标识记录间的逻辑关联关系。无论应用加载了关联关系的那一端，这个实例便被创建。&lt;/p&gt;
 
-&lt;p&gt;For example, if you change the belongs-to relationship on a comment, you are
-changing the has-many side even if the application has not yet loaded the
-article. When the application finally does load the article, the local
-belongs-to change is ready to apply.&lt;/p&gt;
+&lt;p&gt;例如，如果在一条评论上修改了&lt;code&gt;belongs-to&lt;/code&gt;，那意味着改变了&lt;code&gt;has-many&lt;/code&gt;一端，即便文章并没有加载到应用中。当应用最终加载这篇文章时，应该可以将&lt;code&gt;belongs-to&lt;/code&gt;的改变应用到这篇文章。&lt;/p&gt;
 
-&lt;p&gt;The long and short of it is that the two sides of a two-way relationship will
-remain in sync in Ember Data 1.0, regardless of the order the records were
-loaded, the way they were loaded, or how the relationships were represented in
-the payloads.&lt;/p&gt;
+&lt;p&gt;简单地说就是Ember Data 1.0维护关联关系的两端，使其一直保持同步，不论记录加载的顺序是如何的，也不理会加载的方式是什么，或者载荷中关联关系的表示是什么形式的。&lt;/p&gt;
 
-&lt;p&gt;We are doing this work on the
-&lt;a href="https://github.com/emberjs/data/tree/single-source-of-truth"&gt;single-source-of-truth&lt;/a&gt;
-branch (thank you &lt;a href="https://github.com/igort"&gt;Igor Terzic&lt;/a&gt; for getting this over
-the finish line!) and hope to merge it soon.&lt;/p&gt;
-&lt;h2 class='anchorable-toc' id='toc_async-relationships'&gt;Async Relationships&lt;/h2&gt;
-&lt;p&gt;Currently in Ember Data, you must specify ahead of time whether relationships
-are synchronous or asynchronous. Determining whether or not a relationship is
-asynchronous requires knowing how the server will represent the data when
-sending it to your application. That isn&amp;#39;t fatal, but it does tightly couple
-the semantics of your application to the server.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/emberjs/data/tree/single-source-of-truth"&gt;single-source-of-truth&lt;/a&gt;分支正在完成这项工作，这里要特别感谢&lt;a href="https://github.com/igort"&gt;Igor Terzic&lt;/a&gt;，期望能很快的合并这个分支。&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_'&gt;异步关联关系&lt;/h2&gt;
+&lt;p&gt;目前在Ember Data中，需要事先指定关联关系是异步的还是同步的。决定一个关联关系是否是异步的，需要知道服务器在发送数据给应用时是如何表达这些数据的。这并不太大的问题，但是却使得应用的语义与服务器端的语义紧密耦合。&lt;/p&gt;
 
-&lt;p&gt;The fatal problem comes when you start refactoring your server API. For
-example, in a has-many relationship, perhaps instead of inlining an array of
-record IDs you instead send a URL where the client can retrieve the collection.&lt;/p&gt;
+&lt;p&gt;最严重的问题是开始重构服务端的API。例如，在一个&lt;code&gt;has-many&lt;/code&gt;关联关系中，可能会用一个客户端可以用来获取记录的URL来取代一个内联的记录ID的数组。&lt;/p&gt;
 
-&lt;p&gt;All of a sudden, your application starts breaking in very Zalgo-esque ways (of
-note: if you have not read Isaac&amp;#39;s &lt;a href="http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony"&gt;excellent essay on async
-APIs&lt;/a&gt;,
-please do).&lt;/p&gt;
+&lt;p&gt;一下子，应用就会以&lt;code&gt;Zalgo-esque&lt;/code&gt;的方式无法工作（如果没有阅读过Issaac的&lt;a href="http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony"&gt;异步接口的优秀随笔&lt;/a&gt;，可以去看一看）。&lt;/p&gt;
 
-&lt;p&gt;We strongly consider how easy or difficult refactorings are when designing
-APIs, and in this case, we made a mistake. Making small changes to your server
-API should not require widespread changes to the application that consumes it.&lt;/p&gt;
+&lt;p&gt;当设计API的时候，认真的考虑了重构的方便性，但在这个问题上犯错误了。对服务器端API的一些小得修改不应该影响到使用其的应用。&lt;/p&gt;
 
-&lt;p&gt;For what it&amp;#39;s worth, not all refactorings are created equal. In this case, we
-observed that real apps almost always shuffle around their payloads as they
-grow, hitting this problem. (In other cases, if we see that real-world
-applications rarely change in a particular way, we might prioritize convenience
-over refactor-proofing.)&lt;/p&gt;
+&lt;p&gt;它的价值在于不是所有的重构都是对等的。在这种情况下，发现所有的真实的应用程序，当其成长时，几乎总是围绕载荷来完成的，这样总是会遇到问题。（其他情况下，如果发现应用很好按照一个特定的方式改变，那么可能会采用惯例优于重构。）&lt;/p&gt;
 
-&lt;p&gt;The solution is to treat &lt;strong&gt;all&lt;/strong&gt; relationships as async, and use promises to
-represent their values. By relying on Promises/A+&amp;#39;s guarantees around
-asynchronicity, we can avoid releasing Zalgo into your application. In the
-future, if the way you represent a relationship changes, or the order in which
-the relationship becomes available changes, your application will continue to
-function with no changes required.&lt;/p&gt;
+&lt;p&gt;解决的方法是将所有的关联关系视作异步的，并使用承诺表示其值。通过依赖&lt;code&gt;Promises/A+&lt;/code&gt;来保证异步性，这样可以避免应用中出现&lt;code&gt;Zalgo&lt;/code&gt;。今后，如果关联关系的表示发生改变，或者关联关系加载的顺序发生改变，应用不需要做任何改变就可以如同之前一样工作。&lt;/p&gt;
 
-&lt;p&gt;Using a Promise in JavaScript is pretty simple: call &lt;code&gt;.then&lt;/code&gt; on it and do
-something with the returned value in the callback. But what if you want to use
-an Ember Data relationship in a template or in a computed property? How would
-that work?&lt;/p&gt;
+&lt;p&gt;在JavaScript中使用承诺非常的简单：只需要调用&lt;code&gt;.then&lt;/code&gt;方法，并在回调中处理返回值即可。但是如果希望在模板或者一个计算属性中使用Ember Data的关联关系应该怎么办呢？它们又会以怎么样的形式工作呢？&lt;/p&gt;
 
-&lt;p&gt;Ember Data 1.0 introduces a subclass of Promise called &lt;code&gt;DataBoundPromise&lt;/code&gt;. This
-object allows you to observe properties on the Promise, just as you would on a
-normal object. When the promise resolves, those properties will be updated to
-match the underlying object. If you &lt;code&gt;get&lt;/code&gt;a property from a &lt;code&gt;DataBoundPromise&lt;/code&gt;
-when it is unresolved, it will return &lt;code&gt;undefined&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ember Data 1.0引入了一个&lt;code&gt;Promise&lt;/code&gt;的子类&lt;code&gt;DataBoundPromise&lt;/code&gt;。这个对象允许如同观察一个不同对象的属性一样观察承诺的属性。当承诺被履行时，这些属性就会被更新来匹配基础对象。如果从一个&lt;code&gt;DataBoundPromise&lt;/code&gt;对象中&lt;code&gt;get&lt;/code&gt;一个属性，如果这个承诺并没有被履行，此时会返回&lt;code&gt;undefined&lt;/code&gt;。&lt;/p&gt;
 &lt;div class="highlight js "&gt;&lt;div class="ribbon"&gt;&lt;/div&gt;&lt;div class="scroller"&gt;&lt;table class="CodeRay"&gt;&lt;tr&gt;
   &lt;td class="line-numbers"&gt;&lt;pre&gt;1
 2
@@ -451,43 +370,44 @@ article.get(&lt;span class="string"&gt;&lt;span class="delimiter"&gt;'&lt;/span&
 &lt;/pre&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The basic idea is that when you&amp;#39;re working within the context of Ember data bindings (templates, computed properties, observers), you can use a relationship as if it were a synchronous value, and let the data binding system handle the promise. This means that in many cases, this change won&amp;#39;t affect your existing code, and will indeed improve your ability to work with asynchronous relationships in templates and computed properties (a major pain point today).&lt;/p&gt;
+&lt;p&gt;基于这个思想，在使用Ember Data绑定的上下文中（模板、计算属性和观察器），可以如同使用同步值一样使用关联关系，让数据绑定系统来处理承诺。这就意味着在大多数情形下，这个改变不会影响到现有的代码，并的确会提高在模板和计算属性中使用异步关联关系的技能（对于现今这是最主要的难点）。&lt;/p&gt;
 
-&lt;p&gt;You should &lt;strong&gt;not&lt;/strong&gt; rely on this behavior when you want to use the value in imperative JavaScript (outside of computed properties); in that case, always use the promise&amp;#39;s &lt;code&gt;then()&lt;/code&gt; method to ensure the the value is available, lest you unleash Zalgo into your own apps. Only &lt;code&gt;.get&lt;/code&gt; properties from a &lt;code&gt;DataBoundPromise&lt;/code&gt; if you&amp;#39;re relying on Ember&amp;#39;s data binding functionality to update the template or computed property when the promise finally does resolve.&lt;/p&gt;
+&lt;p&gt;当在一个命令式的Javascript中（计算属性之外）使用关联对象时，则不应该依赖这种行为；在那种情况下，应该使用承诺的&lt;code&gt;then()&lt;/code&gt;方法来确保值的可用性，以免导致应用中出现&lt;code&gt;Zalgo&lt;/code&gt;。只有当承诺履行时，依赖Ember的数据绑定功能来更新模板或者计算属性，这时才应该使用&lt;code&gt;.get&lt;/code&gt;来获取&lt;code&gt;DataBoundPromise&lt;/code&gt;的属性。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; Only use &lt;code&gt;get&lt;/code&gt; on &lt;code&gt;DataBoundPromises&lt;/code&gt; inside of observers or computed properties. Otherwise, always treat them as regular promises and use &lt;code&gt;.then&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 class='anchorable-toc' id='toc_other-improvements'&gt;Other Improvements&lt;/h2&gt;
-&lt;p&gt;There are a number of outstanding bugs we&amp;#39;d like to get fixed before we feel comfortable declaring 1.0. Some of them involve tightening up behavior that is currently undefined, and others are bugs we want to make sure applications don&amp;#39;t come to rely on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; 应该仅在观察器或者计算属性中使用&lt;code&gt;DataBoundPromise&lt;/code&gt;的&lt;code&gt;get&lt;/code&gt;方法。其余情况应该将其视为普通的承诺，并使用其&lt;code&gt;.then&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_'&gt;其他改进&lt;/h2&gt;
+&lt;p&gt;在发布1.0之前，还将修复一系列的Bug。其中一些是目前还没有定义的行为，一些是希望确保应用不再依赖的Bug。&lt;/p&gt;
 
-&lt;p&gt;Most notably, the current &lt;code&gt;RESTAdapter&lt;/code&gt; calls the wrong &lt;code&gt;normalize&lt;/code&gt; hook for embedded or sideloaded data in &lt;code&gt;pushPayload&lt;/code&gt;. &lt;a href="https://github.com/emberjs/data/issues/1804"&gt;Fixing this&lt;/a&gt; is a high priority and blocks the 1.0 release.&lt;/p&gt;
+&lt;p&gt;最突出的是，目前&lt;code&gt;RESTAdapter&lt;/code&gt;在&lt;code&gt;pushPayload&lt;/code&gt;中处理嵌套的或者旁路载入的数据时错误的调用&lt;code&gt;normalize&lt;/code&gt;钩子。&lt;a href="https://github.com/emberjs/data/issues/1804"&gt;修复 #1804&lt;/a&gt;目前优先级很高，是阻碍发布1.0的一个关键问题之一。&lt;/p&gt;
 
-&lt;p&gt;We are also committed to making sure that the documentation is up to the high quality standards people expect from Ember before we declare 1.0.&lt;/p&gt;
-&lt;h2 class='anchorable-toc' id='toc_what-s-next'&gt;What&amp;#39;s Next&lt;/h2&gt;
-&lt;p&gt;We are committed to following &lt;a href="http://semver.org/"&gt;Semantic Versioning&lt;/a&gt;, and want to make sure we have a solid base we can build on for the next few years.&lt;/p&gt;
+&lt;p&gt;此外还需要保证1.0版本的文档应该具有一个高的质量标准，如同Ember一般。&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_'&gt;接下来&lt;/h2&gt;
+&lt;p&gt;Ember Data将按照&lt;a href="http://semver.org"&gt;语义版本化&lt;/a&gt;来发布，因此需要为未来几年的发布提供一个稳定的基础。&lt;/p&gt;
 
-&lt;p&gt;We think the decision to iterate on Ember.js before locking down the API has given us a foundation that we can continue to iterate on for years, without breaking backwards compatibility. We want the same for Ember Data.&lt;/p&gt;
+&lt;p&gt;Ember.js未锁定API之前的迭代方案为以后几年的迭代提供了一个基础，其可以保证良好的向后兼容性。希望这一切也被用于到Ember Data中。&lt;/p&gt;
 
-&lt;p&gt;Once the issues we&amp;#39;ve outlined above are complete, we&amp;#39;ll be releasing a 1.0 of Ember Data that will not see breaking changes for some time. We intend to keep the release of Ember.js and Ember Data in sync, so that the first version in the Ember Data 1.x series will be whatever the current version of Ember is at that time.&lt;/p&gt;
+&lt;p&gt;一旦以上列出的问题一解决，就将发布Ember Data 1.0，此后一段时间将不在做破坏性的修改。另外将保持Ember.js和Ember Data的发布同步，因此Ember Data的第一个版本1.x版本将与那时的Ember的版本相同。&lt;/p&gt;
 
-&lt;p&gt;For example, if Ember.js 1.7 is the current stable version at the time of Ember Data&amp;#39;s first stable release, it will be Ember Data 1.7.&lt;/p&gt;
+&lt;p&gt;例如，当Ember Data发布第一个稳定版本时，Ember.js的版本是1.7，那么Ember Data的第一个版本号也将是1.7。&lt;/p&gt;
 
-&lt;p&gt;As with Ember.js, we intend Ember Data to follow the same &lt;a href="http://emberjs.com/blog/2013/09/06/new-ember-release-process.html"&gt;Chrome-inspired six-week release process&lt;/a&gt;. That release process has paid dividends in terms of predictability and momentum, and the feedback has been overwhelmingly positive. Importantly, having separate stable, beta and canary releases also allows us to clearly &lt;a href="http://emberjs.com/builds/#/beta"&gt;communicate which features are stable&lt;/a&gt; and ready for production, and which are still being worked on.&lt;/p&gt;
-&lt;h2 class='anchorable-toc' id='toc_a-framework-for-data'&gt;A Framework for Data&lt;/h2&gt;
-&lt;p&gt;As we outlined in &lt;a href="http://www.youtube.com/watch?v=jScLjUlLTLI"&gt;our keynote last week at Fluent&lt;/a&gt;, we believe that frameworks exist to make doing the right thing feel better than doing the wrong thing. By codifying best practices in code, frameworks allow their communities to build further abstractions, creating a virtuous cycle that grows more and more powerful over time.&lt;/p&gt;
+&lt;p&gt;如同Ember.js，Ember
+Data也将按照被Chrome影响的&lt;a href="http://emberjs.com/blog/2013/09/06/new-ember-release-process.html"&gt;六周发布方法&lt;/a&gt;。这种发布方法已经在可预见性和动力方面得到了证明，并且反馈都是积极正面的。重要的是，有这种分离的&lt;code&gt;stable&lt;/code&gt;，&lt;code&gt;beta&lt;/code&gt;和&lt;code&gt;canary&lt;/code&gt;发布也可以清晰的知道&lt;a href="http://emberjs.com/builds/#/beta"&gt;哪些特性是稳定的&lt;/a&gt;可以在生产环境中使用的，哪些还需要继续改进。&lt;/p&gt;
+&lt;h2 class='anchorable-toc' id='toc_'&gt;数据框架&lt;/h2&gt;
+&lt;p&gt;如&lt;a href="http://www.youtube.com/watch?v=jScLjUlLTLI"&gt;上周在Fluent上的基调&lt;/a&gt;中所述，框架存在是为了使得做正确的事情感觉比做错误的事情要好。通过在代码中编写最佳实践，框架使得社区可以构建未来的抽象，创建随时间变得越来越强大的良性循环。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;We think of Ember Data as a framework for managing your models and relationships.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ember Data就是一个用来管理模型和关联关系的框架。&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Relationships are difficult to get right, but by giving in to temptation and having everyone roll their own solutions, the community cannot build further abstractions on top of the concept of relationships.&lt;/p&gt;
+&lt;p&gt;要使关联关系正确这一点非常难，但是通过向诱惑屈服，让每个人写自己的方案，那么社区就不能构建一个在关联关系概念之上的进一步的抽象。&lt;/p&gt;
 
-&lt;p&gt;Earlier on, when we started with Ember Data, we tried to codify good practices, but didn&amp;#39;t provide a flexible enough primitive underneath as an escape valve. Because people are interacting with servers they don&amp;#39;t always control, we realized that having a good escape valve was more important in Ember Data than usual.&lt;/p&gt;
+&lt;p&gt;在早期，开始构建Ember Data时，尝试去编写好的实践，但是没有提供一种足够灵活的基本的底层作为逃逸值。因为人们总是与没有掌控能力的服务端进行交互，所以意识到有一个较好的逃逸值对Ember Data来说比惯例更加重要。&lt;/p&gt;
 
-&lt;p&gt;In order to make sure that the community would still be able to build on top of the Ember Data abstraction, we tried our best to isolate the code that is different between applications to the Adapter. This means that if someone writes a plugin for Ember Data, they can assume that models and relationships will look the same in all apps that use it, even though application backends can vary considerably.&lt;/p&gt;
+&lt;p&gt;为了确保确保社区依然能够基于Ember Data抽象进行构建，通过努力将应用之间不同的代码独立到适配器中。这就意味着，如果某人写了一个Ember Data插件，那么可以假设模型和关联关系在所有使用其的应用中都是一样的，尽管应用的后端可能不一样。&lt;/p&gt;
 
-&lt;p&gt;In earlier versions of Ember Data, we were too religious about this separation, forcing every application to bear significant costs in the adapter layer. When we rebooted Ember Data six months ago, we took a hard look at striking a better balance between these competing concerns. Based on the feedback we&amp;#39;ve gotten since then, we believe that Ember Data is now a great fit for applications that have very unique backends, as well as applications that want direction on how to build a backend that &amp;quot;just works&amp;quot; with Ember Data.&lt;/p&gt;
+&lt;p&gt;在早期的Ember Data版本中，太过强调分离了，迫使每个应用在适配器层需要承受太大的代价。当六个月前重新启动Ember Data时，认真分析了如何在这些竞争问题间需求一种更好的平衡。基于此后获得的反馈，现在相信Ember Data已经非常适合每种有特殊后端的应用，就如同按照Ember Data的方式来构建一个后端的应用一般。&lt;/p&gt;
 
-&lt;p&gt;We are committed to getting things right before declaring 1.0. The router in Ember.js went through several similar iterations, which were painful at the time, but we believe the results speak for themselves. Adapting to real-world usage is an important part of our design process, and we will always prioritize thinking through problems carefully over rushing to ship.&lt;/p&gt;
+&lt;p&gt;现在需要保证1.0发布前所有的都能正确工作。Ember.js中得路由也经过了几个类似的迭代，就如同现在Ember Data遇到的苦恼一样，不过相信最终结果会为自己发声的。真实的使用对于设计过程非常的重要和有用，在发布之前仔细的思考问题也非常的重要。&lt;/p&gt;
 
-&lt;p&gt;Given that, we hope that you will trust us when we say that Ember Data is on the cusp of the level of quality that we demand from the 1.0 versions of our open source projects. If you start building now, you&amp;#39;ll be very happy with the forward momentum that having a community with shared understanding will bring.&lt;/p&gt;
+&lt;p&gt;鉴于此，希望当宣布Ember Data符合1.0的质量要求时能得到大家的信任。如果现在开始使用Ember Data来构建应用，那么会因为将带来的有一个能分享理解的社区的向前的动力而高兴。&lt;/p&gt;
 </content>
   </entry>
   <entry>
