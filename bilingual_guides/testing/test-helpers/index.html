@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 测试助手</title>
+    <meta property="st:title" content="测试助手" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_testing bilingual_guides_testing_test-helpers bilingual_guides_testing_test-helpers_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/development-helpers">开发助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/testing">测试</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/test-runners">自动化测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">运行循环</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  <div class="chapter">
+    
+        <h1>测试助手 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/testing/test-helpers.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <p>One of the major issues in testing web applications is that all code is
+event-driven, therefore has the potential to be asynchronous (ie output can
+happen out of sequence from input). This has the ramification that code can be
+executed in any order.</p>
+
+<p>测试Web应用最大的问题是代码都是事件驱动的，因此很可能出现异步的情况（例如输出与输入不是按照顺序发送）。其衍生问题就是代码可能会以任何可能的顺序执行。</p>
+
+<p>An example may help here: Let&#39;s say a user clicks two buttons, one after another
+and both load data from different servers. They take different times to respond.</p>
+
+<p>下面这个例子能很好的说明此问题：当一个用户点击了两个按钮，一个接着一个，分别从不同的服务器加载数据。这种情况响应的时间是不同的。</p>
+
+<p>When writing your tests, you need to be keenly aware of the fact that you cannot
+be sure that the response will return immediately after you make your requests,
+therefore your assertion code (the &quot;tester&quot;) needs to wait for the thing being
+tested (the &quot;testee&quot;) to be in a synchronized state. In the example above, that
+would be when both servers have responded and the test code can go about its
+business checking the data (whether it is mock data, or real data).</p>
+
+<p>当编写测试时，应该敏锐地意识到，在发送了一个请求之后，并无法立即得到返回的响应，因此断言的代码（“测试者”）需要以同步的状态来等待被测试的事物（“被测对象”）。例如上面所举例子，应该等待两个服务器都返回数据，这时测试代码才执行其逻辑来检测数据的正确性（不论是模仿的数据，还是真实的）。</p>
+
+<p>This is why all Ember&#39;s test helpers are wrapped in code that ensures Ember is
+back in a synchronized state when it makes its assertions. It saves you from
+having to wrap everything in code that does that, and it makes it easier to read
+your tests because there&#39;s less boilerplate in them.</p>
+
+<p>这就是为什么Ember的测试助手当其做断言的时候，都是被包裹爱确保在一个同步状态的代码中。这样做避免对所有这样的代码都去做这样的包裹，并且因为减少了模板代码，提高了测试代码的可读性。</p>
+
+<p>Ember includes several helpers to facilitate integration testing. There are two
+types of helpers: <strong>asynchronous</strong> and <strong>synchronous</strong>.</p>
+
+<p>Ember包含一些助手来辅助完成集成测试。主要有两类助手：<strong>同步的</strong>和<strong>异步的</strong>。</p>
+<h3 class='anchorable-toc' id='toc_asynchronous-helpers'>Asynchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>异步助手</h3>
+<p>Asynchronous helpers are &quot;aware&quot; of (and wait for) asynchronous behavior within
+your application, making it much easier to write deterministic tests.</p>
+
+<p>异步助手能感知到应用中得异步行为，并会等待这些异步行为，这使得更加容易编写判定测试。</p>
+
+<ul>
+<li><p><code>visit(url)</code> - Visits the given route and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
+<li><p><code>visit(url)</code> - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。</p></li>
+<li><p><code>fillIn(input_selector, text)</code> - Fills in the selected input with the given text and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
+<li><p><code>fillIn(input_selector, text)</code> - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
+<li><p><code>click(selector)</code> - Clicks an element and triggers any actions triggered by the element&#39;s <code>click</code> event and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
+<li><p><code>click(selector)</code> -
+点击选定的元素，触发元素<code>click</code>事件会触发的所有操作，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
+<li><p><code>keyEvent(selector, type, keyCode)</code> - Simulates a key event type, e.g. <code>keypress</code>, <code>keydown</code>, <code>keyup</code> with the desired keyCode on element found by the selector.</p></li>
+<li><p><code>keyEvent(selector, type, keyCode)</code> -
+模拟一个键盘事件，例如：在选定元素上的带有<code>keyCode</code>的<code>keypress</code>，<code>keydown</code>，<code>keyup</code>事件。</p></li>
+<li><p><code>triggerEvent(selector, type, options)</code></p>
+
+<ul>
+<li>Triggers the given event, e.g. <code>blur</code>, <code>dblclick</code> on the element identified by the provided selector.</li>
+</ul></li>
+<li><p><code>triggerEvent(selector, type, options)</code> -
+触发指定事件，如指定选择器的元素上的<code>blur</code>，<code>dblclick</code>事件。</p></li>
+</ul>
+<h3 class='anchorable-toc' id='toc_synchronous-helpers'>Synchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>同步助手</h3>
+<p>Synchronous helpers are performed immediately when triggered.</p>
+
+<p>同步助手在触发时立即执行。</p>
+
+<ul>
+<li><p><code>find(selector, context)</code> - Finds an element within the app&#39;s root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework&#39;s reporter, and this is done by default if the context is not specified.</p></li>
+<li><p><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突，如果上下文没有指定，那么这将按照缺省的完成。</p></li>
+<li><p><code>currentPath()</code> - Returns the current path.</p></li>
+<li><p><code>currentPath()</code> - 返回当前路径。</p></li>
+<li><p><code>currentRouteName()</code> - Returns the currently active route name.</p></li>
+<li><p><code>currentRouteName()</code> - 返回当前活动路由名。</p></li>
+<li><p><code>currentURL()</code> - Returns the current URL.</p></li>
+<li><p><code>currentURL()</code> - 返回当前URL。</p></li>
+</ul>
+<h3 class='anchorable-toc' id='toc_wait-helpers'>Wait Helpers</h3><h3 class='anchorable-toc' id='toc_'>等待助手</h3>
+<p>The <code>andThen</code> helper will wait for all preceding asynchronous helpers to complete prior to progressing forward. Let&#39;s take a look at the following example.</p>
+
+<p><code>andThen</code>助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+</pre></td>
+  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple test</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
+  expect(<span class="integer">1</span>); <span class="comment">// Ensure that we will perform one assertion</span>
+
+  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/new</span><span class="delimiter">&quot;</span></span>);
+  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">input.title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  click(<span class="string"><span class="delimiter">&quot;</span><span class="content">button.submit</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="comment">// Wait for asynchronous helpers above to complete</span>
+  andThen(<span class="keyword">function</span>() {
+    equal(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">ul.posts li:last</span><span class="delimiter">&quot;</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Note that in the example above we are using the <code>andThen</code> helper. This will wait for the preceding asynchronous test helpers to complete and then calls the function which was passed to it as an argument.</p>
+
+<p>注意上例中使用了<code>andThen</code>助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给<code>andThen</code>的函数中得代码。</p>
+<h3 class='anchorable-toc' id='toc_custom-test-helpers'>Custom Test Helpers</h3><h3 class='anchorable-toc' id='toc_'>自定义测试助手</h3>
+<p><code>Ember.Test.registerHelper</code> and <code>Ember.Test.registerAsyncHelper</code> are
+used to register test helpers that will be injected when
+<code>App.injectTestHelpers</code> is called. The difference between
+<code>Ember.Test.registerHelper</code> and <code>Ember.Test.registerAsyncHelper</code> is that
+the latter will not run until any previous async helper has completed
+and any subsequent async helper will wait for it to finish before
+running.</p>
+
+<p><code>Ember.Test.registerHelper</code>和<code>Ember.Test.registerAsyncHelper</code>都是用来在调用<code>App.injectTestHelpers</code>调用时，注册将被注入的测试助手的。两者的不同之处在于，<code>Ember.Test.registerAsyncHelper</code>只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。</p>
+
+<p>The helper method will always be called with the current Application as the first parameter. Helpers need to be registered prior to calling <code>App.injectTestHelpers()</code>. </p>
+
+<p>助手方法将总是作为当前应用的第一个参数来被调用。助手需要在调用<code>App.injectTestHelpers()</code>之前进行注册。</p>
+
+<p>Here is an example of a non-async helper:</p>
+
+<p>下例为一个同步助手：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>Ember.Test.registerHelper(<span class="string"><span class="delimiter">'</span><span class="content">shouldHaveElementWithCount</span><span class="delimiter">'</span></span>,
+  <span class="keyword">function</span>(app, selector, n, context) {
+    <span class="keyword">var</span> el = findWithAssert(selector, context);
+    <span class="keyword">var</span> count = el.length;
+    equal(n, count, <span class="string"><span class="delimiter">'</span><span class="content">found </span><span class="delimiter">'</span></span> + count + <span class="string"><span class="delimiter">'</span><span class="content"> times</span><span class="delimiter">'</span></span>);
+  }
+);
+
+<span class="comment">// shouldHaveElementWithCount(&quot;ul li&quot;, 3);</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Here is an example of an async helper:</p>
+
+<p>下例是一个异步助手：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre>Ember.Test.registerAsyncHelper(<span class="string"><span class="delimiter">'</span><span class="content">dblclick</span><span class="delimiter">'</span></span>,
+  <span class="keyword">function</span>(app, selector, context) {
+    <span class="keyword">var</span> <span class="predefined">$el</span> = findWithAssert(selector, context);
+    Ember.run(<span class="keyword">function</span>() {
+      <span class="predefined">$el</span>.dblclick();
+    });
+  }
+);
+
+<span class="comment">// dblclick(&quot;#person-1&quot;)</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Async helpers also come in handy when you want to group interaction
+into one helper. For example:</p>
+
+<p>异步助手也可以用来将一组操作合并为一个助手。例如：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>Ember.Test.registerAsyncHelper(<span class="string"><span class="delimiter">'</span><span class="content">addContact</span><span class="delimiter">'</span></span>,
+  <span class="keyword">function</span>(app, name, context) {
+    fillIn(<span class="string"><span class="delimiter">'</span><span class="content">#name</span><span class="delimiter">'</span></span>, name);
+    click(<span class="string"><span class="delimiter">'</span><span class="content">button.create</span><span class="delimiter">'</span></span>);
+  }
+);
+
+<span class="comment">// addContact(&quot;Bob&quot;);</span>
+<span class="comment">// addContact(&quot;Dan&quot;);</span>
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_example'>Example</h4><h4 class='anchorable-toc' id='toc_'>示例</h4>
+<p>Here is an example of using both <code>registerHelper</code> and <code>registerAsyncHelper</code>.</p>
+
+<p>这里有一个使用<code>registerHelper</code>和<code>registerAsyncHelper</code>的例子。</p>
+
+<p><a class="jsbin-embed"
+href="http://jsbin.com/bahas/embed?output">自定义测试助手</a></p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/testing/integration">
+            ← 集成测试
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/testing/testing-user-interaction">
+          测试用户交互 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

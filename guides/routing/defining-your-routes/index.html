@@ -458,11 +458,51 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/testing/integration">测试</a>
+            <a href="/guides/testing">测试</a>
             <ol>
         
             <li class="level-3">
+              <a href="/guides/testing">介绍</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-runners">自动化测试</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -760,7 +800,7 @@
 <p>正如你期望的一样，访问<code>/</code>会渲染<code>index</code>模板。</p>
 
 <p>访问<code>/posts</code>会有点不同。它会先渲染<code>posts</code>模板，然后再渲染<code>posts/index</code>模板到
-<code>post</code>模板的出口（<code>outlet</code>）上。</p>
+<code>posts</code>模板的出口（<code>outlet</code>）上。</p>
 
 <p>最后，访问<code>/posts/new</code>会先渲染<code>posts</code>模板，然后渲染<code>posts/new</code>模板到它的出口上。</p>
 
@@ -1029,6 +1069,40 @@ App.PostRoute = Ember.Route.extend({
 
 <p>请记住，这些路由是每个应用的一部分，因此不需要在<code>App.Router.map</code>中指定。</p></li>
 </ul>
+<h3 class='anchorable-toc' id='toc_'>通配符路由</h3>
+<p>可以定义通配符路由来匹配多个路由。这种方法很有用，比如如果想获取用户进入应用的错误路由的时候。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>App.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">catchall</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/*wildcard</span><span class="delimiter">'</span></span>});
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>通配符路由与动态路由一样，在使用<code>{{link-to}}或者</code>transitionTo`来进入这个路由的时候，需要提供一个上下文。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.ApplicationRoute = Ember.Route.extend({
+  <span class="key">actions</span>: {
+    <span class="function">error</span>: <span class="keyword">function</span> () {
+      <span class="local-variable">this</span>.transitionTo(<span class="string"><span class="delimiter">'</span><span class="content">catchall</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">application-error</span><span class="delimiter">&quot;</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>在上述代码中，如果一个错误冒泡到应用路由，那么应用将进入<code>catchall</code>路由，并在URL中显示<code>/application-error</code>。</p>
 
     
       <footer>

@@ -1,0 +1,1280 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 测试组件</title>
+    <meta property="st:title" content="测试组件" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="bilingual_guides bilingual_guides_testing bilingual_guides_testing_testing-components bilingual_guides_testing_testing-components_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/getting-ember">获取Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/development-helpers">开发助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/customizing-adapters">自定义适配器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/bilingual_guides/testing">测试</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/testing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3 sub-selected">
+              <a href="/bilingual_guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/test-runners">自动化测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/bilingual_guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/debugging">调试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/understanding-ember/run-loop">运行循环</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  <div class="chapter">
+    
+        <h1>测试组件 
+          <a href="https://github.com/emberjs-cn/www.emberjs.cn/tree/master/source/guides/testing/testing-components.md" target="_blank" class="edit-page">
+            编辑页面</a>
+        </h1>
+      
+    <p><em>Unit testing methods and computed properties follows previous patterns shown 
+in <a href="/guides/testing/unit-testing-basics">Unit Testing Basics</a> because Ember.Component extends Ember.Object.</em></p>
+
+<p><em>单元测试方案和计算属性与之前<a href="/guides/testing/unit-testing-basics">单元测试基础</a>中说明的相同，因为<code>Ember.Component</code>集成自<code>Ember.Object</code>。</em></p>
+<h4 class='anchorable-toc' id='toc_setup'>Setup</h4><h4 class='anchorable-toc' id='toc_'>设置</h4>
+<p>Before testing components, be sure to add testing application div to your testing html file:</p>
+
+<p>在测试组件之前，需要确定测试应用的<code>div</code>已经加到测试的html文件中：</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- as of time writing, ID attribute needs to be named exactly ember-testing --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ember-testing</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>and then you&#39;ll also need to tell Ember to use this element for rendering the application in</p>
+
+<p>此外还需要通知<code>Ember</code>使用这个元素来重新渲染应用。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>App.rootElement = <span class="string"><span class="delimiter">'</span><span class="content">#ember-testing</span><span class="delimiter">'</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Components can be tested using the <code>moduleForComponent</code> helper. Here is a 
+simple Ember component:</p>
+
+<p>组件可以使用<code>moduleForComponent</code>助手来进行测试。下面是一个简单的<code>Ember</code>控件：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>App.PrettyColorComponent = Ember.Component.extend({
+  <span class="key">classNames</span>: [<span class="string"><span class="delimiter">'</span><span class="content">pretty-color</span><span class="delimiter">'</span></span>],
+  <span class="key">attributeBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">style</span><span class="delimiter">'</span></span>],
+  <span class="function">style</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">color: </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">;</span><span class="delimiter">'</span></span>;
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>with an accompanying Handlebars template:</p>
+
+<p>其对应的<code>Handlebars</code>模板：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>Pretty Color: <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">name</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Unit testing this component can be done using the <code>moduleForComponent</code> helper.
+This helper will find the component by name (pretty-color) and it&#39;s template (if
+available).</p>
+
+<p>对这个控件进行单元测试可以使用<code>moduleForComponent</code>助手。助手将通过名称来查找这个组件（pretty-color）和其模板（如果存在）。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">pretty-color</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>Now each of our tests has a function <code>subject()</code> which aliases the create
+method on the component factory.</p>
+
+<p>现在每个测试有了一个<code>subject()</code>函数，该函数是组件工厂的<code>create</code>方法的一个别名。</p>
+
+<p>Here&#39;s how we would test to make sure rendered HTML changes when changing the
+color on the component:</p>
+
+<p>下面是测试改变组件的颜色后，看看HTML是否重新渲染了。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+</pre></td>
+  <td class="code"><pre>test(<span class="string"><span class="delimiter">'</span><span class="content">changing colors</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(){
+
+  <span class="comment">// this.subject() is available because we used moduleForComponent</span>
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// we wrap this with Ember.run because it is an async function</span>
+  Ember.run(<span class="keyword">function</span>(){
+    component.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>,<span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>);
+  });
+
+  <span class="comment">// first call to $() renders the component.</span>
+  equal(<span class="local-variable">this</span>.<span class="predefined">$</span>().attr(<span class="string"><span class="delimiter">'</span><span class="content">style</span><span class="delimiter">'</span></span>), <span class="string"><span class="delimiter">'</span><span class="content">color: red;</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// another async function, so we need to wrap it with Ember.run</span>
+  Ember.run(<span class="keyword">function</span>(){
+    component.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>);
+  });
+
+  equal(<span class="local-variable">this</span>.<span class="predefined">$</span>().attr(<span class="string"><span class="delimiter">'</span><span class="content">style</span><span class="delimiter">'</span></span>), <span class="string"><span class="delimiter">'</span><span class="content">color: green;</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Another test that we might perform on this component would be to ensure the
+template is being rendered properly.</p>
+
+<p>另外一个可能的测试是检查组件的模板是否被正确地渲染了。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre>test(<span class="string"><span class="delimiter">'</span><span class="content">template is rendered with the color name</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(){
+
+  <span class="comment">// this.subject() is available because we used moduleForComponent</span>
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// first call to $() renders the component.</span>
+  equal(<span class="predefined">$</span>.trim(<span class="local-variable">this</span>.<span class="predefined">$</span>().text()), <span class="string"><span class="delimiter">'</span><span class="content">Pretty Color:</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// we wrap this with Ember.run because it is an async function</span>
+  Ember.run(<span class="keyword">function</span>(){
+    component.set(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>);
+  });
+
+  equal(<span class="predefined">$</span>.trim(<span class="local-variable">this</span>.<span class="predefined">$</span>().text()), <span class="string"><span class="delimiter">'</span><span class="content">Pretty Color: green</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/hihef/embed?output">Unit Testing 
+Components</a></p>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/hihef/embed?output">组件单元测试</a></p>
+<h3 class='anchorable-toc' id='toc_interacting-with-components-in-the-dom'>Interacting with Components in the DOM</h3><h3 class='anchorable-toc' id='toc_dom'>与DOM中的组件交互</h3>
+<p>Ember Components are a great way to create powerful, interactive, self-contained 
+custom HTML elements. Because of this, it is important to not only test the 
+methods on the component itself, but also the user&#39;s interaction with the
+component.</p>
+
+<p>Ember组件可以方便的用来创建有力的、交互的、自包含的自定义HTML元素。正因为此，不仅测试组件自身的方法很重要，测试用户与组件的交互也一样的重要。</p>
+
+<p>Let&#39;s look at a very simple component which does nothing more than set it&#39;s own
+title when clicked:</p>
+
+<p>下面看一个非常简单的组件，该组件只是在被点击时设置自己的标题：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.MyFooComponent = Em.Component.extend({
+  <span class="key">title</span>:<span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>,
+
+  <span class="key">actions</span>:{
+    <span class="function">updateTitle</span>: <span class="keyword">function</span>(){
+      <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Hello Ember World</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>We would use <a href="/guides/testing/test-helpers">Integration Test Helpers</a> to interact with the rendered component:</p>
+
+<p>下面将使用<a href="/guides/testing/test-helpers">集成测试助手</a>来与渲染的组件进行交互。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">my-foo</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MyFooComponent</span><span class="delimiter">'</span></span>);
+
+test(<span class="string"><span class="delimiter">'</span><span class="content">clicking link updates the title</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// append the component to the DOM</span>
+  <span class="local-variable">this</span>.append();
+
+  <span class="comment">// assert default state</span>
+  equal(find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// perform click action</span>
+  click(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>);
+
+  andThen(<span class="keyword">function</span>() { <span class="comment">// wait for async helpers to complete</span>
+    equal(find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">'</span><span class="content">Hello Ember World</span><span class="delimiter">'</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/liqog/embed?output">Unit 
+Testing Components</a></p>
+
+<p><a class="jsbin-embed"
+href="http://jsbin.com/liqog/embed?output">组件单元测试</a></p>
+<h3 class='anchorable-toc' id='toc_components-with-built-in-layout'>Components with built in layout</h3><h3 class='anchorable-toc' id='toc_'>具有内置布局的组件</h3>
+<p>Some components do not use a separate template. The template can be embedded
+into the component via the <a href="http://emberjs.com/api/classes/Ember.Component.html#property_layout">layout</a> property. For example:</p>
+
+<p>一些组件并不适用一个分离的模板。模板可以通过<a href="http://emberjs.com/api/classes/Ember.Component.html#property_layout">布局</a>属性嵌入在组件代码中。例如：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre>App.MyFooComponent = Ember.Component.extend({
+
+  <span class="comment">// layout supercedes template when rendered</span>
+  <span class="key">layout</span>: Ember.Handlebars.compile(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;h2&gt;I'm a little {{noun}}&lt;/h2&gt;&lt;br/&gt;</span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;button {{action 'clickFoo'}}&gt;Click Me&lt;/button&gt;</span><span class="delimiter">&quot;</span></span>
+  ),
+
+  <span class="key">noun</span>: <span class="string"><span class="delimiter">'</span><span class="content">teapot</span><span class="delimiter">'</span></span>,
+
+  <span class="key">actions</span>:{
+    <span class="function">changeName</span>: <span class="keyword">function</span>(){
+      <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">noun</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">embereño</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In this example, we would still perform our test by interacting with the DOM.</p>
+
+<p>在本例中，也将对于组件的交互进行测试。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">my-foo</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MyFooComponent</span><span class="delimiter">'</span></span>);
+
+test(<span class="string"><span class="delimiter">'</span><span class="content">clicking link updates the title</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// append the component to the DOM</span>
+  <span class="local-variable">this</span>.append();
+
+  <span class="comment">// assert default state</span>
+  equal(find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">I'm a little teapot</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="comment">// perform click action</span>
+  click(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>);
+
+  andThen(<span class="keyword">function</span>() { <span class="comment">// wait for async helpers to complete</span>
+    equal(find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">I'm a little embereño</span><span class="delimiter">&quot;</span></span>);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/mazef/embed?output">Testing 
+Components with Built-in Layout</a></p>
+
+<p><a class="jsbin-embed"
+href="http://jsbin.com/mazef/embed?output">测试带内置布局的组件</a></p>
+<h3 class='anchorable-toc' id='toc_programmatically-interacting-with-components'>Programmatically interacting with components</h3><h3 class='anchorable-toc' id='toc_'>程序化组件交互</h3>
+<p>Another way we can test our components is to perform function calls directly
+on the component instead of through DOM interaction. Let&#39;s use the same code
+example we have above as our component, but perform the tests programatically:</p>
+
+<p>另外一种测试组件的方法是通过直接调用组件函数来取代与DOM进行交互。这里采用与之前相同的例子作为测试的对象，不同的是通过编码直接进行测试：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">my-foo</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MyFooComponent</span><span class="delimiter">'</span></span>);
+
+test(<span class="string"><span class="delimiter">'</span><span class="content">clicking link updates the title</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// append the component to the DOM, returns DOM instance</span>
+  <span class="keyword">var</span> <span class="predefined">$component</span> = <span class="local-variable">this</span>.append();
+
+  <span class="comment">// assert default state</span>
+  equal(<span class="predefined">$component</span>.find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">I'm a little teapot</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="comment">// send action programmatically</span>
+  Em.run(<span class="keyword">function</span>(){
+    component.send(<span class="string"><span class="delimiter">'</span><span class="content">changeName</span><span class="delimiter">'</span></span>);
+  });
+
+  equal(<span class="predefined">$component</span>.find(<span class="string"><span class="delimiter">'</span><span class="content">h2</span><span class="delimiter">'</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">I'm a little embereño</span><span class="delimiter">&quot;</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/davuf/embed?output">Programatically 
+Testing Components</a></p>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/davuf/embed?output">程序化组件测试</a></p>
+<h3 class='anchorable-toc' id='toc_code-sendaction-code-validation-in-components'><code>sendAction</code> validation in components</h3><h3 class='anchorable-toc' id='toc_code-sendaction-code'>组件中<code>sendAction</code>验证</h3>
+<p>Components often utilize <code>sendAction</code>, which is a way to interact with the Ember
+application. Here&#39;s a simple component which sends the action <code>internalAction</code>
+when a button is clicked:</p>
+
+<p>组件经常使用<code>sendAction</code>，这是与Ember应用交互的一种方式。下面是一个简单的组件，当一个按钮被点击时，发送<code>internalAction</code>操作：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>App.MyFooComponent = Ember.Component.extend({
+  <span class="key">layout</span>:Ember.Handlebars.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;button {{action 'doSomething'}}&gt;&lt;/button&gt;</span><span class="delimiter">&quot;</span></span>),
+
+  <span class="key">actions</span>:{
+    <span class="function">doSomething</span>: <span class="keyword">function</span>(){
+      <span class="local-variable">this</span>.sendAction(<span class="string"><span class="delimiter">'</span><span class="content">internalAction</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>In our test, we will create a dummy object that receives the action being sent
+by the component.</p>
+
+<p>在测试中，将创建一个僵尸对象，用来接收组件发送的操作。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+<strong>30</strong>
+31
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">my-foo</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MyFooComponent</span><span class="delimiter">'</span></span>);
+
+test(<span class="string"><span class="delimiter">'</span><span class="content">trigger external action when button is clicked</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  <span class="comment">// tell our test to expect 1 assertion</span>
+  expect(<span class="integer">1</span>);
+
+  <span class="comment">// component instance</span>
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject();
+
+  <span class="comment">// component dom instance</span>
+  <span class="keyword">var</span> <span class="predefined">$component</span> = <span class="local-variable">this</span>.append();
+
+  <span class="keyword">var</span> targetObject = {
+    <span class="function">externalAction</span>: <span class="keyword">function</span>(){
+      <span class="comment">// we have the assertion here which will be</span>
+      <span class="comment">// called when the action is triggered</span>
+      ok(<span class="predefined-constant">true</span>, <span class="string"><span class="delimiter">'</span><span class="content">external Action was called!</span><span class="delimiter">'</span></span>);
+    }
+  }; 
+
+  <span class="comment">// setup a fake external action to be called when </span>
+  <span class="comment">// button is clicked</span>
+  component.set(<span class="string"><span class="delimiter">'</span><span class="content">internalAction</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">externalAction</span><span class="delimiter">'</span></span>);
+
+  <span class="comment">// set the targetObject to our dummy object (this</span>
+  <span class="comment">// is where sendAction will send it's action to)</span>
+  component.set(<span class="string"><span class="delimiter">'</span><span class="content">targetObject</span><span class="delimiter">'</span></span>, targetObject);
+
+  <span class="comment">// click the button</span>
+  click(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>);
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/siwil/embed?output">sendAction 
+Validation in Components</a></p>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/siwil/embed?output">组件中<code>sendAction</code>验证</a></p>
+<h3 class='anchorable-toc' id='toc_components-using-other-components'>Components Using Other Components</h3><h3 class='anchorable-toc' id='toc_'>使用其他组件的组件</h3>
+<p>Sometimes components are easier to maintain when broken up into parent and child
+components. Here is a simple example:</p>
+
+<p>有时候将组件拆分为父子组件更容易维护，下面是一个简单的例子：</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>App.MyAlbumComponent = Ember.Component.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">section</span><span class="delimiter">'</span></span>,
+  <span class="key">layout</span>: Ember.Handlebars.compile(
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;section&gt;</span><span class="delimiter">&quot;</span></span> +
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">  &lt;h3&gt;{{title}}&lt;/h3&gt;</span><span class="delimiter">&quot;</span></span> +
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">  {{yield}}</span><span class="delimiter">&quot;</span></span> +
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/section&gt;</span><span class="delimiter">&quot;</span></span>
+  ),
+  <span class="key">titleBinding</span>: [<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>]
+});
+
+App.MyKittenComponent = Ember.Component.extend({
+  <span class="key">tagName</span>: <span class="string"><span class="delimiter">'</span><span class="content">img</span><span class="delimiter">'</span></span>,
+  <span class="key">attributeBindings</span>: [<span class="string"><span class="delimiter">'</span><span class="content">width</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">src</span><span class="delimiter">'</span></span>],
+  <span class="function">src</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">http://placekitten.com/</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">width</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>);
+  }.property(<span class="string"><span class="delimiter">'</span><span class="content">width</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>)
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Usage of this component might look something like this:</p>
+
+<p>使用这个组件可能如下面代码所示：</p>
+<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">my-album</span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Cats</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">my-kitten</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">300</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">my-kitten</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">my-kitten</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">50</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">50</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">my-album</span><span class="inline-delimiter">}}</span></span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Testing components like these which include child components is very simple using
+the <code>needs</code> callback.</p>
+
+<p>通过<code>needs</code>回调来测试这些包含子组件的组件非常容易。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+</pre></td>
+  <td class="code"><pre>moduleForComponent(<span class="string"><span class="delimiter">'</span><span class="content">my-album</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MyAlbumComponent</span><span class="delimiter">'</span></span>, {
+  <span class="key">needs</span>: [<span class="string"><span class="delimiter">'</span><span class="content">component:my-kitten</span><span class="delimiter">'</span></span>]
+});
+
+test(<span class="string"><span class="delimiter">'</span><span class="content">renders kittens</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+  expect(<span class="integer">2</span>);
+
+  <span class="comment">// component instance</span>
+  <span class="keyword">var</span> component = <span class="local-variable">this</span>.subject({
+    <span class="key">template</span>: Ember.Handlebars.compile(
+      <span class="string"><span class="delimiter">'</span><span class="content">{{#my-album title=&quot;Cats&quot;}}</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content">  {{my-kitten width=&quot;200&quot; height=&quot;300&quot;}}</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content">  {{my-kitten width=&quot;100&quot; height=&quot;100&quot;}}</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content">  {{my-kitten width=&quot;50&quot; height=&quot;50&quot;}}</span><span class="delimiter">'</span></span> +
+      <span class="string"><span class="delimiter">'</span><span class="content">{{/my-album}}</span><span class="delimiter">'</span></span>
+    )
+  });
+
+  <span class="comment">// append component to the dom</span>
+  <span class="keyword">var</span> <span class="predefined">$component</span> = <span class="local-variable">this</span>.append();
+
+  <span class="comment">// perform assertions</span>
+  equal(<span class="predefined">$component</span>.find(<span class="string"><span class="delimiter">'</span><span class="content">h3:contains(&quot;Cats&quot;)</span><span class="delimiter">'</span></span>).length, <span class="integer">1</span>);
+  equal(<span class="predefined">$component</span>.find(<span class="string"><span class="delimiter">'</span><span class="content">img</span><span class="delimiter">'</span></span>).length, <span class="integer">3</span>);
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_live-example'>Live Example</h4><h4 class='anchorable-toc' id='toc_'>在线示例</h4>
+<p><a class="jsbin-embed" href="http://jsbin.com/xebih/embed?output">Components 
+with Embedded Components</a></p>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/xebih/embed?output">带嵌套组件的组件</a></p>
+
+<script src="http://static.jsbin.com/js/embed.js"></script>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/bilingual_guides/testing/unit-testing-basics">
+            ← 单元测试基础
+          </a>
+         
+        <a class="next-guide" href="/bilingual_guides/testing/testing-controllers">
+          测试控制器 →
+        </a>
+      
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+  
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

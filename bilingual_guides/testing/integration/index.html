@@ -458,11 +458,51 @@
             </li>
           </ol></li>
           <li class="level-1 selected">
-            <a href="/bilingual_guides/testing/integration">测试</a>
+            <a href="/bilingual_guides/testing">测试</a>
             <ol class='selected'>
         
+            <li class="level-3">
+              <a href="/bilingual_guides/testing">介绍</a>
+            </li>
+          
             <li class="level-3 sub-selected">
               <a href="/bilingual_guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/bilingual_guides/testing/test-runners">自动化测试</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -544,15 +584,11 @@
             编辑页面</a>
         </h1>
       
-    <p>Ember includes several helpers to facilitate integration testing. These helpers are &quot;aware&quot; of (and wait for) asynchronous behavior within your application, making it much easier to write deterministic tests.</p>
+    <p>Integration tests are generally used to test important workflows within your application. They emulate user interaction and confirm expected results.</p>
 
-<p>Ember包含了需要用来帮助完成集成测试的助手。这些助手能自动识别（等待）应用中的异步行为，这使得编写确定性测试更加容易。</p>
-
-<p><a href="http://qunitjs.com/">QUnit</a> is the default testing framework for this package, but others are supported through third-party adapters.</p>
-
-<p><a href="http://qunitjs.com/">QUnit</a>是Ember默认使用的测试框架，其他的框架也可以通过第三方的适配器来得到支持。</p>
+<p>集成测试通常用来测试应用中得重要工作流。集成测试用来模拟用户交互和确认交互结果。</p>
 <h3 class='anchorable-toc' id='toc_setup'>Setup</h3><h3 class='anchorable-toc' id='toc_'>设置</h3>
-<p>In order to integration test the Ember application, you need to run the app within your test framework. Set the root element of the application to an arbitrary element you know will exist. It is useful, as an aid to test-driven development, if the root element is visible while the tests run. You can potentially use #qunit-fixture, typically used to contain fixture html for use in tests, but you will need to override css to make it visible.</p>
+<p>In order to integration test the Ember application, you need to run the app within your test framework. Set the root element of the application to an arbitrary element you know will exist. It is useful, as an aid to test-driven development, if the root element is visible while the tests run. You can potentially use #qunit-fixture, which is typically used to contain fixture html for use in tests, but you will need to override css to make it visible.</p>
 
 <p>为了对Ember应用进行集成测试，需要在测试框架中运行应用。首先需要将根元素（root element）设置为任意一个已知将存在的元素。如果根元素在测试运行时可见的话，这对测试驱动开发非常有用，带来的帮助非常明显。这里可以使用<code>#qunit-fixture</code>，这个元素通常用来包含在测试中需要使用的html，不过需要重写CSS样式，以便其在测试过程中可见。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -603,197 +639,30 @@
 });
 </pre></td>
 </tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_asynchronous-helpers'>Asynchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>异步助手</h3>
-<p>Asynchronous helpers will wait for other asynchronous helpers triggered prior to complete before starting.</p>
-
-<p>异步助手将等待之前的其他异步助手被触发并完成才开始执行。</p>
-
-<ul>
-<li><p><code>visit(url)</code> - Visits the given route and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
-<li><p><code>visit(url)</code> - 访问指定的路由并返回一个将在所有异步行为完成后得到履行的承诺。</p></li>
-<li><p><code>fillIn(input_selector, text)</code> - Fills in the selected input with the given text and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
-<li><p><code>fillIn(input_selector, text)</code> - 在选定的输入出填入给定的文本，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
-<li><p><code>click(selector)</code> - Clicks an element and triggers any actions triggered by the element&#39;s <code>click</code> event and returns a promise that fulfills when all resulting async behavior is complete.</p></li>
-<li><p><code>click(selector)</code> -
-点击选定的元素，触发元素<code>click</code>事件会触发的所有操作，并返回一个在所有异步行为完成后会履行的承诺。</p></li>
-<li><p><code>keyEvent(selector, type, keyCode)</code> - Simulates a key event type, e.g. <code>keypress</code>, <code>keydown</code>, <code>keyup</code> with the desired keyCode on element found by the selector.</p></li>
-<li><p><code>keyEvent(selector, type, keyCode)</code> -
-模拟一个键盘事件，例如：在选定元素上的带有<code>keyCode</code>的<code>keypress</code>，<code>keydown</code>，<code>keyup</code>事件。</p></li>
-<li><p><code>triggerEvent(selector, type, options)</code></p>
-
-<ul>
-<li>Triggers the given event, e.g. <code>blur</code>, <code>dblclick</code> on the element identified by the provided selector.</li>
-</ul></li>
-<li><p><code>triggerEvent(selector, type, options)</code> -
-触发指定事件，如指定选择器的元素上的<code>blur</code>，<code>dblclick</code>事件。</p></li>
-</ul>
-<h3 class='anchorable-toc' id='toc_synchronous-helpers'>Synchronous Helpers</h3><h3 class='anchorable-toc' id='toc_'>同步助手</h3>
-<p>Synchronous helpers are performed immediately when triggered.</p>
-
-<p>同步助手在触发时立即执行。</p>
-
-<ul>
-<li><p><code>find(selector, context)</code> - Finds an element within the app&#39;s root element and within the context (optional). Scoping to the root element is especially useful to avoid conflicts with the test framework&#39;s reporter.</p></li>
-<li><p><code>find(selector, context)</code> - 在应用的根元素中找到指定上下文（可选）的一个元素。限定到根元素可以有效的避免与测试框架的报告发生冲突。</p></li>
-<li><p><code>currentPath()</code> - Returns the current path.</p></li>
-<li><p><code>currentPath()</code> - 返回当前路径。</p></li>
-<li><p><code>currentRouteName()</code> - Returns the currently active route name.</p></li>
-<li><p><code>currentRouteName()</code> - 返回当前活动路由名。</p></li>
-<li><p><code>currentURL()</code> - Returns the current URL.</p></li>
-<li><p><code>currentURL()</code> - 返回当前URL。</p></li>
-</ul>
-<h3 class='anchorable-toc' id='toc_wait-helpers'>Wait Helpers</h3><h3 class='anchorable-toc' id='toc_'>等待助手</h3>
-<p>The <code>andThen</code> helper will wait for all preceding asynchronous helpers to complete prior to progressing forward. Let&#39;s take a look at the following example.</p>
-
-<p><code>andThen</code>助手将等待之前所有异步助手完成才开始执行。下面通过一个示例来说明：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-<strong>10</strong>
-11
-12
-</pre></td>
-  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple test</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-  expect(<span class="integer">1</span>); <span class="comment">// Ensure that we will perform one assertion</span>
-
-  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/new</span><span class="delimiter">&quot;</span></span>);
-  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">input.title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
-  click(<span class="string"><span class="delimiter">&quot;</span><span class="content">button.submit</span><span class="delimiter">&quot;</span></span>);
-
-  <span class="comment">// Wait for asynchronous helpers above to complete</span>
-  andThen(<span class="keyword">function</span>() {
-    equal(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">ul.posts li:last</span><span class="delimiter">&quot;</span></span>).text(), <span class="string"><span class="delimiter">&quot;</span><span class="content">My new post</span><span class="delimiter">&quot;</span></span>);
-  });
-});
-</pre></td>
-</tr></table>
-</div></div>
-<p>Note that in the example above we are using the <code>andThen</code> helper. This will wait for the preceding asynchronous test helpers to complete and then calls the function which was passed to it as an argument.</p>
-
-<p>注意上例中使用了<code>andThen</code>助手。也就是说会等待之前所有的异步测试助手完成处理后，才会执行传给<code>andThen</code>的函数中得代码。</p>
-<h3 class='anchorable-toc' id='toc_writing-tests'>Writing tests</h3><h3 class='anchorable-toc' id='toc_'>编写测试</h3>
-<p>Almost every test has a pattern of visiting a route, interacting with the page (using the helpers), and checking for expected changes in the DOM.</p>
-
-<p>几乎每个测试都遵循一个固定的模式，访问一个路由，与打开的页面进行交互（通过测试助手），最后检验期望的DOM改变是否发生。</p>
-
-<p>Examples:</p>
-
-<p>例子：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td>
-  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">root lists first page of posts</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>);
-  andThen(<span class="keyword">function</span>() {
-    equal(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">.post</span><span class="delimiter">&quot;</span></span>).length, <span class="integer">5</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">The first page should have 5 posts</span><span class="delimiter">&quot;</span></span>);
-    <span class="comment">// Assuming we know that 5 posts display per page and that there are more than 5 posts</span>
-  });
-});
-</pre></td>
-</tr></table>
-</div></div>
-<p>The helpers that perform actions use a global promise object and automatically chain onto that promise object if it exists. This allows you write your tests without worrying about async behaviour your helper might trigger.</p>
-
-<p>执行操作的测试助手使用一个全局的承诺对象，如果这个对象存在，会自动的链接到这个承诺对象上。这样在编写测试代码的时候就不需要关心助手可能触发的异步行为。</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-<strong>10</strong>
-</pre></td>
-  <td class="code"><pre>test(<span class="string"><span class="delimiter">&quot;</span><span class="content">creating a post displays the new post</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(){
-  visit(<span class="string"><span class="delimiter">&quot;</span><span class="content">/posts/new</span><span class="delimiter">&quot;</span></span>);
-  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">.post-title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">A new post</span><span class="delimiter">&quot;</span></span>);
-  fillIn(<span class="string"><span class="delimiter">&quot;</span><span class="content">.post-author</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">John Doe</span><span class="delimiter">&quot;</span></span>);
-  click(<span class="string"><span class="delimiter">&quot;</span><span class="content">button.create</span><span class="delimiter">&quot;</span></span>);
-  andThen(<span class="keyword">function</span>() {
-    ok(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">h1:contains('A new post')</span><span class="delimiter">&quot;</span></span>).length, <span class="string"><span class="delimiter">&quot;</span><span class="content">The post's title should display</span><span class="delimiter">&quot;</span></span>);
-    ok(find(<span class="string"><span class="delimiter">&quot;</span><span class="content">a[rel=author]:contains('John Doe')</span><span class="delimiter">&quot;</span></span>).length, <span class="string"><span class="delimiter">&quot;</span><span class="content">A link to the author should display</span><span class="delimiter">&quot;</span></span>);
-  });
-});
-</pre></td>
-</tr></table>
-</div></div><h3 class='anchorable-toc' id='toc_creating-your-own-test-helpers'>Creating your own test helpers</h3><h3 class='anchorable-toc' id='toc_'>创建自己的测试助手</h3>
-<p><code>Ember.Test.registerHelper</code> and <code>Ember.Test.registerAsyncHelper</code> are
-used to register test helpers that will be injected when
-<code>App.injectTestHelpers</code> is called. The difference between
-<code>Ember.Test.registerHelper</code> and <code>Ember.Test.registerAsyncHelper</code> is that
-the latter will not run until any previous async helper has completed
-and any subsequent async helper will wait for it to finish before
-running.</p>
-
-<p><code>Ember.Test.registerHelper</code>和<code>Ember.Test.registerAsyncHelper</code>都是用来在调用<code>App.injectTestHelpers</code>调用时，注册将被注入的测试助手的。两者的不同之处在于，<code>Ember.Test.registerAsyncHelper</code>只有所有之前的异步助手都完成了，并且后续的助手不需要等待其完成来运行的时候才会运行。</p>
-
-<p>The helper method will always be called with the current Application as the first parameter. Helpers need to be registered prior to calling <code>App.injectTestHelpers()</code>. </p>
-
-<p>助手方法将总是作为当前应用的第一个参数来被调用。助手需要在调用<code>App.injectTestHelpers()</code>之前进行注册。</p>
-
-<p>For example:</p>
-
-<p>例如：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre>Ember.Test.registerAsyncHelper(<span class="string"><span class="delimiter">'</span><span class="content">dblclick</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(app, selector, context) {
-  <span class="keyword">var</span> <span class="predefined">$el</span> = findWithAssert(selector, context);
-  Ember.run(<span class="keyword">function</span>() {
-    <span class="predefined">$el</span>.dblclick();
-  });
-});
-</pre></td>
-</tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_test-adapters-for-other-libraries'>Test adapters for other libraries</h3><h3 class='anchorable-toc' id='toc_'>其他测试库的适配器</h3>
-<p>If you use a library other than QUnit, your test adapter will need to
-provide methods for <code>asyncStart</code> and <code>asyncEnd</code>. To facilitate
-asynchronous testing, the default test adapter for QUnit uses methods
-that QUnit provides: (globals) <code>stop()</code> and <code>start()</code>.</p>
+<p>If you use a library other than QUnit, your test adapter will need to provide methods for <code>asyncStart</code> and <code>asyncEnd</code>. To facilitate asynchronous testing, the default test adapter for QUnit uses methods that QUnit provides: (globals) <code>stop()</code> and <code>start()</code>.</p>
 
 <p>如果使用QUnit之外的一个测试库，那么测试适配器需要提供<code>asyncStart</code>和<code>asyncEnd</code>两个方法。为了方便进行异步测试，QUnit的适配器使用QUnit提供的全局方法：<code>stop()</code>和<code>start()</code>。</p>
 
-<p><strong>(Please note: Only development builds of Ember include the testing
-package. The ember-testing package is not included in the production
-build of Ember. The package can be loaded in your dev or qa builds to
-facilitate testing your application. By not including the ember-testing
-package in production, your tests will not be executable in a production
-environment.)</strong></p>
+<p><strong>Please note:</strong></p>
 
-<p><strong>（请注意：只有开发版本的Ember构建才包含测试包。ember-testing并不包含在生产环境版本的构建中。为了方便测试应用，可以将测试包包含在开发和质量保障的构建中。测试不应该能在一个生产环境中执行，因此不要生产环境中包含ember-testing包。）</strong></p>
+<p>The <code>ember-testing</code> package is not included in the production builds, only development builds of Ember include the testing package. The package can be loaded in your dev or qa builds to facilitate testing your application. By not including the ember-testing package in production, your tests will not be executable in a production environment.</p>
+
+<p><strong>请注意：</strong></p>
+
+<p><code>ember-testing</code>并不包含在生产环境版本的构建中，只有开发版本的Ember构建才包含测试包。为了方便测试应用，可以将测试包包含在开发和质量保障的构建中。测试不应该能在一个生产环境中执行，因此不要生产环境中包含ember-testing包。</p>
 
     
       <footer>
         
-          <a class="previous-guide" href="/bilingual_guides/enumerables">
-             ← 枚举: 介绍
+          <a class="previous-guide" href="/bilingual_guides/testing">
+            ← 介绍
           </a>
          
-            <a class="next-guide" href="/guides/configuring-ember/disabling-prototype-extensions">
-              本章测试完毕。下一章： 配置Ember.js - 禁用基本类型扩展 →
-            </a>
-          
+        <a class="next-guide" href="/bilingual_guides/testing/test-helpers">
+          测试助手 →
+        </a>
+      
       </footer>
       
   </div>

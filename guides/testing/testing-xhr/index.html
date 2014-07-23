@@ -1,0 +1,1071 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Ember.js的中文开发者交流平台，提供Ember.js官方网站指南和API的中文翻译，持续关注最近的社区动态，为您提供高质量的Ember.js中文资料。 " />
+    <meta name="Keywords" content="Ember.js、Ember、Javascript、Javascript框架、HTML、论坛、博客、中文社区" />
+    <title>Ember.js - 指南</title>
+    <meta property="st:title" content="指南" />
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <!--[if lte IE 7 ]><link href="/stylesheets/fonts/fontello-ie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/emberjs-cn.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://emberjs.cn/blog/feed.xml" rel="alternate" type="application/atom+xml" title="Ember.js CN - 博客" />
+
+    
+  </head>
+
+  <body class="guides guides_testing guides_testing_testing-xhr guides_testing_testing-xhr_index">
+    <div id="header">
+      <div id="wrapper">
+        <a id="logo" href="/">&nbsp;</a>
+        <ul id="nav">
+          <li class="active"><a href="/guides">指南</a></li>
+          <li>
+            <a target="_blank" href="http://discuss.emberjs.cn">论坛</a>
+          </li>
+          <li><a href="/blog">博客</a></li>
+          <li>
+            <a target="_blank" href="http://devdocs.io/ember/">API文档</a>
+          </li>
+          <li><a href="/builds">构建</a></li>
+        </ul>
+        <div id="github">
+          <a href="https://github.com/emberjs-cn"><img src="/images/fork-us.png">Fork Us!</a>
+          <a href="https://github.com/emberjs/ember.js"><img src="/images/fork-us.png">Fork Ember!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      
+      
+        <div id="sidebar">
+          
+    <ol id="toc-list">
+          <li class="level-1">
+            <a href="/guides/getting-started">入门指南</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-started">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/planning-the-application">应用规划</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-static-mockup">创建静态页面</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/obtaining-emberjs-and-dependencies">获取Ember.js和相应依赖</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-a-route-and-template">添加第一个路由与模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/modeling-data">建立模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-fixtures">使用静态数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-model-data">显示模型数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-a-models-completeness">显示模型的完成状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/creating-a-new-model">创建新的模型实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/marking-a-model-as-complete-incomplete">标记模型为完成或未完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/displaying-the-number-of-incomplete-todos">显示未完成待办事项的数量</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-todo-editing-state">切换显示和编辑状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/accepting-edits">接受修改</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/deleting-todos">删除模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/adding-child-routes">添加子路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-incomplete-todos">显示未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-only-complete-todos">显示已完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-all-todos-again">显示所有待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/display-a-button-to-remove-completed-todos">添加移除所有已完成待办事项的按钮</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/show-when-all-todos-are-complete">提示所有待办事项已完成</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/toggle-all-todos">切换已完成和未完成待办事项</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/getting-started/using-other-adapters">更换FixtureAdapter</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/getting-ember">获取Ember</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/getting-ember">获取Ember</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/concepts/core-concepts">概念</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/concepts/core-concepts">核心概念</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/concepts/naming-conventions">命名惯例</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/object-model/classes-and-instances">对象模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/object-model/classes-and-instances">类与实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties">计算属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/computed-properties-and-aggregate-data">计算属性和带@each的集合数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/observers">观察器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/bindings">绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/reopening-classes-and-instances">重新打开类和实例</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/object-model/what-do-i-use-when">绑定，观察器，计算属性：如何选择？</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/application">应用</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/application">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/templates/the-application-template">模板</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/templates/the-application-template">应用模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/handlebars-basics">Handlebars基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/conditionals">条件表达式</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/displaying-a-list-of-items">显示项目列表</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/changing-scope">切换作用域</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-attributes">绑定元素属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/binding-element-class-names">绑定元素类名称</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/links">链接</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/actions">操作</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/input-helpers">输入助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/development-helpers">开发助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/rendering-with-helpers">用助手来渲染</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/templates/writing-helpers">编写助手方法</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/routing">路由</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/routing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/defining-your-routes">定义路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/generated-objects">生成的对象</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-a-routes-model">指定路由的模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/setting-up-a-controller">设置控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/rendering-a-template">渲染模板</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/redirection">重定向</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/specifying-the-location-api">指定地址API</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/query-params">查询参数</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/asynchronous-routing">异步路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/loading-and-error-substates">加载中/错误子状态</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/routing/preventing-and-retrying-transitions">阻止和重试过渡</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/components">组件</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/components">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/defining-a-component">定义组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/passing-properties-to-a-component">传递属性</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/wrapping-content-in-a-component">包裹内容</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/customizing-a-components-element">自定义组件元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/handling-user-interaction-with-actions">使用Action处理用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/components/sending-actions-from-components-to-your-application">从组件发送操作给应用</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/controllers">控制器</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/controllers">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-a-single-model-with-objectcontroller">代表单一模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/representing-multiple-models-with-arraycontroller">代表多模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/controllers/dependencies-between-controllers">管理控制器间的依赖</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/models">模型</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/models">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/defining-models">定义模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/creating-and-deleting-records">创建和删除记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/pushing-records-into-the-store">将记录推入仓库</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/persisting-records">持久化记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/finding-records">查询记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/working-with-records">使用记录</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/the-fixture-adapter">使用Fixture</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/connecting-to-an-http-server">连接HTTP服务器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/handling-metadata">处理元数据</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/customizing-adapters">自定义适配器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/models/frequently-asked-questions">常见问题</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/views">视图</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/views">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/defining-a-view">定义视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/handling-events">处理事件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/inserting-views-in-templates">在模板中插入视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/adding-layouts-to-views">为视图添加布局</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/customizing-a-views-element">自定义视图元素</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/built-in-views">内置视图</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/views/manually-managing-view-hierarchy">手动管理视图层级</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/enumerables">枚举</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/enumerables">介绍</a>
+            </li>
+          </ol></li>
+          <li class="level-1 selected">
+            <a href="/guides/testing">测试</a>
+            <ol class='selected'>
+        
+            <li class="level-3">
+              <a href="/guides/testing">介绍</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-runners">自动化测试</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/configuring-ember/disabling-prototype-extensions">配置Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/configuring-ember/disabling-prototype-extensions">禁用基本类型扩展</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/embedding-applications">嵌入式应用</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/configuring-ember/feature-flags">特性标识</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/cookbook">Cookbook</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/cookbook">简介</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/user_interface_and_interaction">用户界面与交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/event_handling_and_data_binding">事件处理和数据绑定</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/helpers_and_components">助手与组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/cookbook/working_with_objects">使用对象</a>
+            </li>
+          </ol></li>
+          <li class="level-1">
+            <a href="/guides/understanding-ember/the-view-layer">理解Ember.js</a>
+            <ol>
+        
+            <li class="level-3">
+              <a href="/guides/understanding-ember/the-view-layer">视图层</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/managing-asynchrony">管理异步</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/keeping-templates-up-to-date">模板自动更新</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/debugging">调试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/understanding-ember/run-loop">运行循环</a>
+            </li>
+          </ol></li></ol>
+  
+          <div id="back-to-top"><a id="back-top-top" href="#">&#11014; 返回顶部</a></div>
+        </div>
+      
+      <div id="content" class="has-sidebar">
+          
+  
+
+  
+
+  <div class="chapter">
+    
+    <hr>
+    <p>英文原文：<a href="http://emberjs.com/guides/testing/testing-xhr/">http://emberjs.com/guides/testing/testing-xhr/</a></p>
+
+<p>在Ember中测试异步调用和承诺，一开始可能觉得有点复杂，不过通过一些说明便能清晰起来。</p>
+<h3 class='anchorable-toc' id='toc_ember'>承诺，Ember和运行循环</h3>
+<p>为了能完整的解释测试承诺和异步代码，对Ember的运行循环有一个清晰的了解非常重要。如果还不了解，请看看<a href="http://emberjs.com/api/classes/Ember.RSVP.Promise.html">承诺</a>和<a href="/guides/understanding-ember/run-loop/">理解Ember运行循环指南</a>。</p>
+
+<p>现在对运行循环有了基本的理解，回想之前阅读的测试Ember应用的基础知识，发现在测试模式下，运行循环是被暂停的。这有助于保证代码的步骤和围绕代码编写的测试。注意在测试承诺和异步代码中，是一块块有效的“逐句通过”应用的。</p>
+
+<p>当一个承诺运行时，其计划了履行和违背承诺让运行循环执行，因此为了使承诺工作，运行循环必须启用。简而言之，没有运行循环就没有承诺的履行和违背。</p>
+
+<p>要获取承诺的结果需要使用<code>then</code>方法。在一个已知的承诺上调用<code>then</code>函数。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">// let's call the existing promise promise1, so you'd write:</span>
+promise1.then(fulfillmentCallback, rejectionCallback);
+
+<span class="keyword">function</span> <span class="function">fulfillmentCallback</span>(successfulResults) {
+  <span class="comment">// do something wonderful with the results</span>
+}
+
+<span class="keyword">function</span> <span class="function">rejectionCallback</span>(failureResults) {
+  <span class="comment">// tell someone important about the failure</span>
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p>在本例中，<code>promise1</code>成功时，那么<code>fulfillmentCallback</code>函数会被调用，并将<code>promise1</code>的成功结果作为其参数。如果承诺被否决了（例如失败了），那么<code>rejectionCallback</code>将被调用，失败的原因将作为其参数。</p>
+
+<p>如果将一个函数传给<code>then</code>，则会将该函数转换为一个承诺，并返回这个承诺。这个承诺的结果将是这个函数的返回值。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+</pre></td>
+  <td class="code"><pre><span class="comment">// let's call the existing promise promise1 and will have the result `3`, so you'd write:</span>
+<span class="keyword">var</span> promise2 = promise1.then(<span class="keyword">function</span>(results){
+  <span class="keyword">return</span> results + <span class="integer">2</span>;
+});
+
+<span class="comment">// the results of this promise would be 10</span>
+<span class="keyword">var</span> promise3a = promise2.then(<span class="keyword">function</span>(results){
+  <span class="keyword">return</span> results + <span class="integer">5</span>;
+});
+
+<span class="comment">// the results of this promise would be 6</span>
+<span class="keyword">var</span> promise3b = promise2.then(<span class="keyword">function</span>(results){
+ <span class="keyword">return</span> results + <span class="integer">1</span>;
+});
+
+<span class="comment">// or we can chain without the intermediary variables like so,</span>
+<span class="keyword">var</span> promise4 = promise1.then(<span class="keyword">function</span>(results){
+  <span class="keyword">return</span> results + <span class="integer">2</span>;
+}).then(<span class="keyword">function</span>(results){
+  <span class="keyword">return</span> results + <span class="integer">5</span>;
+}).then(<span class="keyword">function</span>(results){
+  <span class="keyword">return</span> results + <span class="integer">90</span>;
+}).then(<span class="keyword">function</span>(results){
+  alert(results); <span class="comment">// this will alert `100`</span>
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果将一个承诺传递给<code>then</code>，其将返回这个承诺的结果。</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="comment">// let's call the existing promises promise1 and promise2, so you'd write:</span>
+<span class="keyword">var</span> promise3 = promise1.then(promise2);
+
+promise3.then(<span class="keyword">function</span>(result){
+  <span class="comment">// this will be the results from promise2</span>
+  <span class="comment">// this callback won't be called until promise1 and promise2 have fulfilled</span>
+  alert(result);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>*** 如果运行循环没有运行，这些都不会工作。因为这些回调或者链式承诺都被计划在运行循环中执行。 ***</p>
+<h3 class='anchorable-toc' id='toc_'>运行循环和承诺的交点在哪</h3><h4 class='anchorable-toc' id='toc_'>承诺处理</h4><div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>var promise = new Ember.RSVP.Promise(function(resolve){
+  // calling resolve will schedule an action to fulfill the promise 
+  // and call observers/chained promises.
+  resolve('hello world'); // Run loop needs to be on here
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>链接/观察承诺</h4><div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>// once the above promise has been resolved it will then notify 
+// the observers/chained promises to.
+promise.then(function(result){  // Run loop might* need to be on here
+  alert(result);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<ul>
+<li>调用<code>then</code>（观察/链接）只需要将其隐性的包裹在一个运行调用语句中（例如<code>Ember.run(..)</code>），这样有可能能够在承诺履行后对其进行链接/观察。下面的示例解释了不同的场景。</li>
+</ul>
+<h5 class='anchorable-toc' id='toc_'>承诺履行之前观察/链接示例</h5>
+<ol>
+<li>运行循环是关闭的（测试模式）</li>
+<li>代码：创建<code>Promise1</code>（new Ember.RSVP.Promise....）</li>
+<li>代码：观察<code>Promise1</code>（promise.then(...)）</li>
+<li>代码：启动运行循环（将在运行循环完成所有的计划项目后停止）</li>
+<li>代码：履行<code>Promise1</code>（将计划一个任务到运行循环来履行承诺）</li>
+<li>运行循环：运行“履行承诺”任务（包括将履行通知所有链接的承诺/观察器）</li>
+<li>运行循环停止，因为所有任务已经完成</li>
+</ol>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="keyword">new</span> Ember.RSVP.Promise(<span class="keyword">function</span>(resolve){
+  <span class="comment">// resolve will run ~10 ms after the then has been called and is observing</span>
+  Ember.run.later(<span class="local-variable">this</span>, resolve, <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">10</span>);
+}).then(<span class="keyword">function</span>(result){
+  alert(result);
+});
+</pre></td>
+</tr></table>
+</div></div><h5 class='anchorable-toc' id='toc_'>承诺履行之后观察/链接示例</h5>
+<ol>
+<li>运行循环是关闭的（测试模式）</li>
+<li>代码：创建<code>Promise1</code></li>
+<li>代码：启动运行循环（将在运行循环完成所有的计划项目后停止）</li>
+<li>代码：履行<code>Promise1</code>（将计划一个任务到运行循环来履行承诺）</li>
+<li>运行循环：运行“履行承诺”任务（包括将履行通知所有链接的承诺/观察器）</li>
+<li>运行循环停止，因为所有任务已经完成</li>
+<li>代码：观察<code>Promise1</code>（因为承诺已经履行，计划一个异步任务来通知观察器）</li>
+<li>未捕获的错误：断言失败：开启了测试模式，这将禁止运行循环自动运行。需要将所有异步的代码包裹在<code>Ember.run()</code>中。</li>
+</ol>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> promise = <span class="keyword">new</span> Ember.RSVP.Promise(<span class="keyword">function</span>(resolve){
+  <span class="comment">// this will run before the then has happened below</span>
+  <span class="comment">// and finish the triggered run loop</span>
+  Ember.run(<span class="local-variable">this</span>, resolve, <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+});
+
+<span class="comment">// incorrect the run loop isn't on any more</span>
+promise.then(<span class="keyword">function</span>(result){
+  alert(result);
+});
+
+<span class="comment">// correct, start the run loop again</span>
+Ember.run(<span class="keyword">function</span>(){
+  promise.then(<span class="keyword">function</span>(result){
+    alert(result);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div><h3 class='anchorable-toc' id='toc_'>测试承诺和运行循环</h3>
+<p>当在通常情况下使用Ember时（例如不在测试模式），运行循环是处于活跃的执行状态的，也就是说不需要将异步代码包裹在<code>Ember.run()</code>中。在测试模式，运行循环是被动的，必须手动触发。测试没有包裹在<code>Ember.run</code>中的异步代码会导致出错：<code>Uncaught Error: Assertion Failed: You have turned on testing mode, which disabled the run-loop&#39;s autorun. You will need to wrap any code with asynchronous side-effects in an Ember.run</code>.</p>
+<h4 class='anchorable-toc' id='toc_'>一般性示例</h4>
+<p>这里创建了一个承诺，并且使用<code>setTimeout</code>来模拟从一个假的服务器延时返回一个响应。当这个假服务器返回时，需要将代码包裹在<code>Ember.run</code>中，手动调用运行循环。</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>var promise = new Ember.RSVP.Promise(function(resolve){
+  setTimeout(function(){
+    Ember.run(this, resolve, 'hello world');
+  }, 20);
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>如果将上面的承诺传递给多个方法，并且这些方法观察/链接这个承诺，在某一时刻这个承诺可能已经履行了。这种情况下，需要将观察器和链接的承诺包裹在一个运行调用中。</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>Ember.run(function(){
+  promise.then(function(result){
+    alert(result);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div><h4 class='anchorable-toc' id='toc_'>使用承诺的同步示例</h4>
+<p>如果使用承诺，但是其立即都履行了，那么可以简单的遵从上面的方法，将履行和观察器/链接的承诺包裹到一个运行调用中。本例中包裹了履行和观察器到一个运行调用中（因为承诺立即就被履行了）。</p>
+
+<script src="http://static.jsbin.com/js/embed.js"></script>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/qoyinucu/45/embed?js,output">简单的承诺示例</a></p>
+<h4 class='anchorable-toc' id='toc_'>使用承诺的异步示例</h4>
+<p>如果使用承诺，如果承诺在测试完成的时候才履行，那么就需要使用<code>qunit</code>的全局方法<code>stop</code>和<code>start</code>。这些方法可以告诉<code>qunit</code>在当前测试中停止测试（让<code>qunit</code>等待）或者在准备好时重新启动测试。本例中将执行延时，并将履行包裹在一个运行调用中。因为链接的承诺在承诺履行之前开始观察，所以不需要将链接的承诺包裹在一个运行循环中。</p>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/qoyinucu/46/embed?js,output">异步承诺示例</a></p>
+<h2 class='anchorable-toc' id='toc_ajax'>AJAX</h2>
+<p>AJAX请求是最典型的会创建承诺的用例。在测试的时候，可能希望模拟发送到服务器端的AJAX请求。下面给出一些<a href="https://github.com/instructure/ic-ajax">ic-ajax</a>的示例，不过有一点非常重要，就是Mockajax和其他的一些库并不知道运行循环，并不会将履行包裹在一个运行调用中。这可能导致承诺的履行不在一个运行循环中，从而发生错误。</p>
+<h3 class='anchorable-toc' id='toc_ic-ajax'>ic-ajax</h3>
+<p>[ic-ajax]是一个<code>Ember</code>友好的<code>jQuery-ajax</code>封装，可以非常方便的用来构造夹具数据和在单元测试和集成测试中模拟ajax请求。最常见的承诺用例就是发送一个异步请求给一个服务器，ic-ajax可以不需要担心是否将<code>resolve</code>包裹在一个运行调用中。</p>
+<h4 class='anchorable-toc' id='toc_ic-ajax'>ic-ajax简单示例</h4>
+<p>假设希望从服务器请求一个颜色列表。使用ic-ajax将采用如下的语法：</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>var promise = ic.ajax.request('/colors');
+</pre></td>
+</tr></table>
+</div></div>
+<p>这个异步调用将返回一个承诺。当承诺被履行时，其将包含颜色列表。ic-ajax的一个惯例是会将ajax调用的完成包裹到Ember.run中，这样就不需要担心这个异步行为。因此可以通过构造夹具数据来取代向一个模拟服务器发送请求来测试代码。</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre>ic.ajax.defineFixture('/colors', {
+  response: [
+    {
+      id: 1,
+      color: &quot;red&quot;
+    },
+    {
+      id: 2,
+      color: &quot;green&quot;
+    },
+    {
+      id: 3,
+      color: &quot;blue&quot;
+    }
+  ],
+  jqXHR: {},
+  textStatus: 'success'
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><a class="jsbin-embed" href="http://jsbin.com/OxIDiVU/366/embed?js,output">Using ic-ajax</a></p>
+<h4 class='anchorable-toc' id='toc_ember-data-ic-ajax'>使用Ember Data的ic-ajax简单示例</h4>
+<p>只需要将数据格式定义为Ember Data期望的格式，即可完成Ember Data的处理。</p>
+
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/OxIDiVU/361/embed?js,output">Using ic-ajax</a></p>
+<h4 class='anchorable-toc' id='toc_ic-ajax-ember-data'>使用ic-ajax和Ember Data的集成测试</h4>
+<p>在进行集成测试时，通常不希望向服务器发送真实的请求，因为这样应用的状态会出现不一致的情况。采用之前的模式，可以这是真实的ajax调用响应返回的数据，以此来独立测试代码。下面给出了一个简单的使用ic-ajax和Ember Data的测试示例。</p>
+
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/OxIDiVU/365/embed?js,output">Using ic-ajax</a></p>
+<h3 class='anchorable-toc' id='toc_jquery-mockjax'>jquery-mockjax</h3>
+<p><a href="https://github.com/appendto/jquery-mockjax">jquery-mockjax</a>是一个<code>jQuery</code>插件，用来模拟ajax请求。</p>
+<h4 class='anchorable-toc' id='toc_jquery-mockjax'>jquery-mockjax简单示例</h4>
+<p>假设希望从服务器请求一个颜色列表。使用<code>jQuery</code>的方法如下所示：</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$.getJSON('/colors', function(response){ /* ... */ });
+</pre></td>
+</tr></table>
+</div></div>
+<p>这个异步调用会将服务器的响应作为参数传给回调函数。与<code>ic-ajax</code>不同，这里需要将回调包裹到一个承诺中。</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>var promise = new Ember.RSVP.Promise(function(resolve){
+  $.getJSON('/colors', function(data){
+    resolve(data.response);
+  });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>下面将设置一些夹具数据，以便可以取代向一个模拟服务器发送ajax请求来获取数据，从而进行代码测试。</p>
+<div class="highlight  "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+</pre></td>
+  <td class="code"><pre>$.mockjax({
+  type: 'GET',
+  url: '/colors',
+  status: '200',
+  dataType: 'json',
+  responseText: {
+    response: [
+      {
+        id: 1,
+        color: &quot;red&quot;
+      },
+      {
+        id: 2,
+        color: &quot;green&quot;
+      },
+      {
+        id: 3,
+        color: &quot;blue&quot;
+      }
+     ]
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>由此可见，使用<code>jquery-mockjax</code> api可以非常的灵活。不仅可以设定url和响应，还可以设定方法、状态代码和数据类型。jquery-mockjax的完整api请查看<a href="https://github.com/appendto/jquery-mockjax">文档</a>。</p>
+
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/wotib/1/embed?js,output">Using jquery-mockjax</a></p>
+<h4 class='anchorable-toc' id='toc_ember-data-jquery-mockjax'>Ember Data的jquery-mockjax简单示例</h4>
+<p>只需要将数据格式定义为Ember Data期望的格式，即可完成Ember Data的处理。</p>
+
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/vojas/5/embed?js,output">Using jquery-mockjax</a></p>
+<h4 class='anchorable-toc' id='toc_jquery-mockjax-ember-data'>使用jquery-mockjax和Ember Data的集成测试</h4>
+<p>在进行集成测试时，通常不希望向服务器发送真实的请求，因为这样应用的状态会出现不一致的情况。采用之前的模式，可以这是真实的ajax调用响应返回的数据，以此来独立测试代码。下面给出了一个简单的使用jquery-mockjax和Ember Data的测试示例。</p>
+
+<p><a class="jsbin-embed" href="http://emberjs.jsbin.com/hoxub/5/embed?js,output">Using jquery-mockjax</a></p>
+
+    
+      <footer>
+        
+          <a class="previous-guide" href="/guides/enumerables">
+             ← 枚举: 介绍
+          </a>
+         
+            <a class="next-guide" href="/guides/configuring-ember/disabling-prototype-extensions">
+              本章测试完毕。下一章： 配置Ember.js - 禁用基本类型扩展 →
+            </a>
+          
+      </footer>
+      
+  </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-wrapper">
+        <div class="info">&copy; 2014 Emberjs.CN <br/>Design by <a href="http://www.heropixel.com">HeroPixel</a></div>
+        <div class="statement"><b>声明：</b>本站的文章可以随意在网上转载，但必须注明原文出处！</div>
+        <div class="links">
+          <a href="http://weibo.com/embercn"><img src="/images/weibo.png"/></a>
+          <a href="http://emberjs.cn/blog/feed.xml"><img src="/images/feed.png"/></a>
+        </div>
+      </div>
+    </div>
+
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="/javascripts/common-old-ie.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="/javascripts/common-modern.js"></script>
+<!--<![endif]-->
+
+    
+    <script type="text/javascript" src="/javascripts/guides.js"></script>
+    <script src="http://static.jsbin.com/js/embed.js"></script>
+  
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+      _gaq.push(['_setAccount', 'UA-38578402-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b0fcec01b06cc76e274f7b21f4766c4' type='text/javascript'%3E%3C/script%3E"));
+
+      $(function() {
+        $('a[href="http://tongji.baidu.com/hm-web/welcome/ico?s=0b0fcec01b06cc76e274f7b21f4766c4"]').hide();
+      });
+    </script>
+
+  </body>
+</html>

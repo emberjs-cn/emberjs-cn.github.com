@@ -458,11 +458,51 @@
             </li>
           </ol></li>
           <li class="level-1">
-            <a href="/guides/testing/integration">测试</a>
+            <a href="/guides/testing">测试</a>
             <ol>
         
             <li class="level-3">
+              <a href="/guides/testing">介绍</a>
+            </li>
+          
+            <li class="level-3">
               <a href="/guides/testing/integration">集成测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-helpers">测试助手</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-user-interaction">测试用户交互</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit">单元测试</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/unit-testing-basics">单元测试基础</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-components">测试组件</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-controllers">测试控制器</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-routes">测试路由</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/testing-models">测试模型</a>
+            </li>
+          
+            <li class="level-3">
+              <a href="/guides/testing/test-runners">自动化测试</a>
             </li>
           </ol></li>
           <li class="level-1">
@@ -549,7 +589,7 @@
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/components/sending-actions-from-components-to-your-application/">http://emberjs.com/guides/components/sending-actions-from-components-to-your-application/</a></p>
 
-<p>当组件被用于一个模板中时，其可以发送操作给模板的控制器和路由。这样使得组件在一些重要的事件发生时（如一个用户点击了组件中的一个特定的元素，通知应用。</p>
+<p>当组件被用于一个模板中时，其能够发送操作（action）给模板的控制器和路由。这样可以允许组件在一些重要的事件发生时通知应用。比如一个用户点击了组件中的一个特定的元素，可以触发此操作。</p>
 
 <p>就像<code>{{action}}</code>Handlebars助手一样，组件发出的操作首先到达模板的控制器。如果控制器没有实现一个操作的处理方法，那么操作会被抛到模板的路由，然后再路由的层级中一路往上冒泡。想知道关于冒泡机制的详细细节，可以查看<a href="/guides/templates/actions/#toc_action-bubbling">操作冒泡</a>。</p>
 
