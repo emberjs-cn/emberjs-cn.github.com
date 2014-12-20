@@ -591,7 +591,7 @@
 
 <p>接下来我们将更新我们的应用，允许用户将一个待办事项标记为完成或者为完成，并将更新信息持久化。</p>
 
-<p>在<code>index.html</code>中更新模板，通过添加一个<code>itemController</code>参数在Handlebars的<code>{{each}}</code>助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的<code>&lt;input type=&quot;checkbox&quot;&gt;</code>转换为一个<code>{{input}}</code>：</p>
+<p>在<code>index.html</code>中更新模板，通过添加一个<code>itemController</code>参数在Handlebars的<code>{{each}}</code>助手中，将每个待办事项包裹在其自己的控制器中。接着将静态的<code>&lt;input type=&quot;checkbox&quot;&gt;</code>转换为一个<code>{{input}}</code>助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -602,14 +602,14 @@
 7
 8
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!-- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
-<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-  <span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-    <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">checked</span>=<span class="attribute-value">isCompleted</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-    <span class="tag">&lt;label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">each</span> <span class="attribute-name">todo</span> <span class="attribute-name">in</span> <span class="attribute-name">model</span> <span class="attribute-name">itemController</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+  <span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo.isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
+    <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">checked</span>=<span class="attribute-value">todo.isCompleted</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+    <span class="tag">&lt;label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">todo.title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
   <span class="tag">&lt;/li&gt;</span>
 <span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">each</span><span class="inline-delimiter">}}</span></span>
-<span class="comment">&lt;!-- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -667,17 +667,17 @@
 6
 </pre></td>
   <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/todo.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/controllers/todos_controller.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/controllers/todo_controller.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;/body&gt;</span>
+   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/models/todo.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/controllers/todos_controller.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/controllers/todo_controller.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+ <span class="tag">&lt;/body&gt;</span>
   <span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
 <p>重新载入Web浏览器以确保所有被引用的文件正确无误且没有任何错误发生。现在可以改变一个待办事项的<code>isCompleted</code>属性。</p>
 <h3 class='anchorable-toc' id='toc_'>在线示例</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/UDoPajA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/gizopu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/8d469c04c237f39a58903a3856409a2592cc18a9">用<code>diff</code>格式呈现本次修改</a></li>

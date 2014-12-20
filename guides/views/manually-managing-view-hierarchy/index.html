@@ -604,8 +604,6 @@
 9
 <strong>10</strong>
 11
-12
-13
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> container = Ember.ContainerView.create();
 container.append();
@@ -616,10 +614,8 @@ container.append();
 container.pushObject(firstView);
 container.pushObject(secondView);
 
-<span class="comment">// When the rendering completes, the DOM</span>
-<span class="comment">// will contain a `div` for the ContainerView</span>
-<span class="comment">// and nested inside of it, a `div` for each of</span>
-<span class="comment">// firstView and secondView.</span>
+<span class="comment">// 当渲染完成时，DOM 会在 ContainerView 的 `div` 内</span>
+<span class="comment">// 嵌入 firstView 和 secondView 两个 `div`。</span>
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>定义容器视图的初始视图</h3>

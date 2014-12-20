@@ -661,7 +661,7 @@ objects that represent eventual values. For example, if you use jQuery&#39;s
 eventually returned over the network. Ember uses this promise object to
 know when it has enough data to continue rendering.</p>
 
-<p>如果对承诺不属性，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的<code>getJSON</code>方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。</p>
+<p>如果对承诺不熟悉，可以姑且将其认为承诺就是代表了最终加载的数据的对象。例如，使用jQuery的<code>getJSON</code>方法，该方法就返回一个代表最终从网络加载的JSON的承诺。Ember使用这个承诺对象知道何时拥有了足够用来渲染的数据。</p>
 
 <p>For more about promises, see <a href="/guides/routing/asynchronous-routing/#toc_a-word-on-promises">A Word on
 Promises</a>
@@ -672,7 +672,7 @@ in the Asynchronous Routing guide.</p>
 <p>Let&#39;s look at an example in action. Here&#39;s a route that loads the most
 recent pull requests sent to Ember.js on GitHub:</p>
 
-<p>下面看一个实际的例子。这里有一个从GitHub商获取最近的Ember.js的PR的路由：</p>
+<p>下面看一个实际的例子。这里有一个从GitHub上获取最近的Ember.js的PR的路由：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -713,7 +713,7 @@ the template only displayed the three most recent pull requests. We can
 rely on promise chaining to modify the data returned from the JSON
 request before it gets passed to the template:</p>
 
-<p>例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON。</p>
+<p>例如，假设需要修改上例，让模板只显示最近三个PR。通过采用承诺链，可以在将数据传递给模板之前修改请求返回的JSON：</p>
 <div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2

@@ -589,29 +589,21 @@
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/getting-started/displaying-a-models-completeness/">http://emberjs.com/guides/getting-started/displaying-a-models-completeness/</a> </p>
 
-<p>TodoMVC通过在<code>&lt;li&gt;</code>元素上应用了一个名为<code>completed</code>的CSS类来标识已完成的待办事项。因此需要在一个待办事项的<code>isCompleted</code>属性为真的时候，更新<code>index.html</code>，为这个待办事项的元素添加一个CSS类：</p>
-<div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-</pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
-<span class="tag">&lt;li</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;label&gt;</span><span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">title</span><span class="inline-delimiter">}}</span></span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;/li&gt;</span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
-</pre></td>
-</tr></table>
-</div></div>
+<p>TodoMVC通过在<code>&lt;li&gt;</code>元素上应用了一个名为<code>completed</code>的CSS类来标识已完成的待办事项。因此需要在一个待办事项的<code>isCompleted</code>属性为真的时候，更新<code>index.html</code>，为这个待办事项的元素添加一个CSS类：
+<code>handlebars
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+&lt;li {{bind-attr class=&quot;todo.isCompleted:completed&quot;}}&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;toggle&quot;&gt;
+  &lt;label&gt;{{todo.title}}&lt;/label&gt;&lt;button class=&quot;destroy&quot;&gt;&lt;/button&gt;
+&lt;/li&gt;
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+</code></p>
+
 <p>以上代码将在待办事项的<code>isCompleted</code>属性为真的时候设置<code>completed</code>这个CSS类，当<code>isCompleted</code>为假的时候移除该CSS类。</p>
 
 <p>为我们应用构造的第一条待办事项的<code>isCompleted</code>属性是<code>true</code>，因此重载应用将会看到第一个待办事项有一条中划线，这表示其已经完成。</p>
 <h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/oKuwomo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> </p>
+<p><a class="jsbin-embed" href="http://jsbin.com/sejelu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/b15e5deffc41cf5ba4161808c7f46a283dc2277f">用<code>diff</code>格式呈现本次修改</a></li>

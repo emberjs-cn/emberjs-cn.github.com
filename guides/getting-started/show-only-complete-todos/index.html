@@ -605,7 +605,7 @@
 <strong>10</strong>
 11
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 <span class="tag">&lt;li&gt;</span>
   <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">all</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>All<span class="tag">&lt;/a&gt;</span>
 <span class="tag">&lt;/li&gt;</span>
@@ -615,7 +615,7 @@
 <span class="tag">&lt;li&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">link-to</span> <span class="error">&quot;</span><span class="attribute-name">todos.completed</span><span class="error">&quot;</span> <span class="attribute-name">activeClass</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">selected</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>Completed<span class="inline"><span class="inline-delimiter">{{/</span><span class="attribute-name">link-to</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/li&gt;</span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -642,8 +642,8 @@
 19
 <strong>20</strong>
 </pre></td>
-  <td class="code"><pre>Todos.Router.map(<span class="keyword">function</span> () {
-  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">todos</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> }, <span class="keyword">function</span> () {
+  <td class="code"><pre>Todos.Router.map(<span class="keyword">function</span>() {
+  <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">todos</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> }, <span class="keyword">function</span>() {
     <span class="comment">// additional child routes</span>
     <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">active</span><span class="delimiter">'</span></span>);
     <span class="local-variable">this</span>.route(<span class="string"><span class="delimiter">'</span><span class="content">completed</span><span class="delimiter">'</span></span>);
@@ -654,7 +654,7 @@
 
 Todos.TodosCompletedRoute = Ember.Route.extend({
   <span class="function">model</span>: <span class="keyword">function</span>() {
-    <span class="keyword">return</span> <span class="local-variable">this</span>.store.filter(<span class="string"><span class="delimiter">'</span><span class="content">todo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> (todo) {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.store.filter(<span class="string"><span class="delimiter">'</span><span class="content">todo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(todo) {
       <span class="keyword">return</span> todo.get(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>);
     });
   },
@@ -667,11 +667,13 @@ Todos.TodosCompletedRoute = Ember.Route.extend({
 </div></div>
 <p>本路由的模型数据是待办事项集合中<code>isCompleted</code>属性为<code>true</code>的子集。当一个待办事项的<code>isCompleted</code>属性发生改变，这个子集就会自动更新来添加或者删除对应的待办事项。</p>
 
-<p>通常情况下，切换至一个新的路由，都会改变渲染到父<code>{{outlet}}</code>中的模板，但是在这里，我们更希望可以重用<code>todos/index</code>模板。通过重写<code>renderTemplete</code>方法，并指定<code>render</code>方法调用时的模板和对应的控制器选项就可以实现。</p>
+<p>本路由的模型数据是待办事项集合中<code>isCompleted</code>属性为<code>true</code>的子集。就像我们最近看到的激活待办事项的类似功能，改变待办事项的 <code>isCompleted</code> 属性会自动触发该子集的刷新，因此更新UI。</p>
+
+<p><code>TodosCompletedRoute</code> 也有类似的目的来激活待办事项 - 复用现存的 <code>todos/index</code> 模板，而不必创建一个新的模板。</p>
 
 <p>重载浏览器确保没有发生任何错误，并且上面定义的行为出现。</p>
 <h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/OzUvuPu/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/heviqo/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/bba939a11197552e3a927bcb3a3adb9430e4f331">用<code>diff</code>格式显示改动</a></li>

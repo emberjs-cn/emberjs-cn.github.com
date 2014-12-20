@@ -670,7 +670,7 @@ This is a clickable area!
   <td class="code"><pre>App.PlaybackRoute = Ember.Route.extend({
   <span class="key">actions</span>: {
     <span class="function">turnItUp</span>: <span class="keyword">function</span>(level){
-      <span class="comment">//This won't be called if it's defined on App.PlaybackController</span>
+      <span class="comment">//如果定义在 App.PlaybackController 了那么这里就不会被调用</span>
     }
   }
 });

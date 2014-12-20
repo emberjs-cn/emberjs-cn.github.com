@@ -607,21 +607,27 @@
 12
 13
 14
+15
+16
+17
 </pre></td>
-  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todos/index</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todos/index</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="inline">  <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo-list</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    {{#each itemController=&quot;todo&quot;}}
-      <span class="tag">&lt;li</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">isCompleted:completed isEditing:editing</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>
-        {{#if isEditing}}
-          {{edit-todo class=&quot;edit&quot; value=title focus-out=&quot;acceptChanges&quot; insert-newline=&quot;acceptChanges&quot;}}
+    {{#each todo in model itemController=&quot;todo&quot;}}
+      <span class="tag">&lt;li</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">bind-attr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todo.isCompleted:completed todo.isEditing:editing</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>
+        {{#if todo.isEditing}}
+          {{edit-todo class=&quot;edit&quot; value=todo.title focus-out=&quot;acceptChanges&quot; insert-newline=&quot;acceptChanges&quot;}}
         {{else}}
-          {{input type=&quot;checkbox&quot; checked=isCompleted class=&quot;toggle&quot;}}
-          <span class="tag">&lt;label</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">editTodo</span><span class="error">&quot;</span> <span class="attribute-name">on</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">doubleClick</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>{{title}}<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">removeTodo</span><span class="error">&quot;</span><span class="error">}</span><span class="error">}</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
+          {{input type=&quot;checkbox&quot; checked=todo.isCompleted class=&quot;toggle&quot;}}
+          <span class="tag">&lt;label</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">editTodo</span><span class="error">&quot;</span> <span class="attribute-name">on</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">doubleClick</span><span class="delimiter">&quot;</span></span><span class="error">}</span><span class="error">}</span><span class="tag">&gt;</span>{{todo.title}}<span class="tag">&lt;/label&gt;</span><span class="tag">&lt;button</span> <span class="error">{</span><span class="error">{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">removeTodo</span><span class="error">&quot;</span><span class="error">}</span><span class="error">}</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
         {{/if}}
       <span class="tag">&lt;/li&gt;</span>
     {{/each}}
   <span class="tag">&lt;/ul&gt;</span></span>
 <span class="tag">&lt;/script&gt;</span>
+<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -635,13 +641,13 @@
 6
 7
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 <span class="tag">&lt;section</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
 
   <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle-all</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="tag">&lt;/section&gt;</span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -665,14 +671,14 @@
 </pre></td>
   <td class="code"><pre>Todos.Router.map(<span class="keyword">function</span> () {
   <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">todos</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> }, <span class="keyword">function</span> () {
-    <span class="comment">// 其他子路由</span>
+    <span class="comment">// 其他子路由以后在这里添加</span>
   });
 });
 
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 
 Todos.TodosIndexRoute = Ember.Route.extend({
-  <span class="function">model</span>: <span class="keyword">function</span> () {
+  <span class="function">model</span>: <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="local-variable">this</span>.modelFor(<span class="string"><span class="delimiter">'</span><span class="content">todos</span><span class="delimiter">'</span></span>);
   }
 });
@@ -683,13 +689,13 @@ Todos.TodosIndexRoute = Ember.Route.extend({
 
 <p>映射关系在<a href="/guides/concepts/naming-conventions">命名惯例指南</a>有详细的描述。</p>
 <h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/oweNovo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/teheni/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附件资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/3bab8f1519ffc1ca2d5a12d1de35e4c764c91f05">用<code>diff</code>格式呈现本次修改</a></li>
 <li><a href="/guides/routing">Ember路由指南</a></li>
 <li><a href="/guides/controllers">Ember控制器指南</a></li>
-<li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_outlet">outlet API文档</a></li>
+<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_outlet">outlet API文档</a></li>
 </ul>
 
     

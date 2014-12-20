@@ -586,7 +586,7 @@
       
     <p>英文原文：<a href="http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/">http://emberjs.com/guides/getting-started/show-when-all-todos-are-complete/</a></p>
 
-<p>Next we&#39;ll update our template to indicate when all todos have been completed. In <code>index.html</code> replace the static checkbox <code>&lt;input&gt;</code> with <code>{{input}}</code>:</p>
+<p>Next we&#39;ll update our template to indicate when all todos have been completed. In <code>index.html</code> replace the static checkbox <code>&lt;input&gt;</code> with an <code>{{input}}</code>:</p>
 
 <p>接下来我们将修改模板来提示所有待办事项都已经完成。在<code>index.html</code>中替换静态的复选框<code>&lt;input&gt;</code>为<code>{{input}}</code>：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -597,14 +597,16 @@
 5
 6
 7
+8
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... additional lines truncated for brevity ... }}</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 <span class="tag">&lt;section</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">outlet</span><span class="inline-delimiter">}}</span></span>
-
   <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle-all</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">checked</span>=<span class="attribute-value">allAreDone</span><span class="inline-delimiter">}}</span></span>
 <span class="tag">&lt;/section&gt;</span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
+<span class="comment">{{! ... additional lines truncated for brevity ... }}</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -623,8 +625,8 @@
 5
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
-<span class="function">allAreDone</span>: <span class="keyword">function</span> (key, value) {
-  <span class="keyword">return</span> !!<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>) &amp;&amp; <span class="local-variable">this</span>.everyProperty(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+<span class="function">allAreDone</span>: <span class="keyword">function</span>(key, value) {
+  <span class="keyword">return</span> !!<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">length</span><span class="delimiter">'</span></span>) &amp;&amp; <span class="local-variable">this</span>.isEvery(<span class="string"><span class="delimiter">'</span><span class="content">isCompleted</span><span class="delimiter">'</span></span>);
 }.property(<span class="string"><span class="delimiter">'</span><span class="content">@each.isCompleted</span><span class="delimiter">'</span></span>)
 <span class="comment">// ... additional lines truncated for brevity ...</span>
 </pre></td>

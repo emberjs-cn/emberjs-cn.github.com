@@ -589,14 +589,14 @@
 
 <p>TodoMVC通过在<code>&lt;li&gt;</code>元素上应用了一个名为<code>completed</code>的CSS类来标识已完成的待办事项。因此需要在一个待办事项的<code>isCompleted</code>属性为真的时候，更新<code>index.html</code>，为这个待办事项的元素添加一个CSS类：
 <code>handlebars
-&lt;!--- ... additional lines truncated for brevity ... --&gt;
-&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;
-&lt;li {{bind-attr class=&quot;isCompleted:completed&quot;}}&gt;
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
+&lt;li {{bind-attr class=&quot;todo.isCompleted:completed&quot;}}&gt;
   &lt;input type=&quot;checkbox&quot; class=&quot;toggle&quot;&gt;
-  &lt;label&gt;{{title}}&lt;/label&gt;&lt;button class=&quot;destroy&quot;&gt;&lt;/button&gt;
+  &lt;label&gt;{{todo.title}}&lt;/label&gt;&lt;button class=&quot;destroy&quot;&gt;&lt;/button&gt;
 &lt;/li&gt;
-&lt;!--- ... additional lines truncated for brevity ... --&gt;
-&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;
+{{! ... additional lines truncated for brevity ... }}
+{{! ... 为保持代码简洁，在此省略了其他代码 ... }}
 </code></p>
 
 <p>This code will apply the CSS class <code>completed</code> when the todo&#39;s <code>isCompleted</code> property is <code>true</code> and remove it when the property becomes <code>false</code>.</p>
@@ -607,7 +607,7 @@
 
 <p>为我们应用构造的第一条待办事项的<code>isCompleted</code>属性是<code>true</code>，因此重载应用将会看到第一个待办事项有一条中划线，这表面其已经完成。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/oKuwomo/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> </p>
+<p><a class="jsbin-embed" href="http://jsbin.com/sejelu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/b15e5deffc41cf5ba4161808c7f46a283dc2277f">Changes in this step in <code>diff</code> format</a></li>

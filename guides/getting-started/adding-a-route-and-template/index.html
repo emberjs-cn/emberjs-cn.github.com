@@ -601,7 +601,7 @@
 </pre></td>
 </tr></table>
 </div></div>
-<p>这会创建一个 <code>Ember.Application</code> 的实例，并将它作为你本地浏览器JavaScript环境的一个名为<code>Todos</code>的变量供使用。</p>
+<p>这会创建一个 <code>Ember.Application</code> 的实例，并将它作为你本地浏览器JavaScript环境的一个名为 <code>Todos</code> 的变量供使用。</p>
 
 <p>在 <code>js/router.js</code> 文件中添加如下代码：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
@@ -609,7 +609,7 @@
 2
 3
 </pre></td>
-  <td class="code"><pre>Todos.Router.map(<span class="keyword">function</span> () {
+  <td class="code"><pre>Todos.Router.map(<span class="keyword">function</span>() {
   <span class="local-variable">this</span>.resource(<span class="string"><span class="delimiter">'</span><span class="content">todos</span><span class="delimiter">'</span></span>, { <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> });
 });
 </pre></td>
@@ -617,7 +617,7 @@
 </div></div>
 <p>这会告诉Ember.js，当应用的URL与 <code>&#39;/&#39;</code> 匹配时，渲染（render） <code>todos</code> 模板。</p>
 
-<p>接着，更新 <code>index.html</code> 里的代码，将 <code>&lt;body&gt;</code> 里的内容包在一个Handlebars的 <code>&lt;script&gt;</code> 标签中，并引用 <code>js/application.js</code> 和 <code>js/router.js</code>：</p>
+<p>接着，更新 <code>index.html</code> 里的代码，将 <code>&lt;body&gt;</code> 里的内容包在一个Handlebars的 <code>&lt;script&gt;</code> 标签中，并在 Ember.js 和其他 javascript 依赖后面引用 <code>js/application.js</code> 和 <code>js/router.js</code>：</p>
 <div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -644,7 +644,7 @@
   <span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-handlebars</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-template-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todos</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="inline">
     <span class="tag">&lt;section</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">todoapp</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-      ... additional lines truncated for brevity ...
+      {{! ... additional lines truncated for brevity ... }}
     <span class="tag">&lt;/section&gt;</span>
 
     <span class="tag">&lt;footer</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>

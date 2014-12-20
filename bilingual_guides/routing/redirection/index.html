@@ -637,7 +637,7 @@ the redirection, you should either use the <code>afterModel</code> or the <code>
 receive the resolved model as the first parameter and the transition as the second one,
 and thus function as aliases. (In fact, the default implementation of <code>afterModel</code> just calls <code>redirect</code>.)</p>
 
-<p>如果需要从当前模型中获取重定向的信息来决定跳转到哪里，可以使用<code>afterModel</code>和<code>redirect</code>这两个钩子来实现。<code>afterModel</code>和<code>redirect</code>的第一个参数都是路由的模型，过渡对象作为第二个参数，两个钩子本质是一样的。（<code>afterModel</code>钩子的缺省实现只是对<code>redirect</code>钩子的调用。</p>
+<p>如果需要从当前模型中获取重定向的信息来决定跳转到哪里，可以使用<code>afterModel</code>和<code>redirect</code>这两个钩子来实现。<code>afterModel</code>和<code>redirect</code>的第一个参数都是路由的模型，过渡对象作为第二个参数，两个钩子本质是一样的。（实际上<code>afterModel</code>钩子的缺省实现只是对<code>redirect</code>钩子的调用）。</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2

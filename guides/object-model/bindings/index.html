@@ -617,7 +617,7 @@ App.husband = Ember.Object.create({
 
 App.husband.get(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>); <span class="comment">// 80000</span>
 
-<span class="comment">// Someone gets raise.</span>
+<span class="comment">// 有人涨薪了。</span>
 App.husband.set(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>, <span class="integer">90000</span>);
 App.wife.get(<span class="string"><span class="delimiter">'</span><span class="content">householdIncome</span><span class="delimiter">'</span></span>); <span class="comment">// 90000</span>
 </pre></td>
@@ -642,8 +642,6 @@ App.wife.get(<span class="string"><span class="delimiter">'</span><span class="c
 13
 14
 15
-16
-17
 </pre></td>
   <td class="code"><pre>App.user = Ember.Object.create({
   <span class="key">fullName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kara Gates</span><span class="delimiter">&quot;</span></span>
@@ -653,13 +651,11 @@ App.userView = Ember.View.create({
   <span class="key">userNameBinding</span>: Ember.Binding.oneWay(<span class="string"><span class="delimiter">'</span><span class="content">App.user.fullName</span><span class="delimiter">'</span></span>)
 });
 
-<span class="comment">// Changing the name of the user object changes</span>
-<span class="comment">// the value on the view.</span>
+<span class="comment">// 改变 user 对象的 name 属性同时也改变了视图的值。</span>
 App.user.set(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Krang Gates</span><span class="delimiter">&quot;</span></span>);
-<span class="comment">// App.userView.userName will become &quot;Krang Gates&quot;</span>
+<span class="comment">// App.userView.userName 会变成 &quot;Krang Gates&quot;</span>
 
-<span class="comment">// ...but changes to the view don't make it back to</span>
-<span class="comment">// the object.</span>
+<span class="comment">// ...但是对视图的改变将不会反应到对象中。</span>
 App.userView.set(<span class="string"><span class="delimiter">'</span><span class="content">userName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Truckasaurus Gates</span><span class="delimiter">&quot;</span></span>);
 App.user.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>); <span class="comment">// &quot;Krang Gates&quot;</span>
 </pre></td>

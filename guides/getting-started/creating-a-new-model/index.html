@@ -589,19 +589,27 @@
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/getting-started/creating-a-new-model/">http://emberjs.com/guides/getting-started/creating-a-new-model/</a></p>
 
-<p>接下来，我们将更新我们的静态HTML<code>&lt;input&gt;</code>为一个Ember视图，以便能够提供更多复杂一些的行为。我们将<code>index.html</code>中的新建待办事项的<code>&lt;input&gt;</code>替换为一个<code>{{input}}</code>：</p>
+<p>接下来，我们将更新我们的静态HTML<code>&lt;input&gt;</code>为一个Ember视图，以便能够提供更多复杂一些的行为。我们将<code>index.html</code>中的新建待办事项的<code>&lt;input&gt;</code>替换为一个<code>{{input}}</code>助手：</p>
 <div class="highlight handlebars "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 4
 5
+6
+7
+8
+9
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 <span class="tag">&lt;h1&gt;</span>todos<span class="tag">&lt;/h1&gt;</span>
-<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">new-todo</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">What needs to be done?</span><span class="delimiter">&quot;</span></span> 
-              <span class="attribute-name">value</span>=<span class="attribute-value">newTitle</span> <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">createTodo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">input</span>
+  <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">new-todo</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">What needs to be done?</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">value</span>=<span class="attribute-value">newTitle</span>
+  <span class="attribute-name">action</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">createTodo</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -639,13 +647,13 @@
 </pre></td>
   <td class="code"><pre>Todos.TodosController = Ember.ArrayController.extend({
   <span class="key">actions</span>: {
-    <span class="function">createTodo</span>: <span class="keyword">function</span> () {
+    <span class="function">createTodo</span>: <span class="keyword">function</span>() {
       <span class="comment">// Get the todo title set by the &quot;New Todo&quot; text field</span>
       <span class="keyword">var</span> title = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">newTitle</span><span class="delimiter">'</span></span>);
       <span class="keyword">if</span> (!title.trim()) { <span class="keyword">return</span>; }
 
       <span class="comment">// Create the new Todo model</span>
-      <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">store</span><span class="delimiter">'</span></span>).createRecord(<span class="string"><span class="delimiter">'</span><span class="content">todo</span><span class="delimiter">'</span></span>, {
+      <span class="keyword">var</span> todo = <span class="local-variable">this</span>.store.createRecord(<span class="string"><span class="delimiter">'</span><span class="content">todo</span><span class="delimiter">'</span></span>, {
         <span class="key">title</span>: title,
         <span class="key">isCompleted</span>: <span class="predefined-constant">false</span>
       });
@@ -681,7 +689,7 @@
 </div></div>
 <p>重新载入Web浏览器以确保所有被引用的文件正确无误且没有任何错误发生。现在可以通过在<code>&lt;input&gt;</code>中输入一个标题，然后点击<code>&lt;enter&gt;</code>键来添加其他的待办事项。</p>
 <h3 class='anchorable-toc' id='toc_'>在线示例</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/ImukUZO/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script> </p>
+<p><a class="jsbin-embed" href="http://jsbin.com/cobuzo/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/60feb5f369c8eecd9df3f561fbd01595353ce803">用<code>diff</code>格式呈现本次修改</a></li>

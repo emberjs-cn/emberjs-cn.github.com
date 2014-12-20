@@ -598,9 +598,10 @@
 
 <p>首先我们需要创建一个新的文件<code>js/views/edit_todo_view.js</code>。你可以将该文件放置到任意你喜欢的地方（即使将所有代码放置在同一个文件中），不过本指南将假设你按照指定的方式创建和命名该文件。</p>
 
-<p>In <code>js/views/edit_todo_view.js</code> create an extension of <code>Ember.TextField</code>:</p>
+<p>In <code>js/views/edit_todo_view.js</code> create an extension of <code>Ember.TextField</code> and register it as
+a <a href="/api/classes/Ember.Handlebars.html#method_helper">helper</a>:</p>
 
-<p>在<code>js/views/edit_todo_view.js</code>中创建一个<code>Ember.TextField</code>的扩展：</p>
+<p>在<code>js/views/edit_todo_view.js</code>中创建一个<code>Ember.TextField</code>的扩展并注册成为一个<a href="/api/classes/Ember.Handlebars.html#method_helper">助手</a>：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -611,7 +612,7 @@
 7
 </pre></td>
   <td class="code"><pre>Todos.EditTodoView = Ember.TextField.extend({
-  <span class="function">didInsertElement</span>: <span class="keyword">function</span> () {
+  <span class="function">didInsertElement</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.<span class="predefined">$</span>().focus();
   }
 });
@@ -655,14 +656,14 @@ Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><sp
 7
 8
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
-<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">isEditing</span><span class="inline-delimiter">}}</span></span>
-  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">edit-todo</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="attribute-value">title</span> <span class="attribute-name">focus-out</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span>
+  <td class="code"><pre><span class="comment">{{! ... additional lines truncated for brevity ... }}</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
+<span class="inline"><span class="inline-delimiter">{{#</span><span class="attribute-name">if</span> <span class="attribute-name">todo.isEditing</span><span class="inline-delimiter">}}</span></span>
+  <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">edit-todo</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">edit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="attribute-value">todo.title</span> <span class="attribute-name">focus-out</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span>
                            <span class="attribute-name">insert-newline</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">acceptChanges</span><span class="delimiter">&quot;</span></span><span class="inline-delimiter">}}</span></span>
 <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">else</span><span class="inline-delimiter">}}</span></span>
-<span class="comment">&lt;!--- ... additional lines truncated for brevity ... --&gt;</span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="comment">{{! ... additional lines truncated for brevity ... }}</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
@@ -670,9 +671,9 @@ Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><sp
 
 <p>点击<code>&lt;enter&gt;</code>键会触发<code>TodoController</code>实例的<code>acceptChanges</code>事件。焦点离开<code>&lt;input&gt;</code>时会出发<code>focus-out</code>事件，并调用视图的<code>TodoController</code>实例的<code>acceptChanges</code>方法。</p>
 
-<p>Additionally, we connect the <code>value</code> property of this <code>&lt;input&gt;</code> to the <code>title</code> property of this instance of <code>TodoController</code>. We will not implement a <code>title</code> property on the controller so it will retain the default behavior of <a href="../controllers/#toc_representing-models">proxying all requests</a> to its <code>model</code>.</p>
+<p>Additionally, we connect the <code>value</code> property of this <code>&lt;input&gt;</code> to the <code>title</code> property of this instance of <code>TodoController</code>. We will not implement a <code>title</code> property on the controller so it will retain the default behavior of <a href="/guides/controllers/#toc_representing-models">proxying all requests</a> to its <code>model</code>.</p>
 
-<p>此外，<code>TodoController</code>实例的<code>title</code>属性与<code>&lt;input&gt;</code>的<code>value</code>属性进行了绑定。控制器中并没有定义<code>title</code>属性，这样控制就保持默认的行为，将<a href="../controllers/#toc_representing-models">所有请求代理</a>到其<code>model</code>之上。</p>
+<p>此外，<code>TodoController</code>实例的<code>title</code>属性与<code>&lt;input&gt;</code>的<code>value</code>属性进行了绑定。控制器中并没有定义<code>title</code>属性，这样控制就保持默认的行为，将<a href="/guides/controllers/#toc_representing-models">所有请求代理</a>到其<code>model</code>之上。</p>
 
 <p>A CSS class <code>edit</code> is applied for styling.</p>
 
@@ -699,20 +700,32 @@ Ember.Handlebars.helper(<span class="string"><span class="delimiter">'</span><sp
 15
 16
 17
+18
+19
+<strong>20</strong>
+21
+22
+23
 </pre></td>
   <td class="code"><pre><span class="comment">// ... additional lines truncated for brevity ...</span>
 <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
 actions: {
-  <span class="function">editTodo</span>: <span class="keyword">function</span> () {
+  <span class="function">editTodo</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isEditing</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
   },
-  <span class="function">acceptChanges</span>: <span class="keyword">function</span> () {
+  <span class="function">acceptChanges</span>: <span class="keyword">function</span>() {
     <span class="local-variable">this</span>.set(<span class="string"><span class="delimiter">'</span><span class="content">isEditing</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+
     <span class="keyword">if</span> (Ember.isEmpty(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model.title</span><span class="delimiter">'</span></span>))) {
       <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">removeTodo</span><span class="delimiter">'</span></span>);
     } <span class="keyword">else</span> {
-      <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>)save();
-    }       
+      <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>).save();
+    }
+  },
+  <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
+    <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
+    todo.deleteRecord();
+    todo.save();
   }
 },
 <span class="comment">// ... additional lines truncated for brevity ...</span>
@@ -724,15 +737,15 @@ actions: {
 
 <p>这个方法将控制器的<code>isEditing</code>属性设置为假，并提交所有针对该待办事项的修改。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/USOlAna/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/gureki/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3><h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/a7e2f40da4d75342358acdfcbda7a05ccc90f348">Changes in this step in <code>diff</code> format</a></li>
 <li><a href="/guides/controllers">Controller Guide</a></li>
-<li><p><a href="http://emberjs.com/api/classes/Ember.TextField.html">Ember.TextField API documentation</a></p></li>
+<li><p><a href="/api/classes/Ember.TextField.html">Ember.TextField API documentation</a></p></li>
 <li><p><a href="https://github.com/emberjs/quickstart-code-sample/commit/a7e2f40da4d75342358acdfcbda7a05ccc90f348">用<code>diff</code>格式呈现本次修改</a></p></li>
 <li><p><a href="/guides/controllers">控制器指南</a></p></li>
-<li><p><a href="http://emberjs.com/api/classes/Ember.TextField.html">Ember.TextField API文档</a></p></li>
+<li><p><a href="/api/classes/Ember.TextField.html">Ember.TextField API文档</a></p></li>
 </ul>
 
     

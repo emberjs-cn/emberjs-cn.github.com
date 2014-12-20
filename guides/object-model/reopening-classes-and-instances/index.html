@@ -615,7 +615,7 @@ Person.create().get(<span class="string"><span class="delimiter">'</span><span c
 6
 </pre></td>
   <td class="code"><pre>Person.reopen({
-  <span class="comment">// override `say` to add an ! at the end</span>
+  <span class="comment">// 在末尾加 ! 来重载 `say`</span>
   <span class="function">say</span>: <span class="keyword">function</span>(thing) {
     <span class="local-variable">this</span>._super(thing + <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>);
   }

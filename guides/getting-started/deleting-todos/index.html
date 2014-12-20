@@ -597,49 +597,25 @@
 2
 3
 </pre></td>
-  <td class="code"><pre><span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+  <td class="code"><pre><span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 <span class="tag">&lt;button</span> <span class="inline"><span class="inline-delimiter">{{</span><span class="attribute-name">action</span> <span class="error">&quot;</span><span class="attribute-name">removeTodo</span><span class="error">&quot;</span><span class="inline-delimiter">}}</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">destroy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/button&gt;</span>
-<span class="comment">&lt;!--- ... 为保持代码简洁，在此省略了其他代码 ... --&gt;</span>
+<span class="comment">{{! ... 为保持代码简洁，在此省略了其他代码 ... }}</span>
 </pre></td>
 </tr></table>
 </div></div>
-<p>在<code>js/controllers/todo_controller.js</code>中，实现在模板中的<code>{{action}}</code>Handlebars助手引用的<code>removeTodo</code>方法：</p>
-<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-<strong>10</strong>
-</pre></td>
-  <td class="code"><pre><span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
-actions: {
-  <span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
-    <span class="function">removeTodo</span>: <span class="keyword">function</span> () {
-      <span class="keyword">var</span> todo = <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">model</span><span class="delimiter">'</span></span>);
-      todo.deleteRecord();
-      todo.save();
-    }
-},
-<span class="comment">// ... 为保持代码简洁，在此省略了其他代码 ...</span>
-</pre></td>
-</tr></table>
-</div></div>
-<p>本方法将从本地删除待办事项，并将数据的改变持久化。</p>
+<p>这样会调用在上一节中定义的 <code>removeTodo</code> 操作，然后在本地删除 todo 并保存数据变化。</p>
 
-<p>因为删除的待办事项不再是所有待办事项集合的一部分，因此其对应的<code>&lt;li&gt;</code>元素将自动的从页面上移除。如果被删除的待办事项是未完成的，那么对应的未完成待办事项的数量将减一，显示该数字的部分也将自动重新渲染。如果数量的变化导致<code>item</code>和<code>items</code>间的变形，那么对应的页面部分也将自动重新渲染。</p>
+<p>因为删除的待办事项不再是所有待办事项集合的一部分，因此其对应的<code>&lt;li&gt;</code>元素将自动的从页面上移除。如果被删除的待办事项是未完成的，那么对应的未完成待办事项的数量将减一，显示该数字的部分也将自动重新渲染。如果数量的变化导致<code>todo</code>和<code>todos</code>间的变形，那么对应的页面部分也将自动重新渲染。</p>
 
 <p>重新载入Web浏览器以确保没有任何错误发生，并且之前描述的行为均工作正常。</p>
+
+<p><strong>注意</strong>: 当前的操作可能被调用两次（通过 <code>acceptChanges</code>）导致一个异常。如何处理这种情况的详细信息,请参见<a href="https://github.com/tastejs/todomvc/blob/gh-pages/examples/emberjs/js/controllers/todo_controller.js">最新版本的TodoMVC源码</a>。</p>
 <h3 class='anchorable-toc' id='toc_'>在线演示</h3>
-<p><a class="jsbin-embed" href="http://jsbin.com/eREkanA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/kebigu/1/embed?output">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_'>附加资源</h3>
 <ul>
 <li><a href="https://github.com/emberjs/quickstart-code-sample/commit/14e1f129f76bae8f8ea6a73de1e24d810678a8fe">用<code>diff</code>格式呈现本次修改</a></li>
-<li><a href="http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_action">action API文档</a></li>
+<li><a href="/api/classes/Ember.Handlebars.helpers.html#method_action">action API文档</a></li>
 </ul>
 
     

@@ -591,10 +591,10 @@
 <p>TodoMVC的依赖：</p>
 
 <ul>
-<li><a href="http://code.jquery.com/jquery-1.10.2.min.js">jQuery</a></li>
-<li><a href="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-1.0.0.js">Handlebars</a></li>
-<li><a href="http://builds.emberjs.com/tags/v1.3.0/ember.js">Ember.js 1.3</a></li>
-<li><a href="http://builds.emberjs.com/tags/v1.0.0-beta.5/ember-data.js">Ember Data 1.0 beta</a></li>
+<li><a href="http://code.jquery.com/jquery-1.11.1.min.js">jQuery</a></li>
+<li><a href="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js">Handlebars</a></li>
+<li><a href="http://builds.emberjs.com/tags/v1.8.1/ember.js">Ember.js</a></li>
+<li><a href="http://builds.emberjs.com/tags/v1.0.0-beta.11/ember-data.js">Ember Data 1.0 beta</a></li>
 </ul>
 
 <p>For this example, all of these resources should be stored in the folder <code>js/libs</code> located in the same location as <code>index.html</code>. Update your <code>index.html</code> to load these files by placing <code>&lt;script&gt;</code> tags just before your closing <code>&lt;/body&gt;</code> tag in the following order:</p>
@@ -612,9 +612,9 @@
 9
 </pre></td>
   <td class="code"><pre><span class="comment">&lt;!-- ... additional lines truncated for brevity ... --&gt;</span>
-<span class="comment">&lt;!-- ... 为确保简洁，略去头尾代码 ... --&gt;</span>                                                                                                            
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/jquery-1.10.2.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/handlebars-1.0.0.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> 
+<span class="comment">&lt;!-- ... 为确保简洁，略去头尾代码 ... --&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/jquery-1.11.1.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/handlebars-v1.3.0.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/ember.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js/libs/ember-data.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
@@ -629,9 +629,10 @@
 
 <p>If you are using a package manager, such as <a href="http://bower.io">bower</a>,
 make sure to checkout the <a href="/guides/getting-ember">Getting Ember</a> guide
-for info on other ways to get Ember.js.</p>
+for info on other ways to get Ember.js.
+If you are using a package manager, such as <a href="http://bower.io">bower</a>, make sure to checkout the <a href="/guides/getting-ember">Getting Ember</a> guide for info on other ways to get Ember.js (this guide is dependant on ember-data v1.0 or greater so please be sure to use the latest beta).</p>
 
-<p>如果使用包管理工具，例如<a href="http://bower.io">bower</a>，请阅读<a href="/guides/getting-ember">获取Ember</a>指南来获取更多关于获取Ember.js的方法。</p>
+<p>如果使用包管理工具，例如<a href="http://bower.io">bower</a>，请阅读<a href="/guides/getting-ember">获取Ember</a>指南来获得其他获取Ember.js的方法（该指南依赖于 ember-data v1.0 或更新，请确保使用最新beta版）。</p>
 <h3 class='anchorable-toc' id='toc_live-preview'>Live Preview</h3><h3 class='anchorable-toc' id='toc_'>在线演示</h3>
 <p><a class="jsbin-embed" href="http://jsbin.com/ijefig/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
 <h3 class='anchorable-toc' id='toc_additional-resources'>Additional Resources</h3>

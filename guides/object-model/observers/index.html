@@ -589,7 +589,7 @@
     <hr>
     <p>英文原文：<a href="http://emberjs.com/guides/object-model/observers/">http://emberjs.com/guides/object-model/observers/</a></p>
 
-<p>Ember 为包括计算后属性在内的任意一种属性提供了观察器。可以通过使用 <code>addObserver</code> 方法来为一个对象设置一个观察器。</p>
+<p>Ember 为包括计算后属性在内的任意一种属性提供了观察器。可以通过使用 <code>addObserver</code> 方法来为一个对象设置一个观察器：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -652,13 +652,11 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 5
 6
 7
-8
 </pre></td>
   <td class="code"><pre>Person.reopen({
   <span class="function">lastNameChanged</span>: <span class="keyword">function</span>() {
-    <span class="comment">// The observer depends on lastName and so does fullName. Because observers</span>
-    <span class="comment">// are synchronous, when this function is called the value of fullName is</span>
-    <span class="comment">// not updated yet so this will log the old value of fullName</span>
+    <span class="comment">// 该观察器和 fullName 都依赖于 lastName。因为观察器都是异步的，当该函数被调用时， </span>
+    <span class="comment">// fullName 还没有被更新，因此这里会打印出 fullName 的旧值。</span>
     console.log(<span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>));
   }.observes(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
 });
@@ -678,7 +676,7 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 </pre></td>
   <td class="code"><pre>Person.reopen({
   <span class="function">partOfNameChanged</span>: <span class="keyword">function</span>() {
-    <span class="comment">// 因为firstName 和 lastName 都被设置了，将触发两次更新</span>
+    <span class="comment">// 因为 firstName 和 lastName 都被设置了，将触发两次更新</span>
   }.observes(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
 });
 
@@ -719,9 +717,9 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
 </pre></td>
 </tr></table>
 </div></div><h3 class='anchorable-toc' id='toc_'>观察器与对象初始化</h3>
-<p>观察器只有直到对象完成了初始化过程才会被触发。</p>
+<p>观察器只有对象完成了初始化过程之后才会被触发。</p>
 
-<p>如果需要在初始化过程中就触发一个观察器，那么不能依赖于<code>set</code>的负效应。而应该在观察器上,通过使用<code>.on(&#39;init&#39;)</code>指定观察器应该在初始化后执行：</p>
+<p>如果需要在初始化过程中就触发一个观察器，那么不能依赖于<code>set</code>的负效应。而应该在观察器上，通过使用<code>.on(&#39;init&#39;)</code>指定观察器应该在初始化后执行：</p>
 <div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
@@ -739,7 +737,7 @@ person.set(<span class="string"><span class="delimiter">'</span><span class="con
   },
 
   <span class="function">salutationDidChange</span>: <span class="keyword">function</span>() {
-    <span class="comment">// some side effect of salutation changing</span>
+    <span class="comment">// 一些 salutation 的负效应正在改变</span>
   }.observes(<span class="string"><span class="delimiter">'</span><span class="content">salutation</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">init</span><span class="delimiter">'</span></span>)
 });
 </pre></td>

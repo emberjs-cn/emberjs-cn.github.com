@@ -632,18 +632,12 @@ ENV.EXTEND_PROTOTYPES = <span class="predefined-constant">false</span>;
 7
 8
 9
-<strong>10</strong>
-11
-12
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> islands = [<span class="string"><span class="delimiter">'</span><span class="content">Oahu</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Kauai</span><span class="delimiter">'</span></span>];
 islands.contains(<span class="string"><span class="delimiter">'</span><span class="content">Oahu</span><span class="delimiter">'</span></span>);
-<span class="comment">//=&gt; TypeError: Object Oahu,Kauai has no method 'contains'</span>
 <span class="comment">//=&gt; 类型错误: Oahu,Kauai 对象没有 'contains' 方法</span>
 
-<span class="comment">// Convert `islands` to an array that implements the</span>
-<span class="comment">// Ember enumerable and array interfaces</span>
-<span class="comment">//将`islands`转换为实现了Ember枚举以及数组接口的数组</span>
+<span class="comment">// 将`islands`转换为实现了Ember枚举以及数组接口的数组</span>
 Ember.A(islands);
 
 islands.contains(<span class="string"><span class="delimiter">'</span><span class="content">Oahu</span><span class="delimiter">'</span></span>);
@@ -658,10 +652,8 @@ islands.contains(<span class="string"><span class="delimiter">'</span><span clas
 3
 4
 5
-6
 </pre></td>
   <td class="code"><pre><span class="string"><span class="delimiter">&quot;</span><span class="content">my_cool_class</span><span class="delimiter">&quot;</span></span>.camelize();
-<span class="comment">//=&gt; TypeError: Object my_cool_class has no method 'camelize'</span>
 <span class="comment">//=&gt; 类型错误: my_cool_class 对象没有`camelize`方法</span>
 
 Ember.String.camelize(<span class="string"><span class="delimiter">&quot;</span><span class="content">my_cool_class</span><span class="delimiter">&quot;</span></span>);
@@ -681,17 +673,13 @@ Ember.String.camelize(<span class="string"><span class="delimiter">&quot;</span>
 8
 9
 <strong>10</strong>
-11
-12
 </pre></td>
-  <td class="code"><pre><span class="comment">// This won't work:</span>
-<span class="comment">//这样的代码不会起作用：</span>
+  <td class="code"><pre><span class="comment">//这样的代码不会起作用：</span>
 <span class="function">fullName</span>: <span class="keyword">function</span>() {
   <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
 }.property(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>)
 
 
-<span class="comment">// Instead, do this:</span>
 <span class="comment">//你需要这样做：</span>
 fullName: Ember.computed(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
   <span class="keyword">return</span> <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">firstName</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">lastName</span><span class="delimiter">'</span></span>);
@@ -711,17 +699,13 @@ fullName: Ember.computed(<span class="string"><span class="delimiter">'</span><s
 8
 9
 <strong>10</strong>
-11
-12
 </pre></td>
-  <td class="code"><pre><span class="comment">// This won't work:</span>
-<span class="comment">//这样的代码不会起作用：</span>
+  <td class="code"><pre><span class="comment">//这样的代码不会起作用：</span>
 <span class="function">fullNameDidChange</span>: <span class="keyword">function</span>() {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Full name changed</span><span class="delimiter">&quot;</span></span>);
 }.observes(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>)
 
 
-<span class="comment">// Instead, do this:</span>
 <span class="comment">//你需要这样做：</span>
 fullNameDidChange: Ember.observer(<span class="string"><span class="delimiter">'</span><span class="content">fullName</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Full name changed</span><span class="delimiter">&quot;</span></span>);
